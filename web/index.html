@@ -399,15 +399,6 @@ main {
   line-height: 1.6;
 }
 
-.board-image {
-  display: block;
-  width: 100%;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: #0a0a0a;
-}
-
-.image-placeholder,
 .empty-state {
   border: 1px dashed var(--line-strong);
   border-radius: 16px;
@@ -649,9 +640,26 @@ main {
         </div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Board Image</div>
-        <img class="board-image" id="signal-image" alt="Latest signal board image">
-        <div class="image-placeholder" id="signal-image-placeholder">No saved image yet. The bot should publish the paired PNG after generating the board.</div>
+        <div class="eyebrow">Board Feed</div>
+        <div class="hero-copy" id="signal-feed-copy">Data-first mode active. The site can render directly from saved board JSON without waiting on a PNG image artifact.</div>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Rows</div>
+            <div class="metric-value blue" id="signal-row-count">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Games</div>
+            <div class="metric-value gold" id="signal-game-count">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Source</div>
+            <div class="metric-value green" id="signal-source-mode">JSON</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Image</div>
+            <div class="metric-value" id="signal-image-state">Optional</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="toolbar">
@@ -1041,6 +1049,13 @@ function renderSignalBoard() {
   ` : '<div class="empty-state small">No board anchor saved yet.</div>';
 
   const signalRows = flattenSignalRows(board);
+  document.getElementById("signal-row-count").textContent = String(signalRows.length || 0);
+  document.getElementById("signal-game-count").textContent = String((board?.games || []).length || 0);
+  document.getElementById("signal-source-mode").textContent = "JSON";
+  document.getElementById("signal-image-state").textContent = board?.image ? "Available" : "Skipped";
+  document.getElementById("signal-feed-copy").textContent = board?.image
+    ? "Saved board data is rendering directly, and an image artifact is also available if you want it later."
+    : "Data-first mode active. The board is rendering directly from saved JSON, so the PNG image is optional.";
   const signalTableWrap = document.getElementById("signal-table-wrap");
   if (!signalRows.length) {
     signalTableWrap.innerHTML = '<div class="empty-state small">No signal rows saved yet.</div>';
@@ -1088,20 +1103,6 @@ function renderSignalBoard() {
     .map((note) => `<li>${escapeHtml(note)}</li>`)
     .join("") || "<li>The site chooses Confirmed Board when it exists, otherwise it shows Outlook automatically.</li>";
 
-  const image = document.getElementById("signal-image");
-  const placeholder = document.getElementById("signal-image-placeholder");
-  if (board?.boardType === "trend" || !board?.image) {
-    image.style.display = "none";
-    placeholder.style.display = "block";
-  } else {
-    image.src = `${board.image}?ts=${Date.now()}`;
-    image.style.display = "block";
-    placeholder.style.display = "none";
-    image.onerror = () => {
-      image.style.display = "none";
-      placeholder.style.display = "block";
-    };
-  }
 }
 
 function renderTrendBoard() {
