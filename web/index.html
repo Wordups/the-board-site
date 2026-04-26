@@ -1937,6 +1937,33 @@ function getCurrentSport() {
   return state.data.sports[state.sport];
 }
 
+function findBestSportKey(data) {
+  const sports = data && data.sports ? data.sports : {};
+  const preferredOrder = ["mlb", "nba", "wnba", "soccer", "highlights"];
+
+  for (const key of preferredOrder) {
+    const sport = sports[key];
+    if (sport && Array.isArray(sport.games) && sport.games.length) {
+      return key;
+    }
+  }
+
+  for (const [key, sport] of Object.entries(sports)) {
+    if (sport && Array.isArray(sport.games) && sport.games.length) {
+      return key;
+    }
+  }
+
+  return preferredOrder.find((key) => sports[key]) || Object.keys(sports)[0] || "mlb";
+}
+
+function syncActiveSport() {
+  const sports = state.data && state.data.sports ? state.data.sports : {};
+  if (!sports[state.sport] || !(sports[state.sport].games || []).length) {
+    state.sport = findBestSportKey(state.data);
+  }
+}
+
 function buildTickerItems(data) {
   const items = [];
   Object.entries(data.sports).forEach(([key, sport]) => {
@@ -2543,6 +2570,7 @@ function renderHeader() {
 }
 
 function render() {
+  syncActiveSport();
   renderHeader();
   renderTicker(state.data);
   renderTabs();
@@ -2571,15 +2599,18 @@ async function loadBoardData() {
   return SAMPLE_DATA;
 }
 
-document.getElementById("search-input").addEventListener("input", (event) => {
-  state.search = event.target.value || "";
-  render();
-  if (state.modalGameId) {
-    const sport = getCurrentSport();
-    const game = (sport.games || []).find((entry) => entry.id === state.modalGameId);
-    if (game) renderModal(game);
-  }
-});
+const searchInput = document.getElementById("search-input");
+if (searchInput) {
+  searchInput.addEventListener("input", (event) => {
+    state.search = event.target.value || "";
+    render();
+    if (state.modalGameId) {
+      const sport = getCurrentSport();
+      const game = (sport.games || []).find((entry) => entry.id === state.modalGameId);
+      if (game) renderModal(game);
+    }
+  });
+}
 
 document.getElementById("modal-close").addEventListener("click", closeModal);
 document.getElementById("modal-backdrop").addEventListener("click", closeModal);
@@ -2593,25 +2624,7 @@ loadBoardData().then((data) => {
 });
 
 
-@media (max-width: 480px) {
-  .header-inner {
-    grid-template-columns: 1fr;
-    padding: 10px 14px;
-  }
-  .header-meta { grid-column: 1; grid-row: 1; justify-content: flex-start; }
-  .brand { grid-row: 1; }
-  .brand-sub { display: none; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .shell { padding: 12px; }
-  .toolbar { flex-direction: column; gap: 8px; }
-  .pick-name { font-size: 13px; }
-  .sport-nav { top: 140px; }
-  .meta-chip-value { font-size: 12px; }
-}
 
-/* ═══════════════════════════════════════
-   SESSION BANKROLL — COOKIE PERSISTENT
-═══════════════════════════════════════ */
 const BR_COOKIE = "board_session_v2";
 let BR = { active:false, starting:0, deployed:0, tickets:[], won:0, date:"" };
 

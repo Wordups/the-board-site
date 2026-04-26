@@ -23,6 +23,34 @@ _CACHE: Dict[str, Any] = {
 }
 
 
+def _fallback_payload(message: str) -> Dict[str, Any]:
+    note = f"Live data is temporarily unavailable. {message}".strip()
+    empty_sport = {
+        "label": "",
+        "note": note,
+        "launches": [],
+        "notes": ["The site is serving a safe fallback payload instead of erroring out."],
+        "pickOfDay": None,
+        "filters": ["all"],
+        "games": [],
+    }
+    return {
+        "updatedAt": "Unavailable",
+        "sourceMode": "Fallback",
+        "sports": {
+            "mlb": {**empty_sport, "label": "MLB"},
+            "nba": {**empty_sport, "label": "NBA"},
+            "wnba": {**empty_sport, "label": "WNBA"},
+            "soccer": {**empty_sport, "label": "Soccer"},
+            "highlights": {
+                **empty_sport,
+                "label": "Highlights",
+                "highlights": [],
+            },
+        },
+    }
+
+
 async def _get_payload(game_date: Optional[str], refresh: bool = False) -> Dict[str, Any]:
     now = time.time()
     if (
@@ -33,7 +61,15 @@ async def _get_payload(game_date: Optional[str], refresh: bool = False) -> Dict[
     ):
         return _CACHE["payload"]
 
-    payload = await asyncio.to_thread(build_site_payload, game_date)
+    try:
+        payload = await asyncio.to_thread(build_site_payload, game_date)
+    except Exception as exc:
+        if _CACHE["payload"] is not None:
+            cached = dict(_CACHE["payload"])
+            cached["sourceMode"] = "Live website API (cached fallback)"
+            return cached
+        return _fallback_payload(str(exc))
+
     _CACHE.update(
         {
             "payload": payload,
