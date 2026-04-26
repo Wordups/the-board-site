@@ -1,541 +1,416 @@
-from __future__ import annotations
+# run_daily.py
+"""
+Main runner. Enforces the full verification checklist top to bottom.
 
-from collections import defaultdict
-from datetime import datetime
-from typing import Any, Dict, Iterable, List, Optional
-from zoneinfo import ZoneInfo
+Usage:
+    python run_daily.py                           # today
+    python run_daily.py --date 2026-04-18         # specific date
+    python run_daily.py --screenshot lines.json   # book override
+"""
+import argparse
+import json
+import os
+import sys
+from datetime import date, timedelta
 
-from board_logic import build_game_board_from_results, board_play_from_pick
-from nba_model import run_nba_model
-from run_daily import run as run_mlb_pipeline
+from config import PARK_FACTORS, PARK_NAMES
+from validators import (
+    fetch_bettable_games, get_confirmed_lineup,
+    get_team_injuries, scrub_injuries, assert_team_assignment,
+)
+from weather import fetch_game_weather, weather_multiplier
+from calibration import (
+    calibrate_hr_prob, calibrate_tb_prob, calibrate_k_prob,
+    parlay_prob, confidence_label, prob_to_american_odds,
+)
+
+sys.path.insert(0, ".")
+try:
+    from hr_model import (
+        get_pitcher_stats, get_batter_stats, get_recent_batter_stats,
+        score_hr, score_tb, score_k, has_platoon_advantage,
+        recommend_hr, recommend_tb, recommend_k,
+    )
+    MODEL_AVAILABLE = True
+except Exception as e:
+    print(f"[WARN] hr_model imports failed: {e}")
+    MODEL_AVAILABLE = False
 
 
-ET = ZoneInfo("America/New_York")
+# ── Screenshot override (Rule #5: book > research) ────────────────────────────
 
-
-def _now_label() -> str:
-    return datetime.now(ET).strftime("%B %d, %Y")
-
-
-def _safe_float(value: Any, default: float = 0.0) -> float:
+def load_screenshot_override(path):
+    if not path or not os.path.exists(path):
+        if path: print(f"[WARN] Screenshot file not found: {path}")
+        return None
     try:
-        if value in (None, ""):
-            return default
-        return float(value)
-    except Exception:
-        return default
-
-
-def _safe_int(value: Any, default: int = 0) -> int:
-    try:
-        if value in (None, ""):
-            return default
-        return int(value)
-    except Exception:
-        return default
-
-
-def _normalize_market(value: str) -> str:
-    return str(value or "").strip().lower()
-
-
-def _title_market(value: str) -> str:
-    token = str(value or "").strip().upper()
-    return token or "PROP"
-
-
-def _record(hits: Any, games: int) -> str:
-    if hits in (None, ""):
-        return "--"
-    try:
-        return f"{int(hits)}/{games}"
-    except Exception:
-        return "--"
-
-
-def _avg_label(value: Any) -> str:
-    if value in (None, ""):
-        return "--"
-    return f"{_safe_float(value):.1f} avg"
-
-
-def _tb_label(value: Any) -> str:
-    if value in (None, ""):
-        return "--"
-    return f"{_safe_int(value)} TB"
-
-
-def _score_signal(score: float) -> str:
-    if score >= 42:
-        return "A"
-    if score >= 36:
-        return "B"
-    if score >= 30:
-        return "C"
-    return "D"
-
-
-def _format_game_time_utc(raw: Any) -> str:
-    text = str(raw or "").strip()
-    if not text:
-        return "TBD"
-    try:
-        dt = datetime.fromisoformat(text.replace("Z", "+00:00")).astimezone(ET)
-        return dt.strftime("%-I:%M %p ET")
-    except Exception:
-        return text
-
-
-def _extract_line_from_rec(rec: str, fallback: str) -> str:
-    raw = str(rec or "").strip()
-    if not raw:
-        return fallback
-    line = raw.split("·", 1)[0].strip()
-    line = line.replace("🎯", "").strip()
-    return line or fallback
-
-
-def _extract_reason_from_rec(rec: str, fallback: str) -> str:
-    raw = str(rec or "").strip()
-    if "·" not in raw:
-        return fallback
-    return raw.split("·", 1)[1].strip() or fallback
-
-
-def _mlb_game_lookup(results: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
-    lookup: Dict[str, Dict[str, Any]] = {}
-    for game in results.get("games", []) or []:
-        title = f"{game.get('awayTeam', 'AWAY')} @ {game.get('homeTeam', 'HOME')}"
-        lookup[title] = game
-    return lookup
-
-
-def _mlb_row_from_pick(pick: Dict[str, Any], category: str) -> Optional[Dict[str, Any]]:
-    play = board_play_from_pick(pick, category)
-    if not play:
+        with open(path) as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[WARN] Screenshot load failed: {e}")
         return None
 
-    stats = play.stats or {}
-    if category == "HR":
-        last10 = _record(stats.get("l10_hr"), 10)
-        last5 = _record(stats.get("l5_hr"), 5)
-        last3 = _record(stats.get("l3_hr"), 3)
-    elif category == "HIT":
-        last10 = _record(stats.get("l10_hits"), 10)
-        last5 = _record(stats.get("l5_hits"), 5)
-        last3 = _record(stats.get("l3_hits"), 3)
-    elif category == "TB":
-        last10 = _tb_label(stats.get("l10_tb"))
-        last5 = _tb_label(stats.get("l5_tb"))
-        last3 = _tb_label(stats.get("l3_tb"))
-    else:
-        last10 = _avg_label(stats.get("l10_k_avg"))
-        last5 = _avg_label(stats.get("l5_k_avg"))
-        last3 = "--"
 
-    return {
-        "player": play.player_name,
-        "team": play.team,
-        "market": play.category,
-        "line": play.line,
-        "score": round(play.score, 1),
-        "tier": play.tier,
-        "confidence": play.confidence,
-        "last10": last10,
-        "last5": last5,
-        "last3": last3,
-        "status": "Probable starter" if play.category == "K" else "Confirmed lineup",
-        "why": play.reason,
-        "sort_score": play.score,
-    }
+def apply_screenshot_override(games, override):
+    if not override:
+        return games, []
+    conflicts = []
+    for g in games:
+        key = f"{g['awayTeam']}@{g['homeTeam']}"
+        if override.get("game") != key:
+            continue
+        book = override.get("pitchers", {})
+        for side in ("home", "away"):
+            bn = book.get(side)
+            mn = g[f"{side}PitcherName"]
+            if bn and bn.lower() not in mn.lower() and mn.lower() not in bn.lower():
+                conflicts.append({"game": key, "side": side, "model": mn, "book": bn})
+    return games, conflicts
 
 
-def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
-    rows_by_game: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-    for pick in results.get("hr_picks", []) or []:
-        row = _mlb_row_from_pick(pick, "HR")
-        if row:
-            rows_by_game[str(pick.get("game") or "")].append(row)
-    for pick in results.get("tb_picks", []) or []:
-        row = _mlb_row_from_pick(pick, "TB")
-        if row:
-            rows_by_game[str(pick.get("game") or "")].append(row)
-        hit_row = _mlb_row_from_pick(pick, "HIT")
-        if hit_row:
-            rows_by_game[str(pick.get("game") or "")].append(hit_row)
-    for pick in results.get("k_picks", []) or []:
-        row = _mlb_row_from_pick(pick, "K")
-        if row:
-            rows_by_game[str(pick.get("game") or "")].append(row)
+# ── Pipeline ──────────────────────────────────────────────────────────────────
 
-    board = build_game_board_from_results(results)
-    game_lookup = _mlb_game_lookup(results)
-    games: List[Dict[str, Any]] = []
-
-    for title, rows in rows_by_game.items():
-        rows_sorted = sorted(rows, key=lambda row: row["sort_score"], reverse=True)
-        top_board = board.get(title, [])
-        lookup = game_lookup.get(title, {})
-        top_picks = [
-            {
-                "name": play.player_name,
-                "market": play.category,
-                "why": play.reason,
-                "tier": play.tier.title(),
-                "confidence": play.confidence,
-                "line": play.line,
-            }
-            for play in top_board[:4]
-        ] or [
-            {
-                "name": row["player"],
-                "market": row["market"],
-                "why": row["why"],
-                "tier": str(row["tier"]).title(),
-                "confidence": row["confidence"],
-                "line": row["line"],
-            }
-            for row in rows_sorted[:4]
-        ]
-
-        avg_score = round(sum(row["sort_score"] for row in rows_sorted) / len(rows_sorted), 1) if rows_sorted else 0.0
-        core_count = sum(1 for row in rows_sorted if str(row["tier"]).upper() == "CORE")
-        top_markets = ", ".join(dict.fromkeys(row["market"] for row in rows_sorted[:3])) or "mixed board"
-
-        games.append(
-            {
-                "id": str(lookup.get("gamePk") or title),
-                "title": title,
-                "start": _format_game_time_utc(lookup.get("gameTimeUTC")),
-                "status": "Confirmed lineups" if rows_sorted else "Awaiting confirmed lineups",
-                "meta": f"{lookup.get('awayPitcherName', 'TBD')} vs {lookup.get('homePitcherName', 'TBD')}",
-                "attackNote": f"Best signal lane: {top_markets}. Click through for the full tracked board.",
-                "lineupStatus": "Confirmed lineup data loaded" if rows_sorted else "No confirmed lineups yet",
-                "summary": {
-                    "plays": len(rows_sorted),
-                    "core": core_count,
-                    "avgScore": f"{avg_score:.1f}",
-                    "signal": _score_signal(avg_score),
-                },
-                "topPicks": top_picks,
-                "roster": [
-                    {
-                        key: value
-                        for key, value in row.items()
-                        if key != "sort_score"
-                    }
-                    for row in rows_sorted
-                ],
-            }
-        )
-
-    games.sort(key=lambda game: max((pick["confidence"] for pick in game["topPicks"]), default=0), reverse=True)
-    return games
-
-
-def _build_mlb_sport(game_date: Optional[str]) -> Dict[str, Any]:
+def enrich_recent_form_lines(recent, game_date=None):
+    """
+    Adds hitter L1/L5/L10 HR, TB, and hits from recent Statcast game logs.
+    This only feeds display context; scoring still uses the existing model.
+    """
     try:
-        results = run_mlb_pipeline(game_date=game_date, screenshot_path=None, verbose=False)
-    except Exception as exc:
-        return {
-            "label": "MLB",
-            "note": f"MLB pipeline error: {exc}",
-            "launches": [],
-            "notes": ["The MLB pipeline failed while building website data."],
-            "pickOfDay": None,
-            "filters": ["all", "hr", "tb", "hit", "k"],
-            "games": [],
-        }
+        from pybaseball import statcast
 
-    if not results:
-        return {
-            "label": "MLB",
-            "note": "No playable MLB slate yet. Check again after lineups start confirming.",
-            "launches": [],
-            "notes": ["The MLB website feed stays empty until the validated slate has something real to show."],
-            "pickOfDay": None,
-            "filters": ["all", "hr", "tb", "hit", "k"],
-            "games": [],
-        }
+        end = date.fromisoformat(game_date) if game_date else date.today()
+        start = end - timedelta(days=14)
+        df = statcast(start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d"))
+        required = {"batter", "game_date", "events"}
+        if df.empty or not required.issubset(df.columns):
+            return recent
 
-    games = _build_mlb_games(results)
-    pick_of_day = None
-    if games and games[0]["topPicks"]:
-        top_game = games[0]
-        top_pick = top_game["topPicks"][0]
-        pick_of_day = {
-            "player": top_pick["name"],
-            "team": top_game["title"],
-            "market": top_pick["market"],
-            "line": top_pick["line"],
-            "score": f"{max((row['score'] for row in top_game['roster'] if row['player'] == top_pick['name'] and row['market'] == top_pick['market']), default=0):.1f}/50",
-            "confidence": f"{top_pick['confidence']}%",
-            "rate": next(
-                (
-                    f"L10 {row['last10']} | L5 {row['last5']} | L3 {row['last3']}"
-                    for row in top_game["roster"]
-                    if row["player"] == top_pick["name"] and row["market"] == top_pick["market"]
-                ),
-                "--",
-            ),
-            "environment": top_game["meta"],
-            "summary": top_game["attackNote"],
-        }
+        hit_events = {"single", "double", "triple", "home_run"}
+        tb_values = {"single": 1, "double": 2, "triple": 3, "home_run": 4}
+        df["recent_hit"] = df["events"].isin(hit_events).astype(int)
+        df["recent_hr"] = (df["events"] == "home_run").astype(int)
+        df["recent_tb"] = df["events"].map(tb_values).fillna(0).astype(int)
 
-    return {
-        "label": "MLB",
-        "note": "Live MLB board from the validated model pipeline. Click a game for the full tracked slate.",
-        "launches": [
-            {"title": "Live API", "copy": "This board is now fed by the live MLB pipeline instead of sample bootstrap data."},
-            {"title": "Game clustering", "copy": "Each matchup keeps a compressed top layer plus a deeper slate behind the click."},
-            {"title": "Recent form", "copy": "Hit-rate columns use live MLB recent-form fields, including L3 when available."},
-        ],
-        "notes": [
-            "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
-            "Scores stay on the 0-50 scale from the tuned board logic.",
-        ],
-        "pickOfDay": pick_of_day,
-        "filters": ["all", "hr", "tb", "hit", "k"],
-        "games": games,
-    }
-
-
-def _nba_game_index(games: Iterable[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-    lookup: Dict[str, Dict[str, Any]] = {}
-    for game in games:
-        away = str(game.get("away_team") or "")
-        home = str(game.get("home_team") or "")
-        if away:
-            lookup[away] = game
-        if home:
-            lookup[home] = game
-    return lookup
-
-
-def _nba_recent_fields(pick: Dict[str, Any]) -> tuple[str, str, str]:
-    recent_line = str(pick.get("recent_line") or "").strip()
-    if recent_line:
-        parts = [part.strip() for part in recent_line.split("|")]
-        mapping: Dict[str, str] = {}
-        for part in parts:
-            if " " in part:
-                key, value = part.split(" ", 1)
-                mapping[key.strip().upper()] = value.strip()
-        return (
-            mapping.get("L10", "--"),
-            mapping.get("L5", "--"),
-            mapping.get("L3", "--"),
+        game_logs = (
+            df.groupby(["batter", "game_date"], as_index=False)
+            .agg(
+                recent_hits=("recent_hit", "sum"),
+                recent_hr=("recent_hr", "sum"),
+                recent_tb=("recent_tb", "sum"),
+            )
+            .sort_values(["batter", "game_date"], ascending=[True, False])
         )
 
-    l10 = pick.get("l10")
-    l5 = pick.get("l5")
-    l1 = pick.get("l1")
-    return (
-        _avg_label(l10) if l10 not in (None, "") else "--",
-        _avg_label(l5) if l5 not in (None, "") else "--",
-        _avg_label(l1) if l1 not in (None, "") else "--",
-    )
-
-
-def _build_nba_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
-    games = results.get("games") or []
-    game_lookup = _nba_game_index(games)
-    rows_by_game: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-
-    pick_groups = [
-        ("pts_picks", "PTS"),
-        ("ast_picks", "AST"),
-        ("reb_picks", "REB"),
-        ("three_picks", "3PM"),
-    ]
-
-    for group_key, market in pick_groups:
-        for pick in results.get(group_key, []) or []:
-            team = str(pick.get("team") or "").upper()
-            game = game_lookup.get(team)
-            if not game:
-                continue
-            last10, last5, last3 = _nba_recent_fields(pick)
-            title = f"{game.get('away_team', 'AWAY')} @ {game.get('home_team', 'HOME')}"
-            rows_by_game[title].append(
+        enriched = dict(recent or {})
+        for batter, games in game_logs.groupby("batter"):
+            stats = dict(enriched.get(int(batter), {}))
+            stats.update(
                 {
-                    "player": str(pick.get("name") or "Unknown"),
-                    "team": team,
-                    "market": market,
-                    "line": _extract_line_from_rec(str(pick.get("rec") or ""), f"{market} play"),
-                    "score": round(_safe_float(pick.get("score")), 1),
-                    "tier": "Core" if _safe_float(pick.get("score")) >= 72 else "Value" if _safe_float(pick.get("score")) >= 58 else "Longshot",
-                    "confidence": _safe_int(pick.get("conf")),
-                    "last10": last10,
-                    "last5": last5,
-                    "last3": last3,
-                    "status": "Available pool",
-                    "why": _extract_reason_from_rec(str(pick.get("rec") or ""), str(pick.get("matchup") or "Model read")),
-                    "sort_score": _safe_float(pick.get("score")),
+                    "l1_hits": int(games["recent_hits"].head(1).sum()),
+                    "l5_hits": int(games["recent_hits"].head(5).sum()),
+                    "l10_hits": int(games["recent_hits"].head(10).sum()),
+                    "l1_hr": int(games["recent_hr"].head(1).sum()),
+                    "l5_hr": int(games["recent_hr"].head(5).sum()),
+                    "l10_hr": int(games["recent_hr"].head(10).sum()),
+                    "l1_tb": int(games["recent_tb"].head(1).sum()),
+                    "l5_tb": int(games["recent_tb"].head(5).sum()),
+                    "l10_tb": int(games["recent_tb"].head(10).sum()),
                 }
             )
+            enriched[int(batter)] = stats
 
-    site_games: List[Dict[str, Any]] = []
-    for game in games:
-        title = f"{game.get('away_team', 'AWAY')} @ {game.get('home_team', 'HOME')}"
-        rows = sorted(rows_by_game.get(title, []), key=lambda row: row["sort_score"], reverse=True)
-        if not rows:
-            continue
-        avg_score = round(sum(row["sort_score"] for row in rows) / len(rows), 1)
-        site_games.append(
-            {
-                "id": str(game.get("game_id") or title),
-                "title": title,
-                "start": str(game.get("status") or "Today"),
-                "status": "Live board",
-                "meta": str(game.get("status") or "Game on slate"),
-                "attackNote": "Grouped by matchup so you can scan ladders and stable lanes from one screen.",
-                "lineupStatus": "Availability filter applied",
-                "summary": {
-                    "plays": len(rows),
-                    "core": sum(1 for row in rows if str(row["tier"]).lower() == "core"),
-                    "avgScore": f"{avg_score:.1f}",
-                    "signal": _score_signal(avg_score),
-                },
-                "topPicks": [
-                    {
-                        "name": row["player"],
-                        "market": row["market"],
-                        "why": row["why"],
-                        "tier": str(row["tier"]).title(),
-                        "confidence": row["confidence"],
-                        "line": row["line"],
-                    }
-                    for row in rows[:4]
-                ],
-                "roster": [
-                    {
-                        key: value
-                        for key, value in row.items()
-                        if key != "sort_score"
-                    }
-                    for row in rows
-                ],
+        print(f"[recent] L1/L5/L10 form loaded for {len(game_logs['batter'].unique())} batters.")
+        return enriched
+    except Exception as e:
+        print(f"[WARN] Recent L1/L5/L10 form failed: {e}")
+        return recent
+
+
+def run(game_date=None, screenshot_path=None, verbose=True):
+    if game_date is None:
+        game_date = date.today().strftime("%Y-%m-%d")
+    year = int(game_date[:4])
+
+    def note(m):
+        if verbose: print(m)
+
+    note(f"\n{'='*62}\n  MLB MODEL RUN — {game_date}\n{'='*62}")
+
+    note("\n[1] Pulling slate + confirming probable starters...")
+    games, drops = fetch_bettable_games(game_date)
+    note(f"    Bettable games: {len(games)} | Dropped: {len(drops)}")
+    for d in drops:
+        note(f"      ✗ gamePk {d['game']}: {d['reason']}")
+
+    if not games:
+        note("\n[!] No bettable games. Exiting.")
+        return None
+
+    override = load_screenshot_override(screenshot_path)
+    if override:
+        note(f"\n[5] Screenshot override for: {override.get('game')}")
+        _, conflicts = apply_screenshot_override(games, override)
+        for c in conflicts:
+            note(f"    ⚠ BOOK/MODEL MISMATCH game {c['game']} {c['side']}: "
+                 f"model={c['model']} book={c['book']} → book wins")
+
+    if not MODEL_AVAILABLE:
+        note("\n[!] Scoring unavailable — fix hr_model imports and rerun.")
+        return {"games": games, "drops": drops}
+
+    note("\n[stat] Loading season + L14 stat tables...")
+    pitcher_df = get_pitcher_stats(year)
+    batter_df  = get_batter_stats(year)
+    recent     = get_recent_batter_stats(year)
+    recent     = enrich_recent_form_lines(recent, game_date)
+
+    all_hr, all_tb, all_k = [], [], []
+
+    for g in games:
+        note(f"\n[game] {g['awayTeamName']} @ {g['homeTeamName']}")
+        note(f"        {g['awayPitcherName']} ({g['awayPitcherHand']}) vs "
+             f"{g['homePitcherName']} ({g['homePitcherHand']})")
+
+        home_pr = away_pr = {}
+        m = pitcher_df[pitcher_df["mlbam_id"] == g["homePitcherId"]]
+        if not m.empty: home_pr = m.iloc[0].to_dict()
+        m = pitcher_df[pitcher_df["mlbam_id"] == g["awayPitcherId"]]
+        if not m.empty: away_pr = m.iloc[0].to_dict()
+
+        # Rule 4: Weather
+        wx = fetch_game_weather(g["venueName"], g["gameTimeUTC"])
+        hr_mult, wx_flags = weather_multiplier(wx, "hr")
+        tb_mult, _        = weather_multiplier(wx, "tb")
+        k_mult, _         = weather_multiplier(wx, "k")
+        note(f"        wx: {wx.get('temp_f','?')}°F, {wx.get('wind_mph','?')}mph, "
+             f"{wx.get('precip_prob','?')}% | HR×{hr_mult} K×{k_mult} {wx_flags}")
+
+        park_factor = PARK_FACTORS.get(g["homeTeam"], 1.00)
+
+        # Rule 2b + 3: Lineups + injury scrub
+        for side, opp_pr, opp_hand, team_id, own_team, pitcher_team in [
+            ("home", away_pr, g["awayPitcherHand"], g["homeTeamId"],
+             g["homeTeam"], g["awayTeam"]),
+            ("away", home_pr, g["homePitcherHand"], g["awayTeamId"],
+             g["awayTeam"], g["homeTeam"]),
+        ]:
+            lineup, confirmed, reason = get_confirmed_lineup(g["gamePk"], side)
+            if not confirmed:
+                note(f"        ⏸ {own_team} lineup not confirmed ({reason})")
+                continue
+
+            injured = get_team_injuries(team_id)
+            lineup, dropped = scrub_injuries(lineup, injured)
+            if dropped:
+                note(f"        ✗ scrubbed ({own_team}): {', '.join(dropped)}")
+
+            for b in lineup:
+                bs = batter_df[batter_df["mlbam_id"] == b["playerId"]]
+                if bs.empty:
+                    continue
+                brow = bs.iloc[0].to_dict()
+                brow.update({"batSide": b["batSide"], "name": b["name"],
+                             "mlbam_id": b["playerId"]})
+                p_hand = opp_hand or "R"
+                recent_line = recent.get(b["playerId"], {}) or {}
+
+                raw_hr = score_hr(brow, opp_pr, park_factor, p_hand, recent)
+                raw_tb = score_tb(brow, opp_pr, park_factor, p_hand, b["battingOrder"])
+                adj_hr = raw_hr * hr_mult
+                adj_tb = raw_tb * tb_mult
+
+                slg_raw = (brow.get("SLG_vsR") if p_hand == "R"
+                           else brow.get("SLG_vsL"))
+                if slg_raw is None:
+                    slg_raw = brow.get("SLG") or 0
+                slg = float(slg_raw or 0)
+
+                pick = {
+                    "name": b["name"],
+                    "team": own_team,
+                    "opp_team": pitcher_team,
+                    "bat_side": b["batSide"],
+                    "pitcher_hand": p_hand,
+                    "pitcher_name": (g["awayPitcherName"] if side == "home"
+                                     else g["homePitcherName"]),
+                    "mlbam_id": b["playerId"],
+                    "batting_order": b["battingOrder"],
+                    "game": f"{g['awayTeam']} @ {g['homeTeam']}",
+                    "gamePk": g["gamePk"],
+                    "slg": round(slg, 3),
+                    "barrel_pct": round(float(brow.get("barrel_pct") or 0), 1),
+                    "l1_hr": int(recent_line.get("l1_hr") or 0),
+                    "l5_hr": int(recent_line.get("l5_hr") or 0),
+                    "l10_hr": int(recent_line.get("l10_hr") or 0),
+                    "l1_tb": int(recent_line.get("l1_tb") or 0),
+                    "l5_tb": int(recent_line.get("l5_tb") or 0),
+                    "l10_tb": int(recent_line.get("l10_tb") or 0),
+                    "l1_hits": int(recent_line.get("l1_hits") or 0),
+                    "l5_hits": int(recent_line.get("l5_hits") or 0),
+                    "l10_hits": int(recent_line.get("l10_hits") or 0),
+                    "score": round(adj_hr, 2),
+                    "tb_score": round(adj_tb, 2),
+                    "p_hr": calibrate_hr_prob(adj_hr),
+                    "p_tb": calibrate_tb_prob(adj_tb),
+                    "platoon_advantage": has_platoon_advantage(b["batSide"], p_hand),
+                    "weather_flags": wx_flags,
+                }
+
+                ok, why = assert_team_assignment(pick, g)
+                if not ok:
+                    note(f"        ✗ team mismatch: {pick['name']} {why}")
+                    continue
+
+                pick["hr_rec"] = recommend_hr(pick)
+                pick["tb_rec"] = recommend_tb(pick)
+                all_hr.append(pick)
+                all_tb.append(pick)
+
+        # K picks — pitcher's own team tagged correctly
+        for pr, pname, pid_, own_team, opp_team in [
+            (away_pr, g["awayPitcherName"], g["awayPitcherId"],
+             g["awayTeam"], g["homeTeam"]),
+            (home_pr, g["homePitcherName"], g["homePitcherId"],
+             g["homeTeam"], g["awayTeam"]),
+        ]:
+            if not pr:
+                continue
+            raw_k = score_k(pr)
+            adj_k = raw_k * k_mult
+            k_pick = {
+                "name": pname,
+                "team": own_team,
+                "pitcher_team": own_team,
+                "opp_team": opp_team,
+                "mlbam_id": pid_,
+                "k9": round(float(pr.get("k9") or 0), 1),
+                "k_pct": round(float(pr.get("k_pct") or 0), 1),
+                "swstr_pct": round(float(pr.get("swstr_pct") or 0), 1),
+                "k_score": round(adj_k, 2),
+                "p_k_45": calibrate_k_prob(adj_k, 4.5),
+                "p_k_55": calibrate_k_prob(adj_k, 5.5),
+                "p_k_65": calibrate_k_prob(adj_k, 6.5),
+                "game": f"{g['awayTeam']} @ {g['homeTeam']}",
+                "gamePk": g["gamePk"],
+                "weather_flags": wx_flags,
             }
-        )
+            k_pick["k_rec"] = recommend_k(k_pick)
+            all_k.append(k_pick)
 
-    site_games.sort(key=lambda game: max((pick["confidence"] for pick in game["topPicks"]), default=0), reverse=True)
-    return site_games
-
-
-def _build_nba_sport(game_date: Optional[str]) -> Dict[str, Any]:
-    try:
-        results = run_nba_model(game_date=game_date, league="nba")
-    except Exception as exc:
-        return {
-            "label": "NBA",
-            "note": f"NBA pipeline error: {exc}",
-            "launches": [],
-            "notes": ["The NBA pipeline failed while building website data."],
-            "pickOfDay": None,
-            "filters": ["all", "pts", "ast", "reb", "3pm"],
-            "games": [],
-        }
-
-    if not isinstance(results, dict) or results.get("error"):
-        return {
-            "label": "NBA",
-            "note": str((results or {}).get("message") or "NBA slate is not ready yet."),
-            "launches": [],
-            "notes": ["NBA feed falls back safely when upstream data is thin."],
-            "pickOfDay": None,
-            "filters": ["all", "pts", "ast", "reb", "3pm"],
-            "games": [],
-        }
-
-    games = _build_nba_games(results)
-    pick_of_day = None
-    if games and games[0]["topPicks"]:
-        top_game = games[0]
-        top_pick = top_game["topPicks"][0]
-        pick_of_day = {
-            "player": top_pick["name"],
-            "team": top_game["title"],
-            "market": top_pick["market"],
-            "line": top_pick["line"],
-            "score": f"{max((row['score'] for row in top_game['roster'] if row['player'] == top_pick['name'] and row['market'] == top_pick['market']), default=0):.1f}/100",
-            "confidence": f"{top_pick['confidence']}%",
-            "rate": next(
-                (
-                    f"L10 {row['last10']} | L5 {row['last5']} | L3 {row['last3']}"
-                    for row in top_game["roster"]
-                    if row["player"] == top_pick["name"] and row["market"] == top_pick["market"]
-                ),
-                "--",
-            ),
-            "environment": top_game["meta"],
-            "summary": top_game["attackNote"],
-        }
+    all_hr.sort(key=lambda x: x["p_hr"], reverse=True)
+    all_tb.sort(key=lambda x: x["p_tb"], reverse=True)
+    all_k.sort(key=lambda x: x["p_k_55"], reverse=True)
 
     return {
-        "label": "NBA",
-        "note": "Live NBA board grouped by game with availability filtering applied.",
-        "launches": [
-            {"title": "Live slate grouping", "copy": "NBA picks are grouped into the same clickable game view as MLB."},
-            {"title": "Availability aware", "copy": "Inactive and out-of-pool players are filtered before the site payload is built."},
-            {"title": "Best available recent form", "copy": "If recent hit-rate lines exist, they show. Otherwise the site falls back to recent averages."},
-        ],
-        "notes": [
-            "This worktree still uses the existing NBA model output shape, so recent columns can vary by source quality.",
-        ],
-        "pickOfDay": pick_of_day,
-        "filters": ["all", "pts", "ast", "reb", "3pm"],
+        "date": game_date,
         "games": games,
+        "drops": drops,
+        "hr_picks": all_hr,
+        "tb_picks": all_tb,
+        "k_picks": all_k,
+        "override_active": override is not None,
     }
 
 
-def build_site_payload(game_date: Optional[str] = None) -> Dict[str, Any]:
-    return {
-        "updatedAt": _now_label(),
-        "sourceMode": "Live website API",
-        "sports": {
-            "mlb": _build_mlb_sport(game_date),
-            "nba": _build_nba_sport(game_date),
-            "wnba": {
-                "label": "WNBA",
-                "note": "WNBA board will fill in here when the backend is ready.",
-                "launches": [],
-                "notes": [],
-                "pickOfDay": None,
-                "filters": ["all"],
-                "games": [],
-            },
-            "soccer": {
-                "label": "Soccer",
-                "note": "Soccer props will plug into the same site payload once those feeds are wired.",
-                "launches": [],
-                "notes": [],
-                "pickOfDay": None,
-                "filters": ["all"],
-                "games": [],
-            },
-            "highlights": {
-                "label": "Highlights",
-                "note": "Highlights stay separated from the board so the research surface stays clean.",
-                "launches": [],
-                "notes": [],
-                "pickOfDay": None,
-                "filters": ["all"],
-                "games": [],
-                "highlights": [
-                    {
-                        "sport": "nba",
-                        "title": "NBA playoff highlights",
-                        "source": "YouTube search feed",
-                        "url": "https://www.youtube.com/embed?listType=search&q=NBA+playoff+highlights+2026",
-                    },
-                    {
-                        "sport": "mlb",
-                        "title": "MLB daily home run reel",
-                        "source": "YouTube search feed",
-                        "url": "https://www.youtube.com/embed?listType=search&q=MLB+home+run+highlights+2026",
-                    },
-                ],
-            },
-        },
-    }
+# ── Parlay builder ────────────────────────────────────────────────────────────
+
+def build_parlays(results):
+    if not results:
+        return {}
+    hr, tb, k = results["hr_picks"], results["tb_picks"], results["k_picks"]
+
+    def pick_hr(pool, require_platoon):
+        out, used = [], {}
+        for p in pool:
+            if require_platoon and not p["platoon_advantage"]: continue
+            if p["batting_order"] > 6: continue
+            gp, team = p["gamePk"], p["team"]
+            if used.get(gp) and used[gp] != team: continue
+            out.append(p); used[gp] = team
+            if len(out) >= 3: break
+        return out
+
+    hr_parlay = pick_hr(hr, True)
+    if len(hr_parlay) < 2:
+        hr_parlay = pick_hr(hr, False)
+
+    tb_parlay, used = [], {}
+    for p in tb:
+        if p["batting_order"] > 7: continue
+        gp, team = p["gamePk"], p["team"]
+        if used.get(gp) and used[gp] != team: continue
+        tb_parlay.append(p); used[gp] = team
+        if len(tb_parlay) >= 3: break
+
+    k_parlay = []
+    against = {(x["gamePk"], x["pitcher_name"]) for x in hr_parlay + tb_parlay}
+    for p in k[:6]:
+        if (p["gamePk"], p["name"]) in against: continue
+        k_parlay.append(p)
+        if len(k_parlay) >= 3: break
+
+    return {"hr": hr_parlay, "tb": tb_parlay, "k": k_parlay}
+
+
+# ── Output ────────────────────────────────────────────────────────────────────
+
+def render_gambly(results, parlays):
+    if not results:
+        return "No playable slate."
+    out = [f"\n{'='*62}", f"📋 MLB BOARD — {results['date']}",
+           "   Verified: pitchers confirmed, lineups posted, injuries scrubbed, weather gated", ""]
+
+    out.append("💣 HR PARLAY")
+    probs = []
+    for p in parlays.get("hr", []):
+        out.append(f"   {p['name']} ({p['team']}) vs {p['pitcher_name']} "
+                   f"· HR 1+ · {int(p['p_hr']*100)}% · "
+                   f"{confidence_label(p['p_hr'], 'hr')}")
+        probs.append(p["p_hr"])
+    if probs:
+        c = parlay_prob(probs)
+        out.append(f"   → Parlay: {int(c*100)}%  fair odds {prob_to_american_odds(c):+d}")
+    out.append("")
+
+    out.append("🎯 TB PARLAY")
+    probs = []
+    for p in parlays.get("tb", []):
+        out.append(f"   {p['name']} ({p['team']}) vs {p['pitcher_name']} "
+                   f"· Over 1.5 TB · {int(p['p_tb']*100)}% · "
+                   f"{confidence_label(p['p_tb'], 'tb')}")
+        probs.append(p["p_tb"])
+    if probs:
+        c = parlay_prob(probs)
+        out.append(f"   → Parlay: {int(c*100)}%  fair odds {prob_to_american_odds(c):+d}")
+    out.append("")
+
+    out.append("⚾ K PARLAY")
+    probs = []
+    for p in parlays.get("k", []):
+        out.append(f"   {p['name']} ({p['team']}) · Over 5.5 Ks · "
+                   f"{int(p['p_k_55']*100)}% · {confidence_label(p['p_k_55'], 'k')}")
+        probs.append(p["p_k_55"])
+    if probs:
+        c = parlay_prob(probs)
+        out.append(f"   → Parlay: {int(c*100)}%  fair odds {prob_to_american_odds(c):+d}")
+    out.append("")
+
+    if not results.get("override_active"):
+        out.append("⚠ No FanDuel screenshot loaded — pass --screenshot lines.json "
+                   "to lock lines (book > model).")
+    return "\n".join(out)
+
+
+# ── CLI ───────────────────────────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--date", default=None, help="YYYY-MM-DD")
+    ap.add_argument("--screenshot", default=None, help="Path to FD JSON")
+    ap.add_argument("--quiet", action="store_true")
+    args = ap.parse_args()
+
+    results = run(args.date, args.screenshot, verbose=not args.quiet)
+    if results and results.get("hr_picks") is not None:
+        parlays = build_parlays(results)
+        print(render_gambly(results, parlays))
