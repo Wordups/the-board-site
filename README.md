@@ -123,9 +123,38 @@ The same pattern works for `"nba"`.
 - `/api/signal-board/{sport}?type=confirmed`
 - `/api/trend-board/{sport}` -> trend board route alias
 - `/api/trend-board/{sport}?type=trend`
+- `/api/publish-board` -> authenticated bot publish endpoint
 - `/data/...` -> saved JSON board artifacts
 - `/images/...` -> saved PNG board artifacts
 - `/healthz` -> health check
+
+## Publish endpoint
+
+The site can accept board updates directly from the bot:
+
+- `POST /api/publish-board`
+- header:
+  - `Authorization: Bearer <SITE_PUBLISH_TOKEN>`
+  - or `X-Site-Publish-Token: <SITE_PUBLISH_TOKEN>`
+
+Body shape:
+
+```json
+{
+  "sport": "mlb",
+  "board_kind": "confirmed",
+  "payload": {
+    "title": "MLB Confirmed Board",
+    "rows": []
+  }
+}
+```
+
+Optional:
+
+- `image_base64` for PNG uploads on outlook/confirmed boards
+
+If `SITE_PUBLISH_TOKEN` is unset, the endpoint is open for local development only. Set it in production.
 
 ## Local run
 
@@ -142,3 +171,8 @@ Render can run this directly with:
 
 - Build command: `pip install -r requirements.txt`
 - Start command: `python site_server.py`
+
+Recommended environment variables:
+
+- `SITE_PUBLISH_TOKEN`
+- `LIVE_BOARD_CACHE_TTL_SECONDS`

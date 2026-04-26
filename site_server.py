@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import os
 import time
 from pathlib import Path
@@ -10,6 +11,7 @@ from aiohttp import web
 
 from live_board import build_live_board_payload
 from signal_board_store import (
+    publish_board,
     load_board,
     load_preferred_signal_board,
     normalize_board_kind,
@@ -24,6 +26,7 @@ DATA_DIR = PUBLIC_DIR / "data"
 IMAGE_DIR = PUBLIC_DIR / "images"
 INDEX_FILE = WEB_DIR / "index.html"
 LIVE_CACHE_TTL_SECONDS = int(os.getenv("LIVE_BOARD_CACHE_TTL_SECONDS", "60"))
+SITE_PUBLISH_TOKEN = os.getenv("SITE_PUBLISH_TOKEN", "").strip()
 
 _LIVE_CACHE: Dict[str, Any] = {
     "payload": None,
@@ -89,6 +92,58 @@ async def api_signal_board(request: web.Request) -> web.Response:
     return web.json_response(payload)
 
 
+def _is_publish_authorized(request: web.Request) -> bool:
+    if not SITE_PUBLISH_TOKEN:
+        return True
+
+    auth_header = request.headers.get("Authorization", "").strip()
+    token_header = request.headers.get("X-Site-Publish-Token", "").strip()
+
+    if auth_header.startswith("Bearer "):
+        return auth_header.removeprefix("Bearer ").strip() == SITE_PUBLISH_TOKEN
+    return token_header == SITE_PUBLISH_TOKEN
+
+
+async def api_publish_board(request: web.Request) -> web.Response:
+    if not _is_publish_authorized(request):
+        return web.json_response({"ok": False, "error": "unauthorized"}, status=401)
+
+    try:
+        body = await request.json()
+    except Exception:
+        return web.json_response({"ok": False, "error": "invalid-json"}, status=400)
+
+    try:
+        sport = normalize_sport_key(body.get("sport", ""))
+        board_kind = normalize_board_kind(body.get("board_kind", ""))
+        payload = body.get("payload")
+        if not isinstance(payload, dict):
+            raise ValueError("payload must be an object")
+
+        image_bytes = None
+        image_base64 = body.get("image_base64")
+        if image_base64:
+            image_bytes = base64.b64decode(image_base64)
+
+        paths = publish_board(
+            sport,
+            board_kind,
+            payload=payload,
+            image_bytes=image_bytes,
+        )
+    except Exception as exc:
+        return web.json_response({"ok": False, "error": str(exc)}, status=400)
+
+    return web.json_response(
+        {
+            "ok": True,
+            "sport": sport,
+            "board_kind": board_kind,
+            "paths": {key: str(value) for key, value in paths.items()},
+        }
+    )
+
+
 def create_app() -> web.Application:
     app = web.Application()
     app.router.add_get("/", index)
@@ -97,6 +152,7 @@ def create_app() -> web.Application:
     app.router.add_get("/api/live-board", api_live_board)
     app.router.add_get("/api/signal-board/{sport}", api_signal_board)
     app.router.add_get("/api/trend-board/{sport}", api_signal_board)
+    app.router.add_post("/api/publish-board", api_publish_board)
     app.router.add_static("/data/", DATA_DIR)
     app.router.add_static("/images/", IMAGE_DIR)
     app.router.add_static("/web/", WEB_DIR)
