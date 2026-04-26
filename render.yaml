@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: the-board-site
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python site_server.py
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: SITE_CACHE_TTL_SECONDS
+        value: 300
