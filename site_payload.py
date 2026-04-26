@@ -1,8 +1,0 @@
-pybaseball>=2.2.7
-discord.py>=2.3.0
-pandas>=2.0.0
-requests>=2.31.0
-python-dotenv>=1.0.0
-aiohttp>=3.9.0
-APScheduler>=3.10.0
-Pillow>=10.0.0
