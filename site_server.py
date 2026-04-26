@@ -9,7 +9,12 @@ from typing import Any, Dict
 from aiohttp import web
 
 from live_board import build_live_board_payload
-from signal_board_store import load_signal_board, normalize_sport_key
+from signal_board_store import (
+    load_board,
+    load_preferred_signal_board,
+    normalize_board_kind,
+    normalize_sport_key,
+)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -58,22 +63,27 @@ async def api_live_board(request: web.Request) -> web.Response:
 
 async def api_signal_board(request: web.Request) -> web.Response:
     sport = normalize_sport_key(request.match_info.get("sport", ""))
-    payload = load_signal_board(sport)
+    requested_kind = request.query.get("type", "").strip().lower()
+    default_kind = "trend" if request.path.startswith("/api/trend-board/") else None
+    board_kind = normalize_board_kind(requested_kind) if requested_kind else default_kind
+    payload = load_board(sport, board_kind) if board_kind else load_preferred_signal_board(sport)
     if payload is None:
+        fallback_kind = board_kind or "outlook"
         return web.json_response(
             {
                 "sport": sport.upper(),
-                "board_type": "signal-board",
+                "board_type": fallback_kind,
                 "generated_at": None,
-                "title": f"{sport.upper()} Signal Board",
+                "title": f"{sport.upper()} {fallback_kind.title()} Board",
                 "subtitle": "No saved bot board yet.",
                 "pick_of_day": None,
                 "sections": [],
                 "games": [],
+                "trend_rows": [],
                 "notes": [
                     "The website is waiting for the Discord bot to save the latest board artifacts.",
                 ],
-                "image": f"/images/{sport}-signal-board.png",
+                "image": None if fallback_kind == "trend" else f"/images/{sport}-{fallback_kind}-board.png",
             }
         )
     return web.json_response(payload)
@@ -86,6 +96,7 @@ def create_app() -> web.Application:
     app.router.add_get("/healthz", healthz)
     app.router.add_get("/api/live-board", api_live_board)
     app.router.add_get("/api/signal-board/{sport}", api_signal_board)
+    app.router.add_get("/api/trend-board/{sport}", api_signal_board)
     app.router.add_static("/data/", DATA_DIR)
     app.router.add_static("/images/", IMAGE_DIR)
     app.router.add_static("/web/", WEB_DIR)

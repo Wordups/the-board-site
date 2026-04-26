@@ -1,0 +1,65 @@
+{
+  "sport": "NBA",
+  "board_type": "confirmed",
+  "generated_at": "2026-04-26T11:04:00-04:00",
+  "lastUpdated": "2026-04-26T11:04:00-04:00",
+  "title": "NBA Confirmed Board",
+  "subtitle": "Day-of board after rotation, injury, and role assumptions are locked.",
+  "confidenceLabel": "Confirmed",
+  "image": "/images/nba-confirmed-board.png",
+  "pick_of_day": {
+    "player": "Nikola Jokic",
+    "market": "10+ AST",
+    "line": "-146",
+    "team": "MIN @ DEN",
+    "summary": "The same lane steps up once the minutes, role, and injury assumptions are no longer provisional."
+  },
+  "rows": [
+    {
+      "player": "Nikola Jokic",
+      "market": "10+ AST",
+      "finalScore": 84,
+      "tag": "Core",
+      "game": "MIN @ DEN",
+      "baseScore": 82,
+      "adjustments": [
+        "opponent defense -1",
+        "pace +1",
+        "home court +1",
+        "confirmed availability +1",
+        "playoff minutes +1"
+      ],
+      "uncertaintyPenalty": 0,
+      "confidenceLabel": "Confirmed",
+      "why": "Confirmed Board removes the generic uncertainty hit and lets the matchup/usage edge stand on its own."
+    },
+    {
+      "player": "Jalen Brunson",
+      "market": "25+ PTS",
+      "finalScore": 78,
+      "tag": "Strong",
+      "game": "ATL @ NYK",
+      "baseScore": 75,
+      "adjustments": [
+        "usage +2",
+        "home court +1",
+        "blowout risk -1",
+        "confirmed role +1",
+        "confirmed minutes +0"
+      ],
+      "uncertaintyPenalty": 0,
+      "confidenceLabel": "Confirmed",
+      "why": "Cleaner read after the role and availability questions are settled."
+    }
+  ],
+  "games": [
+    {
+      "matchup": "MIN @ DEN",
+      "note": "Confirmed Board is the decision layer. It should overwrite Outlook automatically once verified."
+    }
+  ],
+  "notes": [
+    "NBA Confirmed Board should replace Outlook whenever it exists.",
+    "Trend Board stays separate to validate recent form."
+  ]
+}

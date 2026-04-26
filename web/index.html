@@ -11,20 +11,23 @@
 :root {
   --bg: #050505;
   --panel: #111111;
-  --panel-2: #171717;
-  --line: #272727;
-  --line-strong: #393939;
+  --panel-2: #181818;
+  --panel-3: #202020;
+  --line: #292929;
+  --line-strong: #3a3a3a;
   --text: #f5f5f5;
   --text-2: #b7b7b7;
-  --text-3: #727272;
+  --text-3: #737373;
   --gold: #f5a623;
-  --gold-soft: rgba(245,166,35,.14);
+  --gold-soft: rgba(245,166,35,.12);
   --green: #24d38a;
-  --green-soft: rgba(36,211,138,.14);
+  --green-soft: rgba(36,211,138,.12);
   --red: #ff5f57;
-  --red-soft: rgba(255,95,87,.14);
+  --red-soft: rgba(255,95,87,.12);
   --blue: #55a8ff;
   --blue-soft: rgba(85,168,255,.14);
+  --purple: #cb74ff;
+  --purple-soft: rgba(203,116,255,.14);
   --radius: 14px;
 }
 
@@ -45,6 +48,7 @@ body {
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 a { color: inherit; }
+table { border-collapse: collapse; width: 100%; }
 
 header {
   position: sticky;
@@ -56,7 +60,7 @@ header {
 }
 
 .header-inner {
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 14px 20px;
   display: flex;
@@ -109,7 +113,7 @@ header {
 }
 
 .chip {
-  min-width: 112px;
+  min-width: 118px;
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid var(--line);
@@ -117,22 +121,22 @@ header {
 }
 
 .chip-label {
+  color: var(--text-3);
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 1.1px;
-  color: var(--text-3);
 }
 
 .chip-value {
   margin-top: 2px;
-  font-family: "Bebas Neue", sans-serif;
   color: var(--gold);
-  letter-spacing: 1px;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 13px;
+  letter-spacing: 1px;
 }
 
 .page-nav {
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0 20px 14px;
   display: flex;
@@ -141,7 +145,8 @@ header {
 }
 
 .page-btn,
-.sport-btn {
+.sport-btn,
+.board-btn {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--panel);
@@ -154,25 +159,21 @@ header {
 }
 
 .page-btn.active,
-.sport-btn.active {
+.sport-btn.active,
+.board-btn.active {
   background: var(--gold-soft);
-  color: var(--gold);
   border-color: rgba(245,166,35,.35);
+  color: var(--gold);
 }
 
 main {
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
+.page { display: none; }
+.page.active { display: block; }
 
 .hero {
   display: grid;
@@ -186,7 +187,7 @@ main {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  box-shadow: 0 18px 40px rgba(0,0,0,.16);
 }
 
 .eyebrow {
@@ -206,19 +207,21 @@ main {
   line-height: .95;
 }
 
-.hero-copy {
-  margin-top: 8px;
+.hero-copy,
+.muted {
   color: var(--text-2);
   line-height: 1.6;
   font-size: 14px;
 }
 
+.hero-copy { margin-top: 8px; }
+
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
   flex-wrap: wrap;
+  gap: 14px;
   margin-bottom: 16px;
 }
 
@@ -228,15 +231,9 @@ main {
   flex-wrap: wrap;
 }
 
-.signal-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-}
-
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   margin-top: 14px;
 }
@@ -262,133 +259,53 @@ main {
   letter-spacing: 1px;
 }
 
-.pick-card {
-  margin-top: 14px;
-  border: 1px solid rgba(245,166,35,.22);
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(245,166,35,.08), rgba(255,255,255,.01));
-  padding: 16px;
+.metric-value.gold { color: var(--gold); }
+.metric-value.green { color: var(--green); }
+.metric-value.blue { color: var(--blue); }
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+  gap: 18px;
 }
 
-.pick-name {
-  font-size: 26px;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 1px;
-}
-
-.pick-copy,
-.muted {
-  color: var(--text-2);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.section-list,
-.game-list,
-.live-list,
-.notes-list {
+.stack {
   display: grid;
   gap: 12px;
 }
 
-.section-block,
-.game-block,
-.live-row {
+.list-block,
+.game-row,
+.live-row,
+.pick-row {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--panel-2);
+}
+
+.list-block,
+.game-row,
+.live-row {
   padding: 14px 16px;
 }
 
-.section-head,
-.game-head,
-.live-head {
+.live-head,
+.game-head {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
   align-items: baseline;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-.section-title,
-.game-title,
-.live-title {
+.live-title,
+.game-title {
   font-size: 15px;
   font-weight: 700;
 }
 
-.section-tag,
-.game-tag,
-.status-pill {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  color: var(--text-2);
-}
-
-.plays-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.plays-table th,
-.plays-table td {
-  text-align: left;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  font-size: 12px;
-  vertical-align: top;
-}
-
-.plays-table th {
-  color: var(--text-3);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-weight: 800;
-}
-
-.plays-table tr:last-child td {
-  border-bottom: 0;
-}
-
-.board-image {
-  width: 100%;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: #0a0a0a;
-  display: block;
-}
-
-.image-placeholder {
-  display: none;
-  border: 1px dashed var(--line-strong);
-  border-radius: 16px;
-  padding: 20px;
-  color: var(--text-3);
-  text-align: center;
-}
-
-.empty-state {
-  border: 1px dashed var(--line-strong);
-  border-radius: 16px;
-  padding: 24px;
-  color: var(--text-3);
-  text-align: center;
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
 .score-line {
+  margin-top: 8px;
   font-family: "Bebas Neue", sans-serif;
   font-size: 28px;
   letter-spacing: 1px;
@@ -398,23 +315,126 @@ main {
   color: var(--text-3);
   font-size: 12px;
   margin-top: 6px;
+  line-height: 1.5;
 }
 
-.notes-list {
-  margin-top: 14px;
+.status-pill,
+.tag-pill,
+.sport-pill {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: var(--text-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
 }
 
-.notes-list li {
+.status-pill.outlook {
+  color: var(--blue);
+  border-color: rgba(85,168,255,.3);
+  background: var(--blue-soft);
+}
+
+.status-pill.confirmed {
+  color: var(--green);
+  border-color: rgba(36,211,138,.3);
+  background: var(--green-soft);
+}
+
+.signal-table,
+.trend-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.signal-table th,
+.signal-table td,
+.trend-table th,
+.trend-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  text-align: left;
+  vertical-align: top;
+}
+
+.signal-table th,
+.trend-table th {
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.signal-table tr:last-child td,
+.trend-table tr:last-child td { border-bottom: 0; }
+
+.signal-score {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.tag-core { color: var(--green); }
+.tag-strong { color: var(--gold); }
+.tag-watch { color: var(--blue); }
+.tag-thin { color: var(--text-3); }
+
+.pick-row {
+  padding: 14px 16px;
+}
+
+.pick-name {
+  font-size: 24px;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+}
+
+.pick-support {
+  margin-top: 8px;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.board-image {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #0a0a0a;
+}
+
+.image-placeholder,
+.empty-state {
+  border: 1px dashed var(--line-strong);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--text-3);
+  text-align: center;
+}
+
+.empty-state.small { padding: 16px; }
+
+.notes {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.notes li {
   color: var(--text-2);
   line-height: 1.6;
   font-size: 13px;
 }
 
-.rail-note {
-  color: var(--text-3);
-  font-size: 12px;
-  line-height: 1.6;
-  margin-top: 12px;
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
 .bankroll-layout {
@@ -476,16 +496,16 @@ main {
 .br-toast.warn { border-color: rgba(245,166,35,.4); color: var(--gold); }
 .br-toast.err { border-color: rgba(255,95,87,.4); color: var(--red); }
 
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
   .hero,
-  .signal-grid,
+  .split,
   .two-col,
   .bankroll-layout {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .header-inner,
   .page-nav,
   main {
@@ -502,36 +522,41 @@ main {
     justify-content: flex-start;
   }
 
-  .brand-title {
-    font-size: 28px;
-  }
-
   .metric-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .plays-table,
-  .plays-table thead,
-  .plays-table tbody,
-  .plays-table tr,
-  .plays-table th,
-  .plays-table td {
+  .signal-table,
+  .signal-table thead,
+  .signal-table tbody,
+  .signal-table tr,
+  .signal-table th,
+  .signal-table td,
+  .trend-table,
+  .trend-table thead,
+  .trend-table tbody,
+  .trend-table tr,
+  .trend-table th,
+  .trend-table td {
     display: block;
     width: 100%;
   }
 
-  .plays-table thead {
+  .signal-table thead,
+  .trend-table thead {
     display: none;
   }
 
-  .plays-table tr {
+  .signal-table tr,
+  .trend-table tr {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
 
-  .plays-table td {
+  .signal-table td,
+  .trend-table td {
     border: 0;
-    padding: 2px 0;
+    padding: 3px 0;
   }
 }
 </style>
@@ -543,23 +568,24 @@ main {
       <div class="brand-mark">TB</div>
       <div>
         <h1 class="brand-title">The Board</h1>
-        <div class="brand-sub">Live scores separate. Signal boards from the bot.</div>
+        <div class="brand-sub">Outlook and Confirmed boards, with Trend as a cross-reference layer.</div>
       </div>
     </div>
     <div class="header-meta">
       <div class="chip">
-        <div class="chip-label">Updated</div>
-        <div class="chip-value" id="header-updated">Loading</div>
+        <div class="chip-label">Live Updated</div>
+        <div class="chip-value" id="header-live-updated">Waiting</div>
       </div>
       <div class="chip">
-        <div class="chip-label">Signal Feed</div>
-        <div class="chip-value" id="header-signal-status">Waiting</div>
+        <div class="chip-label">Signal Updated</div>
+        <div class="chip-value" id="header-signal-updated">Waiting</div>
       </div>
     </div>
   </div>
   <nav class="page-nav">
     <button class="page-btn active" data-page="live">Live Board</button>
     <button class="page-btn" data-page="signal">Signal Board</button>
+    <button class="page-btn" data-page="trend">Trend Board</button>
     <button class="page-btn" data-page="bankroll">Bankroll</button>
   </nav>
 </header>
@@ -569,12 +595,12 @@ main {
     <div class="hero">
       <div class="panel">
         <div class="eyebrow">Live Board</div>
-        <h2 class="hero-title">Today’s schedule and scoreboard</h2>
-        <div class="hero-copy">This page is for live games only. It does not reuse the bot signal board. Use it to scan current matchups, statuses, and scores fast.</div>
+        <h2 class="hero-title">Today’s games and score state</h2>
+        <div class="hero-copy">This page is for current schedule, score, and game status only. It is separate from the model boards by design.</div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Board Rules</div>
-        <div class="rail-note">Signal Board = latest saved model output from the bot. Live Board = current scoreboard and status. They stay separate on purpose.</div>
+        <div class="eyebrow">Scope</div>
+        <div class="muted">Signal Board is model output. Live Board is score state. Trend Board is cross-reference. Keeping them separate makes the site easier to trust.</div>
       </div>
     </div>
     <div class="toolbar">
@@ -587,12 +613,12 @@ main {
     </div>
     <div class="two-col">
       <div class="panel">
-        <div class="eyebrow">Live Games</div>
-        <div class="live-list" id="live-list"></div>
+        <div class="eyebrow">Games</div>
+        <div class="stack" id="live-list"></div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Quick Read</div>
-        <div class="notes-list" id="live-notes"></div>
+        <div class="eyebrow">Read</div>
+        <ul class="notes" id="live-notes"></ul>
       </div>
     </div>
   </section>
@@ -601,49 +627,81 @@ main {
     <div class="hero">
       <div class="panel">
         <div class="eyebrow">Signal Board</div>
-        <h2 class="hero-title" id="signal-title">Latest bot board</h2>
-        <div class="hero-copy" id="signal-subtitle">The site loads the newest saved signal board every time it opens. No Discord command required.</div>
+        <h2 class="hero-title" id="signal-title">Latest board output</h2>
+        <div class="hero-copy" id="signal-subtitle">The site loads Confirmed Board first when available. If not, it falls back to the Outlook Board automatically.</div>
         <div class="metric-grid">
           <div class="metric">
             <div class="metric-label">Sport</div>
-            <div class="metric-value" id="signal-sport-label">MLB</div>
+            <div class="metric-value gold" id="signal-sport-label">MLB</div>
           </div>
           <div class="metric">
-            <div class="metric-label">Generated</div>
+            <div class="metric-label">Board</div>
+            <div class="metric-value blue" id="signal-board-type">OUTLOOK</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Last Updated</div>
             <div class="metric-value" id="signal-generated">--</div>
           </div>
           <div class="metric">
-            <div class="metric-label">Mode</div>
-            <div class="metric-value">Bot Feed</div>
+            <div class="metric-label">Confidence Tier</div>
+            <div class="metric-value green" id="signal-confidence-summary">--</div>
           </div>
         </div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Latest Image</div>
+        <div class="eyebrow">Board Image</div>
         <img class="board-image" id="signal-image" alt="Latest signal board image">
-        <div class="image-placeholder" id="signal-image-placeholder">No saved PNG yet. The bot needs to publish the latest board image.</div>
+        <div class="image-placeholder" id="signal-image-placeholder">No saved image yet. The bot should publish the paired PNG after generating the board.</div>
       </div>
     </div>
-
     <div class="toolbar">
       <div class="toolbar-group">
         <button class="sport-btn active" data-signal-sport="mlb">MLB</button>
         <button class="sport-btn" data-signal-sport="nba">NBA</button>
       </div>
-      <div class="muted" id="signal-meta">Loading latest saved boards</div>
+      <div class="toolbar-group">
+        <button class="board-btn active" data-signal-view="best">Auto</button>
+        <button class="board-btn" data-signal-view="confirmed">Confirmed</button>
+        <button class="board-btn" data-signal-view="outlook">Outlook</button>
+      </div>
+      <div class="muted" id="signal-meta">Waiting on saved board artifacts</div>
     </div>
-
-    <div class="signal-grid">
+    <div class="split">
       <div class="panel">
-        <div class="eyebrow">Primary Board</div>
+        <div class="eyebrow">Primary Signal</div>
         <div id="signal-pick"></div>
-        <div class="section-list" id="signal-sections"></div>
+        <div class="stack" id="signal-games"></div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Game Breakdown</div>
-        <div class="game-list" id="signal-games"></div>
-        <ul class="notes-list" id="signal-notes"></ul>
+        <div class="eyebrow">Board Rows</div>
+        <div id="signal-table-wrap"></div>
+        <ul class="notes" id="signal-notes"></ul>
       </div>
+    </div>
+  </section>
+
+  <section class="page" id="page-trend">
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">Trend Board</div>
+        <h2 class="hero-title">Cross-reference only</h2>
+        <div class="hero-copy">This table is the verification layer. It does not replace the Signal Board. Use it to pressure-test recent form before you commit to a lane.</div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Use</div>
+        <div class="muted">Trend Board is not a decision layer. It helps separate real signals from noisy ones by putting season and L10/L5/L3/L1 in one dense scan.</div>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <button class="sport-btn active" data-trend-sport="mlb">MLB</button>
+        <button class="sport-btn" data-trend-sport="nba">NBA</button>
+      </div>
+      <div class="muted" id="trend-meta">Waiting on saved trend board</div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Trend Table</div>
+      <div id="trend-table-wrap"></div>
     </div>
   </section>
 
@@ -652,11 +710,11 @@ main {
       <div class="panel">
         <div class="eyebrow">Bankroll</div>
         <h2 class="hero-title">Session tracker</h2>
-        <div class="hero-copy">This stays local to your browser. It is separate from the bot and separate from the live and signal board feeds.</div>
+        <div class="hero-copy">This stays local to your browser and doesn’t depend on the bot. It’s here so the site can be useful when you’re actually building slips.</div>
       </div>
       <div class="panel">
-        <div class="eyebrow">Why It Matters</div>
-        <div class="rail-note">The board finds the spots. The bankroll page keeps the session honest. One surface for tickets, deployed units, and P&amp;L.</div>
+        <div class="eyebrow">Rule</div>
+        <div class="muted">Model output is one thing, bankroll discipline is another. Keep this separate so you can trust both.</div>
       </div>
     </div>
     <div class="bankroll-layout">
@@ -689,7 +747,6 @@ main {
           <div class="br-stat-row" style="border-bottom:none;"><span>Potential Win</span><strong class="br-pos" id="br-win">—</strong></div>
         </div>
       </div>
-
       <div class="panel">
         <div class="eyebrow">Tickets</div>
         <div class="tf-section">
@@ -722,23 +779,39 @@ main {
 
 <script>
 const SIGNAL_FILES = {
-  mlb: "/data/mlb-signal-board.json",
-  nba: "/data/nba-signal-board.json"
+  mlb: {
+    outlook: "/data/mlb-outlook-board.json",
+    confirmed: "/data/mlb-confirmed-board.json",
+    trend: "/data/mlb-trend-board.json"
+  },
+  nba: {
+    outlook: "/data/nba-outlook-board.json",
+    confirmed: "/data/nba-confirmed-board.json",
+    trend: "/data/nba-trend-board.json"
+  }
 };
 
-const SIGNAL_IMAGES = {
-  mlb: "/images/mlb-signal-board.png",
-  nba: "/images/nba-signal-board.png"
+const SIGNAL_IMAGE_FILES = {
+  mlb: {
+    outlook: "/images/mlb-outlook-board.png",
+    confirmed: "/images/mlb-confirmed-board.png"
+  },
+  nba: {
+    outlook: "/images/nba-outlook-board.png",
+    confirmed: "/images/nba-confirmed-board.png"
+  }
 };
 
 const state = {
   page: "live",
   liveSport: "all",
   signalSport: "mlb",
+  signalView: "best",
+  trendSport: "mlb",
   liveBoard: null,
-  signalBoards: {
-    mlb: null,
-    nba: null
+  boards: {
+    mlb: { outlook: null, confirmed: null, trend: null },
+    nba: { outlook: null, confirmed: null, trend: null }
   }
 };
 
@@ -767,30 +840,30 @@ function normalizeItems(items) {
   return Array.isArray(items) ? items : [];
 }
 
-function normalizeSignalBoard(raw, sport) {
+function normalizeSignalBoard(raw, sport, boardType) {
   if (!raw || typeof raw !== "object") return null;
+  const rows = normalizeItems(raw.rows);
   return {
     sport: String(raw.sport || sport || "").toUpperCase(),
-    title: raw.title || `${String(sport).toUpperCase()} Signal Board`,
-    subtitle: raw.subtitle || raw.note || "Latest saved board output from the bot.",
-    generatedAt: raw.generated_at || raw.generatedAt || raw.last_generated_at || null,
-    image: raw.image || SIGNAL_IMAGES[sport],
+    boardType: String(raw.board_type || raw.boardType || boardType || "").toLowerCase(),
+    title: raw.title || `${String(sport).toUpperCase()} ${String(boardType).toUpperCase()} Board`,
+    subtitle: raw.subtitle || raw.note || "",
+    generatedAt: raw.generated_at || raw.generatedAt || raw.lastUpdated || null,
+    lastUpdated: raw.lastUpdated || raw.generated_at || raw.generatedAt || null,
+    confidenceLabel: raw.confidenceLabel || raw.confidence_label || "--",
+    image: raw.image || null,
     pickOfDay: raw.pick_of_day || raw.pickOfDay || null,
+    rows: rows,
     sections: normalizeItems(raw.sections),
     games: normalizeItems(raw.games),
-    notes: normalizeItems(raw.notes)
+    notes: normalizeItems(raw.notes),
+    trendRows: normalizeItems(raw.trend_rows || raw.trendRows),
+    metricSummary: {
+      baseScore: raw.baseScore ?? raw.base_score ?? null,
+      uncertaintyPenalty: raw.uncertaintyPenalty ?? raw.uncertainty_penalty ?? null,
+      finalScore: raw.finalScore ?? raw.final_score ?? null
+    }
   };
-}
-
-function latestSignalSport() {
-  const candidates = Object.entries(state.signalBoards)
-    .filter(([, board]) => board)
-    .sort((a, b) => {
-      const at = new Date(a[1].generatedAt || 0).getTime();
-      const bt = new Date(b[1].generatedAt || 0).getTime();
-      return bt - at;
-    });
-  return candidates.length ? candidates[0][0] : "mlb";
 }
 
 async function fetchJson(url) {
@@ -799,43 +872,76 @@ async function fetchJson(url) {
   return response.json();
 }
 
-async function loadSignalBoards() {
-  const entries = await Promise.all(Object.entries(SIGNAL_FILES).map(async ([sport, url]) => {
+async function loadBoardVariant(sport, boardType) {
+  const url = SIGNAL_FILES[sport][boardType];
+  try {
+    const json = await fetchJson(url);
+    return normalizeSignalBoard(json, sport, boardType);
+  } catch (error) {
     try {
-      const json = await fetchJson(url);
-      return [sport, normalizeSignalBoard(json, sport)];
-    } catch (error) {
-      try {
-        const json = await fetchJson(`/api/signal-board/${sport}`);
-        return [sport, normalizeSignalBoard(json, sport)];
-      } catch (nested) {
-        return [sport, normalizeSignalBoard({
-          sport: sport.toUpperCase(),
-          title: `${sport.toUpperCase()} Signal Board`,
-          subtitle: "No saved bot board found yet.",
-          generated_at: null,
-          sections: [],
-          games: [],
-          notes: ["Waiting on the Discord bot to save the latest board output."],
-          image: SIGNAL_IMAGES[sport]
-        }, sport)];
-      }
+      const json = await fetchJson(`/api/signal-board/${sport}?type=${boardType}`);
+      return normalizeSignalBoard(json, sport, boardType);
+    } catch (nested) {
+      return normalizeSignalBoard({
+        sport: sport.toUpperCase(),
+        board_type: boardType,
+        title: `${sport.toUpperCase()} ${boardType.charAt(0).toUpperCase() + boardType.slice(1)} Board`,
+        subtitle: boardType === "trend"
+          ? "Waiting on saved trend verification data."
+          : "Waiting on saved board output from the bot.",
+        generated_at: null,
+        rows: [],
+        games: [],
+        trend_rows: [],
+        notes: ["The website is waiting for the bot to save this board artifact."],
+        image: boardType === "trend" ? null : SIGNAL_IMAGE_FILES[sport][boardType]
+      }, sport, boardType);
     }
-  }));
+  }
+}
 
-  state.signalBoards = Object.fromEntries(entries);
-  state.signalSport = latestSignalSport();
+async function loadAllBoards() {
+  for (const sport of ["mlb", "nba"]) {
+    const variants = await Promise.all(["outlook", "confirmed", "trend"].map((boardType) => loadBoardVariant(sport, boardType)));
+    state.boards[sport] = {
+      outlook: variants[0],
+      confirmed: variants[1],
+      trend: variants[2]
+    };
+  }
 }
 
 async function loadLiveBoard() {
   state.liveBoard = await fetchJson("/api/live-board");
 }
 
+function getPreferredSignalBoard(sport) {
+  const boards = state.boards[sport] || {};
+  if (state.signalView === "confirmed") return boards.confirmed || boards.outlook || null;
+  if (state.signalView === "outlook") return boards.outlook || boards.confirmed || null;
+  return boards.confirmed || boards.outlook || null;
+}
+
+function getTrendBoard(sport) {
+  return state.boards[sport]?.trend || null;
+}
+
+function latestSignalBoard() {
+  const candidates = [];
+  for (const sport of ["mlb", "nba"]) {
+    const board = getPreferredSignalBoard(sport);
+    if (board) candidates.push(board);
+  }
+  candidates.sort((a, b) => new Date(b.generatedAt || 0).getTime() - new Date(a.generatedAt || 0).getTime());
+  return candidates[0] || null;
+}
+
 function renderHeader() {
-  const liveUpdated = state.liveBoard && state.liveBoard.updatedAt ? state.liveBoard.updatedAt : "Waiting";
-  document.getElementById("header-updated").textContent = liveUpdated;
-  const latest = state.signalBoards[latestSignalSport()];
-  document.getElementById("header-signal-status").textContent = latest && latest.generatedAt ? prettyDate(latest.generatedAt) : "Waiting";
+  document.getElementById("header-live-updated").textContent =
+    state.liveBoard?.updatedAt || "Waiting";
+  const latest = latestSignalBoard();
+  document.getElementById("header-signal-updated").textContent =
+    latest?.generatedAt ? prettyDate(latest.generatedAt) : "Waiting";
 }
 
 function renderPageNav() {
@@ -849,17 +955,13 @@ function renderPageNav() {
 
 function renderLiveBoard() {
   const payload = state.liveBoard || { sports: {} };
-  const liveList = document.getElementById("live-list");
-  const liveNotes = document.getElementById("live-notes");
-  const meta = document.getElementById("live-meta");
-
   const sports = state.liveSport === "all" ? ["mlb", "nba"] : [state.liveSport];
   const games = sports.flatMap((sport) => (payload.sports?.[sport]?.games || []).map((game) => ({ ...game, sport })));
+  document.getElementById("live-meta").textContent = games.length ? `${games.length} games on the board` : "No live games found";
 
-  meta.textContent = games.length ? `${games.length} games on the board` : "No live games found";
-
+  const liveList = document.getElementById("live-list");
   if (!games.length) {
-    liveList.innerHTML = '<div class="empty-state">No live games available right now.</div>';
+    liveList.innerHTML = '<div class="empty-state small">No live games available right now.</div>';
   } else {
     liveList.innerHTML = games.map((game) => `
       <div class="live-row">
@@ -868,9 +970,10 @@ function renderLiveBoard() {
             <div class="live-title">${escapeHtml(game.matchup)}</div>
             <div class="detail-line">${escapeHtml(game.start || "")}${game.detail ? " | " + escapeHtml(game.detail) : ""}</div>
           </div>
-          <div class="status-pill">${escapeHtml(game.status || "Scheduled")}</div>
+          <div class="sport-pill">${escapeHtml(game.sport || "").toUpperCase()}</div>
         </div>
         <div class="score-line">${escapeHtml(game.score || "0 - 0")}</div>
+        <div class="detail-line">${escapeHtml(game.status || "Scheduled")}</div>
       </div>
     `).join("");
   }
@@ -880,115 +983,174 @@ function renderLiveBoard() {
     const note = payload.sports?.[sport]?.note;
     if (note) notes.push(`${sport.toUpperCase()}: ${note}`);
   });
-  liveNotes.innerHTML = notes.length
+  document.getElementById("live-notes").innerHTML = notes.length
     ? notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")
-    : "<li>Live Board is pulling schedule and score data separately from the bot-generated signal board.</li>";
+    : "<li>Live Board only tracks the active schedule and score state.</li><li>Use Signal Board for model output and Trend Board for recent-form checks.</li>";
+}
+
+function flattenSignalRows(board) {
+  if (!board) return [];
+  if (board.rows.length) return board.rows;
+  if (board.sections.length) {
+    return board.sections.flatMap((section) => (section.items || []).map((item) => ({
+      player: item.player || item.name || "--",
+      market: item.market || item.line || "--",
+      finalScore: item.finalScore || item.final_score || item.score || "--",
+      tag: item.tag || section.tag || board.confidenceLabel || "--",
+      game: item.game || section.title || "--",
+      confidenceLabel: item.confidenceLabel || board.confidenceLabel || "--",
+      baseScore: item.baseScore ?? item.base_score ?? null,
+      uncertaintyPenalty: item.uncertaintyPenalty ?? item.uncertainty_penalty ?? null,
+      adjustments: normalizeItems(item.adjustments),
+      why: item.why || item.reason || item.note || "--"
+    })));
+  }
+  return [];
 }
 
 function renderSignalBoard() {
-  const sport = state.signalSport;
-  const board = state.signalBoards[sport];
   document.querySelectorAll("[data-signal-sport]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.signalSport === sport);
+    button.classList.toggle("active", button.dataset.signalSport === state.signalSport);
+  });
+  document.querySelectorAll("[data-signal-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.signalView === state.signalView);
   });
 
-  document.getElementById("signal-title").textContent = board?.title || `${sport.toUpperCase()} Signal Board`;
-  document.getElementById("signal-subtitle").textContent = board?.subtitle || "Waiting on saved bot output.";
-  document.getElementById("signal-sport-label").textContent = sport.toUpperCase();
-  document.getElementById("signal-generated").textContent = board?.generatedAt ? prettyDate(board.generatedAt) : "--";
-  document.getElementById("signal-meta").textContent = board?.generatedAt
-    ? `Latest available ${sport.toUpperCase()} board loaded from saved bot output`
-    : `Waiting for the latest ${sport.toUpperCase()} bot run`;
+  const board = getPreferredSignalBoard(state.signalSport);
+  document.getElementById("signal-title").textContent = board?.title || `${state.signalSport.toUpperCase()} Signal Board`;
+  document.getElementById("signal-subtitle").textContent = board?.subtitle || "Waiting on saved board output.";
+  document.getElementById("signal-sport-label").textContent = state.signalSport.toUpperCase();
+  document.getElementById("signal-board-type").textContent = (board?.boardType || "outlook").toUpperCase();
+  document.getElementById("signal-generated").textContent = board?.lastUpdated ? prettyDate(board.lastUpdated) : "--";
+  document.getElementById("signal-confidence-summary").textContent = board?.confidenceLabel || "--";
+  document.getElementById("signal-meta").textContent = board?.boardType === "confirmed"
+    ? "Confirmed Board active — uncertainty penalties removed where verification exists"
+    : "Outlook Board active — projected board with uncertainty penalties still in play";
 
-  const pickWrap = document.getElementById("signal-pick");
-  if (board?.pickOfDay) {
-    const pick = board.pickOfDay;
-    pickWrap.innerHTML = `
-      <div class="pick-card">
-        <div class="eyebrow">Pick of the Day</div>
-        <div class="pick-name">${escapeHtml(pick.player || pick.name || "Board Anchor")}</div>
-        <div class="pick-copy">
-          ${escapeHtml(pick.market || "")}${pick.line ? " | " + escapeHtml(pick.line) : ""}
-          ${pick.team ? " | " + escapeHtml(pick.team) : ""}
-        </div>
-        <div class="pick-copy" style="margin-top:8px;">${escapeHtml(pick.summary || pick.environment || pick.context || "")}</div>
+  const pick = board?.pickOfDay;
+  document.getElementById("signal-pick").innerHTML = pick ? `
+    <div class="pick-row">
+      <div class="eyebrow">Board Anchor</div>
+      <div class="pick-name">${escapeHtml(pick.player || pick.name || "Top Play")}</div>
+      <div class="pick-support">
+        ${escapeHtml(pick.market || "--")}${pick.line ? " | " + escapeHtml(pick.line) : ""}
+        ${pick.team ? " | " + escapeHtml(pick.team) : ""}
       </div>
+      <div class="pick-support">${escapeHtml(pick.summary || pick.environment || pick.context || "")}</div>
+    </div>
+  ` : '<div class="empty-state small">No board anchor saved yet.</div>';
+
+  const signalRows = flattenSignalRows(board);
+  const signalTableWrap = document.getElementById("signal-table-wrap");
+  if (!signalRows.length) {
+    signalTableWrap.innerHTML = '<div class="empty-state small">No signal rows saved yet.</div>';
+  } else {
+    signalTableWrap.innerHTML = `
+      <table class="signal-table">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Market</th>
+            <th>Score</th>
+            <th>Tag</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${signalRows.map((row) => `
+            <tr>
+              <td>${escapeHtml(row.player || "--")}</td>
+              <td>${escapeHtml(row.market || "--")}</td>
+              <td class="signal-score">${escapeHtml(String(row.finalScore ?? row.score ?? "--"))}</td>
+              <td class="${String(row.tag || "").toLowerCase().includes("core") ? "tag-core" : String(row.tag || "").toLowerCase().includes("strong") ? "tag-strong" : String(row.tag || "").toLowerCase().includes("watch") ? "tag-watch" : "tag-thin"}">${escapeHtml(row.tag || row.confidenceLabel || "--")}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
     `;
-  } else {
-    pickWrap.innerHTML = '<div class="empty-state">No pick of the day saved in this board yet.</div>';
-  }
-
-  const sectionWrap = document.getElementById("signal-sections");
-  if (board?.sections?.length) {
-    sectionWrap.innerHTML = board.sections.map((section) => `
-      <div class="section-block">
-        <div class="section-head">
-          <div class="section-title">${escapeHtml(section.title || "Section")}</div>
-          <div class="section-tag">${escapeHtml(section.tag || board.sport)}</div>
-        </div>
-        <table class="plays-table">
-          <thead><tr><th>Player</th><th>Market</th><th>Confidence</th><th>Why</th></tr></thead>
-          <tbody>
-            ${(section.items || []).map((item) => `
-              <tr>
-                <td>${escapeHtml(item.player || item.name || "--")}</td>
-                <td>${escapeHtml(item.market || item.line || "--")}</td>
-                <td>${escapeHtml(String(item.confidence || item.score || "--"))}</td>
-                <td>${escapeHtml(item.why || item.reason || item.note || "--")}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      </div>
-    `).join("");
-  } else {
-    sectionWrap.innerHTML = '<div class="empty-state">No structured section data yet. The image fallback stays available on the right.</div>';
   }
 
   const gamesWrap = document.getElementById("signal-games");
   if (board?.games?.length) {
     gamesWrap.innerHTML = board.games.map((game) => `
-      <div class="game-block">
+      <div class="game-row">
         <div class="game-head">
           <div class="game-title">${escapeHtml(game.matchup || game.title || "Game")}</div>
-          <div class="game-tag">${escapeHtml(game.tag || "Signal")}</div>
+          <div class="status-pill ${escapeHtml(board.boardType || "outlook")}">${escapeHtml(board.boardType || "outlook")}</div>
         </div>
         <div class="detail-line">${escapeHtml(game.note || game.summary || "")}</div>
-        ${(game.plays || []).length ? `
-          <table class="plays-table">
-            <thead><tr><th>Player</th><th>Market</th><th>Confidence</th><th>Why</th></tr></thead>
-            <tbody>
-              ${(game.plays || []).map((item) => `
-                <tr>
-                  <td>${escapeHtml(item.player || item.name || "--")}</td>
-                  <td>${escapeHtml(item.market || item.line || "--")}</td>
-                  <td>${escapeHtml(String(item.confidence || item.score || "--"))}</td>
-                  <td>${escapeHtml(item.why || item.reason || item.note || "--")}</td>
-                </tr>
-              `).join("")}
-            </tbody>
-          </table>
-        ` : ""}
       </div>
     `).join("");
   } else {
-    gamesWrap.innerHTML = '<div class="empty-state">No saved game breakdowns in this board yet.</div>';
+    gamesWrap.innerHTML = '<div class="empty-state small">No game notes saved for this board yet.</div>';
   }
 
-  const notesWrap = document.getElementById("signal-notes");
-  notesWrap.innerHTML = (board?.notes || [])
+  document.getElementById("signal-notes").innerHTML = (board?.notes || [])
     .map((note) => `<li>${escapeHtml(note)}</li>`)
-    .join("") || "<li>The Signal Board only changes when the bot saves a new board artifact.</li>";
+    .join("") || "<li>The site chooses Confirmed Board when it exists, otherwise it shows Outlook automatically.</li>";
 
   const image = document.getElementById("signal-image");
   const placeholder = document.getElementById("signal-image-placeholder");
-  image.src = `${board?.image || SIGNAL_IMAGES[sport]}?ts=${Date.now()}`;
-  image.style.display = "block";
-  placeholder.style.display = "none";
-  image.onerror = () => {
+  if (board?.boardType === "trend" || !board?.image) {
     image.style.display = "none";
     placeholder.style.display = "block";
-  };
+  } else {
+    image.src = `${board.image}?ts=${Date.now()}`;
+    image.style.display = "block";
+    placeholder.style.display = "none";
+    image.onerror = () => {
+      image.style.display = "none";
+      placeholder.style.display = "block";
+    };
+  }
+}
+
+function renderTrendBoard() {
+  document.querySelectorAll("[data-trend-sport]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.trendSport === state.trendSport);
+  });
+
+  const board = getTrendBoard(state.trendSport);
+  document.getElementById("trend-meta").textContent = board?.lastUpdated
+    ? `${state.trendSport.toUpperCase()} trend board updated ${prettyDate(board.lastUpdated)}`
+    : `Waiting on ${state.trendSport.toUpperCase()} trend board`;
+
+  const rows = board?.trendRows || board?.rows || [];
+  const wrap = document.getElementById("trend-table-wrap");
+  if (!rows.length) {
+    wrap.innerHTML = '<div class="empty-state">No trend rows saved yet.</div>';
+    return;
+  }
+
+  wrap.innerHTML = `
+    <table class="trend-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Market</th>
+          <th>Line</th>
+          <th>Season</th>
+          <th>L10</th>
+          <th>L5</th>
+          <th>L3</th>
+          <th>L1</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map((row) => `
+          <tr>
+            <td>${escapeHtml(row.player || row.name || "--")}</td>
+            <td>${escapeHtml(row.market || "--")}</td>
+            <td>${escapeHtml(row.line || "--")}</td>
+            <td>${escapeHtml(row.season || "--")}</td>
+            <td>${escapeHtml(row.l10 || row.L10 || "--")}</td>
+            <td>${escapeHtml(row.l5 || row.L5 || "--")}</td>
+            <td>${escapeHtml(row.l3 || row.L3 || "--")}</td>
+            <td>${escapeHtml(row.l1 || row.L1 || "--")}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
 }
 
 function render() {
@@ -996,6 +1158,7 @@ function render() {
   renderPageNav();
   renderLiveBoard();
   renderSignalBoard();
+  renderTrendBoard();
 }
 
 document.querySelectorAll(".page-btn").forEach((button) => {
@@ -1020,17 +1183,31 @@ document.querySelectorAll("[data-signal-sport]").forEach((button) => {
   });
 });
 
+document.querySelectorAll("[data-signal-view]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.signalView = button.dataset.signalView;
+    renderSignalBoard();
+  });
+});
+
+document.querySelectorAll("[data-trend-sport]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.trendSport = button.dataset.trendSport;
+    renderTrendBoard();
+  });
+});
+
 async function boot() {
-  await Promise.all([loadSignalBoards(), loadLiveBoard()]);
+  await Promise.all([loadAllBoards(), loadLiveBoard()]);
   render();
 }
 
 boot();
 setInterval(() => {
-  Promise.all([loadSignalBoards(), loadLiveBoard()]).then(render).catch(() => {});
+  Promise.all([loadAllBoards(), loadLiveBoard()]).then(render).catch(() => {});
 }, 300000);
 
-const BR_COOKIE = "board_session_v3";
+const BR_COOKIE = "board_session_v4";
 let BR = { active:false, starting:0, deployed:0, tickets:[], won:0, date:"" };
 
 function brFmt(n){ return "$"+Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
@@ -1066,10 +1243,7 @@ function brShowActive(){
 
 function brStart(){
   const v=parseFloat(document.getElementById("br-inp").value);
-  if(!v||v<=0){
-    brToast("Enter a valid balance","err");
-    return;
-  }
+  if(!v||v<=0){ brToast("Enter a valid balance","err"); return; }
   BR={active:true,starting:v,deployed:0,tickets:[],won:0,date:new Date().toDateString()};
   brSave(); brShowActive(); brUpdateUI();
   brToast("Session started — "+brFmt(v)+" loaded","ok");
@@ -1133,7 +1307,7 @@ function brRemove(id){
 
 function brRenderTix(){
   const list=document.getElementById("tix-list");
-  if(!BR.tickets.length){ list.innerHTML='<div class="empty-state">No tickets added yet.</div>'; return; }
+  if(!BR.tickets.length){ list.innerHTML='<div class="empty-state small">No tickets added yet.</div>'; return; }
   const ic={pending:"⏳",win:"✅",loss:"❌",cashout:"💰"};
   const cl={pending:"var(--text-3)",win:"var(--green)",loss:"var(--red)",cashout:"var(--gold)"};
   list.innerHTML=BR.tickets.map(t=>`

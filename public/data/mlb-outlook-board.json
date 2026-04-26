@@ -1,0 +1,65 @@
+{
+  "sport": "MLB",
+  "board_type": "outlook",
+  "generated_at": "2026-04-26T06:15:00-04:00",
+  "lastUpdated": "2026-04-26T06:15:00-04:00",
+  "title": "MLB Next-Day Outlook",
+  "subtitle": "Projected board built before confirmed lineups and final starter validation.",
+  "confidenceLabel": "Projected",
+  "image": "/images/mlb-outlook-board.png",
+  "pick_of_day": {
+    "player": "Gunnar Henderson",
+    "market": "HR 1+",
+    "line": "+360",
+    "team": "BAL @ BOS",
+    "summary": "Strong environment, but still carrying an unknown-starter penalty until the matchup is fully confirmed."
+  },
+  "rows": [
+    {
+      "player": "Gunnar Henderson",
+      "market": "HR 1+",
+      "finalScore": 71,
+      "tag": "Strong",
+      "game": "BAL @ BOS",
+      "baseScore": 76,
+      "adjustments": [
+        "park factor +2",
+        "weather wind out +1",
+        "platoon edge +1"
+      ],
+      "uncertaintyPenalty": -9,
+      "confidenceLabel": "Projected",
+      "why": "Base power lane is strong, but outlook stage still discounts starter uncertainty and lineup slot risk."
+    },
+    {
+      "player": "Kyle Schwarber",
+      "market": "Over 1.5 TB",
+      "finalScore": 68,
+      "tag": "Watch",
+      "game": "PHI @ NYM",
+      "baseScore": 72,
+      "adjustments": [
+        "team matchup +2",
+        "weather neutral +0",
+        "lineup spot pending -1"
+      ],
+      "uncertaintyPenalty": -5,
+      "confidenceLabel": "Projected",
+      "why": "Still useful as an outlook lane, but not clean enough to rate like a confirmed board."
+    }
+  ],
+  "games": [
+    {
+      "matchup": "BAL @ BOS",
+      "note": "High power environment, but the board is still discounting any lane that depends on a not-yet-confirmed starter or lineup spot."
+    },
+    {
+      "matchup": "PHI @ NYM",
+      "note": "Useful next-day target game, but weather and lineup order are still waiting to settle."
+    }
+  ],
+  "notes": [
+    "Outlook Board runs before all inputs are locked.",
+    "Unknown starters, projected lineup slots, and early weather uncertainty should all reduce final score."
+  ]
+}

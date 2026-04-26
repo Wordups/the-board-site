@@ -1,0 +1,61 @@
+{
+  "sport": "NBA",
+  "board_type": "outlook",
+  "generated_at": "2026-04-26T05:55:00-04:00",
+  "lastUpdated": "2026-04-26T05:55:00-04:00",
+  "title": "NBA Next-Day Outlook",
+  "subtitle": "Projected board built before final injury and minutes confirmation.",
+  "confidenceLabel": "Projected",
+  "image": "/images/nba-outlook-board.png",
+  "pick_of_day": {
+    "player": "Nikola Jokic",
+    "market": "10+ AST",
+    "line": "-138",
+    "team": "MIN @ DEN",
+    "summary": "The lane is already strong, but injury and rotation uncertainty still trim the outlook score."
+  },
+  "rows": [
+    {
+      "player": "Nikola Jokic",
+      "market": "10+ AST",
+      "finalScore": 77,
+      "tag": "Strong",
+      "game": "MIN @ DEN",
+      "baseScore": 82,
+      "adjustments": [
+        "opponent defense -1",
+        "pace +1",
+        "home court +1"
+      ],
+      "uncertaintyPenalty": -6,
+      "confidenceLabel": "Projected",
+      "why": "Still excellent, but outlook stage respects injury news, rotation questions, and late-game script risk."
+    },
+    {
+      "player": "Jalen Brunson",
+      "market": "25+ PTS",
+      "finalScore": 71,
+      "tag": "Watch",
+      "game": "ATL @ NYK",
+      "baseScore": 75,
+      "adjustments": [
+        "usage +2",
+        "home court +1",
+        "blowout risk -1"
+      ],
+      "uncertaintyPenalty": -6,
+      "confidenceLabel": "Projected",
+      "why": "Good lane, but outlook board still discounts how the game script and injury setup could shift."
+    }
+  ],
+  "games": [
+    {
+      "matchup": "MIN @ DEN",
+      "note": "Projected outlook holds back a few points until final availability and playoff-minute assumptions are confirmed."
+    }
+  ],
+  "notes": [
+    "Outlook Board should exist before the confirmed board is ready.",
+    "NBA deductions should account for usage, injuries, blowout risk, and minute uncertainty."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "sport": "MLB",
+  "board_type": "confirmed",
+  "generated_at": "2026-04-26T11:32:00-04:00",
+  "lastUpdated": "2026-04-26T11:32:00-04:00",
+  "title": "MLB Confirmed Board",
+  "subtitle": "Day-of board after starter, lineup, and weather checks are live.",
+  "confidenceLabel": "Confirmed",
+  "image": "/images/mlb-confirmed-board.png",
+  "pick_of_day": {
+    "player": "Gunnar Henderson",
+    "market": "HR 1+",
+    "line": "+345",
+    "team": "BAL @ BOS",
+    "summary": "Starter, weather, and lineup slot are confirmed, so the outlook penalty comes off and the lane tightens."
+  },
+  "rows": [
+    {
+      "player": "Gunnar Henderson",
+      "market": "HR 1+",
+      "finalScore": 82,
+      "tag": "Core",
+      "game": "BAL @ BOS",
+      "baseScore": 76,
+      "adjustments": [
+        "park factor +2",
+        "weather wind out +1",
+        "platoon edge +1",
+        "confirmed starter +1",
+        "confirmed lineup slot +1"
+      ],
+      "uncertaintyPenalty": 0,
+      "confidenceLabel": "Confirmed",
+      "why": "The same lane moves from projected to core once the uncertainty penalty disappears."
+    },
+    {
+      "player": "Kyle Schwarber",
+      "market": "Over 1.5 TB",
+      "finalScore": 74,
+      "tag": "Strong",
+      "game": "PHI @ NYM",
+      "baseScore": 72,
+      "adjustments": [
+        "team matchup +2",
+        "weather neutral +0",
+        "confirmed lineup slot +0"
+      ],
+      "uncertaintyPenalty": 0,
+      "confidenceLabel": "Confirmed",
+      "why": "Cleaner than the outlook board because the lineup and matchup details are now fixed."
+    }
+  ],
+  "games": [
+    {
+      "matchup": "BAL @ BOS",
+      "note": "Confirmed Board removes the uncertainty tax and keeps only the matchup, weather, park, and lineup adjustments that still matter."
+    },
+    {
+      "matchup": "PHI @ NYM",
+      "note": "Useful board once the lane stops depending on projected inputs."
+    }
+  ],
+  "notes": [
+    "Confirmed Board should overwrite Outlook as the primary site board when it exists.",
+    "This board is the cleaner decision layer. Trend Board stays separate."
+  ]
+}

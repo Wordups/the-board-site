@@ -1,0 +1,44 @@
+{
+  "sport": "NBA",
+  "board_type": "trend",
+  "generated_at": "2026-04-26T09:40:00-04:00",
+  "lastUpdated": "2026-04-26T09:40:00-04:00",
+  "title": "NBA Trend Board",
+  "subtitle": "Recent-form verification layer for points, threes, and assists lanes.",
+  "trend_rows": [
+    {
+      "player": "Nikola Jokic",
+      "market": "AST",
+      "line": "9.5",
+      "season": "9.8",
+      "l10": "10.4",
+      "l5": "10.0",
+      "l3": "7.3",
+      "l1": "3"
+    },
+    {
+      "player": "Jalen Brunson",
+      "market": "PTS",
+      "line": "25.5",
+      "season": "27.1",
+      "l10": "28.0",
+      "l5": "26.8",
+      "l3": "24.7",
+      "l1": "22"
+    },
+    {
+      "player": "Cade Cunningham",
+      "market": "AST",
+      "line": "8.5",
+      "season": "9.4",
+      "l10": "9.7",
+      "l5": "10.2",
+      "l3": "8.7",
+      "l1": "11"
+    }
+  ],
+  "notes": [
+    "Trend Board is a cross-reference system, not the primary decision layer.",
+    "Use season plus L10/L5/L3/L1 to pressure-test whether a signal is real or noisy."
+  ]
+}
