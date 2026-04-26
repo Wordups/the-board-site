@@ -4,104 +4,90 @@ import asyncio
 import os
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from aiohttp import web
 
-from site_payload import build_site_payload
+from live_board import build_live_board_payload
+from signal_board_store import load_signal_board, normalize_sport_key
 
 
 ROOT = Path(__file__).resolve().parent
 WEB_DIR = ROOT / "web"
+PUBLIC_DIR = ROOT / "public"
+DATA_DIR = PUBLIC_DIR / "data"
+IMAGE_DIR = PUBLIC_DIR / "images"
 INDEX_FILE = WEB_DIR / "index.html"
-CACHE_TTL_SECONDS = int(os.getenv("SITE_CACHE_TTL_SECONDS", "300"))
+LIVE_CACHE_TTL_SECONDS = int(os.getenv("LIVE_BOARD_CACHE_TTL_SECONDS", "60"))
 
-_CACHE: Dict[str, Any] = {
+_LIVE_CACHE: Dict[str, Any] = {
     "payload": None,
-    "game_date": None,
     "expires_at": 0.0,
 }
 
 
-def _fallback_payload(message: str) -> Dict[str, Any]:
-    note = f"Live data is temporarily unavailable. {message}".strip()
-    empty_sport = {
-        "label": "",
-        "note": note,
-        "launches": [],
-        "notes": ["The site is serving a safe fallback payload instead of erroring out."],
-        "pickOfDay": None,
-        "filters": ["all"],
-        "games": [],
-    }
-    return {
-        "updatedAt": "Unavailable",
-        "sourceMode": "Fallback",
-        "sports": {
-            "mlb": {**empty_sport, "label": "MLB"},
-            "nba": {**empty_sport, "label": "NBA"},
-            "wnba": {**empty_sport, "label": "WNBA"},
-            "soccer": {**empty_sport, "label": "Soccer"},
-            "highlights": {
-                **empty_sport,
-                "label": "Highlights",
-                "highlights": [],
-            },
-        },
-    }
-
-
-async def _get_payload(game_date: Optional[str], refresh: bool = False) -> Dict[str, Any]:
-    now = time.time()
-    if (
-        not refresh
-        and _CACHE["payload"] is not None
-        and _CACHE["game_date"] == game_date
-        and now < float(_CACHE["expires_at"])
-    ):
-        return _CACHE["payload"]
-
-    try:
-        payload = await asyncio.to_thread(build_site_payload, game_date)
-    except Exception as exc:
-        if _CACHE["payload"] is not None:
-            cached = dict(_CACHE["payload"])
-            cached["sourceMode"] = "Live website API (cached fallback)"
-            return cached
-        return _fallback_payload(str(exc))
-
-    _CACHE.update(
-        {
-            "payload": payload,
-            "game_date": game_date,
-            "expires_at": now + CACHE_TTL_SECONDS,
-        }
-    )
-    return payload
-
-
-async def index(request: web.Request) -> web.FileResponse:
+async def index(_: web.Request) -> web.FileResponse:
     return web.FileResponse(INDEX_FILE)
 
 
-async def api_site_board(request: web.Request) -> web.Response:
-    game_date = request.query.get("date")
+async def healthz(_: web.Request) -> web.Response:
+    return web.json_response(
+        {
+            "ok": True,
+            "data_dir": DATA_DIR.exists(),
+            "image_dir": IMAGE_DIR.exists(),
+        }
+    )
+
+
+async def api_live_board(request: web.Request) -> web.Response:
     refresh = request.query.get("refresh", "").strip().lower() in {"1", "true", "yes"}
-    payload = await _get_payload(game_date, refresh=refresh)
+    now = time.time()
+    if not refresh and _LIVE_CACHE["payload"] is not None and now < float(_LIVE_CACHE["expires_at"]):
+        return web.json_response(_LIVE_CACHE["payload"])
+
+    payload = await asyncio.to_thread(build_live_board_payload)
+    _LIVE_CACHE.update(
+        {
+            "payload": payload,
+            "expires_at": now + LIVE_CACHE_TTL_SECONDS,
+        }
+    )
     return web.json_response(payload)
 
 
-async def healthz(request: web.Request) -> web.Response:
-    return web.json_response({"ok": True})
+async def api_signal_board(request: web.Request) -> web.Response:
+    sport = normalize_sport_key(request.match_info.get("sport", ""))
+    payload = load_signal_board(sport)
+    if payload is None:
+        return web.json_response(
+            {
+                "sport": sport.upper(),
+                "board_type": "signal-board",
+                "generated_at": None,
+                "title": f"{sport.upper()} Signal Board",
+                "subtitle": "No saved bot board yet.",
+                "pick_of_day": None,
+                "sections": [],
+                "games": [],
+                "notes": [
+                    "The website is waiting for the Discord bot to save the latest board artifacts.",
+                ],
+                "image": f"/images/{sport}-signal-board.png",
+            }
+        )
+    return web.json_response(payload)
 
 
 def create_app() -> web.Application:
     app = web.Application()
     app.router.add_get("/", index)
     app.router.add_get("/index.html", index)
-    app.router.add_get("/api/site-board", api_site_board)
-    app.router.add_get("/board-data.json", api_site_board)
     app.router.add_get("/healthz", healthz)
+    app.router.add_get("/api/live-board", api_live_board)
+    app.router.add_get("/api/signal-board/{sport}", api_signal_board)
+    app.router.add_static("/data/", DATA_DIR)
+    app.router.add_static("/images/", IMAGE_DIR)
     app.router.add_static("/web/", WEB_DIR)
     return app
 

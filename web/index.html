@@ -9,122 +9,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #060606;
-  --bg-soft: #0d0d0d;
-  --panel: #121212;
-  --panel-2: #191919;
-  --panel-3: #222222;
-  --line: #262626;
-  --line-strong: #363636;
-  --text: #f4f4f4;
-  --text-2: #b0b0b0;
-  --text-3: #6e6e6e;
+  --bg: #050505;
+  --panel: #111111;
+  --panel-2: #171717;
+  --line: #272727;
+  --line-strong: #393939;
+  --text: #f5f5f5;
+  --text-2: #b7b7b7;
+  --text-3: #727272;
   --gold: #f5a623;
-  --gold-soft: rgba(245, 166, 35, 0.14);
+  --gold-soft: rgba(245,166,35,.14);
   --green: #24d38a;
-  --green-soft: rgba(36, 211, 138, 0.14);
+  --green-soft: rgba(36,211,138,.14);
   --red: #ff5f57;
-  --red-soft: rgba(255, 95, 87, 0.14);
+  --red-soft: rgba(255,95,87,.14);
   --blue: #55a8ff;
-  --blue-soft: rgba(85, 168, 255, 0.16);
-  --purple: #c96cff;
-  --purple-soft: rgba(201, 108, 255, 0.16);
-  --mlb: #e03131;
-  --nba: #1971c2;
-  --wnba: #f76707;
-  --soccer: #2f9e44;
-  --radius: 12px;
-  --shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+  --blue-soft: rgba(85,168,255,.14);
+  --radius: 14px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top right, rgba(245, 166, 35, 0.08), transparent 24%),
-    radial-gradient(circle at left bottom, rgba(85, 168, 255, 0.06), transparent 28%),
+    radial-gradient(circle at top right, rgba(245,166,35,.08), transparent 24%),
+    radial-gradient(circle at left bottom, rgba(85,168,255,.06), transparent 26%),
     var(--bg);
   color: var(--text);
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-button,
-input,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
-  border-radius: 999px;
-}
-
-.ticker {
-  display: flex;
-  gap: 28px;
-  overflow: hidden;
-  padding: 8px 0;
-  background: var(--gold);
-  color: #050505;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 1.8px;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.ticker-track {
-  display: flex;
-  gap: 28px;
-  min-width: max-content;
-  animation: ticker 40s linear infinite;
-}
-
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
 
 header {
   position: sticky;
   top: 0;
-  z-index: 40;
-  backdrop-filter: blur(18px);
-  background: rgba(6, 6, 6, 0.92);
+  z-index: 30;
+  background: rgba(5,5,5,.94);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
-  max-width: 1480px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 28px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  min-height: 68px;
+  gap: 16px;
 }
 
 .brand {
@@ -134,1421 +72,626 @@ header {
 }
 
 .brand-mark {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(245, 166, 35, 0.24), rgba(245, 166, 35, 0.08));
-  border: 1px solid rgba(245, 166, 35, 0.32);
+  background: linear-gradient(135deg, rgba(245,166,35,.22), rgba(245,166,35,.08));
+  border: 1px solid rgba(245,166,35,.28);
   color: var(--gold);
   font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
 }
 
-.brand-copy {
-  min-width: 0;
-}
-
 .brand-title {
   margin: 0;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 32px;
   letter-spacing: 3px;
-  line-height: 0.92;
+  font-size: 34px;
+  line-height: .95;
 }
 
 .brand-sub {
   color: var(--text-3);
-  font-size: 10px;
-  letter-spacing: 1.3px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-top: 4px;
-}
-
-.search-wrap {
-  position: relative;
-  display: none;
-}
-
-.search-wrap input {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--text);
-  padding: 8px 14px 8px 36px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.search-wrap input:focus {
-  border-color: rgba(245, 166, 35, 0.5);
-  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.08);
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-3);
-  font-size: 14px;
 }
 
 .header-meta {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.meta-chip {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 999px;
-  padding: 7px 14px;
-  min-width: 100px;
-  max-width: 160px;
-}
-
-.meta-chip-label {
-  font-size: 9px;
-  color: var(--text-3);
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-}
-
-.meta-chip-value {
-  margin-top: 2px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--gold);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sport-nav {
-  position: sticky;
-  top: 68px;
-  z-index: 35;
-  background: rgba(8, 8, 8, 0.94);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
-}
-
-.sport-nav-inner {
-  max-width: 1480px;
-  margin: 0 auto;
-  padding: 0 28px;
-  display: flex;
-  gap: 2px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.sport-nav-inner::-webkit-scrollbar {
-  display: none;
-}
-
-.sport-tab {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: transparent;
-  color: var(--text-3);
-  padding: 14px 18px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  white-space: nowrap;
-}
-
-.sport-tab.active {
-  color: var(--text);
-}
-
-.sport-tab[data-sport="mlb"].active { border-bottom-color: var(--mlb); }
-.sport-tab[data-sport="nba"].active { border-bottom-color: var(--nba); }
-.sport-tab[data-sport="wnba"].active { border-bottom-color: var(--wnba); }
-.sport-tab[data-sport="soccer"].active { border-bottom-color: var(--soccer); }
-.sport-tab[data-sport="highlights"].active { border-bottom-color: var(--purple); }
-
-.sport-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.sport-tab[data-sport="mlb"] .sport-dot { background: var(--mlb); }
-.sport-tab[data-sport="nba"] .sport-dot { background: var(--nba); }
-.sport-tab[data-sport="wnba"] .sport-dot { background: var(--wnba); }
-.sport-tab[data-sport="soccer"] .sport-dot { background: var(--soccer); }
-.sport-tab[data-sport="highlights"] .sport-dot { background: var(--purple); }
-
-.sport-count {
-  background: var(--panel-3);
-  color: var(--text-3);
-  border-radius: 999px;
-  padding: 2px 7px;
-  font-size: 9px;
-}
-
-.sport-tab.active .sport-count {
-  background: var(--gold-soft);
-  color: var(--gold);
-}
-
-.shell {
-  max-width: 1480px;
-  margin: 0 auto;
-  padding: 22px 28px 48px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 22px;
-  align-items: start;
-}
-
-.content {
-  min-width: 0;
-}
-
-.rail {
-  position: sticky;
-  top: 124px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(245, 166, 35, 0.28);
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at top right, rgba(245, 166, 35, 0.12), transparent 40%),
-    linear-gradient(145deg, #0f0b02 0%, #121212 55%, #0b0b0b 100%);
-  padding: 26px 26px 22px;
-  box-shadow: var(--shadow);
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--gold);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-}
-
-.hero-title {
-  margin: 14px 0 8px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 54px;
-  line-height: 0.95;
-  letter-spacing: 2px;
-}
-
-.hero-subtitle {
-  color: var(--text-2);
-  font-size: 13px;
-  line-height: 1.6;
-  max-width: 880px;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 1fr));
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.hero-stat {
-  border: 1px solid rgba(245, 166, 35, 0.16);
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  padding: 14px 14px 12px;
-}
-
-.hero-stat-value {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 30px;
-  line-height: 1;
-  letter-spacing: 1px;
-  color: var(--gold);
-}
-
-.hero-stat-label {
-  margin-top: 5px;
-  color: var(--text-3);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.1px;
-}
-
-.toolbar {
-  margin: 18px 0 16px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.chip-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
 }
 
 .chip {
+  min-width: 112px;
+  padding: 8px 14px;
+  border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--panel);
-  color: var(--text-3);
-  border-radius: 999px;
-  padding: 8px 13px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
-.chip.active {
-  border-color: rgba(245, 166, 35, 0.4);
+.chip-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: var(--text-3);
+}
+
+.chip-value {
+  margin-top: 2px;
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.page-nav {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px 14px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.page-btn,
+.sport-btn {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text-2);
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+
+.page-btn.active,
+.sport-btn.active {
   background: var(--gold-soft);
   color: var(--gold);
+  border-color: rgba(245,166,35,.35);
 }
 
-.toolbar-note {
-  align-self: center;
-  color: var(--text-3);
-  font-size: 11px;
+main {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin: 10px 0 14px;
+.page {
+  display: none;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.page.active {
+  display: block;
 }
 
-.section-title::before {
-  content: "";
-  width: 4px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--gold);
-}
-
-.section-meta {
-  color: var(--text-3);
-  font-size: 11px;
-}
-
-.game-grid {
+.hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  margin-bottom: 18px;
 }
 
-.game-card {
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
 }
 
-.game-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow);
+.eyebrow {
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-.game-card-header {
-  padding: 14px 16px 12px;
-  background: var(--panel-2);
-  border-bottom: 1px solid var(--line);
+.hero-title {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 42px;
+  letter-spacing: 2px;
+  line-height: .95;
+}
+
+.hero-copy {
+  margin-top: 8px;
+  color: var(--text-2);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.toolbar {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.game-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.game-subtitle {
-  margin-top: 5px;
-  color: var(--text-3);
-  font-size: 11px;
-  line-height: 1.45;
-}
-
-.game-status {
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.game-status-label {
-  display: inline-flex;
-  gap: 6px;
   align-items: center;
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--green);
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 12px rgba(36, 211, 138, 0.6);
+.toolbar-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.game-status-time {
-  margin-top: 6px;
-  font-size: 11px;
-  color: var(--text-3);
+.signal-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
 }
 
-.game-card-body {
-  padding: 12px 16px 16px;
-}
-
-.game-summary {
+.metric-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin-bottom: 14px;
-}
-
-.summary-box {
-  border: 1px solid var(--line);
-  background: var(--panel-2);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.summary-value {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 22px;
-  line-height: 1;
-  color: var(--gold);
-}
-
-.summary-label {
-  margin-top: 4px;
-  font-size: 10px;
-  color: var(--text-3);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.pick-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.pick-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-
-.pick-row:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.pick-left {
-  display: flex;
-  gap: 9px;
-  min-width: 0;
-  align-items: flex-start;
-}
-
-.market-pill {
-  flex-shrink: 0;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 4px 7px;
-  margin-top: 2px;
-}
-
-.market-hr { background: rgba(224, 49, 49, 0.16); color: #ff6b6b; }
-.market-tb { background: var(--blue-soft); color: var(--blue); }
-.market-hit { background: var(--green-soft); color: var(--green); }
-.market-k { background: var(--gold-soft); color: var(--gold); }
-.market-pts { background: rgba(247, 103, 7, 0.16); color: #ffa94d; }
-.market-ast { background: var(--purple-soft); color: var(--purple); }
-.market-reb { background: rgba(0, 208, 132, 0.12); color: #4ce0a4; }
-.market-3pm { background: rgba(25, 113, 194, 0.16); color: #74c0fc; }
-
-.pick-name {
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.pick-why {
-  margin-top: 4px;
-  color: var(--text-3);
-  font-size: 11px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.pick-right {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.tier-pill {
-  border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.tier-core { background: var(--green-soft); color: var(--green); }
-.tier-strong { background: var(--gold-soft); color: var(--gold); }
-.tier-value { background: var(--blue-soft); color: var(--blue); }
-.tier-longshot { background: var(--red-soft); color: var(--red); }
-
-.confidence-wrap {
-  width: 62px;
-}
-
-.confidence-bar {
-  width: 100%;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--line);
-  overflow: hidden;
-}
-
-.confidence-fill {
-  height: 100%;
-  border-radius: 999px;
-  width: 0;
-  transition: width 0.45s ease;
-}
-
-.confidence-high { background: var(--green); }
-.confidence-mid { background: var(--gold); }
-.confidence-low { background: var(--red); }
-
-.confidence-text {
-  margin-top: 5px;
-  text-align: right;
-  font-size: 10px;
-  color: var(--text-3);
-}
-
-.game-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
   margin-top: 14px;
 }
 
-.footer-note {
-  color: var(--text-3);
-  font-size: 11px;
-  line-height: 1.4;
-}
-
-.link-btn {
-  border: 1px solid rgba(245, 166, 35, 0.38);
-  background: rgba(245, 166, 35, 0.06);
-  color: var(--gold);
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.empty {
-  border: 1px dashed var(--line-strong);
-  border-radius: 14px;
-  padding: 58px 20px;
-  text-align: center;
-  color: var(--text-3);
-  background: rgba(255, 255, 255, 0.01);
-}
-
-.rail-card {
+.metric {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
-  border-radius: 14px;
-  padding: 16px;
-}
-
-.rail-title {
-  margin: 0 0 12px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-.signal-list,
-.note-list,
-.launch-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.signal-item,
-.launch-item {
-  border: 1px solid var(--line);
+  border-radius: 12px;
   background: var(--panel-2);
-  border-radius: 10px;
-  padding: 11px 12px;
-}
-
-.signal-item {
-  cursor: pointer;
-  transition: border-color 0.18s ease, transform 0.18s ease;
-}
-
-.signal-item:hover {
-  border-color: rgba(245, 166, 35, 0.34);
-  transform: translateY(-1px);
-}
-
-.signal-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-}
-
-.signal-game {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.signal-score {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 21px;
-  color: var(--gold);
-  letter-spacing: 1px;
-}
-
-.signal-copy,
-.launch-copy {
-  margin-top: 5px;
-  color: var(--text-3);
-  font-size: 11px;
-  line-height: 1.45;
-}
-
-.stat-stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.stat-box {
-  border: 1px solid var(--line);
-  background: var(--panel-2);
-  border-radius: 10px;
   padding: 12px;
 }
 
-.stat-box-value {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 26px;
-  line-height: 1;
-  color: var(--text);
-}
-
-.stat-box-label {
-  margin-top: 4px;
+.metric-label {
   color: var(--text-3);
   font-size: 10px;
-  letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-.note-item {
-  padding: 0 0 10px 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--text-2);
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.note-item:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.launch-item strong {
-  display: block;
-  font-size: 12px;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.view {
-  display: none;
-}
-
-.view.active {
-  display: block;
-}
-
-.surface-toggle {
-  display: inline-flex;
-  gap: 4px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 999px;
-  padding: 4px;
-}
-
-.surface-btn {
-  border: 0;
-  background: transparent;
-  color: var(--text-3);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.3px;
-  text-transform: uppercase;
-}
-
-.surface-btn.active {
-  background: var(--gold-soft);
-  color: var(--gold);
-}
-
-.explorer-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.explorer-toolbar {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.explorer-controls {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.explorer-select {
-  min-width: 170px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--text-2);
-  border-radius: 10px;
-  padding: 10px 12px;
-  outline: none;
-}
-
-.explorer-meta {
-  color: var(--text-3);
-  font-size: 11px;
-}
-
-.explorer-wrap {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.explorer-scroll {
-  overflow: auto;
-}
-
-.explorer-head,
-.explorer-row {
-  display: grid;
-  grid-template-columns: minmax(220px, 1.6fr) 130px 76px 88px 92px 86px 80px 72px 72px 72px 94px minmax(220px, 1.8fr);
-  gap: 12px;
-  align-items: center;
-  min-width: 1440px;
-}
-
-.explorer-head {
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  background: #111111;
-  color: var(--text-3);
-  padding: 12px 18px 10px;
-  border-bottom: 1px solid var(--line);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.explorer-sort {
-  border: 0;
-  background: transparent;
-  color: inherit;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: inherit;
-  font-weight: 800;
-  letter-spacing: inherit;
-  text-transform: inherit;
-}
-
-.explorer-sort.active {
-  color: var(--gold);
-}
-
-.sort-arrow {
-  font-size: 11px;
-  color: var(--text-3);
-}
-
-.explorer-sort.active .sort-arrow {
-  color: var(--gold);
-}
-
-.explorer-row {
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--line);
-  font-size: 12px;
-  cursor: pointer;
-  transition: background 0.18s ease;
-}
-
-.explorer-row:hover {
-  background: rgba(245, 166, 35, 0.04);
-}
-
-.explorer-row:last-child {
-  border-bottom: 0;
-}
-
-.explorer-player strong {
-  display: block;
-  font-size: 13px;
-}
-
-.explorer-player span {
-  display: block;
-  margin-top: 4px;
-  color: var(--text-3);
-  font-size: 11px;
-}
-
-.explorer-game {
-  color: var(--text-2);
-  font-weight: 600;
-}
-
-.explorer-why {
-  color: var(--text-3);
-  line-height: 1.45;
-}
-
-.line-mono {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-}
-
-.highlight-card {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--panel);
-}
-
-.highlight-frame {
-  position: relative;
-  padding-bottom: 56.25%;
-  background: var(--panel-2);
-}
-
-.highlight-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.highlight-copy {
-  padding: 12px 14px 14px;
-}
-
-.highlight-tag {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 800;
   letter-spacing: 1.2px;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 4px 7px;
-  margin-bottom: 7px;
 }
 
-.highlight-tag.mlb { background: rgba(224, 49, 49, 0.16); color: #ff6b6b; }
-.highlight-tag.nba { background: var(--blue-soft); color: var(--blue); }
-.highlight-tag.wnba { background: rgba(247, 103, 7, 0.18); color: #ff922b; }
-
-.highlight-title {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.45;
-}
-
-.highlight-source {
+.metric-value {
   margin-top: 5px;
-  font-size: 11px;
-  color: var(--text-3);
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: none;
-}
-
-.modal.open {
-  display: block;
-}
-
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.76);
-}
-
-.modal-panel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1280px, calc(100vw - 28px));
-  max-height: calc(100vh - 34px);
-  overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid var(--line-strong);
-  background: linear-gradient(180deg, #121212 0%, #090909 100%);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.54);
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-}
-
-.modal-head {
-  padding: 18px 20px 14px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: flex-start;
-}
-
-.modal-title {
-  margin: 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 34px;
-  letter-spacing: 1.8px;
-  line-height: 0.95;
-}
-
-.modal-subtitle {
-  margin-top: 7px;
-  color: var(--text-2);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.modal-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.status-chip {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 11px;
-  background: var(--panel-2);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--text-2);
-}
-
-.close-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--panel-2);
-  color: var(--text-2);
-  font-size: 18px;
-}
-
-.modal-toolbar {
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.modal-market-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.mini-chip {
-  border: 1px solid var(--line);
-  background: var(--panel-2);
-  color: var(--text-3);
-  border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.mini-chip.active {
-  border-color: rgba(245, 166, 35, 0.4);
-  background: var(--gold-soft);
-  color: var(--gold);
-}
-
-.modal-body {
-  overflow: auto;
-  padding: 0 20px 20px;
-}
-
-.roster-head,
-.roster-row {
-  display: grid;
-  grid-template-columns: minmax(190px, 1.4fr) 78px 92px 80px 86px 72px 72px 72px 88px minmax(180px, 1.6fr);
-  gap: 12px;
-  align-items: center;
-}
-
-.roster-head {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: #101010;
-  color: var(--text-3);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 12px 0 10px;
-  border-bottom: 1px solid var(--line);
-}
-
-.roster-row {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 12px;
-}
-
-.roster-player strong {
-  display: block;
-  font-size: 13px;
-}
-
-.roster-player span {
-  display: block;
-  margin-top: 4px;
-  color: var(--text-3);
-  font-size: 11px;
-}
-
-.table-tier {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 74px;
-}
-
-.metric-inline {
   font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   letter-spacing: 1px;
 }
 
-.score-good { color: var(--green); }
-.score-mid { color: var(--gold); }
-.score-low { color: var(--red); }
-
-.muted {
-  color: var(--text-3);
-}
-
-.coming {
-  border: 1px dashed var(--line-strong);
+.pick-card {
+  margin-top: 14px;
+  border: 1px solid rgba(245,166,35,.22);
   border-radius: 14px;
-  padding: 64px 24px;
-  text-align: center;
-  color: var(--text-3);
+  background: linear-gradient(135deg, rgba(245,166,35,.08), rgba(255,255,255,.01));
+  padding: 16px;
 }
 
-.coming h3 {
-  margin: 0 0 8px;
+.pick-name {
+  font-size: 26px;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 30px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+}
+
+.pick-copy,
+.muted {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.section-list,
+.game-list,
+.live-list,
+.notes-list {
+  display: grid;
+  gap: 12px;
+}
+
+.section-block,
+.game-block,
+.live-row {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel-2);
+  padding: 14px 16px;
+}
+
+.section-head,
+.game-head,
+.live-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.section-title,
+.game-title,
+.live-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.section-tag,
+.game-tag,
+.status-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
   color: var(--text-2);
 }
 
-.coming p {
-  margin: 0;
+.plays-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.plays-table th,
+.plays-table td {
+  text-align: left;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.plays-table th {
+  color: var(--text-3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+}
+
+.plays-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.board-image {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #0a0a0a;
+  display: block;
+}
+
+.image-placeholder {
+  display: none;
+  border: 1px dashed var(--line-strong);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--text-3);
+  text-align: center;
+}
+
+.empty-state {
+  border: 1px dashed var(--line-strong);
+  border-radius: 16px;
+  padding: 24px;
+  color: var(--text-3);
+  text-align: center;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.score-line {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.detail-line {
+  color: var(--text-3);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.notes-list {
+  margin-top: 14px;
+}
+
+.notes-list li {
+  color: var(--text-2);
+  line-height: 1.6;
   font-size: 13px;
 }
 
-@media (max-width: 1220px) {
-  .shell {
-    grid-template-columns: 1fr;
-  }
-
-  .rail {
-    position: static;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-  }
+.rail-note {
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
 }
 
-@media (max-width: 960px) {
-  .header-inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto;
-    padding: 12px 16px;
-    gap: 10px;
-  }
-
-  .brand { grid-column: 1; }
-
-  .header-meta { grid-column: 2; grid-row: 1; justify-content: flex-end; }
-
-  .header-meta .meta-chip:last-child { display: none; }
-
-  .sport-nav {
-    top: 108px;
-  }
-
-  .shell {
-    padding: 16px;
-  }
-
-  .modal-panel {
-    width: calc(100vw - 16px);
-    max-height: calc(100vh - 16px);
-  }
+.bankroll-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 18px;
 }
 
-@media (max-width: 760px) {
-  .hero-title {
-    font-size: 34px;
-  }
-
-  .hero {
-    padding: 18px 16px 16px;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .game-summary,
-  .stat-stack {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .game-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .chip-row {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .chip-row::-webkit-scrollbar { display: none; }
-
-  .section-head,
-  .toolbar,
-  .modal-toolbar,
-  .modal-head {
-    align-items: flex-start;
-  }
-
-  .roster-head {
-    display: none;
-  }
-
-  .roster-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 14px 0 16px;
-  }
-
-  .roster-row > div::before {
-    content: attr(data-label);
-    display: block;
-    font-size: 10px;
-    color: var(--text-3);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .header-inner {
-    grid-template-columns: 1fr;
-    padding: 10px 14px;
-  }
-  .header-meta { grid-column: 1; grid-row: 1; justify-content: flex-start; }
-  .brand { grid-row: 1; }
-  .brand-sub { display: none; }
-  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .shell { padding: 12px; }
-  .toolbar { flex-direction: column; gap: 8px; }
-  .pick-name { font-size: 13px; }
-  .sport-nav { top: 140px; }
-  .meta-chip-value { font-size: 12px; }
-}
-
-/* ═══════════════════════════════════════
-   SESSION BANKROLL — COOKIE PERSISTENT
-═══════════════════════════════════════ */
-.br-setup-note { font-size: 11px; color: var(--text-3); margin-bottom: 10px; line-height: 1.6; }
-.br-input-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.br-setup-note { font-size: 12px; color: var(--text-3); margin-bottom: 10px; line-height: 1.6; }
+.br-input-row { display: flex; gap: 8px; margin-bottom: 8px; }
 .br-prefix-wrap { position: relative; flex: 1; }
-.br-prefix { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 13px; font-weight: 600; pointer-events: none; }
-.br-number-input { width: 100%; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 9px 12px 9px 22px; color: var(--text); font-size: 16px; font-weight: 700; font-family: "Bebas Neue", sans-serif; letter-spacing: 1px; outline: none; transition: border-color .2s, box-shadow .2s; }
-.br-number-input:focus { border-color: rgba(245,166,35,.5); box-shadow: 0 0 0 3px rgba(245,166,35,.08); }
-.br-go-btn { background: var(--gold); color: #000; border: none; border-radius: 999px; padding: 9px 16px; font-family: "Bebas Neue", sans-serif; font-size: 14px; letter-spacing: 2px; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
-.br-go-btn:hover { opacity: .88; }
-.br-hint { font-size: 10px; color: var(--text-3); }
-.br-amount { font-family: "Bebas Neue", sans-serif; font-size: 42px; letter-spacing: 1px; line-height: 1; transition: color .3s; }
-.br-sublabel { font-size: 11px; color: var(--text-3); margin: 3px 0 14px; }
+.br-prefix { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 13px; font-weight: 600; pointer-events: none; }
+.br-number-input { width: 100%; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 10px 12px 10px 24px; color: var(--text); font-size: 16px; font-weight: 700; font-family: "Bebas Neue", sans-serif; letter-spacing: 1px; outline: none; }
+.br-go-btn { background: var(--gold); color: #000; border: none; border-radius: 999px; padding: 10px 16px; font-family: "Bebas Neue", sans-serif; font-size: 14px; letter-spacing: 2px; }
+.br-amount { font-family: "Bebas Neue", sans-serif; font-size: 40px; letter-spacing: 1px; line-height: 1; }
+.br-sublabel { font-size: 11px; color: var(--text-3); margin: 4px 0 14px; }
 .br-prog-header { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3); margin-bottom: 5px; }
 .br-prog-track { height: 4px; background: var(--line-strong); border-radius: 999px; overflow: hidden; margin-bottom: 14px; }
 .br-prog-fill { height: 100%; border-radius: 999px; transition: width .4s ease, background .3s; }
-.br-stat-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 11px; border-bottom: 1px solid var(--line); }
-.br-stat-row:last-of-type { border-bottom: none; }
+.br-stat-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 11px; border-bottom: 1px solid rgba(255,255,255,.06); }
 .br-stat-row span { color: var(--text-3); }
-.br-stat-row strong { font-weight: 600; }
 .br-pos { color: var(--green) !important; }
 .br-neg { color: var(--red) !important; }
 .br-acc { color: var(--gold) !important; }
-.br-reset-btn { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--text-3); font-size: 10px; cursor: pointer; transition: all .15s; font-family: "Inter", sans-serif; }
-.br-reset-btn:hover { border-color: var(--red); color: var(--red); }
+.br-reset-btn { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--text-3); font-size: 10px; }
 .br-head-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2px; }
-.tf-section { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--line); }
+.tf-section { margin-top: 14px; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.06); }
 .tf-section-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
-.tf-row { display: flex; gap: 5px; margin-bottom: 5px; }
-.tf-input { flex: 1; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--text); font-size: 11px; outline: none; font-family: "Inter", sans-serif; transition: border-color .2s; min-width: 0; }
-.tf-input::placeholder { color: var(--text-3); }
-.tf-input:focus { border-color: rgba(245,166,35,.4); }
+.tf-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.tf-input, .tf-select { flex: 1; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: var(--text); font-size: 11px; outline: none; min-width: 0; }
 .tf-input.pf { padding-left: 20px; }
 .tf-wrap { position: relative; flex: 1; min-width: 0; }
-.tf-pfx { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 11px; pointer-events: none; }
-.tf-select { flex: 1; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--text-2); font-size: 11px; outline: none; font-family: "Inter", sans-serif; cursor: pointer; }
-.tf-add-btn { background: var(--panel-2); border: 1px solid rgba(245,166,35,.35); border-radius: 999px; padding: 7px 13px; color: var(--gold); font-size: 11px; font-weight: 700; cursor: pointer; transition: all .15s; white-space: nowrap; font-family: "Inter", sans-serif; }
-.tf-add-btn:hover { background: var(--gold-soft); border-color: var(--gold); }
-.tix-list { margin-top: 10px; }
-.tix-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 7px; transition: opacity .2s; }
+.tf-pfx { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 11px; }
+.tf-add-btn { background: var(--gold-soft); border: 1px solid rgba(245,166,35,.35); border-radius: 999px; padding: 8px 13px; color: var(--gold); font-size: 11px; font-weight: 700; }
+.tix-list { margin-top: 10px; display: grid; gap: 8px; }
+.tix-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
 .tix-item.settled { opacity: .6; }
 .tix-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-.tix-sport-tag { font-size: 8px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 2px 6px; border-radius: 999px; }
+.tix-sport-tag { font-size: 8px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 7px; border-radius: 999px; }
 .tix-sport-tag.MLB { background: rgba(224,49,49,.18); color: #fa5252; }
 .tix-sport-tag.NBA { background: rgba(25,113,194,.18); color: #74c0fc; }
 .tix-sport-tag.WNBA { background: rgba(247,103,7,.18); color: #ff922b; }
 .tix-sport-tag.SOC { background: rgba(47,158,68,.18); color: #69db7c; }
-.tix-label { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tix-nums { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3); margin-bottom: 7px; }
+.tix-label { font-size: 12px; font-weight: 600; margin-bottom: 5px; }
+.tix-nums { display: grid; gap: 4px; color: var(--text-3); font-size: 10px; margin-bottom: 7px; }
 .tix-nums strong { color: var(--text); }
 .tix-win-amt { color: var(--gold) !important; }
-.tix-actions { display: flex; gap: 3px; }
-.tix-btn { flex: 1; border: 1px solid; border-radius: 999px; padding: 4px; font-size: 9px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; cursor: pointer; background: none; transition: all .15s; font-family: "Inter", sans-serif; }
+.tix-actions { display: flex; gap: 4px; flex-wrap: wrap; }
+.tix-btn { flex: 1; border: 1px solid; border-radius: 999px; padding: 5px 8px; font-size: 9px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; background: none; }
 .tix-btn.win  { border-color: rgba(36,211,138,.4); color: var(--green); }
 .tix-btn.loss { border-color: rgba(255,95,87,.4); color: var(--red); }
 .tix-btn.cash { border-color: rgba(245,166,35,.4); color: var(--gold); }
-.tix-btn.rm   { border-color: var(--line); color: var(--text-3); flex: none; padding: 4px 8px; }
-.tix-btn.win:hover  { background: var(--green-soft); }
-.tix-btn.loss:hover { background: var(--red-soft); }
-.tix-btn.cash:hover { background: var(--gold-soft); }
-.pnl-row { display: flex; justify-content: space-between; font-size: 11px; padding-top: 9px; margin-top: 9px; border-top: 1px solid var(--line); }
+.tix-btn.rm   { border-color: var(--line); color: var(--text-3); flex: 0 0 auto; }
+.pnl-row { display: flex; justify-content: space-between; font-size: 11px; padding-top: 9px; margin-top: 9px; border-top: 1px solid rgba(255,255,255,.06); }
 .pnl-row span { color: var(--text-3); }
-/* TOAST */
-.br-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--panel-3); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 18px; font-size: 12px; font-weight: 500; z-index: 9999; transition: transform .3s ease; white-space: nowrap; pointer-events: none; }
+.br-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--panel-2); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 18px; font-size: 12px; font-weight: 500; z-index: 9999; transition: transform .3s ease; white-space: nowrap; pointer-events: none; }
 .br-toast.show { transform: translateX(-50%) translateY(0); }
-.br-toast.ok   { border-color: rgba(36,211,138,.4); color: var(--green); }
+.br-toast.ok { border-color: rgba(36,211,138,.4); color: var(--green); }
 .br-toast.warn { border-color: rgba(245,166,35,.4); color: var(--gold); }
-.br-toast.err  { border-color: rgba(255,95,87,.4); color: var(--red); }
+.br-toast.err { border-color: rgba(255,95,87,.4); color: var(--red); }
+
+@media (max-width: 980px) {
+  .hero,
+  .signal-grid,
+  .two-col,
+  .bankroll-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner,
+  .page-nav,
+  main {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-meta {
+    justify-content: flex-start;
+  }
+
+  .brand-title {
+    font-size: 28px;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plays-table,
+  .plays-table thead,
+  .plays-table tbody,
+  .plays-table tr,
+  .plays-table th,
+  .plays-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .plays-table thead {
+    display: none;
+  }
+
+  .plays-table tr {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  .plays-table td {
+    border: 0;
+    padding: 2px 0;
+  }
+}
 </style>
 </head>
 <body>
-<div class="ticker">
-  <div class="ticker-track" id="ticker-track"></div>
-  <div class="ticker-track" id="ticker-track-dup"></div>
-</div>
-
 <header>
   <div class="header-inner">
     <div class="brand">
       <div class="brand-mark">TB</div>
-      <div class="brand-copy">
-        <div class="brand-title">The Board</div>
-        <div class="brand-sub">Signal board for props, ladders, and slate research</div>
+      <div>
+        <h1 class="brand-title">The Board</h1>
+        <div class="brand-sub">Live scores separate. Signal boards from the bot.</div>
       </div>
     </div>
-    <label class="search-wrap" aria-label="Search players or games">
-      <span class="search-icon">Search</span>
-      <input id="search-input" type="search" placeholder="Search players, props, teams, or games">
-    </label>
     <div class="header-meta">
-      <div class="meta-chip">
-        <div class="meta-chip-label">Slate Date</div>
-        <div class="meta-chip-value" id="header-date">-</div>
+      <div class="chip">
+        <div class="chip-label">Updated</div>
+        <div class="chip-value" id="header-updated">Loading</div>
       </div>
-      <div class="meta-chip">
-        <div class="meta-chip-label">Data Mode</div>
-        <div class="meta-chip-value" id="header-mode">Bootstrap</div>
+      <div class="chip">
+        <div class="chip-label">Signal Feed</div>
+        <div class="chip-value" id="header-signal-status">Waiting</div>
       </div>
     </div>
   </div>
+  <nav class="page-nav">
+    <button class="page-btn active" data-page="live">Live Board</button>
+    <button class="page-btn" data-page="signal">Signal Board</button>
+    <button class="page-btn" data-page="bankroll">Bankroll</button>
+  </nav>
 </header>
 
-<nav class="sport-nav">
-  <div class="sport-nav-inner" id="sport-tabs"></div>
-</nav>
-
-<main class="shell">
-  <section class="content">
-    <div id="views"></div>
-  </section>
-  <aside class="rail">
-    <section class="rail-card">
-      <h2 class="rail-title">Slate Summary</h2>
-      <div class="stat-stack" id="summary-stats"></div>
-    </section>
-    <section class="rail-card">
-      <h2 class="rail-title">Top Signal Games</h2>
-      <div class="signal-list" id="signal-list"></div>
-    </section>
-    <section class="rail-card">
-      <h2 class="rail-title">Launch Notes</h2>
-      <div class="launch-list" id="launch-list"></div>
-    </section>
-    <section class="rail-card">
-      <h2 class="rail-title">Board Notes</h2>
-      <div class="note-list" id="note-list"></div>
-    </section>
-    <section class="rail-card" id="br-card">
-      <h2 class="rail-title">💰 Session Bankroll</h2>
-      <div id="br-setup">
-        <p class="br-setup-note">Enter your FanDuel balance. Saved in your browser — persists between visits.</p>
-        <div class="br-input-row">
-          <div class="br-prefix-wrap">
-            <span class="br-prefix">$</span>
-            <input id="br-inp" class="br-number-input" type="number" placeholder="0.00" min="0" step="0.01" onkeydown="if(event.key==='Enter')brStart()">
-          </div>
-          <button class="br-go-btn" onclick="brStart()">GO</button>
-        </div>
-        <p class="br-hint">Resets only when you click Reset.</p>
+<main>
+  <section class="page active" id="page-live">
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">Live Board</div>
+        <h2 class="hero-title">Today’s schedule and scoreboard</h2>
+        <div class="hero-copy">This page is for live games only. It does not reuse the bot signal board. Use it to scan current matchups, statuses, and scores fast.</div>
       </div>
-      <div id="br-active" style="display:none;">
-        <div class="br-head-row">
-          <div class="br-amount" id="br-bal">$0</div>
-          <button class="br-reset-btn" onclick="brReset()">Reset</button>
+      <div class="panel">
+        <div class="eyebrow">Board Rules</div>
+        <div class="rail-note">Signal Board = latest saved model output from the bot. Live Board = current scoreboard and status. They stay separate on purpose.</div>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <button class="sport-btn active" data-live-sport="all">All Sports</button>
+        <button class="sport-btn" data-live-sport="mlb">MLB</button>
+        <button class="sport-btn" data-live-sport="nba">NBA</button>
+      </div>
+      <div class="muted" id="live-meta">Waiting on live data</div>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <div class="eyebrow">Live Games</div>
+        <div class="live-list" id="live-list"></div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Quick Read</div>
+        <div class="notes-list" id="live-notes"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="page-signal">
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">Signal Board</div>
+        <h2 class="hero-title" id="signal-title">Latest bot board</h2>
+        <div class="hero-copy" id="signal-subtitle">The site loads the newest saved signal board every time it opens. No Discord command required.</div>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Sport</div>
+            <div class="metric-value" id="signal-sport-label">MLB</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Generated</div>
+            <div class="metric-value" id="signal-generated">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Mode</div>
+            <div class="metric-value">Bot Feed</div>
+          </div>
         </div>
-        <div class="br-sublabel">FanDuel Balance · Session</div>
-        <div class="br-prog-header"><span>Deployed</span><span id="br-pct">0%</span></div>
-        <div class="br-prog-track"><div class="br-prog-fill" id="br-bar" style="width:0;background:var(--gold);"></div></div>
-        <div class="br-stat-row"><span>Starting</span><strong id="br-st">$0</strong></div>
-        <div class="br-stat-row"><span>Deployed</span><strong class="br-neg" id="br-dep">-$0</strong></div>
-        <div class="br-stat-row"><span>Remaining</span><strong class="br-acc" id="br-rem">$0</strong></div>
-        <div class="br-stat-row"><span>25% Max Bet</span><strong class="br-pos" id="br-max">$0</strong></div>
-        <div class="br-stat-row"><span>Active Tickets</span><strong id="br-cnt">0</strong></div>
-        <div class="br-stat-row" style="border:none;"><span>Potential Win</span><strong class="br-pos" id="br-win">—</strong></div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Latest Image</div>
+        <img class="board-image" id="signal-image" alt="Latest signal board image">
+        <div class="image-placeholder" id="signal-image-placeholder">No saved PNG yet. The bot needs to publish the latest board image.</div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <button class="sport-btn active" data-signal-sport="mlb">MLB</button>
+        <button class="sport-btn" data-signal-sport="nba">NBA</button>
+      </div>
+      <div class="muted" id="signal-meta">Loading latest saved boards</div>
+    </div>
+
+    <div class="signal-grid">
+      <div class="panel">
+        <div class="eyebrow">Primary Board</div>
+        <div id="signal-pick"></div>
+        <div class="section-list" id="signal-sections"></div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Game Breakdown</div>
+        <div class="game-list" id="signal-games"></div>
+        <ul class="notes-list" id="signal-notes"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="page-bankroll">
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">Bankroll</div>
+        <h2 class="hero-title">Session tracker</h2>
+        <div class="hero-copy">This stays local to your browser. It is separate from the bot and separate from the live and signal board feeds.</div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Why It Matters</div>
+        <div class="rail-note">The board finds the spots. The bankroll page keeps the session honest. One surface for tickets, deployed units, and P&amp;L.</div>
+      </div>
+    </div>
+    <div class="bankroll-layout">
+      <div class="panel">
+        <div class="eyebrow">Session Bankroll</div>
+        <div id="br-setup">
+          <div class="br-setup-note">Enter your session balance. It saves in cookies and carries across visits until you reset it manually.</div>
+          <div class="br-input-row">
+            <div class="br-prefix-wrap">
+              <span class="br-prefix">$</span>
+              <input id="br-inp" class="br-number-input" type="number" placeholder="0.00" min="0" step="0.01">
+            </div>
+            <button class="br-go-btn" id="br-start-btn">Start</button>
+          </div>
+          <div class="muted">Per-session memory only. Reset when you want a clean slate.</div>
+        </div>
+        <div id="br-active" style="display:none;">
+          <div class="br-head-row">
+            <div class="br-amount" id="br-bal">$0.00</div>
+            <button class="br-reset-btn" id="br-reset-btn">Reset</button>
+          </div>
+          <div class="br-sublabel">Session balance</div>
+          <div class="br-prog-header"><span>Deployed</span><span id="br-pct">0%</span></div>
+          <div class="br-prog-track"><div class="br-prog-fill" id="br-bar" style="width:0;background:var(--gold);"></div></div>
+          <div class="br-stat-row"><span>Starting</span><strong id="br-st">$0.00</strong></div>
+          <div class="br-stat-row"><span>Deployed</span><strong class="br-neg" id="br-dep">-$0.00</strong></div>
+          <div class="br-stat-row"><span>Remaining</span><strong class="br-acc" id="br-rem">$0.00</strong></div>
+          <div class="br-stat-row"><span>25% Max Bet</span><strong class="br-pos" id="br-max">$0.00</strong></div>
+          <div class="br-stat-row"><span>Active Tickets</span><strong id="br-cnt">0</strong></div>
+          <div class="br-stat-row" style="border-bottom:none;"><span>Potential Win</span><strong class="br-pos" id="br-win">—</strong></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="eyebrow">Tickets</div>
         <div class="tf-section">
           <div class="tf-section-label">Add Ticket</div>
           <div class="tf-row">
@@ -1556,1080 +699,341 @@ header {
             <div class="tf-wrap"><span class="tf-pfx">$</span><input id="tf-p" class="tf-input pf" type="number" placeholder="To Win"></div>
           </div>
           <div class="tf-row">
-            <input id="tf-l" class="tf-input" type="text" placeholder="Label (e.g. Schwarber HR SGP)" onkeydown="if(event.key==='Enter')brAddTix()" style="flex:1;">
+            <input id="tf-l" class="tf-input" type="text" placeholder="Label (e.g. Jokic AST ladder)">
           </div>
           <div class="tf-row">
             <select id="tf-s" class="tf-select">
-              <option value="MLB">⚾ MLB</option>
-              <option value="NBA">🏀 NBA</option>
-              <option value="WNBA">🏀 WNBA</option>
-              <option value="SOC">⚽ Soccer</option>
+              <option value="MLB">MLB</option>
+              <option value="NBA">NBA</option>
+              <option value="WNBA">WNBA</option>
+              <option value="SOC">Soccer</option>
             </select>
-            <button class="tf-add-btn" onclick="brAddTix()">+ Add</button>
+            <button class="tf-add-btn" id="tf-add-btn">Add Ticket</button>
           </div>
         </div>
         <div class="tix-list" id="tix-list"></div>
         <div id="pnl-wrap" style="display:none;">
-          <div class="pnl-row"><span>Session P&L</span><strong id="br-pnl">$0</strong></div>
+          <div class="pnl-row"><span>Session P&amp;L</span><strong id="br-pnl">$0.00</strong></div>
         </div>
       </div>
-    </section>
-  </aside>
+    </div>
+  </section>
 </main>
 
-<section class="modal" id="game-modal" aria-hidden="true">
-  <div class="modal-backdrop" id="modal-backdrop"></div>
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-head">
-      <div>
-        <h2 class="modal-title" id="modal-title">Game Slate</h2>
-        <div class="modal-subtitle" id="modal-subtitle"></div>
-      </div>
-      <div class="modal-actions">
-        <div class="status-chip" id="modal-status">Lineups Pending</div>
-        <button class="close-btn" id="modal-close" aria-label="Close slate">x</button>
-      </div>
-    </div>
-    <div class="modal-toolbar">
-      <div class="modal-market-row" id="modal-market-row"></div>
-      <div class="toolbar-note" id="modal-toolbar-note">Showing full game roster and hit-rate detail.</div>
-    </div>
-    <div class="modal-body">
-      <div class="roster-head">
-        <div>Player</div>
-        <div>Team</div>
-        <div>Market</div>
-        <div>Line</div>
-        <div>Score</div>
-        <div>L10</div>
-        <div>L5</div>
-        <div>L3</div>
-        <div>Status</div>
-        <div>Why</div>
-      </div>
-      <div id="modal-roster"></div>
-    </div>
-  </div>
-</section>
-
 <script>
-const SAMPLE_DATA = {
-  updatedAt: "April 25, 2026",
-  sourceMode: "Bootstrap + backend-ready hooks",
-  sports: {
-    mlb: {
-      label: "MLB",
-      note: "Click any game to open the full roster board with L10, L5, and L3 hit rates.",
-      launches: [
-        { title: "Backend hook", copy: "Reads from window.BOARD_DATA first, then board-data.json, then /api/site-board." },
-        { title: "Game click flow", copy: "Each game opens a roster slate with every tracked player, market, line, score, tier, and hit-rate row." },
-        { title: "Search behavior", copy: "Search filters games and players together, so /orioles-style browsing can become a real web flow." }
-      ],
-      notes: [
-        "Lineups, status, and L10/L5/L3 are designed to be backend-fed fields. This UI will render them as soon as the API ships.",
-        "Games stay compressed on the main board and expand into a full roster slate only when clicked.",
-        "The roster modal is built for scanning: score, line, last-10, last-5, last-3, status, and why all on one row."
-      ],
-      pickOfDay: {
-        player: "Kyle Schwarber",
-        team: "PHI",
-        market: "HR",
-        line: "HR 1+",
-        odds: "+210",
-        confidence: 78,
-        rate: "L10 4/10 | L5 3/5 | L3 2/3",
-        environment: "Wind out to right | Citizens Bank Park | Assad 5.2 MLB IP",
-        context: "CHC @ PHI | 6:41 PM ET | premium lefty lift spot"
-      },
-      filters: ["all", "hr", "tb", "hit", "k"],
-      games: [
-        {
-          id: "chc-phi",
-          title: "CHC @ PHI",
-          start: "6:41 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Assad vs Sanchez | Citizens Bank Park | Wind out 11 mph",
-          attackNote: "Best HR environment on the slate. Lefty lift and short porch fit the board's power cluster.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 6, core: 2, avgScore: "40.8", signal: "A+" },
-          topPicks: [
-            { name: "Kyle Schwarber", market: "HR", why: "Wind out and pure barrel lane", tier: "Core", confidence: 78, line: "HR 1+" },
-            { name: "Bryce Harper", market: "HR", why: "Same game stack with safer contact base", tier: "Strong", confidence: 69, line: "HR 1+" },
-            { name: "Cristopher Sanchez", market: "K", why: "Swing-miss lane vs top-heavy order", tier: "Value", confidence: 64, line: "6+ K" }
-          ],
-          roster: [
-            { player: "Kyle Schwarber", team: "PHI", market: "HR", line: "HR 1+", score: 44.1, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Wind out, pull lift, park edge" },
-            { player: "Bryce Harper", team: "PHI", market: "HR", line: "HR 1+", score: 40.2, tier: "Strong", confidence: 69, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Assad fly-ball profile, same game stack" },
-            { player: "Trea Turner", team: "PHI", market: "HIT", line: "1+ Hit", score: 36.4, tier: "Value", confidence: 66, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Top-of-order floor, multi-PA edge" },
-            { player: "Nick Castellanos", team: "PHI", market: "TB", line: "1.5 TB", score: 34.8, tier: "Value", confidence: 62, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Hard-hit pocket with RBI traffic" },
-            { player: "Cristopher Sanchez", team: "PHI", market: "K", line: "6+ K", score: 33.5, tier: "Value", confidence: 64, last10: "7/10", last5: "4/5", last3: "2/3", status: "Starting", why: "Whiff lane against lower third" },
-            { player: "Nico Hoerner", team: "CHC", market: "HIT", line: "1+ Hit", score: 31.6, tier: "Longshot", confidence: 57, last10: "7/10", last5: "3/5", last3: "2/3", status: "In", why: "Contact floor, low strikeout risk" },
-            { player: "Ian Happ", team: "CHC", market: "TB", line: "1.5 TB", score: 29.4, tier: "Longshot", confidence: 54, last10: "4/10", last5: "2/5", last3: "1/3", status: "In", why: "Needs pull-side damage, not volume" }
-          ]
-        },
-        {
-          id: "ari-bal",
-          title: "ARI @ BAL",
-          start: "6:36 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Nelson vs Kremer | Camden Yards | Wind out 8 mph",
-          attackNote: "Baltimore side carries the best balanced mix of HR, TB, and hit-rate floor.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 5, core: 2, avgScore: "39.2", signal: "A" },
-          topPicks: [
-            { name: "Gunnar Henderson", market: "HR", why: "Best damage bat in this run environment", tier: "Core", confidence: 76, line: "HR 1+" },
-            { name: "Gunnar Henderson", market: "TB", why: "Great 2+ base floor if HR misses", tier: "Core", confidence: 74, line: "1.5 TB" },
-            { name: "Adley Rutschman", market: "HIT", why: "High-contact lane with RBI volume", tier: "Value", confidence: 63, line: "1+ Hit" }
-          ],
-          roster: [
-            { player: "Gunnar Henderson", team: "BAL", market: "HR", line: "HR 1+", score: 42.8, tier: "Core", confidence: 76, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Lift, barrel, and weather all aligned" },
-            { player: "Gunnar Henderson", team: "BAL", market: "TB", line: "1.5 TB", score: 41.2, tier: "Core", confidence: 74, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "XBH pressure even when HR misses" },
-            { player: "Adley Rutschman", team: "BAL", market: "HIT", line: "1+ Hit", score: 35.7, tier: "Value", confidence: 63, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Line drive floor with plus slot" },
-            { player: "Jordan Westburg", team: "BAL", market: "TB", line: "1.5 TB", score: 33.8, tier: "Value", confidence: 60, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Pull gap damage profile" },
-            { player: "Zac Gallen", team: "ARI", market: "K", line: "6+ K", score: 30.1, tier: "Longshot", confidence: 56, last10: "6/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Skill is there, matchup is not clean" }
-          ]
-        },
-        {
-          id: "tex-ath",
-          title: "TEX @ ATH",
-          start: "9:41 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Eovaldi vs Severino | Sutter Health Park | warm carry",
-          attackNote: "This is a real clustering spot. The board can support multiple smart HR reads without over-inflating the game.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 6, core: 3, avgScore: "41.6", signal: "A+" },
-          topPicks: [
-            { name: "Corey Seager", market: "HR", why: "Lefty damage against unstable command", tier: "Core", confidence: 75, line: "HR 1+" },
-            { name: "Shea Langeliers", market: "HR", why: "Pure power anchor on the other side", tier: "Core", confidence: 73, line: "HR 1+" },
-            { name: "Brent Rooker", market: "TB", why: "Strong hybrid if you want less pure HR exposure", tier: "Strong", confidence: 68, line: "1.5 TB" }
-          ],
-          roster: [
-            { player: "Corey Seager", team: "TEX", market: "HR", line: "HR 1+", score: 43.5, tier: "Core", confidence: 75, last10: "4/10", last5: "2/5", last3: "2/3", status: "In", why: "Severino command wobble plus pull-side air" },
-            { player: "Shea Langeliers", team: "ATH", market: "HR", line: "HR 1+", score: 42.7, tier: "Core", confidence: 73, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Highest barrel lane in game" },
-            { player: "Brent Rooker", team: "ATH", market: "TB", line: "1.5 TB", score: 38.8, tier: "Strong", confidence: 68, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "Hybrid profile if HR is too thin" },
-            { player: "Marcus Semien", team: "TEX", market: "HIT", line: "1+ Hit", score: 33.6, tier: "Value", confidence: 59, last10: "8/10", last5: "4/5", last3: "2/3", status: "In", why: "Lead-off floor with run volume" },
-            { player: "Nathan Eovaldi", team: "TEX", market: "K", line: "6+ K", score: 31.5, tier: "Longshot", confidence: 57, last10: "6/10", last5: "3/5", last3: "1/3", status: "Starting", why: "Can get there if pitch count cooperates" },
-            { player: "JJ Bleday", team: "ATH", market: "HIT", line: "1+ Hit", score: 29.1, tier: "Longshot", confidence: 53, last10: "6/10", last5: "3/5", last3: "1/3", status: "In", why: "Pure volume play, not damage-first" }
-          ]
-        },
-        {
-          id: "stl-hou",
-          title: "STL @ HOU",
-          start: "2:11 PM ET",
-          status: "Final lineup sweep",
-          meta: "Liberatore vs Burrows | Dome game | stable run environment",
-          attackNote: "Good board for HR plus hits together. Yordan gives ceiling, Walker gives heater form.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 5, core: 1, avgScore: "37.1", signal: "B+" },
-          topPicks: [
-            { name: "Yordan Alvarez", market: "HR", why: "Best ceiling bat in a controlled dome spot", tier: "Core", confidence: 78, line: "HR 1+" },
-            { name: "Jordan Walker", market: "HIT", why: "Hit streak and plus recent floor", tier: "Strong", confidence: 67, line: "1+ Hit" },
-            { name: "Jose Altuve", market: "TB", why: "Cleaner hybrid exposure than forcing HR", tier: "Value", confidence: 61, line: "1.5 TB" }
-          ],
-          roster: [
-            { player: "Yordan Alvarez", team: "HOU", market: "HR", line: "HR 1+", score: 44.0, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "1/3", status: "In", why: "Weak lefty lane in closed roof" },
-            { player: "Jordan Walker", team: "STL", market: "HIT", line: "1+ Hit", score: 37.5, tier: "Strong", confidence: 67, last10: "9/10", last5: "5/5", last3: "3/3", status: "In", why: "Hot stretch and volume floor" },
-            { player: "Jose Altuve", team: "HOU", market: "TB", line: "1.5 TB", score: 34.2, tier: "Value", confidence: 61, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "More stable than pure HR chase" },
-            { player: "Spencer Arrighetti", team: "HOU", market: "K", line: "6+ K", score: 31.8, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Strikeout upside, not lock volume" }
-          ]
-        }
-      ]
-    },
-    nba: {
-      label: "NBA",
-      note: "Game cards stay compact. Click into any matchup for the full player ladder board and recent hit rates at the displayed mark.",
-      launches: [
-        { title: "Visible board first", copy: "Main page stays clean with top props only. Full roster and hit-rate tables live behind the game click." },
-        { title: "Recent-rate logic", copy: "Each row is built to display last-10, last-5, and last-3 hit rate against the shown line." },
-        { title: "Backend-safe", copy: "If recent data is missing, the site still renders the board and leaves the rate row blank." }
-      ],
-      notes: [
-        "Use season body of work plus playoff context for the score. Use L10, L5, and L3 as execution context, not the whole model.",
-        "Every game card is a clickable entry point into the full roster board. That is where the research layer should live.",
-        "This structure also gives you a place for lineup status, minutes risk, and late scratches without cluttering the main slate."
-      ],
-      pickOfDay: {
-        player: "Nikola Jokic",
-        team: "DEN",
-        market: "REB",
-        line: "12+ REB",
-        odds: "-118",
-        confidence: 80,
-        rate: "L10 8/10 | L5 4/5 | L3 3/3",
-        environment: "Game 4 | home floor | pressure spot",
-        context: "MIN @ DEN | 8:30 PM ET | rebound ladder anchor"
-      },
-      filters: ["all", "pts", "ast", "reb", "3pm"],
-      games: [
-        {
-          id: "min-den",
-          title: "MIN @ DEN - Game 4",
-          start: "8:30 PM ET",
-          status: "Probables Clean",
-          meta: "Nuggets trail 1-2 | high-leverage home response spot",
-          attackNote: "Best ladder game on the card. You can stack Jokic rebounds and assists without forcing thin secondary plays.",
-          lineupStatus: "Projected Active",
-          summary: { plays: 5, core: 2, avgScore: "74.3", signal: "A" },
-          topPicks: [
-            { name: "Nikola Jokic", market: "REB", why: "12+ ladder has clean recent support", tier: "Core", confidence: 80, line: "12+ REB" },
-            { name: "Nikola Jokic", market: "AST", why: "Best secondary ladder in the same game", tier: "Strong", confidence: 69, line: "8+ AST" },
-            { name: "Anthony Edwards", market: "PTS", why: "Volume is always live if game scripts tight", tier: "Value", confidence: 63, line: "28+ PTS" }
-          ],
-          roster: [
-            { player: "Nikola Jokic", team: "DEN", market: "REB", line: "12+ REB", score: 80.4, tier: "Core", confidence: 80, last10: "8/10", last5: "4/5", last3: "3/3", status: "Active", why: "Glass edge, pace stays playable" },
-            { player: "Nikola Jokic", team: "DEN", market: "AST", line: "8+ AST", score: 69.8, tier: "Strong", confidence: 69, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Touch volume, playoff usage, home response" },
-            { player: "Anthony Edwards", team: "MIN", market: "PTS", line: "28+ PTS", score: 63.1, tier: "Value", confidence: 63, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Usage always there, efficiency swings" },
-            { player: "Karl-Anthony Towns", team: "MIN", market: "REB", line: "10+ REB", score: 58.6, tier: "Value", confidence: 58, last10: "5/10", last5: "3/5", last3: "2/3", status: "Active", why: "Volatile but live if Denver misses pile up" }
-          ]
-        },
-        {
-          id: "nyk-atl",
-          title: "NYK @ ATL - Game 4",
-          start: "6:00 PM ET",
-          status: "Probables Clean",
-          meta: "Hawks lead 2-1 | live ball-handler and rebound ladders",
-          attackNote: "Balanced game. Brunson points and Jalen Johnson rebounds are the clearest entries.",
-          lineupStatus: "Projected Active",
-          summary: { plays: 4, core: 1, avgScore: "68.0", signal: "B+" },
-          topPicks: [
-            { name: "Jalen Brunson", market: "PTS", why: "Pure engine role with playoff usage", tier: "Core", confidence: 74, line: "25+ PTS" },
-            { name: "Jalen Johnson", market: "REB", why: "Consistent board work with strong role", tier: "Strong", confidence: 72, line: "10+ REB" },
-            { name: "Trae Young", market: "AST", why: "Assist volume tracks if Atlanta controls pace", tier: "Value", confidence: 65, line: "10+ AST" }
-          ],
-          roster: [
-            { player: "Jalen Brunson", team: "NYK", market: "PTS", line: "25+ PTS", score: 74.2, tier: "Core", confidence: 74, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Ball dominance and shot load" },
-            { player: "Jalen Johnson", team: "ATL", market: "REB", line: "10+ REB", score: 72.1, tier: "Strong", confidence: 72, last10: "8/10", last5: "4/5", last3: "2/3", status: "Active", why: "Role strength plus home game" },
-            { player: "Trae Young", team: "ATL", market: "AST", line: "10+ AST", score: 65.0, tier: "Value", confidence: 65, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Assist ceiling if shooters hit" },
-            { player: "Josh Hart", team: "NYK", market: "REB", line: "8+ REB", score: 59.8, tier: "Value", confidence: 59, last10: "6/10", last5: "4/5", last3: "2/3", status: "Active", why: "Minutes monster floor" }
-          ]
-        },
-        {
-          id: "det-orl",
-          title: "DET @ ORL - Game 3",
-          start: "1:00 PM ET",
-          status: "Monitoring lineups",
-          meta: "Series tied 1-1 | playmaker and rebound lanes",
-          attackNote: "Cade assists and Duren rebounds fit the board better than chasing thin scoring variance.",
-          lineupStatus: "Awaiting confirmations",
-          summary: { plays: 4, core: 0, avgScore: "63.8", signal: "B" },
-          topPicks: [
-            { name: "Cade Cunningham", market: "AST", why: "Primary table-setter with clean line access", tier: "Value", confidence: 68, line: "8+ AST" },
-            { name: "Jalen Duren", market: "REB", why: "Strong recent board rate against this line", tier: "Value", confidence: 67, line: "10+ REB" },
-            { name: "Paolo Banchero", market: "PTS", why: "Usage stays there even when efficiency dips", tier: "Longshot", confidence: 58, line: "26+ PTS" }
-          ],
-          roster: [
-            { player: "Cade Cunningham", team: "DET", market: "AST", line: "8+ AST", score: 68.5, tier: "Value", confidence: 68, last10: "7/10", last5: "3/5", last3: "2/3", status: "Questionable", why: "Engine role, recent assist form" },
-            { player: "Jalen Duren", team: "DET", market: "REB", line: "10+ REB", score: 67.2, tier: "Value", confidence: 67, last10: "7/10", last5: "4/5", last3: "3/3", status: "Active", why: "Strong glass rate in this matchup" },
-            { player: "Paolo Banchero", team: "ORL", market: "PTS", line: "26+ PTS", score: 58.9, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Active", why: "Volume yes, efficiency less stable" }
-          ]
-        }
-      ]
-    },
-    wnba: {
-      label: "WNBA",
-      note: "WNBA board will fill in here when the backend is ready.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: []
-    },
-    soccer: {
-      label: "Soccer",
-      note: "Soccer props panel is reserved for EPL, MLS, and Champions League once feeds are wired.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: []
-    },
-    highlights: {
-      label: "Highlights",
-      note: "Highlights stay separated from the board so the research surface stays clean.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: [],
-      highlights: [
-        { sport: "nba", title: "NBA Playoff Highlights - Tonight's best sequences", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=NBA+playoff+highlights+2026" },
-        { sport: "mlb", title: "MLB Daily Home Run Reel", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=MLB+home+run+highlights+2026" },
-        { sport: "mlb", title: "Gunnar Henderson recent swings", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Gunnar+Henderson+home+run+2026" },
-        { sport: "nba", title: "Nikola Jokic postseason clips", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Nikola+Jokic+playoffs+2026" }
-      ]
-    }
-  }
+const SIGNAL_FILES = {
+  mlb: "/data/mlb-signal-board.json",
+  nba: "/data/nba-signal-board.json"
 };
 
-const API_CANDIDATES = [
-  "./board-data.json",
-  "/board-data.json",
-  "/api/site-board"
-];
+const SIGNAL_IMAGES = {
+  mlb: "/images/mlb-signal-board.png",
+  nba: "/images/nba-signal-board.png"
+};
 
 const state = {
-  sport: "mlb",
-  surface: "dashboard",
-  market: "all",
-  gameFilter: "all",
-  sortKey: "score",
-  sortDir: "desc",
-  search: "",
-  data: SAMPLE_DATA,
-  modalGameId: null,
-  modalMarket: "all"
+  page: "live",
+  liveSport: "all",
+  signalSport: "mlb",
+  liveBoard: null,
+  signalBoards: {
+    mlb: null,
+    nba: null
+  }
 };
 
-function formatDateLabel(value) {
-  if (!value) {
-    return new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  }
-  return value;
+function prettyDate(value) {
+  if (!value) return "--";
+  const dt = new Date(value);
+  if (Number.isNaN(dt.getTime())) return value;
+  return dt.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  });
 }
 
-function scoreClass(score) {
-  if (score >= 70) return "score-good";
-  if (score >= 58) return "score-mid";
-  return "score-low";
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
-function confidenceClass(confidence) {
-  if (confidence >= 70) return "confidence-high";
-  if (confidence >= 60) return "confidence-mid";
-  return "confidence-low";
+function normalizeItems(items) {
+  return Array.isArray(items) ? items : [];
 }
 
-function marketClass(market) {
-  return "market-" + String(market || "").toLowerCase();
+function normalizeSignalBoard(raw, sport) {
+  if (!raw || typeof raw !== "object") return null;
+  return {
+    sport: String(raw.sport || sport || "").toUpperCase(),
+    title: raw.title || `${String(sport).toUpperCase()} Signal Board`,
+    subtitle: raw.subtitle || raw.note || "Latest saved board output from the bot.",
+    generatedAt: raw.generated_at || raw.generatedAt || raw.last_generated_at || null,
+    image: raw.image || SIGNAL_IMAGES[sport],
+    pickOfDay: raw.pick_of_day || raw.pickOfDay || null,
+    sections: normalizeItems(raw.sections),
+    games: normalizeItems(raw.games),
+    notes: normalizeItems(raw.notes)
+  };
 }
 
-function tierClass(tier) {
-  const token = String(tier || "").toLowerCase();
-  if (token === "core") return "tier-core";
-  if (token === "strong") return "tier-strong";
-  if (token === "value") return "tier-value";
-  return "tier-longshot";
-}
-
-function normalize(value) {
-  return String(value || "").trim().toLowerCase();
-}
-
-function parseRecord(value) {
-  const raw = String(value || "").trim();
-  const parts = raw.split("/");
-  if (parts.length !== 2) return -1;
-  const hits = Number(parts[0]);
-  const games = Number(parts[1]);
-  if (!Number.isFinite(hits) || !Number.isFinite(games) || games <= 0) return -1;
-  return hits / games;
-}
-
-function tierRank(value) {
-  const token = normalize(value);
-  if (token === "core") return 4;
-  if (token === "strong") return 3;
-  if (token === "value") return 2;
-  return 1;
-}
-
-function getCurrentSport() {
-  return state.data.sports[state.sport];
-}
-
-function findBestSportKey(data) {
-  const sports = data && data.sports ? data.sports : {};
-  const preferredOrder = ["mlb", "nba", "wnba", "soccer", "highlights"];
-
-  for (const key of preferredOrder) {
-    const sport = sports[key];
-    if (sport && Array.isArray(sport.games) && sport.games.length) {
-      return key;
-    }
-  }
-
-  for (const [key, sport] of Object.entries(sports)) {
-    if (sport && Array.isArray(sport.games) && sport.games.length) {
-      return key;
-    }
-  }
-
-  return preferredOrder.find((key) => sports[key]) || Object.keys(sports)[0] || "mlb";
-}
-
-function syncActiveSport() {
-  const sports = state.data && state.data.sports ? state.data.sports : {};
-  if (!sports[state.sport] || !(sports[state.sport].games || []).length) {
-    state.sport = findBestSportKey(state.data);
-  }
-}
-
-function buildTickerItems(data) {
-  const items = [];
-  Object.entries(data.sports).forEach(([key, sport]) => {
-    if (!sport.games || !sport.games.length) return;
-    sport.games.forEach((game) => {
-      game.topPicks.slice(0, 2).forEach((pick) => {
-        items.push(
-          sport.label + " | " + game.title + " | " + pick.name + " | " + pick.line + " | " + pick.confidence + "%"
-        );
-      });
+function latestSignalSport() {
+  const candidates = Object.entries(state.signalBoards)
+    .filter(([, board]) => board)
+    .sort((a, b) => {
+      const at = new Date(a[1].generatedAt || 0).getTime();
+      const bt = new Date(b[1].generatedAt || 0).getTime();
+      return bt - at;
     });
-  });
-  return items;
+  return candidates.length ? candidates[0][0] : "mlb";
 }
 
-function renderTicker(data) {
-  const items = buildTickerItems(data);
-  const markup = items.length
-    ? items.map((item) => "<span>" + item + "</span>").join("<span> | </span>")
-    : "<span>The Board is waiting on slate data.</span>";
-  document.getElementById("ticker-track").innerHTML = markup;
-  document.getElementById("ticker-track-dup").innerHTML = markup;
+async function fetchJson(url) {
+  const response = await fetch(url, { headers: { Accept: "application/json" } });
+  if (!response.ok) throw new Error(`${url} -> ${response.status}`);
+  return response.json();
 }
 
-function renderTabs() {
-  const tabs = document.getElementById("sport-tabs");
-  tabs.innerHTML = Object.entries(state.data.sports).map(([key, sport]) => {
-    const count = sport.games ? sport.games.length : (sport.highlights ? sport.highlights.length : 0);
-    return `
-      <button class="sport-tab ${state.sport === key ? "active" : ""}" data-sport="${key}">
-        <span class="sport-dot"></span>
-        <span>${sport.label}</span>
-        <span class="sport-count">${count}</span>
-      </button>
-    `;
-  }).join("");
-  tabs.querySelectorAll(".sport-tab").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.sport = button.dataset.sport;
-      state.surface = "dashboard";
-      state.market = "all";
-      state.gameFilter = "all";
-      state.sortKey = "score";
-      state.sortDir = "desc";
-      state.modalGameId = null;
-      render();
-    });
-  });
-}
-
-function playerMatchesSearch(row, term) {
-  const hay = [row.player, row.team, row.market, row.line, row.why, row.status].map(normalize).join(" ");
-  return hay.includes(term);
-}
-
-function gameMatches(game, term, market) {
-  const headline = [game.title, game.meta, game.attackNote, game.status].map(normalize).join(" ");
-  const rosterMatches = (game.roster || []).some((row) => {
-    const marketHit = market === "all" || normalize(row.market) === market;
-    return marketHit && playerMatchesSearch(row, term);
-  });
-  return headline.includes(term) || rosterMatches;
-}
-
-function filteredGames(sport) {
-  const market = normalize(state.market);
-  const term = normalize(state.search);
-  return (sport.games || []).filter((game) => {
-    if (!term && market === "all") return true;
-    if (term) return gameMatches(game, term, market);
-    return (game.roster || []).some((row) => normalize(row.market) === market);
-  });
-}
-
-function filteredRoster(game) {
-  const market = normalize(state.modalMarket);
-  const term = normalize(state.search);
-  return (game.roster || []).filter((row) => {
-    const marketHit = market === "all" || normalize(row.market) === market;
-    const searchHit = !term || playerMatchesSearch(row, term) || normalize(game.title).includes(term);
-    return marketHit && searchHit;
-  }).sort((a, b) => b.score - a.score);
-}
-
-function explorerRows(sport) {
-  const term = normalize(state.search);
-  const market = normalize(state.market);
-  const gameFilter = normalize(state.gameFilter);
-
-  const rows = filteredGames(sport).flatMap((game) => (game.roster || []).map((row) => ({
-    ...row,
-    gameId: game.id,
-    gameTitle: game.title,
-    gameStart: game.start,
-    gameMeta: game.meta
-  })));
-
-  const filtered = rows.filter((row) => {
-    const marketHit = market === "all" || normalize(row.market) === market;
-    const gameHit = gameFilter === "all" || normalize(row.gameId) === gameFilter;
-    const searchHay = [
-      row.player,
-      row.team,
-      row.market,
-      row.line,
-      row.why,
-      row.status,
-      row.gameTitle,
-      row.gameMeta
-    ].map(normalize).join(" ");
-    const searchHit = !term || searchHay.includes(term);
-    return marketHit && gameHit && searchHit;
-  });
-
-  const sorted = filtered.slice().sort((a, b) => {
-    const dir = state.sortDir === "asc" ? 1 : -1;
-    const key = state.sortKey;
-    let left = a[key];
-    let right = b[key];
-
-    if (key === "score" || key === "confidence") {
-      left = Number(left || 0);
-      right = Number(right || 0);
-    } else if (key === "tier") {
-      left = tierRank(left);
-      right = tierRank(right);
-    } else if (key === "last10" || key === "last5" || key === "last3") {
-      left = parseRecord(left);
-      right = parseRecord(right);
-    } else {
-      left = normalize(left);
-      right = normalize(right);
-    }
-
-    if (left < right) return -1 * dir;
-    if (left > right) return 1 * dir;
-    return (Number(b.score || 0) - Number(a.score || 0));
-  });
-
-  return sorted;
-}
-
-function topSignals(sport) {
-  return filteredGames(sport).map((game) => ({
-    id: game.id,
-    title: game.title,
-    score: game.summary ? game.summary.avgScore : "0.0",
-    copy: game.attackNote
-  })).sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).slice(0, 5);
-}
-
-function summaryStats(sport) {
-  const games = filteredGames(sport);
-  const allRows = games.flatMap((game) => game.roster || []);
-  const coreCount = allRows.filter((row) => normalize(row.tier) === "core").length;
-  const avgScore = allRows.length
-    ? (allRows.reduce((sum, row) => sum + Number(row.score || 0), 0) / allRows.length).toFixed(1)
-    : "0.0";
-  const confirmed = allRows.filter((row) => normalize(row.status) === "in" || normalize(row.status) === "active" || normalize(row.status) === "starting").length;
-  return [
-    { label: "Games", value: String(games.length) },
-    { label: "Tracked Plays", value: String(allRows.length) },
-    { label: "Core Reads", value: String(coreCount) },
-    { label: "Avg Score", value: avgScore }
-  ];
-}
-
-function renderSidebar() {
-  const sport = getCurrentSport();
-  document.getElementById("summary-stats").innerHTML = summaryStats(sport).map((item) => `
-    <div class="stat-box">
-      <div class="stat-box-value">${item.value}</div>
-      <div class="stat-box-label">${item.label}</div>
-    </div>
-  `).join("");
-
-  document.getElementById("signal-list").innerHTML = topSignals(sport).map((item) => `
-    <button class="signal-item" data-open-game="${item.id}">
-      <div class="signal-top">
-        <div class="signal-game">${item.title}</div>
-        <div class="signal-score">${item.score}</div>
-      </div>
-      <div class="signal-copy">${item.copy}</div>
-    </button>
-  `).join("") || `<div class="signal-item"><div class="signal-copy">No signal games available for this view yet.</div></div>`;
-
-  document.getElementById("launch-list").innerHTML = (sport.launches || []).map((item) => `
-    <div class="launch-item">
-      <strong>${item.title}</strong>
-      <div class="launch-copy">${item.copy}</div>
-    </div>
-  `).join("") || `<div class="launch-item"><div class="launch-copy">Launch notes will appear once the sport is wired.</div></div>`;
-
-  document.getElementById("note-list").innerHTML = (sport.notes || []).map((item) => `
-    <div class="note-item">${item}</div>
-  `).join("") || `<div class="note-item">No extra notes for this view yet.</div>`;
-
-  document.querySelectorAll("[data-open-game]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.modalMarket = "all";
-      openGame(button.dataset.openGame);
-    });
-  });
-}
-
-function renderHero(sport) {
-  if (!sport.pickOfDay) {
-    return `
-      <div class="coming">
-        <h3>${sport.label} Coming Online</h3>
-        <p>${sport.note || "This board will light up when the sport is wired."}</p>
-      </div>
-    `;
-  }
-
-  const pick = sport.pickOfDay;
-  return `
-    <section class="hero">
-      <div class="hero-tag">Pick of the Day</div>
-      <h1 class="hero-title">${pick.player}</h1>
-      <div class="hero-subtitle">${pick.team} | ${pick.market} | ${pick.line}<br>${pick.context}<br>${pick.environment}</div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.odds}</div>
-          <div class="hero-stat-label">Odds</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.confidence}%</div>
-          <div class="hero-stat-label">Confidence</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.rate}</div>
-          <div class="hero-stat-label">Hit Rate</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${sport.games.length}</div>
-          <div class="hero-stat-label">Games Live</div>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-function renderToolbar(sport) {
-  return `
-    <div class="toolbar">
-      <div class="surface-toggle">
-        <button class="surface-btn ${state.surface === "dashboard" ? "active" : ""}" data-surface="dashboard">Dashboard</button>
-        <button class="surface-btn ${state.surface === "explorer" ? "active" : ""}" data-surface="explorer">Explorer</button>
-      </div>
-      <div class="chip-row">
-        ${(sport.filters || ["all"]).map((filter) => `
-          <button class="chip ${state.market === filter ? "active" : ""}" data-market="${filter}">
-            ${filter}
-          </button>
-        `).join("")}
-      </div>
-      <div class="toolbar-note">${sport.note || ""}</div>
-    </div>
-  `;
-}
-
-function renderGameCard(game) {
-  return `
-    <article class="game-card">
-      <div class="game-card-header">
-        <div>
-          <h3 class="game-title">${game.title}</h3>
-          <div class="game-subtitle">${game.meta}</div>
-        </div>
-        <div class="game-status">
-          <div class="game-status-label"><span class="status-dot"></span>${game.status}</div>
-          <div class="game-status-time">${game.start}</div>
-        </div>
-      </div>
-      <div class="game-card-body">
-        <div class="game-summary">
-          <div class="summary-box">
-            <div class="summary-value">${game.summary.plays}</div>
-            <div class="summary-label">Tracked Plays</div>
-          </div>
-          <div class="summary-box">
-            <div class="summary-value">${game.summary.core}</div>
-            <div class="summary-label">Core Reads</div>
-          </div>
-          <div class="summary-box">
-            <div class="summary-value">${game.summary.avgScore}</div>
-            <div class="summary-label">Avg Score</div>
-          </div>
-        </div>
-        <div class="pick-list">
-          ${game.topPicks.map((pick) => `
-            <div class="pick-row">
-              <div class="pick-left">
-                <span class="market-pill ${marketClass(pick.market)}">${pick.market}</span>
-                <div>
-                  <div class="pick-name">${pick.name}</div>
-                  <div class="pick-why">${pick.line} | ${pick.why}</div>
-                </div>
-              </div>
-              <div class="pick-right">
-                <span class="tier-pill ${tierClass(pick.tier)}">${pick.tier}</span>
-                <div class="confidence-wrap">
-                  <div class="confidence-bar">
-                    <div class="confidence-fill ${confidenceClass(pick.confidence)}" data-width="${pick.confidence}"></div>
-                  </div>
-                  <div class="confidence-text">${pick.confidence}%</div>
-                </div>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-        <div class="game-footer">
-          <div class="footer-note">${game.attackNote}</div>
-          <button class="link-btn" data-open-game="${game.id}">Open Slate</button>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderBoardView(sport) {
-  const games = filteredGames(sport);
-  return `
-    ${renderHero(sport)}
-    ${renderToolbar(sport)}
-    <div class="section-head">
-      <h2 class="section-title">Today's Games</h2>
-      <div class="section-meta">${games.length} games visible</div>
-    </div>
-    ${games.length ? `<div class="game-grid">${games.map(renderGameCard).join("")}</div>` : `<div class="empty">No games matched this search or market filter.</div>`}
-  `;
-}
-
-function renderExplorerView(sport) {
-  const rows = explorerRows(sport);
-  const gameOptions = [{ id: "all", title: "All Games" }, ...(sport.games || []).map((game) => ({ id: game.id, title: game.title }))];
-  const columns = [
-    ["player", "Player"],
-    ["gameTitle", "Game"],
-    ["team", "Team"],
-    ["market", "Market"],
-    ["line", "Line"],
-    ["score", "Score"],
-    ["tier", "Tier"],
-    ["last10", "L10"],
-    ["last5", "L5"],
-    ["last3", "L3"],
-    ["status", "Status"],
-    ["why", "Why"]
-  ];
-
-  return `
-    ${renderHero(sport)}
-    ${renderToolbar(sport)}
-    <div class="section-head">
-      <h2 class="section-title">Explorer Sheet</h2>
-      <div class="section-meta">${rows.length} rows visible</div>
-    </div>
-    <div class="explorer-shell">
-      <div class="explorer-toolbar">
-        <div class="explorer-controls">
-          <select class="explorer-select" id="explorer-game-filter">
-            ${gameOptions.map((game) => `<option value="${game.id}" ${state.gameFilter === game.id ? "selected" : ""}>${game.title}</option>`).join("")}
-          </select>
-          <select class="explorer-select" id="explorer-sort-key">
-            <option value="score" ${state.sortKey === "score" ? "selected" : ""}>Sort by Score</option>
-            <option value="confidence" ${state.sortKey === "confidence" ? "selected" : ""}>Sort by Confidence</option>
-            <option value="last10" ${state.sortKey === "last10" ? "selected" : ""}>Sort by L10</option>
-            <option value="last5" ${state.sortKey === "last5" ? "selected" : ""}>Sort by L5</option>
-            <option value="last3" ${state.sortKey === "last3" ? "selected" : ""}>Sort by L3</option>
-            <option value="player" ${state.sortKey === "player" ? "selected" : ""}>Sort by Player</option>
-          </select>
-          <select class="explorer-select" id="explorer-sort-dir">
-            <option value="desc" ${state.sortDir === "desc" ? "selected" : ""}>High to Low</option>
-            <option value="asc" ${state.sortDir === "asc" ? "selected" : ""}>Low to High</option>
-          </select>
-        </div>
-        <div class="explorer-meta">Dense table view for scanning parlays, game clusters, and hit-rate context.</div>
-      </div>
-      <div class="explorer-wrap">
-        <div class="explorer-scroll">
-          <div class="explorer-head">
-            ${columns.map(([key, label]) => `
-              <button class="explorer-sort ${state.sortKey === key ? "active" : ""}" data-sort-key="${key}">
-                <span>${label}</span>
-                <span class="sort-arrow">${state.sortKey === key ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"}</span>
-              </button>
-            `).join("")}
-          </div>
-          ${rows.length ? rows.map((row) => `
-            <div class="explorer-row" data-open-row="${row.gameId}" data-open-market="${normalize(row.market)}">
-              <div class="explorer-player">
-                <strong>${row.player}</strong>
-                <span>${row.line} | ${row.confidence}% confidence</span>
-              </div>
-              <div class="explorer-game">${row.gameTitle}</div>
-              <div>${row.team}</div>
-              <div><span class="market-pill ${marketClass(row.market)}">${row.market}</span></div>
-              <div class="line-mono">${row.line}</div>
-              <div><span class="metric-inline ${scoreClass(row.score)}">${Number(row.score).toFixed(1)}</span></div>
-              <div><span class="tier-pill ${tierClass(row.tier)}">${row.tier}</span></div>
-              <div>${row.last10}</div>
-              <div>${row.last5}</div>
-              <div>${row.last3}</div>
-              <div class="muted">${row.status}</div>
-              <div class="explorer-why">${row.why}</div>
-            </div>
-          `).join("") : `<div class="empty" style="margin: 18px;">No rows matched the current explorer filters.</div>`}
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderHighlightsView(sport) {
-  return `
-    <div class="section-head">
-      <h2 class="section-title">Highlights</h2>
-      <div class="section-meta">Separated from the board for cleaner research</div>
-    </div>
-    <div class="highlight-grid">
-      ${(sport.highlights || []).map((item) => `
-        <article class="highlight-card">
-          <div class="highlight-frame">
-            <iframe src="${item.url}" allowfullscreen title="${item.title}"></iframe>
-          </div>
-          <div class="highlight-copy">
-            <span class="highlight-tag ${item.sport}">${item.sport}</span>
-            <div class="highlight-title">${item.title}</div>
-            <div class="highlight-source">${item.source}</div>
-          </div>
-        </article>
-      `).join("")}
-    </div>
-  `;
-}
-
-function renderPlaceholderView(sport) {
-  return `
-    <div class="coming">
-      <h3>${sport.label} Coming Soon</h3>
-      <p>${sport.note || "This surface is reserved for the next feed."}</p>
-    </div>
-  `;
-}
-
-function renderViews() {
-  const views = document.getElementById("views");
-  views.innerHTML = Object.entries(state.data.sports).map(([key, sport]) => {
-    let content = "";
-    if (key === "highlights") {
-      content = renderHighlightsView(sport);
-    } else if (sport.games && sport.games.length) {
-      content = state.surface === "explorer" ? renderExplorerView(sport) : renderBoardView(sport);
-    } else {
-      content = renderPlaceholderView(sport);
-    }
-    return `<section class="view ${state.sport === key ? "active" : ""}" id="view-${key}">${content}</section>`;
-  }).join("");
-
-  document.querySelectorAll("[data-surface]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.surface = button.dataset.surface;
-      if (state.surface === "dashboard") {
-        state.gameFilter = "all";
+async function loadSignalBoards() {
+  const entries = await Promise.all(Object.entries(SIGNAL_FILES).map(async ([sport, url]) => {
+    try {
+      const json = await fetchJson(url);
+      return [sport, normalizeSignalBoard(json, sport)];
+    } catch (error) {
+      try {
+        const json = await fetchJson(`/api/signal-board/${sport}`);
+        return [sport, normalizeSignalBoard(json, sport)];
+      } catch (nested) {
+        return [sport, normalizeSignalBoard({
+          sport: sport.toUpperCase(),
+          title: `${sport.toUpperCase()} Signal Board`,
+          subtitle: "No saved bot board found yet.",
+          generated_at: null,
+          sections: [],
+          games: [],
+          notes: ["Waiting on the Discord bot to save the latest board output."],
+          image: SIGNAL_IMAGES[sport]
+        }, sport)];
       }
-      render();
-    });
-  });
+    }
+  }));
 
-  document.querySelectorAll("[data-market]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.market = button.dataset.market;
-      if (state.surface === "dashboard") {
-        state.gameFilter = "all";
-      }
-      render();
-    });
-  });
-
-  const gameFilter = document.getElementById("explorer-game-filter");
-  if (gameFilter) {
-    gameFilter.addEventListener("change", (event) => {
-      state.gameFilter = event.target.value;
-      render();
-    });
-  }
-
-  const sortKey = document.getElementById("explorer-sort-key");
-  if (sortKey) {
-    sortKey.addEventListener("change", (event) => {
-      state.sortKey = event.target.value;
-      render();
-    });
-  }
-
-  const sortDir = document.getElementById("explorer-sort-dir");
-  if (sortDir) {
-    sortDir.addEventListener("change", (event) => {
-      state.sortDir = event.target.value;
-      render();
-    });
-  }
-
-  document.querySelectorAll("[data-sort-key]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const key = button.dataset.sortKey;
-      if (state.sortKey === key) {
-        state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
-      } else {
-        state.sortKey = key;
-        state.sortDir = key === "player" || key === "gameTitle" || key === "market" ? "asc" : "desc";
-      }
-      render();
-    });
-  });
-
-  document.querySelectorAll("[data-open-game]").forEach((button) => {
-    button.addEventListener("click", () => openGame(button.dataset.openGame));
-  });
-
-  document.querySelectorAll("[data-open-row]").forEach((row) => {
-    row.addEventListener("click", () => {
-      state.modalMarket = row.dataset.openMarket || "all";
-      openGame(row.dataset.openRow);
-    });
-  });
-
-  animateConfidence();
+  state.signalBoards = Object.fromEntries(entries);
+  state.signalSport = latestSignalSport();
 }
 
-function animateConfidence() {
-  document.querySelectorAll(".confidence-fill").forEach((fill) => {
-    requestAnimationFrame(() => {
-      fill.style.width = fill.dataset.width + "%";
-    });
-  });
-}
-
-function openGame(gameId) {
-  const sport = getCurrentSport();
-  const game = (sport.games || []).find((entry) => entry.id === gameId);
-  if (!game) return;
-  state.modalGameId = gameId;
-  if (!state.modalMarket) state.modalMarket = "all";
-  renderModal(game);
-}
-
-function closeModal() {
-  state.modalGameId = null;
-  document.getElementById("game-modal").classList.remove("open");
-  document.getElementById("game-modal").setAttribute("aria-hidden", "true");
-}
-
-function renderModal(game) {
-  const modal = document.getElementById("game-modal");
-  document.getElementById("modal-title").textContent = game.title;
-  document.getElementById("modal-subtitle").textContent = game.meta + " | " + game.attackNote;
-  document.getElementById("modal-status").textContent = game.lineupStatus;
-  document.getElementById("modal-toolbar-note").textContent = "Showing " + filteredRoster(game).length + " tracked rows for " + game.title + ".";
-
-  const markets = ["all", ...new Set((game.roster || []).map((row) => normalize(row.market)))];
-  document.getElementById("modal-market-row").innerHTML = markets.map((market) => `
-    <button class="mini-chip ${state.modalMarket === market ? "active" : ""}" data-modal-market="${market}">
-      ${market}
-    </button>
-  `).join("");
-
-  document.querySelectorAll("[data-modal-market]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.modalMarket = button.dataset.modalMarket;
-      renderModal(game);
-    });
-  });
-
-  document.getElementById("modal-roster").innerHTML = filteredRoster(game).map((row) => `
-    <div class="roster-row">
-      <div class="roster-player" data-label="Player">
-        <strong>${row.player}</strong>
-        <span>${row.line}</span>
-      </div>
-      <div data-label="Team">${row.team}</div>
-      <div data-label="Market"><span class="market-pill ${marketClass(row.market)}">${row.market}</span></div>
-      <div data-label="Line">${row.line}</div>
-      <div data-label="Score"><span class="metric-inline ${scoreClass(row.score)}">${row.score.toFixed(1)}</span></div>
-      <div data-label="L10">${row.last10}</div>
-      <div data-label="L5">${row.last5}</div>
-      <div data-label="L3">${row.last3}</div>
-      <div data-label="Status"><span class="tier-pill ${tierClass(row.tier)} table-tier">${row.status}</span></div>
-      <div data-label="Why">${row.why}</div>
-    </div>
-  `).join("") || `<div class="empty" style="margin-top: 18px;">No rows matched the current market or search.</div>`;
-
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
+async function loadLiveBoard() {
+  state.liveBoard = await fetchJson("/api/live-board");
 }
 
 function renderHeader() {
-  document.getElementById("header-date").textContent = formatDateLabel(state.data.updatedAt);
-  const mode = state.data.sourceMode || "Bootstrap";
-  const modeShort = mode.toLowerCase().includes("live") ? "Live" : mode.toLowerCase().includes("sample") ? "Sample" : "Ready";
-  document.getElementById("header-mode").textContent = modeShort;
+  const liveUpdated = state.liveBoard && state.liveBoard.updatedAt ? state.liveBoard.updatedAt : "Waiting";
+  document.getElementById("header-updated").textContent = liveUpdated;
+  const latest = state.signalBoards[latestSignalSport()];
+  document.getElementById("header-signal-status").textContent = latest && latest.generatedAt ? prettyDate(latest.generatedAt) : "Waiting";
 }
 
-function render() {
-  syncActiveSport();
-  renderHeader();
-  renderTicker(state.data);
-  renderTabs();
-  renderViews();
-  renderSidebar();
-}
-
-async function loadBoardData() {
-  if (window.BOARD_DATA) {
-    return window.BOARD_DATA;
-  }
-
-  for (const endpoint of API_CANDIDATES) {
-    try {
-      const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
-      if (!response.ok) continue;
-      const json = await response.json();
-      if (json && json.sports) {
-        return json;
-      }
-    } catch (error) {
-      continue;
-    }
-  }
-
-  return SAMPLE_DATA;
-}
-
-const searchInput = document.getElementById("search-input");
-if (searchInput) {
-  searchInput.addEventListener("input", (event) => {
-    state.search = event.target.value || "";
-    render();
-    if (state.modalGameId) {
-      const sport = getCurrentSport();
-      const game = (sport.games || []).find((entry) => entry.id === state.modalGameId);
-      if (game) renderModal(game);
-    }
+function renderPageNav() {
+  document.querySelectorAll(".page-btn").forEach((button) => {
+    button.classList.toggle("active", button.dataset.page === state.page);
+  });
+  document.querySelectorAll(".page").forEach((page) => {
+    page.classList.toggle("active", page.id === `page-${state.page}`);
   });
 }
 
-document.getElementById("modal-close").addEventListener("click", closeModal);
-document.getElementById("modal-backdrop").addEventListener("click", closeModal);
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeModal();
+function renderLiveBoard() {
+  const payload = state.liveBoard || { sports: {} };
+  const liveList = document.getElementById("live-list");
+  const liveNotes = document.getElementById("live-notes");
+  const meta = document.getElementById("live-meta");
+
+  const sports = state.liveSport === "all" ? ["mlb", "nba"] : [state.liveSport];
+  const games = sports.flatMap((sport) => (payload.sports?.[sport]?.games || []).map((game) => ({ ...game, sport })));
+
+  meta.textContent = games.length ? `${games.length} games on the board` : "No live games found";
+
+  if (!games.length) {
+    liveList.innerHTML = '<div class="empty-state">No live games available right now.</div>';
+  } else {
+    liveList.innerHTML = games.map((game) => `
+      <div class="live-row">
+        <div class="live-head">
+          <div>
+            <div class="live-title">${escapeHtml(game.matchup)}</div>
+            <div class="detail-line">${escapeHtml(game.start || "")}${game.detail ? " | " + escapeHtml(game.detail) : ""}</div>
+          </div>
+          <div class="status-pill">${escapeHtml(game.status || "Scheduled")}</div>
+        </div>
+        <div class="score-line">${escapeHtml(game.score || "0 - 0")}</div>
+      </div>
+    `).join("");
+  }
+
+  const notes = [];
+  sports.forEach((sport) => {
+    const note = payload.sports?.[sport]?.note;
+    if (note) notes.push(`${sport.toUpperCase()}: ${note}`);
+  });
+  liveNotes.innerHTML = notes.length
+    ? notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")
+    : "<li>Live Board is pulling schedule and score data separately from the bot-generated signal board.</li>";
+}
+
+function renderSignalBoard() {
+  const sport = state.signalSport;
+  const board = state.signalBoards[sport];
+  document.querySelectorAll("[data-signal-sport]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.signalSport === sport);
+  });
+
+  document.getElementById("signal-title").textContent = board?.title || `${sport.toUpperCase()} Signal Board`;
+  document.getElementById("signal-subtitle").textContent = board?.subtitle || "Waiting on saved bot output.";
+  document.getElementById("signal-sport-label").textContent = sport.toUpperCase();
+  document.getElementById("signal-generated").textContent = board?.generatedAt ? prettyDate(board.generatedAt) : "--";
+  document.getElementById("signal-meta").textContent = board?.generatedAt
+    ? `Latest available ${sport.toUpperCase()} board loaded from saved bot output`
+    : `Waiting for the latest ${sport.toUpperCase()} bot run`;
+
+  const pickWrap = document.getElementById("signal-pick");
+  if (board?.pickOfDay) {
+    const pick = board.pickOfDay;
+    pickWrap.innerHTML = `
+      <div class="pick-card">
+        <div class="eyebrow">Pick of the Day</div>
+        <div class="pick-name">${escapeHtml(pick.player || pick.name || "Board Anchor")}</div>
+        <div class="pick-copy">
+          ${escapeHtml(pick.market || "")}${pick.line ? " | " + escapeHtml(pick.line) : ""}
+          ${pick.team ? " | " + escapeHtml(pick.team) : ""}
+        </div>
+        <div class="pick-copy" style="margin-top:8px;">${escapeHtml(pick.summary || pick.environment || pick.context || "")}</div>
+      </div>
+    `;
+  } else {
+    pickWrap.innerHTML = '<div class="empty-state">No pick of the day saved in this board yet.</div>';
+  }
+
+  const sectionWrap = document.getElementById("signal-sections");
+  if (board?.sections?.length) {
+    sectionWrap.innerHTML = board.sections.map((section) => `
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-title">${escapeHtml(section.title || "Section")}</div>
+          <div class="section-tag">${escapeHtml(section.tag || board.sport)}</div>
+        </div>
+        <table class="plays-table">
+          <thead><tr><th>Player</th><th>Market</th><th>Confidence</th><th>Why</th></tr></thead>
+          <tbody>
+            ${(section.items || []).map((item) => `
+              <tr>
+                <td>${escapeHtml(item.player || item.name || "--")}</td>
+                <td>${escapeHtml(item.market || item.line || "--")}</td>
+                <td>${escapeHtml(String(item.confidence || item.score || "--"))}</td>
+                <td>${escapeHtml(item.why || item.reason || item.note || "--")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `).join("");
+  } else {
+    sectionWrap.innerHTML = '<div class="empty-state">No structured section data yet. The image fallback stays available on the right.</div>';
+  }
+
+  const gamesWrap = document.getElementById("signal-games");
+  if (board?.games?.length) {
+    gamesWrap.innerHTML = board.games.map((game) => `
+      <div class="game-block">
+        <div class="game-head">
+          <div class="game-title">${escapeHtml(game.matchup || game.title || "Game")}</div>
+          <div class="game-tag">${escapeHtml(game.tag || "Signal")}</div>
+        </div>
+        <div class="detail-line">${escapeHtml(game.note || game.summary || "")}</div>
+        ${(game.plays || []).length ? `
+          <table class="plays-table">
+            <thead><tr><th>Player</th><th>Market</th><th>Confidence</th><th>Why</th></tr></thead>
+            <tbody>
+              ${(game.plays || []).map((item) => `
+                <tr>
+                  <td>${escapeHtml(item.player || item.name || "--")}</td>
+                  <td>${escapeHtml(item.market || item.line || "--")}</td>
+                  <td>${escapeHtml(String(item.confidence || item.score || "--"))}</td>
+                  <td>${escapeHtml(item.why || item.reason || item.note || "--")}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        ` : ""}
+      </div>
+    `).join("");
+  } else {
+    gamesWrap.innerHTML = '<div class="empty-state">No saved game breakdowns in this board yet.</div>';
+  }
+
+  const notesWrap = document.getElementById("signal-notes");
+  notesWrap.innerHTML = (board?.notes || [])
+    .map((note) => `<li>${escapeHtml(note)}</li>`)
+    .join("") || "<li>The Signal Board only changes when the bot saves a new board artifact.</li>";
+
+  const image = document.getElementById("signal-image");
+  const placeholder = document.getElementById("signal-image-placeholder");
+  image.src = `${board?.image || SIGNAL_IMAGES[sport]}?ts=${Date.now()}`;
+  image.style.display = "block";
+  placeholder.style.display = "none";
+  image.onerror = () => {
+    image.style.display = "none";
+    placeholder.style.display = "block";
+  };
+}
+
+function render() {
+  renderHeader();
+  renderPageNav();
+  renderLiveBoard();
+  renderSignalBoard();
+}
+
+document.querySelectorAll(".page-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.page = button.dataset.page;
+    renderPageNav();
+  });
 });
 
-loadBoardData().then((data) => {
-  state.data = data;
+document.querySelectorAll("[data-live-sport]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.liveSport = button.dataset.liveSport;
+    document.querySelectorAll("[data-live-sport]").forEach((btn) => btn.classList.toggle("active", btn === button));
+    renderLiveBoard();
+  });
+});
+
+document.querySelectorAll("[data-signal-sport]").forEach((button) => {
+  button.addEventListener("click", () => {
+    state.signalSport = button.dataset.signalSport;
+    renderSignalBoard();
+  });
+});
+
+async function boot() {
+  await Promise.all([loadSignalBoards(), loadLiveBoard()]);
   render();
-});
+}
 
+boot();
+setInterval(() => {
+  Promise.all([loadSignalBoards(), loadLiveBoard()]).then(render).catch(() => {});
+}, 300000);
 
-
-const BR_COOKIE = "board_session_v2";
+const BR_COOKIE = "board_session_v3";
 let BR = { active:false, starting:0, deployed:0, tickets:[], won:0, date:"" };
 
 function brFmt(n){ return "$"+Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
-
 function brSetCk(v,days=365){
   const e=new Date(Date.now()+days*864e5).toUTCString();
   document.cookie=BR_COOKIE+"="+encodeURIComponent(JSON.stringify(v))+";expires="+e+";path=/;SameSite=Lax";
@@ -2640,7 +1044,6 @@ function brGetCk(){
   try{return JSON.parse(decodeURIComponent(m[1]));}catch{return null;}
 }
 function brDelCk(){ document.cookie=BR_COOKIE+"=;expires=Thu,01 Jan 1970 00:00:00 GMT;path=/"; }
-
 function brSave(){ brSetCk(BR); }
 
 function brLoad(){
@@ -2656,21 +1059,20 @@ function brLoad(){
   }
 }
 
+function brShowActive(){
+  document.getElementById("br-setup").style.display="none";
+  document.getElementById("br-active").style.display="block";
+}
+
 function brStart(){
   const v=parseFloat(document.getElementById("br-inp").value);
   if(!v||v<=0){
-    document.getElementById("br-inp").style.borderColor="var(--red)";
-    setTimeout(()=>document.getElementById("br-inp").style.borderColor="var(--line)",1500);
-    brToast("Enter a valid balance","err"); return;
+    brToast("Enter a valid balance","err");
+    return;
   }
   BR={active:true,starting:v,deployed:0,tickets:[],won:0,date:new Date().toDateString()};
   brSave(); brShowActive(); brUpdateUI();
   brToast("Session started — "+brFmt(v)+" loaded","ok");
-}
-
-function brShowActive(){
-  document.getElementById("br-setup").style.display="none";
-  document.getElementById("br-active").style.display="block";
 }
 
 function brReset(){
@@ -2686,15 +1088,12 @@ function brReset(){
 }
 
 function brAddTix(){
+  if(!BR.active){ brToast("Start a session first","warn"); return; }
   const w=parseFloat(document.getElementById("tf-w").value);
   const p=parseFloat(document.getElementById("tf-p").value)||0;
   const l=document.getElementById("tf-l").value.trim()||"Unnamed Ticket";
   const s=document.getElementById("tf-s").value;
-  if(!w||w<=0){
-    document.getElementById("tf-w").style.borderColor="var(--red)";
-    setTimeout(()=>document.getElementById("tf-w").style.borderColor="var(--line)",1500);
-    brToast("Enter a valid wager","err"); return;
-  }
+  if(!w||w<=0){ brToast("Enter a valid wager","err"); return; }
   const rem=BR.starting-BR.deployed;
   if(w>rem){ brToast("Over budget — only "+brFmt(rem)+" remaining","err"); return; }
   const m25=BR.starting*0.25;
@@ -2716,7 +1115,7 @@ function brSettle(id,res){
     if(isNaN(a)||a<0)return;
     t.cashout=a; BR.won+=a; brToast("Cashed out "+brFmt(a)+" ✓","ok");
   }else if(res==="win"){
-    BR.won+=t.payout; brToast(t.label+" — WIN +"+brFmt(t.payout)+" 🎉","ok");
+    BR.won+=t.payout; brToast(t.label+" — WIN +"+brFmt(t.payout),"ok");
   }else{
     brToast(t.label+" — Loss","err");
   }
@@ -2734,7 +1133,7 @@ function brRemove(id){
 
 function brRenderTix(){
   const list=document.getElementById("tix-list");
-  if(!BR.tickets.length){list.innerHTML="";return;}
+  if(!BR.tickets.length){ list.innerHTML='<div class="empty-state">No tickets added yet.</div>'; return; }
   const ic={pending:"⏳",win:"✅",loss:"❌",cashout:"💰"};
   const cl={pending:"var(--text-3)",win:"var(--green)",loss:"var(--red)",cashout:"var(--gold)"};
   list.innerHTML=BR.tickets.map(t=>`
@@ -2743,19 +1142,19 @@ function brRenderTix(){
         <span class="tix-sport-tag ${t.sport}">${t.sport}</span>
         <span>${ic[t.status]}</span>
       </div>
-      <div class="tix-label">${t.label}</div>
+      <div class="tix-label">${escapeHtml(t.label)}</div>
       <div class="tix-nums">
         <span>Wager: <strong>${brFmt(t.wager)}</strong></span>
         <span>To Win: <strong class="tix-win-amt">${t.payout?brFmt(t.payout):"—"}</strong></span>
-        <span style="color:${cl[t.status]};font-weight:700;font-size:9px;text-transform:uppercase;">${t.status}</span>
+        <span style="color:${cl[t.status]};font-weight:700;text-transform:uppercase;">${t.status}</span>
       </div>
-      ${t.status==="pending"?`
+      ${t.status==="pending" ? `
       <div class="tix-actions">
-        <button class="tix-btn win"  onclick="brSettle(${t.id},'win')">Win</button>
+        <button class="tix-btn win" onclick="brSettle(${t.id},'win')">Win</button>
         <button class="tix-btn loss" onclick="brSettle(${t.id},'loss')">Loss</button>
         <button class="tix-btn cash" onclick="brSettle(${t.id},'cashout')">Cash</button>
-        <button class="tix-btn rm"   onclick="brRemove(${t.id})">✕</button>
-      </div>`:""}
+        <button class="tix-btn rm" onclick="brRemove(${t.id})">✕</button>
+      </div>` : ""}
     </div>
   `).join("");
 }
@@ -2804,9 +1203,16 @@ function brToast(msg,t="ok"){
   el._timer=setTimeout(()=>el.classList.remove("show"),2800);
 }
 
-// Auto-load session on page ready
-document.addEventListener("DOMContentLoaded",()=>{ brLoad(); });
-
+document.getElementById("br-start-btn").addEventListener("click", brStart);
+document.getElementById("br-reset-btn").addEventListener("click", brReset);
+document.getElementById("tf-add-btn").addEventListener("click", brAddTix);
+document.getElementById("br-inp").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") brStart();
+});
+document.getElementById("tf-l").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") brAddTix();
+});
+document.addEventListener("DOMContentLoaded", brLoad);
 </script>
 </body>
 </html>

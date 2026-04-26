@@ -1,0 +1,78 @@
+{
+  "sport": "NBA",
+  "board_type": "signal-board",
+  "generated_at": "2026-04-25T11:00:00-04:00",
+  "title": "NBA Signal Board",
+  "subtitle": "Latest saved NBA board from the Discord bot.",
+  "image": "/images/nba-signal-board.png",
+  "pick_of_day": {
+    "player": "Nikola Jokic",
+    "market": "10+ AST",
+    "line": "-146",
+    "team": "MIN @ DEN",
+    "summary": "Back-home distributor lane with strong body-of-work support."
+  },
+  "sections": [
+    {
+      "title": "Points",
+      "tag": "Scoring",
+      "items": [
+        {
+          "player": "Jalen Brunson",
+          "market": "25+ Points",
+          "confidence": "74%",
+          "why": "Home usage anchor and stable playoff minutes."
+        }
+      ]
+    },
+    {
+      "title": "Assists",
+      "tag": "Creation",
+      "items": [
+        {
+          "player": "Nikola Jokic",
+          "market": "10+ Assists",
+          "confidence": "76%",
+          "why": "Body of work and game environment both support the lane."
+        }
+      ]
+    },
+    {
+      "title": "Ladders",
+      "tag": "Sleepers",
+      "items": [
+        {
+          "player": "Jalen Johnson",
+          "market": "REB ladder 8+ / 10+ / 12+",
+          "confidence": "Trending up",
+          "why": "Role and recent game shape fit the ladder better than chasing random sides."
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "matchup": "MIN @ DEN",
+      "tag": "Ladder Game",
+      "note": "Keep Jokic ladders and assist lanes separate from dream-ticket variance.",
+      "plays": [
+        {
+          "player": "Nikola Jokic",
+          "market": "10+ Assists",
+          "confidence": "76%",
+          "why": "Core lane."
+        },
+        {
+          "player": "Nikola Jokic",
+          "market": "12+ Rebounds",
+          "confidence": "Strong",
+          "why": "Dream ladder add-on."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "This file is the website-facing copy of the latest NBA board output.",
+    "Keep Signal Board and Live Board separate."
+  ]
+}

@@ -1,49 +1,69 @@
 # The Board
 
-Sports betting signal board — MLB, NBA, WNBA, Soccer.
+Website for live sports scanning plus saved bot-generated signal boards.
 
-Live props, ladders, daily picks, and session bankroll tracking.
+## Architecture
 
-## Stack
+The Discord bot is the producer.
 
-- **Frontend** — Vanilla JS SPA (`web/index.html`)
-- **Backend** — Python aiohttp (`site_server.py`)
-- **Data** — Bot pipeline feeds `site_payload.py` → JSON API → frontend
-- **Deploy** — Render.com (free tier)
+- `/hrimage` and daily MLB output should publish:
+  - `public/data/mlb-signal-board.json`
+  - `public/images/mlb-signal-board.png`
+- `/nbaimage` and daily NBA output should publish:
+  - `public/data/nba-signal-board.json`
+  - `public/images/nba-signal-board.png`
 
-## Local Dev
+The website is the consumer.
+
+- `Signal Board` reads the latest saved JSON files on page load
+- if JSON render is thin or unavailable, the page falls back to the latest PNG
+- `Live Board` is a separate API surface for today’s schedule and live scores
+- `Bankroll` is local browser session state only
+
+## Bot-to-site publishing helper
+
+Use [signal_board_store.py](C:/Users/bword/Documents/the-board-site/signal_board_store.py) from the bot side:
+
+```python
+from signal_board_store import publish_signal_board
+
+publish_signal_board(
+    "mlb",
+    payload=mlb_board_payload,
+    image_path="exports/mlb-signal-board.png",
+)
+```
+
+The same pattern works for `"nba"`.
+
+## Routes
+
+- `/` -> website
+- `/api/live-board` -> live scoreboard payload
+- `/api/signal-board/mlb` -> latest MLB saved board
+- `/api/signal-board/nba` -> latest NBA saved board
+- `/data/...` -> saved JSON board artifacts
+- `/images/...` -> saved PNG board artifacts
+- `/healthz` -> health check
+
+## Local run
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env
 python site_server.py
-# Open http://localhost:8000
 ```
 
-## Deploy to Render
+Then open `http://localhost:8000`.
 
-1. Push to GitHub
-2. New Web Service on Render → connect this repo
-3. Runtime: Python 3
-4. Build Command: `pip install -r requirements.txt`
-5. Start Command: `python site_server.py`
-6. Add env vars from `.env.example`
+## Deploy
 
-## Features
+Render can run this directly with:
 
-- MLB / NBA / WNBA / Soccer tabs
-- Game cards with picks, confidence tiers, why notes
-- Explorer view — dense table for parlay scanning
-- Click-through game modal with full roster breakdown
-- Highlights tab — YouTube embeds
-- Session Bankroll tracker — cookie-persistent, per-session
-  - Enter FanDuel balance → track deployed / remaining
-  - Add tickets with wager + payout
-  - Settle as Win / Loss / Cash Out
-  - P&L tracking
-  - 25% max bet rule enforced
+- Build command: `pip install -r requirements.txt`
+- Start command: `python site_server.py`
 
-## Sports Coming Soon
+## Current shape
 
-- WNBA (when season tips)
-- Soccer (EPL, MLS, Champions League)
+- `Live Board`: compact scoreboard and status view
+- `Signal Board`: latest bot-generated MLB/NBA board
+- `Bankroll`: cookie-backed session tracker

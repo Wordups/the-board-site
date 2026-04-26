@@ -1,0 +1,72 @@
+{
+  "sport": "MLB",
+  "board_type": "signal-board",
+  "generated_at": "2026-04-25T11:30:00-04:00",
+  "title": "MLB Signal Board",
+  "subtitle": "Latest saved MLB board from the Discord bot.",
+  "image": "/images/mlb-signal-board.png",
+  "pick_of_day": {
+    "player": "Kyle Schwarber",
+    "market": "HR 1+",
+    "line": "+210",
+    "team": "CHC @ PHI",
+    "summary": "Best carry spot on the board with wind out and a premium lefty power lane."
+  },
+  "sections": [
+    {
+      "title": "HR Picks",
+      "tag": "Power",
+      "items": [
+        {
+          "player": "Kyle Schwarber",
+          "market": "HR 1+",
+          "confidence": "78%",
+          "why": "Wind out at Citizens Bank and pure barrel lane."
+        },
+        {
+          "player": "Bryce Harper",
+          "market": "HR 1+",
+          "confidence": "69%",
+          "why": "Same game stack with better floor if the lane stays hot."
+        }
+      ]
+    },
+    {
+      "title": "TB Plays",
+      "tag": "Contact",
+      "items": [
+        {
+          "player": "Gunnar Henderson",
+          "market": "Over 1.5 TB",
+          "confidence": "72%",
+          "why": "Fly-ball pitcher and hitter-friendly weather."
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "matchup": "CHC @ PHI",
+      "tag": "Top Game",
+      "note": "Best HR environment on the slate. Tight stack lane without spreading across random games.",
+      "plays": [
+        {
+          "player": "Kyle Schwarber",
+          "market": "HR 1+",
+          "confidence": "78%",
+          "why": "Wind out and premium lift profile."
+        },
+        {
+          "player": "Bryce Harper",
+          "market": "HR 1+",
+          "confidence": "69%",
+          "why": "Strong same-game secondary power lane."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "This file is the website-facing copy of the latest MLB board output.",
+    "When the bot reruns, it should overwrite this file and the paired PNG."
+  ]
+}
