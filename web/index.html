@@ -1,1393 +1,743 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Board</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #050505;
-  --panel: #111111;
-  --panel-2: #181818;
-  --panel-3: #202020;
-  --line: #292929;
-  --line-strong: #3a3a3a;
-  --text: #f5f5f5;
-  --text-2: #b7b7b7;
-  --text-3: #737373;
-  --gold: #f5a623;
-  --gold-soft: rgba(245,166,35,.12);
-  --green: #24d38a;
-  --green-soft: rgba(36,211,138,.12);
-  --red: #ff5f57;
-  --red-soft: rgba(255,95,87,.12);
-  --blue: #55a8ff;
-  --blue-soft: rgba(85,168,255,.14);
-  --purple: #cb74ff;
-  --purple-soft: rgba(203,116,255,.14);
-  --radius: 14px;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgba(245,166,35,.08), transparent 24%),
-    radial-gradient(circle at left bottom, rgba(85,168,255,.06), transparent 26%),
-    var(--bg);
-  color: var(--text);
-  font-family: "Inter", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-button, input, select { font: inherit; }
-button { cursor: pointer; }
-a { color: inherit; }
-table { border-collapse: collapse; width: 100%; }
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: rgba(5,5,5,.94);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--line);
-}
-
-.header-inner {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, rgba(245,166,35,.22), rgba(245,166,35,.08));
-  border: 1px solid rgba(245,166,35,.28);
-  color: var(--gold);
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 20px;
-  letter-spacing: 1px;
-}
-
-.brand-title {
-  margin: 0;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 3px;
-  font-size: 34px;
-  line-height: .95;
-}
-
-.brand-sub {
-  color: var(--text-3);
-  font-size: 11px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
-
-.header-meta {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.chip {
-  min-width: 118px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-}
-
-.chip-label {
-  color: var(--text-3);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1.1px;
-}
-
-.chip-value {
-  margin-top: 2px;
-  color: var(--gold);
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
-
-.page-nav {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 20px 14px;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-}
-
-.page-btn,
-.sport-btn,
-.board-btn {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--text-2);
-  padding: 10px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  white-space: nowrap;
-}
-
-.page-btn.active,
-.sport-btn.active,
-.board-btn.active {
-  background: var(--gold-soft);
-  border-color: rgba(245,166,35,.35);
-  color: var(--gold);
-}
-
-main {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.page { display: none; }
-.page.active { display: block; }
-
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.panel {
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.16);
-}
-
-.eyebrow {
-  color: var(--text-3);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.hero-title {
-  margin: 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 42px;
-  letter-spacing: 2px;
-  line-height: .95;
-}
-
-.hero-copy,
-.muted {
-  color: var(--text-2);
-  line-height: 1.6;
-  font-size: 14px;
-}
-
-.hero-copy { margin-top: 8px; }
-
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.toolbar-group {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.metric {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--panel-2);
-  padding: 12px;
-}
-
-.metric-label {
-  color: var(--text-3);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-}
-
-.metric-value {
-  margin-top: 5px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-}
-
-.metric-value.gold { color: var(--gold); }
-.metric-value.green { color: var(--green); }
-.metric-value.blue { color: var(--blue); }
-
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
-  gap: 18px;
-}
-
-.stack {
-  display: grid;
-  gap: 12px;
-}
-
-.list-block,
-.game-row,
-.live-row,
-.pick-row {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--panel-2);
-}
-
-.list-block,
-.game-row,
-.live-row {
-  padding: 14px 16px;
-}
-
-.live-head,
-.game-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.live-title,
-.game-title {
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.score-line {
-  margin-top: 8px;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
-  letter-spacing: 1px;
-}
-
-.detail-line {
-  color: var(--text-3);
-  font-size: 12px;
-  margin-top: 6px;
-  line-height: 1.5;
-}
-
-.status-pill,
-.tag-pill,
-.sport-pill {
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  padding: 4px 8px;
-  color: var(--text-2);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-}
-
-.status-pill.outlook {
-  color: var(--blue);
-  border-color: rgba(85,168,255,.3);
-  background: var(--blue-soft);
-}
-
-.status-pill.confirmed {
-  color: var(--green);
-  border-color: rgba(36,211,138,.3);
-  background: var(--green-soft);
-}
-
-.signal-table,
-.trend-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.signal-table th,
-.signal-table td,
-.trend-table th,
-.trend-table td {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  text-align: left;
-  vertical-align: top;
-}
-
-.signal-table th,
-.trend-table th {
-  color: var(--text-3);
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-}
-
-.signal-table tr:last-child td,
-.trend-table tr:last-child td { border-bottom: 0; }
-
-.signal-score {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 1px;
-  font-size: 20px;
-}
-
-.tag-core { color: var(--green); }
-.tag-strong { color: var(--gold); }
-.tag-watch { color: var(--blue); }
-.tag-thin { color: var(--text-3); }
-
-.pick-row {
-  padding: 14px 16px;
-}
-
-.pick-name {
-  font-size: 24px;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 1px;
-}
-
-.pick-support {
-  margin-top: 8px;
-  color: var(--text-2);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.empty-state {
-  border: 1px dashed var(--line-strong);
-  border-radius: 16px;
-  padding: 20px;
-  color: var(--text-3);
-  text-align: center;
-}
-
-.empty-state.small { padding: 16px; }
-
-.notes {
-  margin: 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 8px;
-}
-
-.notes li {
-  color: var(--text-2);
-  line-height: 1.6;
-  font-size: 13px;
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.bankroll-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
-  gap: 18px;
-}
-
-.br-setup-note { font-size: 12px; color: var(--text-3); margin-bottom: 10px; line-height: 1.6; }
-.br-input-row { display: flex; gap: 8px; margin-bottom: 8px; }
-.br-prefix-wrap { position: relative; flex: 1; }
-.br-prefix { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 13px; font-weight: 600; pointer-events: none; }
-.br-number-input { width: 100%; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 10px 12px 10px 24px; color: var(--text); font-size: 16px; font-weight: 700; font-family: "Bebas Neue", sans-serif; letter-spacing: 1px; outline: none; }
-.br-go-btn { background: var(--gold); color: #000; border: none; border-radius: 999px; padding: 10px 16px; font-family: "Bebas Neue", sans-serif; font-size: 14px; letter-spacing: 2px; }
-.br-amount { font-family: "Bebas Neue", sans-serif; font-size: 40px; letter-spacing: 1px; line-height: 1; }
-.br-sublabel { font-size: 11px; color: var(--text-3); margin: 4px 0 14px; }
-.br-prog-header { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3); margin-bottom: 5px; }
-.br-prog-track { height: 4px; background: var(--line-strong); border-radius: 999px; overflow: hidden; margin-bottom: 14px; }
-.br-prog-fill { height: 100%; border-radius: 999px; transition: width .4s ease, background .3s; }
-.br-stat-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 11px; border-bottom: 1px solid rgba(255,255,255,.06); }
-.br-stat-row span { color: var(--text-3); }
-.br-pos { color: var(--green) !important; }
-.br-neg { color: var(--red) !important; }
-.br-acc { color: var(--gold) !important; }
-.br-reset-btn { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--text-3); font-size: 10px; }
-.br-head-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2px; }
-.tf-section { margin-top: 14px; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.06); }
-.tf-section-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
-.tf-row { display: flex; gap: 6px; margin-bottom: 6px; }
-.tf-input, .tf-select { flex: 1; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: var(--text); font-size: 11px; outline: none; min-width: 0; }
-.tf-input.pf { padding-left: 20px; }
-.tf-wrap { position: relative; flex: 1; min-width: 0; }
-.tf-pfx { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-size: 11px; }
-.tf-add-btn { background: var(--gold-soft); border: 1px solid rgba(245,166,35,.35); border-radius: 999px; padding: 8px 13px; color: var(--gold); font-size: 11px; font-weight: 700; }
-.tix-list { margin-top: 10px; display: grid; gap: 8px; }
-.tix-item { background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
-.tix-item.settled { opacity: .6; }
-.tix-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-.tix-sport-tag { font-size: 8px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 7px; border-radius: 999px; }
-.tix-sport-tag.MLB { background: rgba(224,49,49,.18); color: #fa5252; }
-.tix-sport-tag.NBA { background: rgba(25,113,194,.18); color: #74c0fc; }
-.tix-sport-tag.WNBA { background: rgba(247,103,7,.18); color: #ff922b; }
-.tix-sport-tag.SOC { background: rgba(47,158,68,.18); color: #69db7c; }
-.tix-label { font-size: 12px; font-weight: 600; margin-bottom: 5px; }
-.tix-nums { display: grid; gap: 4px; color: var(--text-3); font-size: 10px; margin-bottom: 7px; }
-.tix-nums strong { color: var(--text); }
-.tix-win-amt { color: var(--gold) !important; }
-.tix-actions { display: flex; gap: 4px; flex-wrap: wrap; }
-.tix-btn { flex: 1; border: 1px solid; border-radius: 999px; padding: 5px 8px; font-size: 9px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; background: none; }
-.tix-btn.win  { border-color: rgba(36,211,138,.4); color: var(--green); }
-.tix-btn.loss { border-color: rgba(255,95,87,.4); color: var(--red); }
-.tix-btn.cash { border-color: rgba(245,166,35,.4); color: var(--gold); }
-.tix-btn.rm   { border-color: var(--line); color: var(--text-3); flex: 0 0 auto; }
-.pnl-row { display: flex; justify-content: space-between; font-size: 11px; padding-top: 9px; margin-top: 9px; border-top: 1px solid rgba(255,255,255,.06); }
-.pnl-row span { color: var(--text-3); }
-.br-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--panel-2); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 18px; font-size: 12px; font-weight: 500; z-index: 9999; transition: transform .3s ease; white-space: nowrap; pointer-events: none; }
-.br-toast.show { transform: translateX(-50%) translateY(0); }
-.br-toast.ok { border-color: rgba(36,211,138,.4); color: var(--green); }
-.br-toast.warn { border-color: rgba(245,166,35,.4); color: var(--gold); }
-.br-toast.err { border-color: rgba(255,95,87,.4); color: var(--red); }
-
-@media (max-width: 1024px) {
-  .hero,
-  .split,
-  .two-col,
-  .bankroll-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  .header-inner,
-  .page-nav,
-  main {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-meta {
-    justify-content: flex-start;
-  }
-
-  .metric-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .signal-table,
-  .signal-table thead,
-  .signal-table tbody,
-  .signal-table tr,
-  .signal-table th,
-  .signal-table td,
-  .trend-table,
-  .trend-table thead,
-  .trend-table tbody,
-  .trend-table tr,
-  .trend-table th,
-  .trend-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .signal-table thead,
-  .trend-table thead {
-    display: none;
-  }
-
-  .signal-table tr,
-  .trend-table tr {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-  }
-
-  .signal-table td,
-  .trend-table td {
-    border: 0;
-    padding: 3px 0;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STITCHem — Men's Essentials Drop</title>
+  <meta name="description" content="Premium men's essentials delivered monthly. The only basics you'll ever need." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:#F5F1EA; --cream-dk:#ede7da; --orange:#C96F3C; --orange-lt:#d47f4a;
+      --charcoal:#2B1E16; --mid:#5a4a42; --muted:#8c7a70; --white:#ffffff;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--charcoal);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:var(--cream);border-bottom:1px solid rgba(43,30,22,.08)}
+    .nav-logo{font-family:'Jost',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
+    .nav-logo sup{font-size:.5em;color:var(--orange);letter-spacing:0}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:var(--orange)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:64px}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 3rem;animation:fadeUp .8s ease both}
+    .hero-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+    .hero-eyebrow::after{content:'';display:inline-block;width:30px;height:1px;background:var(--orange)}
+    .hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:600;line-height:1.02;color:var(--charcoal);margin-bottom:1.75rem}
+    .hero-headline em{font-style:italic;color:var(--orange)}
+    .hero-sub{font-size:.95rem;color:var(--mid);max-width:400px;margin-bottom:2.5rem;line-height:1.8}
+    .hero-actions{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+    .btn-primary{display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--orange);padding:1rem 2rem;text-decoration:none;transition:background .2s;cursor:pointer;border:none}
+    .btn-primary:hover{background:var(--orange-lt)}
+    .btn-text{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;transition:color .2s;cursor:pointer;background:none;border:none;font-family:'Jost',sans-serif}
+    .btn-text:hover{color:var(--orange)}
+
+    /* HERO RIGHT */
+    .hero-right{background:var(--orange);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;animation:fadeIn 1s .3s ease both}
+    .starting-badge{position:absolute;top:2.5rem;right:2.5rem;background:var(--white);padding:.75rem 1.1rem;text-align:right}
+    .badge-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);display:block}
+    .badge-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);line-height:1}
+    .hero-box-img{width:75%;max-width:380px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.25));animation:floatImg 4s ease-in-out infinite}
+
+    /* MARQUEE */
+    .marquee-wrap{overflow:hidden;padding:1.2rem 0;background:var(--cream);border-bottom:1px solid rgba(43,30,22,.08)}
+    .marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
+    .marquee-item{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:0 2.5rem;display:flex;align-items:center;gap:2.5rem}
+    .marquee-item::after{content:'·';color:var(--orange);font-size:1rem}
+
+    /* ESSENTIALS */
+    .essentials{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+    .section-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:600;line-height:1.08;color:var(--charcoal);margin-bottom:1.25rem;max-width:600px}
+    .section-title em{font-style:italic;color:var(--orange)}
+    .section-sub{font-size:.9rem;color:var(--mid);max-width:480px;margin-bottom:4rem;line-height:1.8}
+    .essentials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(43,30,22,.08);border:1px solid rgba(43,30,22,.08)}
+    .essential-item{background:var(--cream);padding:2.5rem 2rem;transition:background .2s}
+    .essential-item:hover{background:var(--cream-dk)}
+    .essential-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;color:rgba(201,111,60,.2);line-height:1;margin-bottom:1rem}
+    .essential-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:.5rem}
+    .essential-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+    .divider{height:1px;background:rgba(43,30,22,.1);margin:0 3rem}
+
+    /* PLANS */
+    .plans{background:var(--charcoal);padding:7rem 3rem}
+    .plans-inner{max-width:1200px;margin:0 auto}
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(245,241,234,.08);border:1px solid rgba(245,241,234,.08);margin-top:4rem}
+    .plan-card{background:#2a1f17;padding:3rem 2.5rem;transition:background .2s}
+    .plan-card:hover{background:#322518}
+    .plan-card.featured{background:var(--orange)}
+    .plan-card.featured:hover{background:var(--orange-lt)}
+    .plan-tag{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);background:var(--cream);display:inline-block;padding:.3rem .8rem;margin-bottom:1.5rem}
+    .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+    .plan-cadence{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,241,234,.5);margin-bottom:1.5rem}
+    .plan-card.featured .plan-cadence{color:rgba(255,255,255,.7)}
+    .plan-price{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:.25rem}
+    .plan-price-sub{font-size:.78rem;color:rgba(245,241,234,.4);margin-bottom:2rem}
+    .plan-card.featured .plan-price-sub{color:rgba(255,255,255,.6)}
+    .plan-divider{height:1px;background:rgba(245,241,234,.1);margin-bottom:1.75rem}
+    .plan-card.featured .plan-divider{background:rgba(255,255,255,.2)}
+    .plan-items{list-style:none;margin-bottom:2.5rem}
+    .plan-items li{font-size:.85rem;color:rgba(245,241,234,.8);padding:.45rem 0;display:flex;align-items:flex-start;gap:.75rem}
+    .plan-card.featured .plan-items li{color:rgba(255,255,255,.9)}
+    .plan-items li::before{content:'—';color:var(--orange);font-size:.7rem;flex-shrink:0;margin-top:2px}
+    .plan-card.featured .plan-items li::before{color:rgba(255,255,255,.6)}
+    .plan-items li.dim{color:rgba(245,241,234,.3)}
+    .plan-cta{display:block;text-align:center;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:1rem;transition:all .2s;cursor:pointer;border:none}
+    .plan-cta-outline{border:1px solid rgba(245,241,234,.2);color:var(--cream);background:transparent}
+    .plan-cta-outline:hover{border-color:var(--orange);color:var(--orange)}
+    .plan-cta-solid{background:var(--charcoal);color:var(--white)}
+    .plan-cta-solid:hover{background:#111}
+
+    /* PROCESS */
+    .process{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;margin-top:4rem}
+    .process-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:400;color:rgba(201,111,60,.15);line-height:1;margin-bottom:1rem}
+    .process-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:.75rem}
+    .process-desc{font-size:.85rem;color:var(--muted);line-height:1.8}
+
+    /* FOUNDING BANNER */
+    .founding-banner{background:var(--orange);padding:4rem 3rem;text-align:center}
+    .founding-banner p{font-size:.75rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1.25rem}
+    .founding-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;color:var(--white);margin-bottom:2rem;line-height:1.1}
+    .btn-light{display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);background:var(--white);padding:1rem 2.5rem;text-decoration:none;transition:opacity .2s;cursor:pointer;border:none}
+    .btn-light:hover{opacity:.9}
+
+    /* FOOTER */
+    footer{background:var(--cream);padding:3rem;border-top:1px solid rgba(43,30,22,.08)}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+    .footer-logo{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
+    .footer-logo sup{font-size:.5em;color:var(--orange)}
+    .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+    .footer-links a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--orange)}
+    .footer-copy{width:100%;text-align:center;font-size:.72rem;color:var(--muted);padding-top:2rem;margin-top:1.5rem;border-top:1px solid rgba(43,30,22,.06)}
+
+    /* LEGAL */
+    .legal-page{display:none;max-width:740px;margin:8rem auto 5rem;padding:0 2rem}
+    .legal-page h1{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;margin-bottom:2.5rem}
+    .legal-page h2{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin:2.5rem 0 .75rem}
+    .legal-page p{font-size:.88rem;color:var(--mid);line-height:1.85;margin-bottom:.75rem}
+
+    /* ── QUIZ OVERLAY ── */
+    .quiz-overlay{
+      display:none;position:fixed;inset:0;z-index:1000;
+      background:rgba(43,30,22,.6);backdrop-filter:blur(4px);
+      align-items:center;justify-content:center;padding:1.5rem;
+    }
+    .quiz-overlay.open{display:flex}
+    .quiz-modal{
+      background:var(--cream);width:100%;max-width:560px;max-height:90vh;
+      overflow-y:auto;position:relative;
+    }
+    .quiz-header{
+      background:var(--charcoal);padding:1.75rem 2rem;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .quiz-logo{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--white)}
+    .quiz-logo sup{font-size:.5em;color:var(--orange)}
+    .quiz-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.4rem;cursor:pointer;line-height:1;padding:0}
+    .quiz-close:hover{color:var(--white)}
+
+    .quiz-progress-bar{height:3px;background:rgba(43,30,22,.1)}
+    .quiz-progress-fill{height:3px;background:var(--orange);transition:width .4s ease}
+
+    .quiz-body{padding:2.5rem 2rem}
+    .quiz-step{display:none}
+    .quiz-step.active{display:block}
+    .quiz-step-label{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem}
+    .quiz-question{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:.6rem}
+    .quiz-hint{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+
+    .quiz-options{display:grid;gap:.75rem}
+    .quiz-options.two-col{grid-template-columns:1fr 1fr}
+    .quiz-opt{
+      display:flex;align-items:center;gap:1rem;
+      padding:1rem 1.25rem;border:1px solid rgba(43,30,22,.15);
+      background:var(--white);cursor:pointer;transition:all .2s;
+      font-family:'Jost',sans-serif;font-size:.88rem;color:var(--charcoal);
+      text-align:left;width:100%;
+    }
+    .quiz-opt:hover{border-color:var(--orange);background:var(--cream-dk)}
+    .quiz-opt.selected{border-color:var(--orange);background:rgba(201,111,60,.08)}
+    .quiz-opt-icon{font-size:1.3rem;flex-shrink:0}
+    .quiz-opt-text{}
+    .quiz-opt-label{font-weight:500;display:block;margin-bottom:.1rem}
+    .quiz-opt-sub{font-size:.75rem;color:var(--muted)}
+
+    .quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(43,30,22,.08)}
+    .quiz-back{background:none;border:none;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:0}
+    .quiz-back:hover{color:var(--charcoal)}
+    .quiz-next{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--charcoal);border:none;padding:.9rem 2rem;cursor:pointer;transition:background .2s}
+    .quiz-next:hover{background:var(--orange)}
+    .quiz-next:disabled{opacity:.35;cursor:not-allowed}
+    .quiz-next:disabled:hover{background:var(--charcoal)}
+
+    /* RESULT */
+    .quiz-result{display:none}
+    .quiz-result.active{display:block}
+    .result-tier-badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange);padding:.3rem .9rem;margin-bottom:1.25rem}
+    .result-headline{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--charcoal);margin-bottom:.5rem;line-height:1.15}
+    .result-sub{font-size:.88rem;color:var(--mid);margin-bottom:1.75rem;line-height:1.7}
+    .result-box{background:var(--charcoal);padding:1.75rem;margin-bottom:1.75rem}
+    .result-box-label{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
+    .result-items{list-style:none}
+    .result-items li{font-size:.85rem;color:rgba(245,241,234,.85);padding:.35rem 0;display:flex;gap:.75rem}
+    .result-items li::before{content:'—';color:var(--orange);font-size:.7rem;flex-shrink:0;margin-top:2px}
+    .result-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)}
+    .result-cta{display:block;width:100%;text-align:center;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--orange);padding:1.1rem;text-decoration:none;transition:background .2s;border:none;cursor:pointer}
+    .result-cta:hover{background:var(--orange-lt)}
+    .result-restart{display:block;text-align:center;font-size:.72rem;color:var(--muted);margin-top:1rem;cursor:pointer;background:none;border:none;font-family:'Jost',sans-serif;width:100%;letter-spacing:.1em;text-transform:uppercase}
+    .result-restart:hover{color:var(--charcoal)}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes floatImg{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      nav{padding:1.2rem 1.5rem}
+      .nav-links{display:none}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-left{padding:4rem 1.5rem 3rem}
+      .hero-right{min-height:65vw}
+      .hero-box-img{width:60%}
+      .essentials-grid{grid-template-columns:1fr 1fr}
+      .plans-grid{grid-template-columns:1fr;max-width:420px;margin:2rem auto 0}
+      .process-grid{grid-template-columns:1fr;gap:2.5rem}
+      .essentials,.process{padding:5rem 1.5rem}
+      .plans{padding:5rem 1.5rem}
+      .footer-inner{justify-content:center;text-align:center}
+      .quiz-options.two-col{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <div class="brand">
-      <div class="brand-mark">TB</div>
-      <div>
-        <h1 class="brand-title">The Board</h1>
-        <div class="brand-sub">Outlook and Confirmed boards, with Trend as a cross-reference layer.</div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">STITCH<sup>em</sup></a>
+    <ul class="nav-links">
+      <li><a href="#essentials">Essentials</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Men's Essentials &nbsp;·&nbsp; Monthly Subscription</p>
+      <h1 class="hero-headline">The only basics<br/>you'll <em>ever need.</em></h1>
+      <p class="hero-sub">Premium tees, socks, and boxers delivered monthly. Built to keep you stocked without another store run.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openQuiz()">Build Your Box</button>
+        <a href="#process" class="btn-text">How It Works</a>
       </div>
     </div>
-    <div class="header-meta">
-      <div class="chip">
-        <div class="chip-label">Live Updated</div>
-        <div class="chip-value" id="header-live-updated">Waiting</div>
+    <div class="hero-right">
+      <div class="starting-badge">
+        <span class="badge-label">Starting at</span>
+        <span class="badge-price">$40</span>
       </div>
-      <div class="chip">
-        <div class="chip-label">Signal Updated</div>
-        <div class="chip-value" id="header-signal-updated">Waiting</div>
+      <img src="box.png" alt="STITCHem Box" class="hero-box-img" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item">Premium Briefs</div>
+      <div class="marquee-item">Fitted Tees</div>
+      <div class="marquee-item">Cotton Boxers</div>
+      <div class="marquee-item">Loose Boxers</div>
+      <div class="marquee-item">Performance Socks</div>
+      <div class="marquee-item">Seasonal Item</div>
+      <div class="marquee-item">Your Essentials</div>
+      <div class="marquee-item">Handled</div>
+      <div class="marquee-item">Premium Briefs</div>
+      <div class="marquee-item">Fitted Tees</div>
+      <div class="marquee-item">Cotton Boxers</div>
+      <div class="marquee-item">Loose Boxers</div>
+      <div class="marquee-item">Performance Socks</div>
+      <div class="marquee-item">Seasonal Item</div>
+      <div class="marquee-item">Your Essentials</div>
+      <div class="marquee-item">Handled</div>
+    </div>
+  </div>
+
+  <!-- ESSENTIALS -->
+  <section class="essentials" id="essentials">
+    <p class="section-eyebrow">What's Inside</p>
+    <h2 class="section-title">Every man needs these.<br/><em>Nobody wants to shop for them.</em></h2>
+    <p class="section-sub">We handle the restocking so you never think about it again. Quality that survives the wash. Fit that actually fits.</p>
+    <div class="essentials-grid">
+      <div class="essential-item">
+        <div class="essential-num">01</div>
+        <div class="essential-name">Briefs</div>
+        <div class="essential-desc">Spandex blend. 4-way stretch. Flat seams. The kind you actually want to wear.</div>
+      </div>
+      <div class="essential-item">
+        <div class="essential-num">02</div>
+        <div class="essential-name">Boxers</div>
+        <div class="essential-desc">Fitted cotton and loose styles. Both covered depending on the day.</div>
+      </div>
+      <div class="essential-item">
+        <div class="essential-num">03</div>
+        <div class="essential-name">Tees</div>
+        <div class="essential-desc">Premium weight cotton. Clean fit. No collar warp after six washes.</div>
+      </div>
+      <div class="essential-item">
+        <div class="essential-num">04</div>
+        <div class="essential-name">Socks</div>
+        <div class="essential-desc">Fitted with stretch. Performance blend. They stay up. That's it.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLANS -->
+  <section class="plans" id="plans">
+    <div class="plans-inner">
+      <p class="section-eyebrow" style="color:var(--orange)">Choose Your Drop</p>
+      <h2 class="section-title" style="color:var(--white)">Three tiers.<br/><em style="color:var(--orange)">One rule.</em></h2>
+      <p class="section-sub" style="color:rgba(245,241,234,.5)">Nobody knows what's in the box until it arrives. Any tier. Any drop. Every time.</p>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-cadence">One-Time Drop</div>
+          <div class="plan-price">$40</div>
+          <div class="plan-price-sub">try your first box · no commitment</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li>Spandex briefs</li>
+            <li>Fitted tee</li>
+            <li>Performance socks</li>
+            <li class="dim">Seasonal item not included</li>
+          </ul>
+          <button class="plan-cta plan-cta-outline" onclick="openQuiz('starter')">Build Your Box</button>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-tag">Most Popular</div>
+          <div class="plan-name">Standard</div>
+          <div class="plan-cadence">Monthly Drop</div>
+          <div class="plan-price">$49</div>
+          <div class="plan-price-sub">per month · cancel anytime</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li>Spandex briefs</li>
+            <li>Cotton fitted boxers</li>
+            <li>Loose boxers</li>
+            <li>Fitted tee</li>
+            <li>Performance socks</li>
+            <li>Seasonal item</li>
+          </ul>
+          <button class="plan-cta plan-cta-solid" onclick="openQuiz('standard')">Build Your Box</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Full Rotation</div>
+          <div class="plan-cadence">Monthly Drop</div>
+          <div class="plan-price">$89</div>
+          <div class="plan-price-sub">per month · cancel anytime</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li>Full monthly supply</li>
+            <li>All brief &amp; boxer styles</li>
+            <li>Multiple tees</li>
+            <li>Full sock rotation</li>
+            <li>Seasonal item</li>
+          </ul>
+          <button class="plan-cta plan-cta-outline" onclick="openQuiz('full')">Build Your Box</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <p class="section-eyebrow">How It Works</p>
+    <h2 class="section-title">Three steps.<br/><em>Zero store runs.</em></h2>
+    <div class="process-grid">
+      <div>
+        <div class="process-num">01</div>
+        <div class="process-title">Build Your Box</div>
+        <div class="process-desc">Answer five quick questions. We use your answers to recommend the right tier and curate your box preferences.</div>
+      </div>
+      <div>
+        <div class="process-num">02</div>
+        <div class="process-title">We Pack It</div>
+        <div class="process-desc">Your essentials are selected based on your preferences, packed, and shipped on your cadence. No thinking required.</div>
+      </div>
+      <div>
+        <div class="process-num">03</div>
+        <div class="process-title">Open It</div>
+        <div class="process-desc">Your basics are restocked. Your drawers are full. Whatever else showed up — that's between you and the box.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING BANNER -->
+  <div class="founding-banner">
+    <p>Founding 500 — Limited Access</p>
+    <h2>500 spots. Then the price goes up.</h2>
+    <button class="btn-light" onclick="openQuiz()">Claim Your Founding Spot</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">STITCH<sup>em</sup></a>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#refund">Refund Policy</a>
+        <a href="mailto:hello@stitchem.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 STITCHem — Your essentials. Handled. · Founding member pricing locked for life · Cancel anytime</p>
+  </footer>
+
+  <!-- LEGAL PAGES -->
+  <div class="legal-page" id="privacy">
+    <h1>Privacy Policy</h1>
+    <h2>Information We Collect</h2>
+    <p>We collect information you provide when subscribing — name, email, shipping address, and payment info. Payment data is processed securely through Stripe and never stored on our servers.</p>
+    <h2>How We Use Your Information</h2>
+    <p>Your information is used solely to fulfill your subscription and communicate about your orders. We do not sell or share your data with third parties for marketing purposes.</p>
+    <h2>Cookies</h2>
+    <p>We use essential cookies to operate our site. We do not use tracking cookies for advertising.</p>
+    <h2>Contact</h2>
+    <p>Questions? Email hello@stitchem.com.</p>
+  </div>
+  <div class="legal-page" id="terms">
+    <h1>Terms of Service</h1>
+    <h2>Subscription</h2>
+    <p>By subscribing you agree to recurring billing at your selected tier cadence. You may cancel anytime before your next billing date.</p>
+    <h2>Products</h2>
+    <p>All box contents are curated based on your preferences. The extra item included varies and is not guaranteed to be any specific product.</p>
+    <h2>Founding Member Pricing</h2>
+    <p>Founding member rates are locked for the life of your active subscription. If you cancel and resubscribe, standard pricing applies.</p>
+    <h2>Limitation of Liability</h2>
+    <p>STITCHem liability is limited to the cost of your current subscription period.</p>
+  </div>
+  <div class="legal-page" id="refund">
+    <h1>Subscription &amp; Refund Policy</h1>
+    <h2>Cancellation</h2>
+    <p>Cancel anytime through your account dashboard. Cancellation takes effect at the end of your current billing period. No partial refunds for unused days.</p>
+    <h2>Damaged or Missing Items</h2>
+    <p>If your box arrives damaged or items are missing, contact us within 7 days at hello@stitchem.com. We'll make it right.</p>
+    <h2>Lost Shipments</h2>
+    <p>If a package is lost in transit, contact us and we'll file a claim and reship.</p>
+  </div>
+
+  <!-- ── QUIZ OVERLAY ── -->
+  <div class="quiz-overlay" id="quizOverlay">
+    <div class="quiz-modal">
+      <div class="quiz-header">
+        <span class="quiz-logo">STITCH<sup>em</sup></span>
+        <button class="quiz-close" onclick="closeQuiz()">✕</button>
+      </div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div>
+      </div>
+      <div class="quiz-body">
+
+        <!-- STEP 1: Frequency -->
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-step-label">Step 1 of 5</div>
+          <div class="quiz-question">How often do you find yourself digging through the drawer thinking... I need to make a store run?</div>
+          <div class="quiz-hint">Be honest. This determines your tier.</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-value="full" onclick="selectOpt(this,'freq')">
+              <span class="quiz-opt-icon">🔁</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Every week</span>
+                <span class="quiz-opt-sub">I'm always running low</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="standard" onclick="selectOpt(this,'freq')">
+              <span class="quiz-opt-icon">📅</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Every month or so</span>
+                <span class="quiz-opt-sub">Could use a regular refresh</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="starter" onclick="selectOpt(this,'freq')">
+              <span class="quiz-opt-icon">🤷</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Every few months</span>
+                <span class="quiz-opt-sub">Just want to try it out</span>
+              </span>
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <span></span>
+            <button class="quiz-next" id="next1" onclick="goTo(2)" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Tee Size -->
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-step-label">Step 2 of 5</div>
+          <div class="quiz-question">What's your tee size?</div>
+          <div class="quiz-hint">This is for your shirts.</div>
+          <div class="quiz-options two-col">
+            <button class="quiz-opt" data-value="S" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">S</span></button>
+            <button class="quiz-opt" data-value="M" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">M</span></button>
+            <button class="quiz-opt" data-value="L" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">L</span></button>
+            <button class="quiz-opt" data-value="XL" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">XL</span></button>
+            <button class="quiz-opt" data-value="XXL" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">XXL</span></button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="goTo(1)">← Back</button>
+            <button class="quiz-next" id="next2" onclick="goTo(3)" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Boxer/Brief Size -->
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-step-label">Step 3 of 5</div>
+          <div class="quiz-question">What's your boxer and brief size?</div>
+          <div class="quiz-hint">This is for your underwear.</div>
+          <div class="quiz-options two-col">
+            <button class="quiz-opt" data-value="S" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">S</span></button>
+            <button class="quiz-opt" data-value="M" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">M</span></button>
+            <button class="quiz-opt" data-value="L" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">L</span></button>
+            <button class="quiz-opt" data-value="XL" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">XL</span></button>
+            <button class="quiz-opt" data-value="XXL" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">XXL</span></button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="goTo(2)">← Back</button>
+            <button class="quiz-next" id="next3" onclick="goTo(4)" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Brief Style -->
+        <div class="quiz-step" data-step="4">
+          <div class="quiz-step-label">Step 4 of 5</div>
+          <div class="quiz-question">What's your underwear preference?</div>
+          <div class="quiz-hint">Pick what you actually wear.</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-value="briefs" onclick="selectOpt(this,'style')">
+              <span class="quiz-opt-icon">🩲</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Spandex Briefs</span>
+                <span class="quiz-opt-sub">Fitted, stretch, performance feel</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="fitted" onclick="selectOpt(this,'style')">
+              <span class="quiz-opt-icon">📐</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Cotton Fitted Boxers</span>
+                <span class="quiz-opt-sub">Structured, clean fit</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="loose" onclick="selectOpt(this,'style')">
+              <span class="quiz-opt-icon">😌</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Loose Boxers</span>
+                <span class="quiz-opt-sub">Relaxed, comfortable fit</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="all" onclick="selectOpt(this,'style')">
+              <span class="quiz-opt-icon">🎯</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Mix It Up</span>
+                <span class="quiz-opt-sub">Give me a variety</span>
+              </span>
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="goTo(3)">← Back</button>
+            <button class="quiz-next" id="next4" onclick="goTo(5)" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Sock Style -->
+        <div class="quiz-step" data-step="5">
+          <div class="quiz-step-label">Step 5 of 5</div>
+          <div class="quiz-question">Sock style?</div>
+          <div class="quiz-hint">Shoe size helps us get the right fit. Pick your sock style.</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-value="crew" onclick="selectOpt(this,'socks')">
+              <span class="quiz-opt-icon">🧦</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Crew</span>
+                <span class="quiz-opt-sub">Mid-calf height</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="ankle" onclick="selectOpt(this,'socks')">
+              <span class="quiz-opt-icon">👟</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Ankle</span>
+                <span class="quiz-opt-sub">Low cut, just above the shoe</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="high" onclick="selectOpt(this,'socks')">
+              <span class="quiz-opt-icon">🏀</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">High</span>
+                <span class="quiz-opt-sub">Knee-high or calf length</span>
+              </span>
+            </button>
+            <button class="quiz-opt" data-value="mix" onclick="selectOpt(this,'socks')">
+              <span class="quiz-opt-icon">🎲</span>
+              <span class="quiz-opt-text">
+                <span class="quiz-opt-label">Mix It Up</span>
+                <span class="quiz-opt-sub">Variety across all styles</span>
+              </span>
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="goTo(4)">← Back</button>
+            <button class="quiz-next" id="next5" onclick="showResult()" disabled>See My Box</button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz-result" id="quizResult">
+          <div class="result-tier-badge" id="resultBadge">Your Recommendation</div>
+          <div class="result-headline" id="resultHeadline">Your box is ready.</div>
+          <div class="result-sub" id="resultSub">Based on your answers, here's what we're sending you.</div>
+          <div class="result-box">
+            <span class="result-box-label">Your Box</span>
+            <ul class="result-items" id="resultItems"></ul>
+            <div class="result-price" id="resultPrice"></div>
+          </div>
+          <a href="https://rpd6xi-g0.myshopify.com/products/stitch-essential-box" class="result-cta" id="resultCta">Start My Box</a>
+          <button class="result-restart" onclick="restartQuiz()">Start Over</button>
+        </div>
+
       </div>
     </div>
   </div>
-  <nav class="page-nav">
-    <button class="page-btn active" data-page="live">Live Board</button>
-    <button class="page-btn" data-page="signal">Signal Board</button>
-    <button class="page-btn" data-page="trend">Trend Board</button>
-    <button class="page-btn" data-page="bankroll">Bankroll</button>
-  </nav>
-</header>
 
-<main>
-  <section class="page active" id="page-live">
-    <div class="hero">
-      <div class="panel">
-        <div class="eyebrow">Live Board</div>
-        <h2 class="hero-title">Today’s games and score state</h2>
-        <div class="hero-copy">This page is for current schedule, score, and game status only. It is separate from the model boards by design.</div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Scope</div>
-        <div class="muted">Signal Board is model output. Live Board is score state. Trend Board is cross-reference. Keeping them separate makes the site easier to trust.</div>
-      </div>
-    </div>
-    <div class="toolbar">
-      <div class="toolbar-group">
-        <button class="sport-btn active" data-live-sport="all">All Sports</button>
-        <button class="sport-btn" data-live-sport="mlb">MLB</button>
-        <button class="sport-btn" data-live-sport="nba">NBA</button>
-      </div>
-      <div class="muted" id="live-meta">Waiting on live data</div>
-    </div>
-    <div class="two-col">
-      <div class="panel">
-        <div class="eyebrow">Games</div>
-        <div class="stack" id="live-list"></div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Read</div>
-        <ul class="notes" id="live-notes"></ul>
-      </div>
-    </div>
-  </section>
+  <script>
+    const SHOPIFY = 'https://rpd6xi-g0.myshopify.com/products/stitch-essential-box';
+    let answers = { freq: null, teeSize: null, boxerSize: null, style: null, socks: null, forcedTier: null };
+    let currentStep = 1;
+    const totalSteps = 5;
 
-  <section class="page" id="page-signal">
-    <div class="hero">
-      <div class="panel">
-        <div class="eyebrow">Signal Board</div>
-        <h2 class="hero-title" id="signal-title">Latest board output</h2>
-        <div class="hero-copy" id="signal-subtitle">The site loads Confirmed Board first when available. If not, it falls back to the Outlook Board automatically.</div>
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-label">Sport</div>
-            <div class="metric-value gold" id="signal-sport-label">MLB</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Board</div>
-            <div class="metric-value blue" id="signal-board-type">OUTLOOK</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Last Updated</div>
-            <div class="metric-value" id="signal-generated">--</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Confidence Tier</div>
-            <div class="metric-value green" id="signal-confidence-summary">--</div>
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Board Feed</div>
-        <div class="hero-copy" id="signal-feed-copy">Data-first mode active. The site can render directly from saved board JSON without waiting on a PNG image artifact.</div>
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-label">Rows</div>
-            <div class="metric-value blue" id="signal-row-count">--</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Games</div>
-            <div class="metric-value gold" id="signal-game-count">--</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Source</div>
-            <div class="metric-value green" id="signal-source-mode">JSON</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Image</div>
-            <div class="metric-value" id="signal-image-state">Optional</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="toolbar">
-      <div class="toolbar-group">
-        <button class="sport-btn active" data-signal-sport="mlb">MLB</button>
-        <button class="sport-btn" data-signal-sport="nba">NBA</button>
-      </div>
-      <div class="toolbar-group">
-        <button class="board-btn active" data-signal-view="best">Auto</button>
-        <button class="board-btn" data-signal-view="confirmed">Confirmed</button>
-        <button class="board-btn" data-signal-view="outlook">Outlook</button>
-      </div>
-      <div class="muted" id="signal-meta">Waiting on saved board artifacts</div>
-    </div>
-    <div class="split">
-      <div class="panel">
-        <div class="eyebrow">Primary Signal</div>
-        <div id="signal-pick"></div>
-        <div class="stack" id="signal-games"></div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Board Rows</div>
-        <div id="signal-table-wrap"></div>
-        <ul class="notes" id="signal-notes"></ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="page" id="page-trend">
-    <div class="hero">
-      <div class="panel">
-        <div class="eyebrow">Trend Board</div>
-        <h2 class="hero-title">Cross-reference only</h2>
-        <div class="hero-copy">This table is the verification layer. It does not replace the Signal Board. Use it to pressure-test recent form before you commit to a lane.</div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Use</div>
-        <div class="muted">Trend Board is not a decision layer. It helps separate real signals from noisy ones by putting season and L10/L5/L3/L1 in one dense scan.</div>
-      </div>
-    </div>
-    <div class="toolbar">
-      <div class="toolbar-group">
-        <button class="sport-btn active" data-trend-sport="mlb">MLB</button>
-        <button class="sport-btn" data-trend-sport="nba">NBA</button>
-      </div>
-      <div class="muted" id="trend-meta">Waiting on saved trend board</div>
-    </div>
-    <div class="panel">
-      <div class="eyebrow">Trend Table</div>
-      <div id="trend-table-wrap"></div>
-    </div>
-  </section>
-
-  <section class="page" id="page-bankroll">
-    <div class="hero">
-      <div class="panel">
-        <div class="eyebrow">Bankroll</div>
-        <h2 class="hero-title">Session tracker</h2>
-        <div class="hero-copy">This stays local to your browser and doesn’t depend on the bot. It’s here so the site can be useful when you’re actually building slips.</div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Rule</div>
-        <div class="muted">Model output is one thing, bankroll discipline is another. Keep this separate so you can trust both.</div>
-      </div>
-    </div>
-    <div class="bankroll-layout">
-      <div class="panel">
-        <div class="eyebrow">Session Bankroll</div>
-        <div id="br-setup">
-          <div class="br-setup-note">Enter your session balance. It saves in cookies and carries across visits until you reset it manually.</div>
-          <div class="br-input-row">
-            <div class="br-prefix-wrap">
-              <span class="br-prefix">$</span>
-              <input id="br-inp" class="br-number-input" type="number" placeholder="0.00" min="0" step="0.01">
-            </div>
-            <button class="br-go-btn" id="br-start-btn">Start</button>
-          </div>
-          <div class="muted">Per-session memory only. Reset when you want a clean slate.</div>
-        </div>
-        <div id="br-active" style="display:none;">
-          <div class="br-head-row">
-            <div class="br-amount" id="br-bal">$0.00</div>
-            <button class="br-reset-btn" id="br-reset-btn">Reset</button>
-          </div>
-          <div class="br-sublabel">Session balance</div>
-          <div class="br-prog-header"><span>Deployed</span><span id="br-pct">0%</span></div>
-          <div class="br-prog-track"><div class="br-prog-fill" id="br-bar" style="width:0;background:var(--gold);"></div></div>
-          <div class="br-stat-row"><span>Starting</span><strong id="br-st">$0.00</strong></div>
-          <div class="br-stat-row"><span>Deployed</span><strong class="br-neg" id="br-dep">-$0.00</strong></div>
-          <div class="br-stat-row"><span>Remaining</span><strong class="br-acc" id="br-rem">$0.00</strong></div>
-          <div class="br-stat-row"><span>25% Max Bet</span><strong class="br-pos" id="br-max">$0.00</strong></div>
-          <div class="br-stat-row"><span>Active Tickets</span><strong id="br-cnt">0</strong></div>
-          <div class="br-stat-row" style="border-bottom:none;"><span>Potential Win</span><strong class="br-pos" id="br-win">—</strong></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="eyebrow">Tickets</div>
-        <div class="tf-section">
-          <div class="tf-section-label">Add Ticket</div>
-          <div class="tf-row">
-            <div class="tf-wrap"><span class="tf-pfx">$</span><input id="tf-w" class="tf-input pf" type="number" placeholder="Wager"></div>
-            <div class="tf-wrap"><span class="tf-pfx">$</span><input id="tf-p" class="tf-input pf" type="number" placeholder="To Win"></div>
-          </div>
-          <div class="tf-row">
-            <input id="tf-l" class="tf-input" type="text" placeholder="Label (e.g. Jokic AST ladder)">
-          </div>
-          <div class="tf-row">
-            <select id="tf-s" class="tf-select">
-              <option value="MLB">MLB</option>
-              <option value="NBA">NBA</option>
-              <option value="WNBA">WNBA</option>
-              <option value="SOC">Soccer</option>
-            </select>
-            <button class="tf-add-btn" id="tf-add-btn">Add Ticket</button>
-          </div>
-        </div>
-        <div class="tix-list" id="tix-list"></div>
-        <div id="pnl-wrap" style="display:none;">
-          <div class="pnl-row"><span>Session P&amp;L</span><strong id="br-pnl">$0.00</strong></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<script>
-const SIGNAL_FILES = {
-  mlb: {
-    outlook: "/data/mlb-outlook-board.json",
-    confirmed: "/data/mlb-confirmed-board.json",
-    trend: "/data/mlb-trend-board.json"
-  },
-  nba: {
-    outlook: "/data/nba-outlook-board.json",
-    confirmed: "/data/nba-confirmed-board.json",
-    trend: "/data/nba-trend-board.json"
-  }
-};
-
-const SIGNAL_IMAGE_FILES = {
-  mlb: {
-    outlook: "/images/mlb-outlook-board.png",
-    confirmed: "/images/mlb-confirmed-board.png"
-  },
-  nba: {
-    outlook: "/images/nba-outlook-board.png",
-    confirmed: "/images/nba-confirmed-board.png"
-  }
-};
-
-const state = {
-  page: "live",
-  liveSport: "all",
-  signalSport: "mlb",
-  signalView: "best",
-  trendSport: "mlb",
-  liveBoard: null,
-  boards: {
-    mlb: { outlook: null, confirmed: null, trend: null },
-    nba: { outlook: null, confirmed: null, trend: null }
-  }
-};
-
-function prettyDate(value) {
-  if (!value) return "--";
-  const dt = new Date(value);
-  if (Number.isNaN(dt.getTime())) return value;
-  return dt.toLocaleString("en-US", {
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  });
-}
-
-function escapeHtml(value) {
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function normalizeItems(items) {
-  return Array.isArray(items) ? items : [];
-}
-
-function normalizeSignalBoard(raw, sport, boardType) {
-  if (!raw || typeof raw !== "object") return null;
-  const rows = normalizeItems(raw.rows);
-  return {
-    sport: String(raw.sport || sport || "").toUpperCase(),
-    boardType: String(raw.board_type || raw.boardType || boardType || "").toLowerCase(),
-    title: raw.title || `${String(sport).toUpperCase()} ${String(boardType).toUpperCase()} Board`,
-    subtitle: raw.subtitle || raw.note || "",
-    generatedAt: raw.generated_at || raw.generatedAt || raw.lastUpdated || null,
-    lastUpdated: raw.lastUpdated || raw.generated_at || raw.generatedAt || null,
-    confidenceLabel: raw.confidenceLabel || raw.confidence_label || "--",
-    image: raw.image || null,
-    pickOfDay: raw.pick_of_day || raw.pickOfDay || null,
-    rows: rows,
-    sections: normalizeItems(raw.sections),
-    games: normalizeItems(raw.games),
-    notes: normalizeItems(raw.notes),
-    trendRows: normalizeItems(raw.trend_rows || raw.trendRows),
-    metricSummary: {
-      baseScore: raw.baseScore ?? raw.base_score ?? null,
-      uncertaintyPenalty: raw.uncertaintyPenalty ?? raw.uncertainty_penalty ?? null,
-      finalScore: raw.finalScore ?? raw.final_score ?? null
+    function openQuiz(tier) {
+      if (tier) answers.forcedTier = tier;
+      document.getElementById('quizOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      goTo(1);
     }
-  };
-}
 
-async function fetchJson(url) {
-  const response = await fetch(url, { headers: { Accept: "application/json" } });
-  if (!response.ok) throw new Error(`${url} -> ${response.status}`);
-  return response.json();
-}
-
-async function loadBoardVariant(sport, boardType) {
-  const url = SIGNAL_FILES[sport][boardType];
-  try {
-    const json = await fetchJson(url);
-    return normalizeSignalBoard(json, sport, boardType);
-  } catch (error) {
-    try {
-      const json = await fetchJson(`/api/signal-board/${sport}?type=${boardType}`);
-      return normalizeSignalBoard(json, sport, boardType);
-    } catch (nested) {
-      return normalizeSignalBoard({
-        sport: sport.toUpperCase(),
-        board_type: boardType,
-        title: `${sport.toUpperCase()} ${boardType.charAt(0).toUpperCase() + boardType.slice(1)} Board`,
-        subtitle: boardType === "trend"
-          ? "Waiting on saved trend verification data."
-          : "Waiting on saved board output from the bot.",
-        generated_at: null,
-        rows: [],
-        games: [],
-        trend_rows: [],
-        notes: ["The website is waiting for the bot to save this board artifact."],
-        image: boardType === "trend" ? null : SIGNAL_IMAGE_FILES[sport][boardType]
-      }, sport, boardType);
+    function closeQuiz() {
+      document.getElementById('quizOverlay').classList.remove('open');
+      document.body.style.overflow = '';
     }
-  }
-}
 
-async function loadAllBoards() {
-  for (const sport of ["mlb", "nba"]) {
-    const variants = await Promise.all(["outlook", "confirmed", "trend"].map((boardType) => loadBoardVariant(sport, boardType)));
-    state.boards[sport] = {
-      outlook: variants[0],
-      confirmed: variants[1],
-      trend: variants[2]
-    };
-  }
-}
+    document.getElementById('quizOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeQuiz();
+    });
 
-async function loadLiveBoard() {
-  state.liveBoard = await fetchJson("/api/live-board");
-}
-
-function getPreferredSignalBoard(sport) {
-  const boards = state.boards[sport] || {};
-  if (state.signalView === "confirmed") return boards.confirmed || boards.outlook || null;
-  if (state.signalView === "outlook") return boards.outlook || boards.confirmed || null;
-  return boards.confirmed || boards.outlook || null;
-}
-
-function getTrendBoard(sport) {
-  return state.boards[sport]?.trend || null;
-}
-
-function latestSignalBoard() {
-  const candidates = [];
-  for (const sport of ["mlb", "nba"]) {
-    const board = getPreferredSignalBoard(sport);
-    if (board) candidates.push(board);
-  }
-  candidates.sort((a, b) => new Date(b.generatedAt || 0).getTime() - new Date(a.generatedAt || 0).getTime());
-  return candidates[0] || null;
-}
-
-function renderHeader() {
-  document.getElementById("header-live-updated").textContent =
-    state.liveBoard?.updatedAt || "Waiting";
-  const latest = latestSignalBoard();
-  document.getElementById("header-signal-updated").textContent =
-    latest?.generatedAt ? prettyDate(latest.generatedAt) : "Waiting";
-}
-
-function renderPageNav() {
-  document.querySelectorAll(".page-btn").forEach((button) => {
-    button.classList.toggle("active", button.dataset.page === state.page);
-  });
-  document.querySelectorAll(".page").forEach((page) => {
-    page.classList.toggle("active", page.id === `page-${state.page}`);
-  });
-}
-
-function renderLiveBoard() {
-  const payload = state.liveBoard || { sports: {} };
-  const sports = state.liveSport === "all" ? ["mlb", "nba"] : [state.liveSport];
-  const games = sports.flatMap((sport) => (payload.sports?.[sport]?.games || []).map((game) => ({ ...game, sport })));
-  document.getElementById("live-meta").textContent = games.length ? `${games.length} games on the board` : "No live games found";
-
-  const liveList = document.getElementById("live-list");
-  if (!games.length) {
-    liveList.innerHTML = '<div class="empty-state small">No live games available right now.</div>';
-  } else {
-    liveList.innerHTML = games.map((game) => `
-      <div class="live-row">
-        <div class="live-head">
-          <div>
-            <div class="live-title">${escapeHtml(game.matchup)}</div>
-            <div class="detail-line">${escapeHtml(game.start || "")}${game.detail ? " | " + escapeHtml(game.detail) : ""}</div>
-          </div>
-          <div class="sport-pill">${escapeHtml(game.sport || "").toUpperCase()}</div>
-        </div>
-        <div class="score-line">${escapeHtml(game.score || "0 - 0")}</div>
-        <div class="detail-line">${escapeHtml(game.status || "Scheduled")}</div>
-      </div>
-    `).join("");
-  }
-
-  const notes = [];
-  sports.forEach((sport) => {
-    const note = payload.sports?.[sport]?.note;
-    if (note) notes.push(`${sport.toUpperCase()}: ${note}`);
-  });
-  document.getElementById("live-notes").innerHTML = notes.length
-    ? notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")
-    : "<li>Live Board only tracks the active schedule and score state.</li><li>Use Signal Board for model output and Trend Board for recent-form checks.</li>";
-}
-
-function flattenSignalRows(board) {
-  if (!board) return [];
-  if (board.rows.length) return board.rows;
-  if (board.sections.length) {
-    return board.sections.flatMap((section) => (section.items || []).map((item) => ({
-      player: item.player || item.name || "--",
-      market: item.market || item.line || "--",
-      finalScore: item.finalScore || item.final_score || item.score || "--",
-      tag: item.tag || section.tag || board.confidenceLabel || "--",
-      game: item.game || section.title || "--",
-      confidenceLabel: item.confidenceLabel || board.confidenceLabel || "--",
-      baseScore: item.baseScore ?? item.base_score ?? null,
-      uncertaintyPenalty: item.uncertaintyPenalty ?? item.uncertainty_penalty ?? null,
-      adjustments: normalizeItems(item.adjustments),
-      why: item.why || item.reason || item.note || "--"
-    })));
-  }
-  return [];
-}
-
-function renderSignalBoard() {
-  document.querySelectorAll("[data-signal-sport]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.signalSport === state.signalSport);
-  });
-  document.querySelectorAll("[data-signal-view]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.signalView === state.signalView);
-  });
-
-  const board = getPreferredSignalBoard(state.signalSport);
-  document.getElementById("signal-title").textContent = board?.title || `${state.signalSport.toUpperCase()} Signal Board`;
-  document.getElementById("signal-subtitle").textContent = board?.subtitle || "Waiting on saved board output.";
-  document.getElementById("signal-sport-label").textContent = state.signalSport.toUpperCase();
-  document.getElementById("signal-board-type").textContent = (board?.boardType || "outlook").toUpperCase();
-  document.getElementById("signal-generated").textContent = board?.lastUpdated ? prettyDate(board.lastUpdated) : "--";
-  document.getElementById("signal-confidence-summary").textContent = board?.confidenceLabel || "--";
-  document.getElementById("signal-meta").textContent = board?.boardType === "confirmed"
-    ? "Confirmed Board active — uncertainty penalties removed where verification exists"
-    : "Outlook Board active — projected board with uncertainty penalties still in play";
-
-  const pick = board?.pickOfDay;
-  document.getElementById("signal-pick").innerHTML = pick ? `
-    <div class="pick-row">
-      <div class="eyebrow">Board Anchor</div>
-      <div class="pick-name">${escapeHtml(pick.player || pick.name || "Top Play")}</div>
-      <div class="pick-support">
-        ${escapeHtml(pick.market || "--")}${pick.line ? " | " + escapeHtml(pick.line) : ""}
-        ${pick.team ? " | " + escapeHtml(pick.team) : ""}
-      </div>
-      <div class="pick-support">${escapeHtml(pick.summary || pick.environment || pick.context || "")}</div>
-    </div>
-  ` : '<div class="empty-state small">No board anchor saved yet.</div>';
-
-  const signalRows = flattenSignalRows(board);
-  document.getElementById("signal-row-count").textContent = String(signalRows.length || 0);
-  document.getElementById("signal-game-count").textContent = String((board?.games || []).length || 0);
-  document.getElementById("signal-source-mode").textContent = "JSON";
-  document.getElementById("signal-image-state").textContent = board?.image ? "Available" : "Skipped";
-  document.getElementById("signal-feed-copy").textContent = board?.image
-    ? "Saved board data is rendering directly, and an image artifact is also available if you want it later."
-    : "Data-first mode active. The board is rendering directly from saved JSON, so the PNG image is optional.";
-  const signalTableWrap = document.getElementById("signal-table-wrap");
-  if (!signalRows.length) {
-    signalTableWrap.innerHTML = '<div class="empty-state small">No signal rows saved yet.</div>';
-  } else {
-    signalTableWrap.innerHTML = `
-      <table class="signal-table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Market</th>
-            <th>Score</th>
-            <th>Tag</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${signalRows.map((row) => `
-            <tr>
-              <td>${escapeHtml(row.player || "--")}</td>
-              <td>${escapeHtml(row.market || "--")}</td>
-              <td class="signal-score">${escapeHtml(String(row.finalScore ?? row.score ?? "--"))}</td>
-              <td class="${String(row.tag || "").toLowerCase().includes("core") ? "tag-core" : String(row.tag || "").toLowerCase().includes("strong") ? "tag-strong" : String(row.tag || "").toLowerCase().includes("watch") ? "tag-watch" : "tag-thin"}">${escapeHtml(row.tag || row.confidenceLabel || "--")}</td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    `;
-  }
-
-  const gamesWrap = document.getElementById("signal-games");
-  if (board?.games?.length) {
-    gamesWrap.innerHTML = board.games.map((game) => `
-      <div class="game-row">
-        <div class="game-head">
-          <div class="game-title">${escapeHtml(game.matchup || game.title || "Game")}</div>
-          <div class="status-pill ${escapeHtml(board.boardType || "outlook")}">${escapeHtml(board.boardType || "outlook")}</div>
-        </div>
-        <div class="detail-line">${escapeHtml(game.note || game.summary || "")}</div>
-      </div>
-    `).join("");
-  } else {
-    gamesWrap.innerHTML = '<div class="empty-state small">No game notes saved for this board yet.</div>';
-  }
-
-  document.getElementById("signal-notes").innerHTML = (board?.notes || [])
-    .map((note) => `<li>${escapeHtml(note)}</li>`)
-    .join("") || "<li>The site chooses Confirmed Board when it exists, otherwise it shows Outlook automatically.</li>";
-
-}
-
-function renderTrendBoard() {
-  document.querySelectorAll("[data-trend-sport]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.trendSport === state.trendSport);
-  });
-
-  const board = getTrendBoard(state.trendSport);
-  document.getElementById("trend-meta").textContent = board?.lastUpdated
-    ? `${state.trendSport.toUpperCase()} trend board updated ${prettyDate(board.lastUpdated)}`
-    : `Waiting on ${state.trendSport.toUpperCase()} trend board`;
-
-  const rows = board?.trendRows || board?.rows || [];
-  const wrap = document.getElementById("trend-table-wrap");
-  if (!rows.length) {
-    wrap.innerHTML = '<div class="empty-state">No trend rows saved yet.</div>';
-    return;
-  }
-
-  wrap.innerHTML = `
-    <table class="trend-table">
-      <thead>
-        <tr>
-          <th>Player</th>
-          <th>Market</th>
-          <th>Line</th>
-          <th>Season</th>
-          <th>L10</th>
-          <th>L5</th>
-          <th>L3</th>
-          <th>L1</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${rows.map((row) => `
-          <tr>
-            <td>${escapeHtml(row.player || row.name || "--")}</td>
-            <td>${escapeHtml(row.market || "--")}</td>
-            <td>${escapeHtml(row.line || "--")}</td>
-            <td>${escapeHtml(row.season || "--")}</td>
-            <td>${escapeHtml(row.l10 || row.L10 || "--")}</td>
-            <td>${escapeHtml(row.l5 || row.L5 || "--")}</td>
-            <td>${escapeHtml(row.l3 || row.L3 || "--")}</td>
-            <td>${escapeHtml(row.l1 || row.L1 || "--")}</td>
-          </tr>
-        `).join("")}
-      </tbody>
-    </table>
-  `;
-}
-
-function render() {
-  renderHeader();
-  renderPageNav();
-  renderLiveBoard();
-  renderSignalBoard();
-  renderTrendBoard();
-}
-
-document.querySelectorAll(".page-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.page = button.dataset.page;
-    renderPageNav();
-  });
-});
-
-document.querySelectorAll("[data-live-sport]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.liveSport = button.dataset.liveSport;
-    document.querySelectorAll("[data-live-sport]").forEach((btn) => btn.classList.toggle("active", btn === button));
-    renderLiveBoard();
-  });
-});
-
-document.querySelectorAll("[data-signal-sport]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.signalSport = button.dataset.signalSport;
-    renderSignalBoard();
-  });
-});
-
-document.querySelectorAll("[data-signal-view]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.signalView = button.dataset.signalView;
-    renderSignalBoard();
-  });
-});
-
-document.querySelectorAll("[data-trend-sport]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.trendSport = button.dataset.trendSport;
-    renderTrendBoard();
-  });
-});
-
-async function boot() {
-  await Promise.all([loadAllBoards(), loadLiveBoard()]);
-  render();
-}
-
-boot();
-setInterval(() => {
-  Promise.all([loadAllBoards(), loadLiveBoard()]).then(render).catch(() => {});
-}, 300000);
-
-const BR_COOKIE = "board_session_v4";
-let BR = { active:false, starting:0, deployed:0, tickets:[], won:0, date:"" };
-
-function brFmt(n){ return "$"+Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
-function brSetCk(v,days=365){
-  const e=new Date(Date.now()+days*864e5).toUTCString();
-  document.cookie=BR_COOKIE+"="+encodeURIComponent(JSON.stringify(v))+";expires="+e+";path=/;SameSite=Lax";
-}
-function brGetCk(){
-  const m=document.cookie.match(new RegExp("(?:^|; )"+BR_COOKIE+"=([^;]*)"));
-  if(!m)return null;
-  try{return JSON.parse(decodeURIComponent(m[1]));}catch{return null;}
-}
-function brDelCk(){ document.cookie=BR_COOKIE+"=;expires=Thu,01 Jan 1970 00:00:00 GMT;path=/"; }
-function brSave(){ brSetCk(BR); }
-
-function brLoad(){
-  const sv=brGetCk();
-  if(sv&&sv.active){
-    BR=sv;
-    const today=new Date().toDateString();
-    if(sv.date&&sv.date!==today){
-      brToast("New day — balance carried over, tickets cleared","warn");
-      BR.date=today; BR.deployed=0; BR.tickets=[]; BR.won=0; brSave();
+    function updateProgress(step) {
+      const pct = ((step - 1) / totalSteps) * 100;
+      document.getElementById('quizProgress').style.width = pct + '%';
     }
-    brShowActive(); brRenderTix(); brUpdateUI();
-  }
-}
 
-function brShowActive(){
-  document.getElementById("br-setup").style.display="none";
-  document.getElementById("br-active").style.display="block";
-}
+    function goTo(step) {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.quiz-result').forEach(s => s.classList.remove('active'));
+      const target = document.querySelector('[data-step="' + step + '"]');
+      if (target) { target.classList.add('active'); currentStep = step; updateProgress(step); }
+    }
 
-function brStart(){
-  const v=parseFloat(document.getElementById("br-inp").value);
-  if(!v||v<=0){ brToast("Enter a valid balance","err"); return; }
-  BR={active:true,starting:v,deployed:0,tickets:[],won:0,date:new Date().toDateString()};
-  brSave(); brShowActive(); brUpdateUI();
-  brToast("Session started — "+brFmt(v)+" loaded","ok");
-}
+    function selectOpt(btn, field) {
+      btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      answers[field] = btn.dataset.value;
+      const nextBtn = document.getElementById('next' + currentStep);
+      if (nextBtn) nextBtn.disabled = false;
+    }
 
-function brReset(){
-  if(!confirm("Reset session? All ticket data will be cleared."))return;
-  brDelCk();
-  BR={active:false,starting:0,deployed:0,tickets:[],won:0,date:""};
-  document.getElementById("br-setup").style.display="block";
-  document.getElementById("br-active").style.display="none";
-  document.getElementById("br-inp").value="";
-  document.getElementById("tix-list").innerHTML="";
-  document.getElementById("pnl-wrap").style.display="none";
-  brToast("Session reset","warn");
-}
+    function showResult() {
+      updateProgress(6);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('quizResult').classList.add('active');
 
-function brAddTix(){
-  if(!BR.active){ brToast("Start a session first","warn"); return; }
-  const w=parseFloat(document.getElementById("tf-w").value);
-  const p=parseFloat(document.getElementById("tf-p").value)||0;
-  const l=document.getElementById("tf-l").value.trim()||"Unnamed Ticket";
-  const s=document.getElementById("tf-s").value;
-  if(!w||w<=0){ brToast("Enter a valid wager","err"); return; }
-  const rem=BR.starting-BR.deployed;
-  if(w>rem){ brToast("Over budget — only "+brFmt(rem)+" remaining","err"); return; }
-  const m25=BR.starting*0.25;
-  if(w>m25&&!confirm("Rule #39: "+brFmt(w)+" exceeds 25% limit ("+brFmt(m25)+"). Add anyway?"))return;
-  BR.tickets.push({id:Date.now(),label:l,sport:s,wager:w,payout:p,status:"pending",cashout:0});
-  BR.deployed+=w;
-  document.getElementById("tf-w").value="";
-  document.getElementById("tf-p").value="";
-  document.getElementById("tf-l").value="";
-  brSave(); brRenderTix(); brUpdateUI();
-  brToast(l+" added — "+brFmt(w)+" deployed","ok");
-}
+      const tier = answers.forcedTier || answers.freq || 'standard';
+      const styleMap = { briefs: 'Spandex briefs', fitted: 'Cotton fitted boxers', loose: 'Loose boxers', all: 'Briefs + Fitted + Loose boxers' };
+      const sockMap = { crew: 'Crew socks', ankle: 'Ankle socks', high: 'High socks', mix: 'Crew + Ankle + High socks' };
 
-function brSettle(id,res){
-  const t=BR.tickets.find(x=>x.id===id);
-  if(!t||t.status!=="pending")return;
-  if(res==="cashout"){
-    const a=parseFloat(prompt("Cash out amount for \""+t.label+"\"?",t.wager.toFixed(2)));
-    if(isNaN(a)||a<0)return;
-    t.cashout=a; BR.won+=a; brToast("Cashed out "+brFmt(a)+" ✓","ok");
-  }else if(res==="win"){
-    BR.won+=t.payout; brToast(t.label+" — WIN +"+brFmt(t.payout),"ok");
-  }else{
-    brToast(t.label+" — Loss","err");
-  }
-  t.status=res; brSave(); brRenderTix(); brUpdateUI();
-}
+      const tiers = {
+        starter: {
+          name: 'Starter Box', price: '$40 — one-time, no commitment',
+          badge: '✓ Your Pick: Starter',
+          headline: "You're in. First box, no strings.",
+          sub: "Try it once. If you love it, we'll be here.",
+          items: ['Fitted tee — ' + (answers.teeSize||'size TBD'), styleMap[answers.style]||'Spandex briefs' + ' — ' + (answers.boxerSize||'size TBD'), sockMap[answers.socks]||'Crew socks']
+        },
+        standard: {
+          name: 'Standard Box', price: '$49/month — cancel anytime',
+          badge: '✓ Your Pick: Standard',
+          headline: "Your monthly reset. Handled.",
+          sub: "Every month, your essentials show up. You never think about it again.",
+          items: ['Fitted tee — ' + (answers.teeSize||'size TBD'), styleMap[answers.style]||'Spandex briefs' + ' — ' + (answers.boxerSize||'size TBD'), sockMap[answers.socks]||'Crew socks', 'Seasonal item']
+        },
+        full: {
+          name: 'Full Rotation', price: '$89/month — cancel anytime',
+          badge: '✓ Your Pick: Full Rotation',
+          headline: "Full coverage. Every month.",
+          sub: "You're always stocked. Period.",
+          items: ['Multiple tees — ' + (answers.teeSize||'size TBD'), 'Briefs + Fitted + Loose boxers — ' + (answers.boxerSize||'size TBD'), 'Full sock rotation — ' + sockMap[answers.socks]||'All styles', 'Seasonal item']
+        }
+      };
 
-function brRemove(id){
-  const t=BR.tickets.find(x=>x.id===id);
-  if(!t)return;
-  if(t.status==="pending")BR.deployed-=t.wager;
-  BR.tickets=BR.tickets.filter(x=>x.id!==id);
-  brSave(); brRenderTix(); brUpdateUI();
-  brToast("Ticket removed","warn");
-}
+      const t = tiers[tier] || tiers.standard;
+      document.getElementById('resultBadge').textContent = t.badge;
+      document.getElementById('resultHeadline').textContent = t.headline;
+      document.getElementById('resultSub').textContent = t.sub;
+      document.getElementById('resultPrice').textContent = t.price;
 
-function brRenderTix(){
-  const list=document.getElementById("tix-list");
-  if(!BR.tickets.length){ list.innerHTML='<div class="empty-state small">No tickets added yet.</div>'; return; }
-  const ic={pending:"⏳",win:"✅",loss:"❌",cashout:"💰"};
-  const cl={pending:"var(--text-3)",win:"var(--green)",loss:"var(--red)",cashout:"var(--gold)"};
-  list.innerHTML=BR.tickets.map(t=>`
-    <div class="tix-item ${t.status!=="pending"?"settled":""}">
-      <div class="tix-head">
-        <span class="tix-sport-tag ${t.sport}">${t.sport}</span>
-        <span>${ic[t.status]}</span>
-      </div>
-      <div class="tix-label">${escapeHtml(t.label)}</div>
-      <div class="tix-nums">
-        <span>Wager: <strong>${brFmt(t.wager)}</strong></span>
-        <span>To Win: <strong class="tix-win-amt">${t.payout?brFmt(t.payout):"—"}</strong></span>
-        <span style="color:${cl[t.status]};font-weight:700;text-transform:uppercase;">${t.status}</span>
-      </div>
-      ${t.status==="pending" ? `
-      <div class="tix-actions">
-        <button class="tix-btn win" onclick="brSettle(${t.id},'win')">Win</button>
-        <button class="tix-btn loss" onclick="brSettle(${t.id},'loss')">Loss</button>
-        <button class="tix-btn cash" onclick="brSettle(${t.id},'cashout')">Cash</button>
-        <button class="tix-btn rm" onclick="brRemove(${t.id})">✕</button>
-      </div>` : ""}
-    </div>
-  `).join("");
-}
+      const list = document.getElementById('resultItems');
+      list.innerHTML = '';
+      t.items.forEach(item => { const li = document.createElement('li'); li.textContent = item; list.appendChild(li); });
 
-function brUpdateUI(){
-  const rem=BR.starting-BR.deployed;
-  const m25=BR.starting*0.25;
-  const pct=BR.starting>0?(BR.deployed/BR.starting)*100:0;
-  const active=BR.tickets.filter(t=>t.status==="pending");
-  const pendWin=active.reduce((s,t)=>s+(t.payout||0),0);
-  const lost=BR.tickets.filter(t=>t.status==="loss").reduce((s,t)=>s+t.wager,0);
-  const pnl=BR.won-lost;
-  const settled=BR.tickets.some(t=>t.status!=="pending");
+      // Append note about preferences
+      const note = document.createElement('li');
+      note.style.cssText = 'color:rgba(245,241,234,.4);font-size:.75rem;margin-top:.5rem';
+      note.textContent = 'Preferences saved with your order';
+      list.appendChild(note);
+    }
 
-  document.getElementById("br-bal").textContent=brFmt(rem);
-  document.getElementById("br-bal").style.color=rem<BR.starting*.25?"var(--red)":rem<BR.starting*.5?"var(--gold)":"var(--green)";
-  document.getElementById("br-st").textContent=brFmt(BR.starting);
-  document.getElementById("br-dep").textContent="-"+brFmt(BR.deployed);
-  document.getElementById("br-rem").textContent=brFmt(rem);
-  document.getElementById("br-max").textContent=brFmt(Math.min(m25,rem));
-  document.getElementById("br-cnt").textContent=active.length;
-  document.getElementById("br-win").textContent=pendWin>0?brFmt(pendWin):"—";
-  document.getElementById("br-pct").textContent=Math.round(pct)+"%";
-  const bar=document.getElementById("br-bar");
-  bar.style.width=Math.min(pct,100)+"%";
-  bar.style.background=pct>=75?"var(--red)":pct>=50?"#e05c2a":"var(--gold)";
-  if(settled){
-    document.getElementById("pnl-wrap").style.display="block";
-    const pe=document.getElementById("br-pnl");
-    pe.textContent=(pnl>=0?"+":"-")+brFmt(Math.abs(pnl));
-    pe.style.color=pnl>=0?"var(--green)":"var(--red)";
-  }
-}
+    function restartQuiz() {
+      answers = { freq: null, teeSize: null, boxerSize: null, style: null, socks: null, forcedTier: null };
+      document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.quiz-next').forEach(b => b.disabled = true);
+      document.getElementById('quizResult').classList.remove('active');
+      goTo(1);
+    }
 
-function brToast(msg,t="ok"){
-  let el=document.getElementById("br-toast-el");
-  if(!el){
-    el=document.createElement("div");
-    el.id="br-toast-el";
-    el.className="br-toast";
-    document.body.appendChild(el);
-  }
-  el.textContent=msg;
-  el.className="br-toast "+t+" show";
-  clearTimeout(el._timer);
-  el._timer=setTimeout(()=>el.classList.remove("show"),2800);
-}
+    // Legal page routing
+    function checkHash() {
+      const hash = window.location.hash.replace('#','');
+      const legal = ['privacy','terms','refund'];
+      const main = document.querySelectorAll('nav,.hero,.marquee-wrap,.essentials,.divider,.plans,.process,.founding-banner,footer');
+      document.querySelectorAll('.legal-page').forEach(el => el.style.display = 'none');
+      if (legal.includes(hash)) {
+        main.forEach(el => el.style.display = 'none');
+        const page = document.getElementById(hash);
+        if (page) page.style.display = 'block';
+      } else {
+        main.forEach(el => el.style.display = '');
+      }
+    }
+    window.addEventListener('hashchange', checkHash);
+    checkHash();
+  </script>
 
-document.getElementById("br-start-btn").addEventListener("click", brStart);
-document.getElementById("br-reset-btn").addEventListener("click", brReset);
-document.getElementById("tf-add-btn").addEventListener("click", brAddTix);
-document.getElementById("br-inp").addEventListener("keydown", (event) => {
-  if (event.key === "Enter") brStart();
-});
-document.getElementById("tf-l").addEventListener("keydown", (event) => {
-  if (event.key === "Enter") brAddTix();
-});
-document.addEventListener("DOMContentLoaded", brLoad);
-</script>
 </body>
 </html>
