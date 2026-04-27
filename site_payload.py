@@ -177,9 +177,9 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
     games: List[Dict[str, Any]] = []
 
     # IMPORTANT:
-    # Build from the full MLB slate, not just rows_by_game.
-    # rows_by_game only contains games with model plays.
-    # game_lookup contains every bettable MLB game returned by run_daily.py.
+    # Build cards from the full slate, not only rows_by_game.
+    # rows_by_game only contains games with playable picks.
+    # game_lookup contains the slate games returned by the pipeline.
     for title, lookup in game_lookup.items():
         rows = rows_by_game.get(title, [])
         rows_sorted = sorted(rows, key=lambda row: row["sort_score"], reverse=True)
@@ -215,14 +215,22 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
         core_count = sum(1 for row in rows_sorted if str(row["tier"]).upper() == "CORE")
         top_markets = ", ".join(dict.fromkeys(row["market"] for row in rows_sorted[:3]))
 
+        away_pitcher = lookup.get("awayPitcherName") or "TBD"
+        home_pitcher = lookup.get("homePitcherName") or "TBD"
+        pitcher_confirmed = away_pitcher != "TBD" and home_pitcher != "TBD"
+
         if rows_sorted:
             status = "Confirmed lineups"
             lineup_status = "Confirmed lineup data loaded"
             attack_note = f"Best signal lane: {top_markets}. Click through for the full tracked board."
+        elif pitcher_confirmed:
+            status = "Pitchers confirmed"
+            lineup_status = "Pitchers locked, lineup pending"
+            attack_note = "Early form board active. Signals upgrade when batting orders confirm."
         else:
-            status = "Awaiting confirmed lineups"
-            lineup_status = "No confirmed model rows yet"
-            attack_note = "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal."
+            status = "Early form board"
+            lineup_status = "Awaiting pitchers and lineups"
+            attack_note = "Early form board active. Signals upgrade when pitchers and batting orders confirm."
 
         games.append(
             {
@@ -230,7 +238,7 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "title": title,
                 "start": _format_game_time_utc(lookup.get("gameTimeUTC")),
                 "status": status,
-                "meta": f"{lookup.get('awayPitcherName', 'TBD')} vs {lookup.get('homePitcherName', 'TBD')}",
+                "meta": f"{away_pitcher} vs {home_pitcher}",
                 "attackNote": attack_note,
                 "lineupStatus": lineup_status,
                 "summary": {
