@@ -1,0 +1,29 @@
+name: Daily Board Build
+
+on:
+  schedule:
+    - cron: "45 14 * * *"   # 10:45 AM ET
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - run: |
+          python -c "import json; from pathlib import Path; from site_payload import build_site_payload; p=build_site_payload(); Path('board-data.json').write_text(json.dumps(p, indent=2), encoding='utf-8'); Path('web/board-data.json').write_text(json.dumps(p, indent=2), encoding='utf-8');"
+
+      - run: |
+          git config user.email "bot@theboard.com"
+          git config user.name "Board Bot"
+          git add board-data.json web/board-data.json
+          git commit -m "Auto board update" || exit 0
+          git push
