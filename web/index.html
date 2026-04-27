@@ -1810,6 +1810,22 @@ function parseRecord(value) {
   return hits / games;
 }
 
+function parseSortableValue(value) {
+  if (value === null || value === undefined || value === "--") return -9999;
+
+  const raw = String(value).trim();
+
+  if (raw.includes("/")) {
+    const rec = parseRecord(raw);
+    if (rec >= 0) return rec;
+  }
+
+  const match = raw.match(/-?\d+(\.\d+)?/);
+  if (match) return Number(match[0]);
+
+  return raw.toLowerCase();
+}
+
 function tierRank(value) {
   const token = normalize(value);
   if (token === "core") return 4;
@@ -1939,26 +1955,29 @@ function explorerRows(sport) {
   const sorted = filtered.slice().sort((a, b) => {
     const dir = state.sortDir === "asc" ? 1 : -1;
     const key = state.sortKey;
-    let left = a[key];
-    let right = b[key];
 
-    if (key === "score" || key === "confidence") {
-      left = Number(left || 0);
-      right = Number(right || 0);
-    } else if (key === "tier") {
-      left = tierRank(left);
-      right = tierRank(right);
-    } else if (key === "last10" || key === "last5" || key === "last3") {
-      left = parseRecord(left);
-      right = parseRecord(right);
+    let left;
+    let right;
+
+    if (key === "tier") {
+      left = tierRank(a[key]);
+      right = tierRank(b[key]);
+    } else if (["score", "confidence", "last10", "last5", "last3"].includes(key)) {
+      left = parseSortableValue(a[key]);
+      right = parseSortableValue(b[key]);
     } else {
-      left = normalize(left);
-      right = normalize(right);
+      left = normalize(a[key]);
+      right = normalize(b[key]);
     }
 
-    if (left < right) return -1 * dir;
-    if (left > right) return 1 * dir;
-    return (Number(b.score || 0) - Number(a.score || 0));
+    if (typeof left === "number" && typeof right === "number") {
+      if (left !== right) return (left - right) * dir;
+    } else {
+      const cmp = String(left).localeCompare(String(right));
+      if (cmp !== 0) return cmp * dir;
+    }
+
+    return Number(b.score || 0) - Number(a.score || 0);
   });
 
   return sorted;
@@ -2222,7 +2241,7 @@ function renderExplorerView(sport) {
               <div>${row.team}</div>
               <div><span class="market-pill ${marketClass(row.market)}">${row.market}</span></div>
               <div class="line-mono">${row.line}</div>
-              <div><span class="metric-inline ${scoreClass(row.score)}">${Number(row.score).toFixed(1)}</span></div>
+              <div><span class="metric-inline ${scoreClass(row.score)}">${Number(row.score || 0).toFixed(1)}</span></div>
               <div><span class="tier-pill ${tierClass(row.tier)}">${row.tier}</span></div>
               <div>${row.last10}</div>
               <div>${row.last5}</div>
