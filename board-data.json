@@ -43,6 +43,223 @@
       ],
       "games": [
         {
+          "id": "824446",
+          "title": "TB @ CLE",
+          "start": "2026-04-27T22:10:00Z",
+          "status": "Confirmed lineups",
+          "meta": "Steven Matz vs Parker Messick",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
+          "summary": {
+            "plays": 7,
+            "core": 0,
+            "avgScore": "29.2",
+            "signal": "D"
+          },
+          "topPicks": [
+            {
+              "name": "Daniel Schneemann",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Value",
+              "confidence": 61,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Angel Mart\u00ednez",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 60,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jos\u00e9 Ram\u00edrez",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 59,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Chase DeLauter",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 57,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Daniel Schneemann",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 30.3,
+              "tier": "VALUE",
+              "confidence": 61,
+              "last10": "3/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Angel Mart\u00ednez",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.8,
+              "tier": "LONGSHOT",
+              "confidence": 60,
+              "last10": "3/10",
+              "last5": "3/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Jos\u00e9 Ram\u00edrez",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.4,
+              "tier": "LONGSHOT",
+              "confidence": 59,
+              "last10": "3/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Angel Mart\u00ednez",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 29.4,
+              "tier": "LONGSHOT",
+              "confidence": 59,
+              "last10": "20 TB",
+              "last5": "17 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Jos\u00e9 Ram\u00edrez",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "20 TB",
+              "last5": "5 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Daniel Schneemann",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "22 TB",
+              "last5": "9 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Chase DeLauter",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            }
+          ]
+        },
+        {
+          "id": "823395",
+          "title": "STL @ PIT",
+          "start": "2026-04-27T22:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Dustin May vs Mason Montgomery",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822825",
+          "title": "BOS @ TOR",
+          "start": "2026-04-27T23:07:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Ranger Suarez vs Dylan Cease",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823719",
+          "title": "SEA @ MIN",
+          "start": "2026-04-27T23:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Luis Castillo vs Connor Prielipp",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824609",
+          "title": "LAA @ CWS",
+          "start": "2026-04-27T23:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Jack Kochanowicz vs Anthony Kay",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
           "id": "822906",
           "title": "NYY @ TEX",
           "start": "2026-04-28T00:05:00Z",
