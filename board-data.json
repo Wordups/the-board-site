@@ -1,76 +1,718 @@
 {
-  "updatedAt": "2026-04-27T14:11:39.808240-04:00",
-  "sourceMode": "Generated site payload",
-
-  "sports": [
-    { "key": "nba", "label": "NBA" }
-  ],
-
-  "games": [
-    {
-      "id": "nba-main",
-      "label": "NBA Slate",
-      "sport": "nba",
-      "plays": [
+  "updatedAt": "April 27, 2026",
+  "sourceMode": "Live website API",
+  "sports": {
+    "mlb": {
+      "label": "MLB",
+      "note": "Live MLB board from the validated model pipeline. Click a game for the full tracked slate.",
+      "launches": [
         {
-          "player": "Nikola Jokic",
-          "team": "DEN",
-          "market": "REB",
-          "line": "12.5",
-          "score": 80,
-          "tier": "CORE",
-          "confidence": 80,
-          "last10": "13.8",
-          "last5": "14.2",
-          "last3": "14.3",
-          "last1": "15",
-          "season": "13.2",
-          "status": "Active",
-          "why": "Elite rebound floor"
+          "title": "Live API",
+          "copy": "This board is now fed by the live MLB pipeline instead of sample bootstrap data."
         },
         {
-          "player": "Jalen Brunson",
-          "team": "NYK",
-          "market": "PTS",
-          "line": "25.5",
-          "score": 74,
-          "tier": "CORE",
-          "confidence": 74,
-          "last10": "28.0",
-          "last5": "26.8",
-          "last3": "24.7",
-          "last1": "22",
-          "season": "27.1",
-          "status": "Active",
-          "why": "Primary scorer usage"
+          "title": "Game clustering",
+          "copy": "Each matchup keeps a compressed top layer plus a deeper slate behind the click."
         },
         {
-          "player": "Cade Cunningham",
-          "team": "DET",
-          "market": "AST",
-          "line": "8.5",
-          "score": 68,
-          "tier": "VALUE",
-          "confidence": 68,
-          "last10": "9.7",
-          "last5": "10.2",
-          "last3": "8.7",
-          "last1": "11",
-          "season": "9.4",
-          "status": "Active",
-          "why": "Playmaker role"
+          "title": "Recent form",
+          "copy": "Hit-rate columns use live MLB recent-form fields, including L3 when available."
+        }
+      ],
+      "notes": [
+        "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
+        "Scores stay on the 0-50 scale from the tuned board logic."
+      ],
+      "pickOfDay": {
+        "player": "Daniel Schneemann",
+        "team": "TB @ CLE",
+        "market": "HR",
+        "line": "HR 1+",
+        "score": "30.3/50",
+        "confidence": "61%",
+        "rate": "L10 3/10 | L5 1/5 | L3 --",
+        "environment": "Steven Matz vs Parker Messick",
+        "summary": "Best signal lane: HR. Click through for the full tracked board."
+      },
+      "filters": [
+        "all",
+        "hr",
+        "tb",
+        "hit",
+        "k"
+      ],
+      "games": [
+        {
+          "id": "824446",
+          "title": "TB @ CLE",
+          "start": "2026-04-27T22:10:00Z",
+          "status": "Confirmed lineups",
+          "meta": "Steven Matz vs Parker Messick",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
+          "summary": {
+            "plays": 7,
+            "core": 0,
+            "avgScore": "29.2",
+            "signal": "D"
+          },
+          "topPicks": [
+            {
+              "name": "Daniel Schneemann",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Value",
+              "confidence": 61,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Angel Mart\u00ednez",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 60,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jos\u00e9 Ram\u00edrez",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 59,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Chase DeLauter",
+              "market": "HR",
+              "why": "vs Steven Matz | Slight edge",
+              "tier": "Longshot",
+              "confidence": 57,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Daniel Schneemann",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 30.3,
+              "tier": "VALUE",
+              "confidence": 61,
+              "last10": "3/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Angel Mart\u00ednez",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.8,
+              "tier": "LONGSHOT",
+              "confidence": 60,
+              "last10": "3/10",
+              "last5": "3/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Jos\u00e9 Ram\u00edrez",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.4,
+              "tier": "LONGSHOT",
+              "confidence": 59,
+              "last10": "3/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Angel Mart\u00ednez",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 29.4,
+              "tier": "LONGSHOT",
+              "confidence": 59,
+              "last10": "20 TB",
+              "last5": "17 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Jos\u00e9 Ram\u00edrez",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "20 TB",
+              "last5": "5 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Daniel Schneemann",
+              "team": "CLE",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "22 TB",
+              "last5": "9 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            },
+            {
+              "player": "Chase DeLauter",
+              "team": "CLE",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.6,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Steven Matz | Slight edge"
+            }
+          ]
+        }
+      ]
+    },
+    "nba": {
+      "label": "NBA",
+      "note": "Live NBA board grouped by game with availability filtering applied.",
+      "launches": [
+        {
+          "title": "Live slate grouping",
+          "copy": "NBA picks are grouped into the same clickable game view as MLB."
+        },
+        {
+          "title": "Availability aware",
+          "copy": "Inactive and out-of-pool players are filtered before the site payload is built."
+        },
+        {
+          "title": "Best available recent form",
+          "copy": "If recent hit-rate lines exist, they show. Otherwise the site falls back to recent averages."
+        }
+      ],
+      "notes": [
+        "This worktree still uses the existing NBA model output shape, so recent columns can vary by source quality."
+      ],
+      "pickOfDay": {
+        "player": "Cade Cunningham",
+        "team": "DET @ ORL",
+        "market": "PTS",
+        "line": "Over 27.5 PTS",
+        "score": "100.0/100",
+        "confidence": "78%",
+        "rate": "L10 31.0 avg | L5 31.0 avg | L3 31.0 avg",
+        "environment": "8:00 pm ET",
+        "summary": "Grouped by matchup so you can scan ladders and stable lanes from one screen."
+      },
+      "filters": [
+        "all",
+        "pts",
+        "ast",
+        "reb",
+        "3pm"
+      ],
+      "games": [
+        {
+          "id": "0042500104",
+          "title": "DET @ ORL",
+          "start": "8:00 pm ET",
+          "status": "Live board",
+          "meta": "8:00 pm ET",
+          "attackNote": "Grouped by matchup so you can scan ladders and stable lanes from one screen.",
+          "lineupStatus": "Availability filter applied",
+          "summary": {
+            "plays": 9,
+            "core": 1,
+            "avgScore": "65.5",
+            "signal": "A"
+          },
+          "topPicks": [
+            {
+              "name": "Cade Cunningham",
+              "market": "PTS",
+              "why": "Strong lean",
+              "tier": "Core",
+              "confidence": 78,
+              "line": "Over 27.5 PTS"
+            },
+            {
+              "name": "Cade Cunningham",
+              "market": "AST",
+              "why": "Good value",
+              "tier": "Value",
+              "confidence": 70,
+              "line": "Over 6.5 AST"
+            },
+            {
+              "name": "Paolo Banchero",
+              "market": "AST",
+              "why": "Good value",
+              "tier": "Value",
+              "confidence": 64,
+              "line": "Over 6.5 AST"
+            },
+            {
+              "name": "Wendell Carter Jr.",
+              "market": "REB",
+              "why": "Good value",
+              "tier": "Value",
+              "confidence": 64,
+              "line": "Over 7.5 REB"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Cade Cunningham",
+              "team": "DET",
+              "market": "PTS",
+              "line": "Over 27.5 PTS",
+              "score": 100.0,
+              "tier": "Core",
+              "confidence": 78,
+              "last10": "31.0 avg",
+              "last5": "31.0 avg",
+              "last3": "31.0 avg",
+              "status": "Available pool",
+              "why": "Strong lean"
+            },
+            {
+              "player": "Cade Cunningham",
+              "team": "DET",
+              "market": "AST",
+              "line": "Over 6.5 AST",
+              "score": 71.9,
+              "tier": "Value",
+              "confidence": 70,
+              "last10": "8.0 avg",
+              "last5": "8.0 avg",
+              "last3": "8.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Paolo Banchero",
+              "team": "ORL",
+              "market": "AST",
+              "line": "Over 6.5 AST",
+              "score": 63.3,
+              "tier": "Value",
+              "confidence": 64,
+              "last10": "7.0 avg",
+              "last5": "7.0 avg",
+              "last3": "7.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Wendell Carter Jr.",
+              "team": "ORL",
+              "market": "REB",
+              "line": "Over 7.5 REB",
+              "score": 63.1,
+              "tier": "Value",
+              "confidence": 64,
+              "last10": "9.7 avg",
+              "last5": "9.7 avg",
+              "last3": "9.7 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Desmond Bane",
+              "team": "ORL",
+              "market": "3PM",
+              "line": "Over 2.5 3PM",
+              "score": 63.0,
+              "tier": "Value",
+              "confidence": 64,
+              "last10": "3.3 avg",
+              "last5": "3.3 avg",
+              "last3": "3.3 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Paolo Banchero",
+              "team": "ORL",
+              "market": "REB",
+              "line": "Over 7.5 REB",
+              "score": 59.5,
+              "tier": "Value",
+              "confidence": 61,
+              "last10": "9.0 avg",
+              "last5": "9.0 avg",
+              "last3": "9.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Jalen Suggs",
+              "team": "ORL",
+              "market": "3PM",
+              "line": "Over 2.5 3PM",
+              "score": 57.4,
+              "tier": "Longshot",
+              "confidence": 59,
+              "last10": "3.0 avg",
+              "last5": "3.0 avg",
+              "last3": "3.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Duncan Robinson",
+              "team": "DET",
+              "market": "3PM",
+              "line": "Over 2.5 3PM",
+              "score": 56.9,
+              "tier": "Longshot",
+              "confidence": 59,
+              "last10": "3.0 avg",
+              "last5": "3.0 avg",
+              "last3": "3.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Jalen Duren",
+              "team": "DET",
+              "market": "REB",
+              "line": "Over 7.5 REB",
+              "score": 54.4,
+              "tier": "Longshot",
+              "confidence": 56,
+              "last10": "8.3 avg",
+              "last5": "8.3 avg",
+              "last3": "8.3 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            }
+          ]
+        },
+        {
+          "id": "0042500144",
+          "title": "OKC @ PHX",
+          "start": "9:30 pm ET",
+          "status": "Live board",
+          "meta": "9:30 pm ET",
+          "attackNote": "Grouped by matchup so you can scan ladders and stable lanes from one screen.",
+          "lineupStatus": "Availability filter applied",
+          "summary": {
+            "plays": 4,
+            "core": 3,
+            "avgScore": "84.1",
+            "signal": "A"
+          },
+          "topPicks": [
+            {
+              "name": "Shai Gilgeous-Alexander",
+              "market": "PTS",
+              "why": "Strong lean",
+              "tier": "Core",
+              "confidence": 78,
+              "line": "Over 27.5 PTS"
+            },
+            {
+              "name": "Dillon Brooks",
+              "market": "PTS",
+              "why": "Good value",
+              "tier": "Core",
+              "confidence": 76,
+              "line": "Over 21.5 PTS"
+            },
+            {
+              "name": "Dillon Brooks",
+              "market": "3PM",
+              "why": "Strong lean",
+              "tier": "Core",
+              "confidence": 72,
+              "line": "Over 3.5 3PM"
+            },
+            {
+              "name": "Shai Gilgeous-Alexander",
+              "market": "AST",
+              "why": "Good value",
+              "tier": "Value",
+              "confidence": 69,
+              "line": "Over 6.5 AST"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Shai Gilgeous-Alexander",
+              "team": "OKC",
+              "market": "PTS",
+              "line": "Over 27.5 PTS",
+              "score": 100.0,
+              "tier": "Core",
+              "confidence": 78,
+              "last10": "34.7 avg",
+              "last5": "34.7 avg",
+              "last3": "34.7 avg",
+              "status": "Available pool",
+              "why": "Strong lean"
+            },
+            {
+              "player": "Dillon Brooks",
+              "team": "PHX",
+              "market": "PTS",
+              "line": "Over 21.5 PTS",
+              "score": 89.9,
+              "tier": "Core",
+              "confidence": 76,
+              "last10": "27.0 avg",
+              "last5": "27.0 avg",
+              "last3": "27.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Dillon Brooks",
+              "team": "PHX",
+              "market": "3PM",
+              "line": "Over 3.5 3PM",
+              "score": 75.6,
+              "tier": "Core",
+              "confidence": 72,
+              "last10": "4.0 avg",
+              "last5": "4.0 avg",
+              "last3": "4.0 avg",
+              "status": "Available pool",
+              "why": "Strong lean"
+            },
+            {
+              "player": "Shai Gilgeous-Alexander",
+              "team": "OKC",
+              "market": "AST",
+              "line": "Over 6.5 AST",
+              "score": 71.0,
+              "tier": "Value",
+              "confidence": 69,
+              "last10": "8.0 avg",
+              "last5": "8.0 avg",
+              "last3": "8.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            }
+          ]
+        },
+        {
+          "id": "0042500165",
+          "title": "MIN @ DEN",
+          "start": "10:30 pm ET",
+          "status": "Live board",
+          "meta": "10:30 pm ET",
+          "attackNote": "Grouped by matchup so you can scan ladders and stable lanes from one screen.",
+          "lineupStatus": "Availability filter applied",
+          "summary": {
+            "plays": 7,
+            "core": 3,
+            "avgScore": "73.9",
+            "signal": "A"
+          },
+          "topPicks": [
+            {
+              "name": "Nikola Joki\u0107",
+              "market": "REB",
+              "why": "Strong lean",
+              "tier": "Core",
+              "confidence": 77,
+              "line": "Over 10.5 REB"
+            },
+            {
+              "name": "Jamal Murray",
+              "market": "PTS",
+              "why": "Good value",
+              "tier": "Core",
+              "confidence": 76,
+              "line": "Over 21.5 PTS"
+            },
+            {
+              "name": "Nikola Joki\u0107",
+              "market": "PTS",
+              "why": "Good value",
+              "tier": "Core",
+              "confidence": 75,
+              "line": "Over 21.5 PTS"
+            },
+            {
+              "name": "Rudy Gobert",
+              "market": "REB",
+              "why": "Strong lean",
+              "tier": "Value",
+              "confidence": 69,
+              "line": "Over 10.5 REB"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Nikola Joki\u0107",
+              "team": "DEN",
+              "market": "REB",
+              "line": "Over 10.5 REB",
+              "score": 92.8,
+              "tier": "Core",
+              "confidence": 77,
+              "last10": "14.5 avg",
+              "last5": "14.5 avg",
+              "last3": "14.5 avg",
+              "status": "Available pool",
+              "why": "Strong lean"
+            },
+            {
+              "player": "Jamal Murray",
+              "team": "DEN",
+              "market": "PTS",
+              "line": "Over 21.5 PTS",
+              "score": 90.1,
+              "tier": "Core",
+              "confidence": 76,
+              "last10": "26.5 avg",
+              "last5": "26.5 avg",
+              "last3": "26.5 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Nikola Joki\u0107",
+              "team": "DEN",
+              "market": "PTS",
+              "line": "Over 21.5 PTS",
+              "score": 85.6,
+              "tier": "Core",
+              "confidence": 75,
+              "last10": "25.0 avg",
+              "last5": "25.0 avg",
+              "last3": "25.0 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Rudy Gobert",
+              "team": "MIN",
+              "market": "REB",
+              "line": "Over 10.5 REB",
+              "score": 71.1,
+              "tier": "Value",
+              "confidence": 69,
+              "last10": "11.0 avg",
+              "last5": "11.0 avg",
+              "last3": "11.0 avg",
+              "status": "Available pool",
+              "why": "Strong lean"
+            },
+            {
+              "player": "Nikola Joki\u0107",
+              "team": "DEN",
+              "market": "AST",
+              "line": "Over 6.5 AST",
+              "score": 70.2,
+              "tier": "Value",
+              "confidence": 69,
+              "last10": "7.8 avg",
+              "last5": "7.8 avg",
+              "last3": "7.8 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            },
+            {
+              "player": "Jamal Murray",
+              "team": "DEN",
+              "market": "AST",
+              "line": "Over 4.5 AST",
+              "score": 54.3,
+              "tier": "Longshot",
+              "confidence": 56,
+              "last10": "5.8 avg",
+              "last5": "5.8 avg",
+              "last3": "5.8 avg",
+              "status": "Available pool",
+              "why": "Solid"
+            },
+            {
+              "player": "Donte DiVincenzo",
+              "team": "MIN",
+              "market": "3PM",
+              "line": "Over 2.5 3PM",
+              "score": 52.8,
+              "tier": "Longshot",
+              "confidence": 55,
+              "last10": "2.8 avg",
+              "last5": "2.8 avg",
+              "last3": "2.8 avg",
+              "status": "Available pool",
+              "why": "Good value"
+            }
+          ]
+        }
+      ]
+    },
+    "wnba": {
+      "label": "WNBA",
+      "note": "WNBA board will fill in here when the backend is ready.",
+      "launches": [],
+      "notes": [],
+      "pickOfDay": null,
+      "filters": [
+        "all"
+      ],
+      "games": []
+    },
+    "soccer": {
+      "label": "Soccer",
+      "note": "Soccer props will plug into the same site payload once those feeds are wired.",
+      "launches": [],
+      "notes": [],
+      "pickOfDay": null,
+      "filters": [
+        "all"
+      ],
+      "games": []
+    },
+    "highlights": {
+      "label": "Highlights",
+      "note": "Highlights stay separated from the board so the research surface stays clean.",
+      "launches": [],
+      "notes": [],
+      "pickOfDay": null,
+      "filters": [
+        "all"
+      ],
+      "games": [],
+      "highlights": [
+        {
+          "sport": "nba",
+          "title": "NBA playoff highlights",
+          "source": "YouTube search feed",
+          "url": "https://www.youtube.com/embed?listType=search&q=NBA+playoff+highlights+2026"
+        },
+        {
+          "sport": "mlb",
+          "title": "MLB daily home run reel",
+          "source": "YouTube search feed",
+          "url": "https://www.youtube.com/embed?listType=search&q=MLB+home+run+highlights+2026"
         }
       ]
     }
-  ],
-
-  "plays": [],
-
-  "highlights": [],
-
-  "notes": [
-    "Live payload fixed",
-    "Games now wired correctly",
-    "Board rendering enabled"
-  ]
+  }
 }
