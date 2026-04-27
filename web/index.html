@@ -121,7 +121,7 @@ header {
   margin: 0 auto;
   padding: 0 28px;
   display: grid;
-  grid-template-columns: 220px minmax(260px, 1fr) 280px;
+  grid-template-columns: 1fr;
   gap: 18px;
   align-items: center;
   min-height: 68px;
@@ -197,7 +197,7 @@ header {
 }
 
 .header-meta {
-  display: flex;
+  display: none !important;
   justify-content: flex-end;
   gap: 12px;
   flex-wrap: wrap;
@@ -1623,7 +1623,7 @@ header {
         <div class="brand-sub">Signal board for props, ladders, and slate research</div>
       </div>
     </div>
-    <label class="search-wrap" aria-label="Search players or games">
+    <label class="search-wrap" aria-label="Search players or games" style="display:none;">
       <span class="search-icon">Search</span>
       <input id="search-input" type="search" placeholder="Search players, props, teams, or games">
     </label>
@@ -1705,250 +1705,14 @@ header {
 
 <script>
 const SAMPLE_DATA = {
-  updatedAt: "Fallback sample — refresh board-data.json",
-  sourceMode: "Bootstrap + backend-ready hooks",
+  updatedAt: null,
+  sourceMode: "waiting",
   sports: {
-    mlb: {
-      label: "MLB",
-      note: "Click any game to open the full roster board with L10, L5, and L3 hit rates.",
-      launches: [
-        { title: "Backend hook", copy: "Reads from window.BOARD_DATA first, then board-data.json, then /api/site-board." },
-        { title: "Game click flow", copy: "Each game opens a roster slate with every tracked player, market, line, score, tier, and hit-rate row." },
-        { title: "Search behavior", copy: "Search filters games and players together, so /orioles-style browsing can become a real web flow." }
-      ],
-      notes: [
-        "Lineups, status, and L10/L5/L3 are designed to be backend-fed fields. This UI will render them as soon as the API ships.",
-        "Games stay compressed on the main board and expand into a full roster slate only when clicked.",
-        "The roster modal is built for scanning: score, line, last-10, last-5, last-3, status, and why all on one row."
-      ],
-      pickOfDay: {
-        player: "Kyle Schwarber",
-        team: "PHI",
-        market: "HR",
-        line: "HR 1+",
-        odds: "+210",
-        confidence: 78,
-        rate: "L10 4/10 | L5 3/5 | L3 2/3",
-        environment: "Wind out to right | Citizens Bank Park | Assad 5.2 MLB IP",
-        context: "CHC @ PHI | 6:41 PM ET | premium lefty lift spot"
-      },
-      filters: ["all", "hr", "tb", "hit", "k"],
-      games: [
-        {
-          id: "chc-phi",
-          title: "CHC @ PHI",
-          start: "6:41 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Assad vs Sanchez | Citizens Bank Park | Wind out 11 mph",
-          attackNote: "Best HR environment on the slate. Lefty lift and short porch fit the board's power cluster.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 6, core: 2, avgScore: "40.8", signal: "A+" },
-          topPicks: [
-            { name: "Kyle Schwarber", market: "HR", why: "Wind out and pure barrel lane", tier: "Core", confidence: 78, line: "HR 1+" },
-            { name: "Bryce Harper", market: "HR", why: "Same game stack with safer contact base", tier: "Strong", confidence: 69, line: "HR 1+" },
-            { name: "Cristopher Sanchez", market: "K", why: "Swing-miss lane vs top-heavy order", tier: "Value", confidence: 64, line: "6+ K" }
-          ],
-          roster: [
-            { player: "Kyle Schwarber", team: "PHI", market: "HR", line: "HR 1+", score: 44.1, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Wind out, pull lift, park edge" },
-            { player: "Bryce Harper", team: "PHI", market: "HR", line: "HR 1+", score: 40.2, tier: "Strong", confidence: 69, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Assad fly-ball profile, same game stack" },
-            { player: "Trea Turner", team: "PHI", market: "HIT", line: "1+ Hit", score: 36.4, tier: "Value", confidence: 66, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Top-of-order floor, multi-PA edge" },
-            { player: "Nick Castellanos", team: "PHI", market: "TB", line: "1.5 TB", score: 34.8, tier: "Value", confidence: 62, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Hard-hit pocket with RBI traffic" },
-            { player: "Cristopher Sanchez", team: "PHI", market: "K", line: "6+ K", score: 33.5, tier: "Value", confidence: 64, last10: "7/10", last5: "4/5", last3: "2/3", status: "Starting", why: "Whiff lane against lower third" },
-            { player: "Nico Hoerner", team: "CHC", market: "HIT", line: "1+ Hit", score: 31.6, tier: "Longshot", confidence: 57, last10: "7/10", last5: "3/5", last3: "2/3", status: "In", why: "Contact floor, low strikeout risk" },
-            { player: "Ian Happ", team: "CHC", market: "TB", line: "1.5 TB", score: 29.4, tier: "Longshot", confidence: 54, last10: "4/10", last5: "2/5", last3: "1/3", status: "In", why: "Needs pull-side damage, not volume" }
-          ]
-        },
-        {
-          id: "ari-bal",
-          title: "ARI @ BAL",
-          start: "6:36 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Nelson vs Kremer | Camden Yards | Wind out 8 mph",
-          attackNote: "Baltimore side carries the best balanced mix of HR, TB, and hit-rate floor.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 5, core: 2, avgScore: "39.2", signal: "A" },
-          topPicks: [
-            { name: "Gunnar Henderson", market: "HR", why: "Best damage bat in this run environment", tier: "Core", confidence: 76, line: "HR 1+" },
-            { name: "Gunnar Henderson", market: "TB", why: "Great 2+ base floor if HR misses", tier: "Core", confidence: 74, line: "1.5 TB" },
-            { name: "Adley Rutschman", market: "HIT", why: "High-contact lane with RBI volume", tier: "Value", confidence: 63, line: "1+ Hit" }
-          ],
-          roster: [
-            { player: "Gunnar Henderson", team: "BAL", market: "HR", line: "HR 1+", score: 42.8, tier: "Core", confidence: 76, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Lift, barrel, and weather all aligned" },
-            { player: "Gunnar Henderson", team: "BAL", market: "TB", line: "1.5 TB", score: 41.2, tier: "Core", confidence: 74, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "XBH pressure even when HR misses" },
-            { player: "Adley Rutschman", team: "BAL", market: "HIT", line: "1+ Hit", score: 35.7, tier: "Value", confidence: 63, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Line drive floor with plus slot" },
-            { player: "Jordan Westburg", team: "BAL", market: "TB", line: "1.5 TB", score: 33.8, tier: "Value", confidence: 60, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Pull gap damage profile" },
-            { player: "Zac Gallen", team: "ARI", market: "K", line: "6+ K", score: 30.1, tier: "Longshot", confidence: 56, last10: "6/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Skill is there, matchup is not clean" }
-          ]
-        },
-        {
-          id: "tex-ath",
-          title: "TEX @ ATH",
-          start: "9:41 PM ET",
-          status: "Lineups Confirmed",
-          meta: "Eovaldi vs Severino | Sutter Health Park | warm carry",
-          attackNote: "This is a real clustering spot. The board can support multiple smart HR reads without over-inflating the game.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 6, core: 3, avgScore: "41.6", signal: "A+" },
-          topPicks: [
-            { name: "Corey Seager", market: "HR", why: "Lefty damage against unstable command", tier: "Core", confidence: 75, line: "HR 1+" },
-            { name: "Shea Langeliers", market: "HR", why: "Pure power anchor on the other side", tier: "Core", confidence: 73, line: "HR 1+" },
-            { name: "Brent Rooker", market: "TB", why: "Strong hybrid if you want less pure HR exposure", tier: "Strong", confidence: 68, line: "1.5 TB" }
-          ],
-          roster: [
-            { player: "Corey Seager", team: "TEX", market: "HR", line: "HR 1+", score: 43.5, tier: "Core", confidence: 75, last10: "4/10", last5: "2/5", last3: "2/3", status: "In", why: "Severino command wobble plus pull-side air" },
-            { player: "Shea Langeliers", team: "ATH", market: "HR", line: "HR 1+", score: 42.7, tier: "Core", confidence: 73, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Highest barrel lane in game" },
-            { player: "Brent Rooker", team: "ATH", market: "TB", line: "1.5 TB", score: 38.8, tier: "Strong", confidence: 68, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "Hybrid profile if HR is too thin" },
-            { player: "Marcus Semien", team: "TEX", market: "HIT", line: "1+ Hit", score: 33.6, tier: "Value", confidence: 59, last10: "8/10", last5: "4/5", last3: "2/3", status: "In", why: "Lead-off floor with run volume" },
-            { player: "Nathan Eovaldi", team: "TEX", market: "K", line: "6+ K", score: 31.5, tier: "Longshot", confidence: 57, last10: "6/10", last5: "3/5", last3: "1/3", status: "Starting", why: "Can get there if pitch count cooperates" },
-            { player: "JJ Bleday", team: "ATH", market: "HIT", line: "1+ Hit", score: 29.1, tier: "Longshot", confidence: 53, last10: "6/10", last5: "3/5", last3: "1/3", status: "In", why: "Pure volume play, not damage-first" }
-          ]
-        },
-        {
-          id: "stl-hou",
-          title: "STL @ HOU",
-          start: "2:11 PM ET",
-          status: "Final lineup sweep",
-          meta: "Liberatore vs Burrows | Dome game | stable run environment",
-          attackNote: "Good board for HR plus hits together. Yordan gives ceiling, Walker gives heater form.",
-          lineupStatus: "Confirmed",
-          summary: { plays: 5, core: 1, avgScore: "37.1", signal: "B+" },
-          topPicks: [
-            { name: "Yordan Alvarez", market: "HR", why: "Best ceiling bat in a controlled dome spot", tier: "Core", confidence: 78, line: "HR 1+" },
-            { name: "Jordan Walker", market: "HIT", why: "Hit streak and plus recent floor", tier: "Strong", confidence: 67, line: "1+ Hit" },
-            { name: "Jose Altuve", market: "TB", why: "Cleaner hybrid exposure than forcing HR", tier: "Value", confidence: 61, line: "1.5 TB" }
-          ],
-          roster: [
-            { player: "Yordan Alvarez", team: "HOU", market: "HR", line: "HR 1+", score: 44.0, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "1/3", status: "In", why: "Weak lefty lane in closed roof" },
-            { player: "Jordan Walker", team: "STL", market: "HIT", line: "1+ Hit", score: 37.5, tier: "Strong", confidence: 67, last10: "9/10", last5: "5/5", last3: "3/3", status: "In", why: "Hot stretch and volume floor" },
-            { player: "Jose Altuve", team: "HOU", market: "TB", line: "1.5 TB", score: 34.2, tier: "Value", confidence: 61, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "More stable than pure HR chase" },
-            { player: "Spencer Arrighetti", team: "HOU", market: "K", line: "6+ K", score: 31.8, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Strikeout upside, not lock volume" }
-          ]
-        }
-      ]
-    },
-    nba: {
-      label: "NBA",
-      note: "Game cards stay compact. Click into any matchup for the full player ladder board and recent hit rates at the displayed mark.",
-      launches: [
-        { title: "Visible board first", copy: "Main page stays clean with top props only. Full roster and hit-rate tables live behind the game click." },
-        { title: "Recent-rate logic", copy: "Each row is built to display last-10, last-5, and last-3 hit rate against the shown line." },
-        { title: "Backend-safe", copy: "If recent data is missing, the site still renders the board and leaves the rate row blank." }
-      ],
-      notes: [
-        "Use season body of work plus playoff context for the score. Use L10, L5, and L3 as execution context, not the whole model.",
-        "Every game card is a clickable entry point into the full roster board. That is where the research layer should live.",
-        "This structure also gives you a place for lineup status, minutes risk, and late scratches without cluttering the main slate."
-      ],
-      pickOfDay: {
-        player: "Nikola Jokic",
-        team: "DEN",
-        market: "REB",
-        line: "12+ REB",
-        odds: "-118",
-        confidence: 80,
-        rate: "L10 8/10 | L5 4/5 | L3 3/3",
-        environment: "Game 4 | home floor | pressure spot",
-        context: "MIN @ DEN | 8:30 PM ET | rebound ladder anchor"
-      },
-      filters: ["all", "pts", "ast", "reb", "3pm"],
-      games: [
-        {
-          id: "min-den",
-          title: "MIN @ DEN - Game 4",
-          start: "8:30 PM ET",
-          status: "Probables Clean",
-          meta: "Nuggets trail 1-2 | high-leverage home response spot",
-          attackNote: "Best ladder game on the card. You can stack Jokic rebounds and assists without forcing thin secondary plays.",
-          lineupStatus: "Projected Active",
-          summary: { plays: 5, core: 2, avgScore: "74.3", signal: "A" },
-          topPicks: [
-            { name: "Nikola Jokic", market: "REB", why: "12+ ladder has clean recent support", tier: "Core", confidence: 80, line: "12+ REB" },
-            { name: "Nikola Jokic", market: "AST", why: "Best secondary ladder in the same game", tier: "Strong", confidence: 69, line: "8+ AST" },
-            { name: "Anthony Edwards", market: "PTS", why: "Volume is always live if game scripts tight", tier: "Value", confidence: 63, line: "28+ PTS" }
-          ],
-          roster: [
-            { player: "Nikola Jokic", team: "DEN", market: "REB", line: "12+ REB", score: 80.4, tier: "Core", confidence: 80, last10: "8/10", last5: "4/5", last3: "3/3", status: "Active", why: "Glass edge, pace stays playable" },
-            { player: "Nikola Jokic", team: "DEN", market: "AST", line: "8+ AST", score: 69.8, tier: "Strong", confidence: 69, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Touch volume, playoff usage, home response" },
-            { player: "Anthony Edwards", team: "MIN", market: "PTS", line: "28+ PTS", score: 63.1, tier: "Value", confidence: 63, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Usage always there, efficiency swings" },
-            { player: "Karl-Anthony Towns", team: "MIN", market: "REB", line: "10+ REB", score: 58.6, tier: "Value", confidence: 58, last10: "5/10", last5: "3/5", last3: "2/3", status: "Active", why: "Volatile but live if Denver misses pile up" }
-          ]
-        },
-        {
-          id: "nyk-atl",
-          title: "NYK @ ATL - Game 4",
-          start: "6:00 PM ET",
-          status: "Probables Clean",
-          meta: "Hawks lead 2-1 | live ball-handler and rebound ladders",
-          attackNote: "Balanced game. Brunson points and Jalen Johnson rebounds are the clearest entries.",
-          lineupStatus: "Projected Active",
-          summary: { plays: 4, core: 1, avgScore: "68.0", signal: "B+" },
-          topPicks: [
-            { name: "Jalen Brunson", market: "PTS", why: "Pure engine role with playoff usage", tier: "Core", confidence: 74, line: "25+ PTS" },
-            { name: "Jalen Johnson", market: "REB", why: "Consistent board work with strong role", tier: "Strong", confidence: 72, line: "10+ REB" },
-            { name: "Trae Young", market: "AST", why: "Assist volume tracks if Atlanta controls pace", tier: "Value", confidence: 65, line: "10+ AST" }
-          ],
-          roster: [
-            { player: "Jalen Brunson", team: "NYK", market: "PTS", line: "25+ PTS", score: 74.2, tier: "Core", confidence: 74, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Ball dominance and shot load" },
-            { player: "Jalen Johnson", team: "ATL", market: "REB", line: "10+ REB", score: 72.1, tier: "Strong", confidence: 72, last10: "8/10", last5: "4/5", last3: "2/3", status: "Active", why: "Role strength plus home game" },
-            { player: "Trae Young", team: "ATL", market: "AST", line: "10+ AST", score: 65.0, tier: "Value", confidence: 65, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Assist ceiling if shooters hit" },
-            { player: "Josh Hart", team: "NYK", market: "REB", line: "8+ REB", score: 59.8, tier: "Value", confidence: 59, last10: "6/10", last5: "4/5", last3: "2/3", status: "Active", why: "Minutes monster floor" }
-          ]
-        },
-        {
-          id: "det-orl",
-          title: "DET @ ORL - Game 3",
-          start: "1:00 PM ET",
-          status: "Monitoring lineups",
-          meta: "Series tied 1-1 | playmaker and rebound lanes",
-          attackNote: "Cade assists and Duren rebounds fit the board better than chasing thin scoring variance.",
-          lineupStatus: "Awaiting confirmations",
-          summary: { plays: 4, core: 0, avgScore: "63.8", signal: "B" },
-          topPicks: [
-            { name: "Cade Cunningham", market: "AST", why: "Primary table-setter with clean line access", tier: "Value", confidence: 68, line: "8+ AST" },
-            { name: "Jalen Duren", market: "REB", why: "Strong recent board rate against this line", tier: "Value", confidence: 67, line: "10+ REB" },
-            { name: "Paolo Banchero", market: "PTS", why: "Usage stays there even when efficiency dips", tier: "Longshot", confidence: 58, line: "26+ PTS" }
-          ],
-          roster: [
-            { player: "Cade Cunningham", team: "DET", market: "AST", line: "8+ AST", score: 68.5, tier: "Value", confidence: 68, last10: "7/10", last5: "3/5", last3: "2/3", status: "Questionable", why: "Engine role, recent assist form" },
-            { player: "Jalen Duren", team: "DET", market: "REB", line: "10+ REB", score: 67.2, tier: "Value", confidence: 67, last10: "7/10", last5: "4/5", last3: "3/3", status: "Active", why: "Strong glass rate in this matchup" },
-            { player: "Paolo Banchero", team: "ORL", market: "PTS", line: "26+ PTS", score: 58.9, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Active", why: "Volume yes, efficiency less stable" }
-          ]
-        }
-      ]
-    },
-    wnba: {
-      label: "WNBA",
-      note: "WNBA board will fill in here when the backend is ready.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: []
-    },
-    soccer: {
-      label: "Soccer",
-      note: "Soccer props panel is reserved for EPL, MLS, and Champions League once feeds are wired.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: []
-    },
-    highlights: {
-      label: "Highlights",
-      note: "Highlights stay separated from the board so the research surface stays clean.",
-      launches: [],
-      notes: [],
-      pickOfDay: null,
-      filters: ["all"],
-      games: [],
-      highlights: [
-        { sport: "nba", title: "NBA Playoff Highlights - Tonight's best sequences", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=NBA+playoff+highlights+2026" },
-        { sport: "mlb", title: "MLB Daily Home Run Reel", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=MLB+home+run+highlights+2026" },
-        { sport: "mlb", title: "Gunnar Henderson recent swings", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Gunnar+Henderson+home+run+2026" },
-        { sport: "nba", title: "Nikola Jokic postseason clips", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Nikola+Jokic+playoffs+2026" }
-      ]
-    }
+    mlb: { label: "MLB", note: "Waiting on today's bot data.", launches: [], notes: [], pickOfDay: null, filters: ["all","hr","tb","hit","k"], games: [] },
+    nba: { label: "NBA", note: "Waiting on today's bot data.", launches: [], notes: [], pickOfDay: null, filters: ["all","pts","ast","reb","3pm"], games: [] },
+    wnba: { label: "WNBA", note: "Coming soon.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [] },
+    soccer: { label: "Soccer", note: "Coming soon.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [] },
+    highlights: { label: "Highlights", note: "Highlights board.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [], highlights: [] }
   }
 };
 
@@ -2631,8 +2395,11 @@ function renderModal(game) {
 }
 
 function renderHeader() {
-  document.getElementById("header-date").textContent = formatDateLabel(state.data.updatedAt);
-  document.getElementById("header-mode").textContent = state.data.sourceMode || "Bootstrap";
+  const d = document.getElementById("header-date");
+  if (d) d.textContent = formatDateLabel(state.data && state.data.updatedAt ? state.data.updatedAt : null);
+
+  const m = document.getElementById("header-mode");
+  if (m) m.textContent = state.data && state.data.sourceMode ? state.data.sourceMode : "Live";
 }
 
 function render() {
@@ -2642,6 +2409,70 @@ function render() {
   renderViews();
   renderSidebar();
 }
+
+
+function normalizeBoardData(data) {
+  if (!data || !data.sports) return data;
+
+  Object.values(data.sports).forEach((sport) => {
+    if (!sport) return;
+    sport.games = sport.games || [];
+
+    sport.games = sport.games.map((game) => {
+      const rows = game.roster || game.rows || [];
+
+      game.summary = game.summary || {
+        plays: rows.length,
+        core: rows.filter(r => String(r.tier || "").toLowerCase() === "core").length,
+        avgScore: rows.length ? (rows.reduce((n, r) => n + Number(r.score || r.finalScore || 0), 0) / rows.length).toFixed(1) : "0.0",
+        signal: "Live"
+      };
+
+      game.roster = rows.map((r) => ({
+        player: r.player || r.name || "Unknown",
+        team: r.team || "--",
+        market: r.market || "--",
+        line: r.line || "--",
+        score: Number(r.score || r.finalScore || 0),
+        tier: r.tier || r.tag || "Value",
+        confidence: Number(String(r.confidence || r.finalScore || r.score || 0).replace("%", "")),
+        last10: r.last10 || "--",
+        last5: r.last5 || "--",
+        last3: r.last3 || "--",
+        status: r.status || "Active",
+        why: r.why || r.reason || "--"
+      }));
+
+      game.topPicks = game.topPicks && game.topPicks.length ? game.topPicks : game.roster.slice(0, 4).map((r) => ({
+        name: r.player,
+        market: r.market,
+        why: r.why,
+        tier: r.tier,
+        confidence: r.confidence,
+        line: r.line
+      }));
+
+      game.id = game.id || String(game.title || "game").toLowerCase().replace(/[^a-z0-9]/g, "-");
+      game.attackNote = game.attackNote || game.note || "Live data.";
+      game.lineupStatus = game.lineupStatus || game.status || "Live";
+      return game;
+    });
+
+    if (sport.pickOfDay) {
+      sport.pickOfDay.odds = sport.pickOfDay.odds || sport.pickOfDay.score || "--";
+      sport.pickOfDay.context = sport.pickOfDay.context || sport.pickOfDay.summary || "";
+      sport.pickOfDay.confidence = Number(String(sport.pickOfDay.confidence || 0).replace("%", ""));
+      sport.pickOfDay.rate = sport.pickOfDay.rate || "--";
+    }
+
+    sport.launches = sport.launches || [];
+    sport.notes = sport.notes || [];
+    sport.filters = sport.filters || ["all"];
+  });
+
+  return data;
+}
+
 
 async function loadBoardData() {
   if (window.BOARD_DATA && window.BOARD_DATA.sports) {
@@ -2663,17 +2494,17 @@ async function loadBoardData() {
       const json = await response.json();
 
       if (json && json.sports) {
-        return {
+        return normalizeBoardData({
           ...json,
           sourceMode: json.sourceMode || "Live JSON"
-        };
+        });
       }
     } catch (error) {
       continue;
     }
   }
 
-throw new Error("No live board data loaded");
+return SAMPLE_DATA;
 }
 
 document.getElementById("search-input").addEventListener("input", (event) => {
