@@ -1744,7 +1744,25 @@ function formatDateLabel(value) {
     return new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   }
   return value;
-}
+    }
+
+    function formatGameTime(value) {
+        if (!value) return "TBD";
+
+        const raw = String(value);
+
+        // Handle ISO UTC timestamps
+        if (raw.includes("T") && raw.includes("Z")) {
+            const dt = new Date(raw);
+            return dt.toLocaleTimeString("en-US", {
+                timeZone: "America/New_York",
+                hour: "numeric",
+                minute: "2-digit"
+            }) + " ET";
+        }
+
+        return raw;
+    }
 
 function scoreClass(score) {
   if (score >= 70) return "score-good";
@@ -1889,7 +1907,7 @@ function explorerRows(sport) {
     ...row,
     gameId: game.id,
     gameTitle: game.title,
-    gameStart: game.start,
+    gameStart: formatGameTime(game.start),
     gameMeta: game.meta
   })));
 
@@ -2068,7 +2086,7 @@ function renderGameCard(game) {
         </div>
         <div class="game-status">
           <div class="game-status-label"><span class="status-dot"></span>${game.status}</div>
-          <div class="game-status-time">${game.start}</div>
+          <div class="game-status-time">${formatGameTime(formatGameTime(game.start))}</div>
         </div>
       </div>
       <div class="game-card-body">
