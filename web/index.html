@@ -1,743 +1,2710 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STITCHem — Men's Essentials Drop</title>
-  <meta name="description" content="Premium men's essentials delivered monthly. The only basics you'll ever need." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --cream:#F5F1EA; --cream-dk:#ede7da; --orange:#C96F3C; --orange-lt:#d47f4a;
-      --charcoal:#2B1E16; --mid:#5a4a42; --muted:#8c7a70; --white:#ffffff;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--cream);color:var(--charcoal);font-family:'Jost',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060606;
+  --bg-soft: #0d0d0d;
+  --panel: #121212;
+  --panel-2: #191919;
+  --panel-3: #222222;
+  --line: #262626;
+  --line-strong: #363636;
+  --text: #f4f4f4;
+  --text-2: #b0b0b0;
+  --text-3: #6e6e6e;
+  --gold: #f5a623;
+  --gold-soft: rgba(245, 166, 35, 0.14);
+  --green: #24d38a;
+  --green-soft: rgba(36, 211, 138, 0.14);
+  --red: #ff5f57;
+  --red-soft: rgba(255, 95, 87, 0.14);
+  --blue: #55a8ff;
+  --blue-soft: rgba(85, 168, 255, 0.16);
+  --purple: #c96cff;
+  --purple-soft: rgba(201, 108, 255, 0.16);
+  --mlb: #e03131;
+  --nba: #1971c2;
+  --wnba: #f76707;
+  --soccer: #2f9e44;
+  --radius: 12px;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:var(--cream);border-bottom:1px solid rgba(43,30,22,.08)}
-    .nav-logo{font-family:'Jost',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
-    .nav-logo sup{font-size:.5em;color:var(--orange);letter-spacing:0}
-    .nav-links{display:flex;gap:2.5rem;list-style:none}
-    .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;transition:color .2s}
-    .nav-links a:hover{color:var(--orange)}
+* {
+  box-sizing: border-box;
+}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:64px}
-    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 3rem;animation:fadeUp .8s ease both}
-    .hero-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
-    .hero-eyebrow::after{content:'';display:inline-block;width:30px;height:1px;background:var(--orange)}
-    .hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:600;line-height:1.02;color:var(--charcoal);margin-bottom:1.75rem}
-    .hero-headline em{font-style:italic;color:var(--orange)}
-    .hero-sub{font-size:.95rem;color:var(--mid);max-width:400px;margin-bottom:2.5rem;line-height:1.8}
-    .hero-actions{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-    .btn-primary{display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--orange);padding:1rem 2rem;text-decoration:none;transition:background .2s;cursor:pointer;border:none}
-    .btn-primary:hover{background:var(--orange-lt)}
-    .btn-text{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;transition:color .2s;cursor:pointer;background:none;border:none;font-family:'Jost',sans-serif}
-    .btn-text:hover{color:var(--orange)}
+html {
+  scroll-behavior: smooth;
+}
 
-    /* HERO RIGHT */
-    .hero-right{background:var(--orange);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;animation:fadeIn 1s .3s ease both}
-    .starting-badge{position:absolute;top:2.5rem;right:2.5rem;background:var(--white);padding:.75rem 1.1rem;text-align:right}
-    .badge-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);display:block}
-    .badge-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--charcoal);line-height:1}
-    .hero-box-img{width:75%;max-width:380px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.25));animation:floatImg 4s ease-in-out infinite}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(245, 166, 35, 0.08), transparent 24%),
+    radial-gradient(circle at left bottom, rgba(85, 168, 255, 0.06), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-    /* MARQUEE */
-    .marquee-wrap{overflow:hidden;padding:1.2rem 0;background:var(--cream);border-bottom:1px solid rgba(43,30,22,.08)}
-    .marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
-    .marquee-item{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:0 2.5rem;display:flex;align-items:center;gap:2.5rem}
-    .marquee-item::after{content:'·';color:var(--orange);font-size:1rem}
+button,
+input,
+select {
+  font: inherit;
+}
 
-    /* ESSENTIALS */
-    .essentials{padding:7rem 3rem;max-width:1200px;margin:0 auto}
-    .section-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:600;line-height:1.08;color:var(--charcoal);margin-bottom:1.25rem;max-width:600px}
-    .section-title em{font-style:italic;color:var(--orange)}
-    .section-sub{font-size:.9rem;color:var(--mid);max-width:480px;margin-bottom:4rem;line-height:1.8}
-    .essentials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(43,30,22,.08);border:1px solid rgba(43,30,22,.08)}
-    .essential-item{background:var(--cream);padding:2.5rem 2rem;transition:background .2s}
-    .essential-item:hover{background:var(--cream-dk)}
-    .essential-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;color:rgba(201,111,60,.2);line-height:1;margin-bottom:1rem}
-    .essential-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:.5rem}
-    .essential-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
-    .divider{height:1px;background:rgba(43,30,22,.1);margin:0 3rem}
+button {
+  cursor: pointer;
+}
 
-    /* PLANS */
-    .plans{background:var(--charcoal);padding:7rem 3rem}
-    .plans-inner{max-width:1200px;margin:0 auto}
-    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(245,241,234,.08);border:1px solid rgba(245,241,234,.08);margin-top:4rem}
-    .plan-card{background:#2a1f17;padding:3rem 2.5rem;transition:background .2s}
-    .plan-card:hover{background:#322518}
-    .plan-card.featured{background:var(--orange)}
-    .plan-card.featured:hover{background:var(--orange-lt)}
-    .plan-tag{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);background:var(--cream);display:inline-block;padding:.3rem .8rem;margin-bottom:1.5rem}
-    .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
-    .plan-cadence{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,241,234,.5);margin-bottom:1.5rem}
-    .plan-card.featured .plan-cadence{color:rgba(255,255,255,.7)}
-    .plan-price{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:.25rem}
-    .plan-price-sub{font-size:.78rem;color:rgba(245,241,234,.4);margin-bottom:2rem}
-    .plan-card.featured .plan-price-sub{color:rgba(255,255,255,.6)}
-    .plan-divider{height:1px;background:rgba(245,241,234,.1);margin-bottom:1.75rem}
-    .plan-card.featured .plan-divider{background:rgba(255,255,255,.2)}
-    .plan-items{list-style:none;margin-bottom:2.5rem}
-    .plan-items li{font-size:.85rem;color:rgba(245,241,234,.8);padding:.45rem 0;display:flex;align-items:flex-start;gap:.75rem}
-    .plan-card.featured .plan-items li{color:rgba(255,255,255,.9)}
-    .plan-items li::before{content:'—';color:var(--orange);font-size:.7rem;flex-shrink:0;margin-top:2px}
-    .plan-card.featured .plan-items li::before{color:rgba(255,255,255,.6)}
-    .plan-items li.dim{color:rgba(245,241,234,.3)}
-    .plan-cta{display:block;text-align:center;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:1rem;transition:all .2s;cursor:pointer;border:none}
-    .plan-cta-outline{border:1px solid rgba(245,241,234,.2);color:var(--cream);background:transparent}
-    .plan-cta-outline:hover{border-color:var(--orange);color:var(--orange)}
-    .plan-cta-solid{background:var(--charcoal);color:var(--white)}
-    .plan-cta-solid:hover{background:#111}
+a {
+  color: inherit;
+}
 
-    /* PROCESS */
-    .process{padding:7rem 3rem;max-width:1200px;margin:0 auto}
-    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;margin-top:4rem}
-    .process-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:400;color:rgba(201,111,60,.15);line-height:1;margin-bottom:1rem}
-    .process-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:.75rem}
-    .process-desc{font-size:.85rem;color:var(--muted);line-height:1.8}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-    /* FOUNDING BANNER */
-    .founding-banner{background:var(--orange);padding:4rem 3rem;text-align:center}
-    .founding-banner p{font-size:.75rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1.25rem}
-    .founding-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;color:var(--white);margin-bottom:2rem;line-height:1.1}
-    .btn-light{display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);background:var(--white);padding:1rem 2.5rem;text-decoration:none;transition:opacity .2s;cursor:pointer;border:none}
-    .btn-light:hover{opacity:.9}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 999px;
+}
 
-    /* FOOTER */
-    footer{background:var(--cream);padding:3rem;border-top:1px solid rgba(43,30,22,.08)}
-    .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
-    .footer-logo{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
-    .footer-logo sup{font-size:.5em;color:var(--orange)}
-    .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
-    .footer-links a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
-    .footer-links a:hover{color:var(--orange)}
-    .footer-copy{width:100%;text-align:center;font-size:.72rem;color:var(--muted);padding-top:2rem;margin-top:1.5rem;border-top:1px solid rgba(43,30,22,.06)}
+.ticker {
+  display: flex;
+  gap: 28px;
+  overflow: hidden;
+  padding: 8px 0;
+  background: var(--gold);
+  color: #050505;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1.8px;
+  font-size: 13px;
+  white-space: nowrap;
+}
 
-    /* LEGAL */
-    .legal-page{display:none;max-width:740px;margin:8rem auto 5rem;padding:0 2rem}
-    .legal-page h1{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;margin-bottom:2.5rem}
-    .legal-page h2{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin:2.5rem 0 .75rem}
-    .legal-page p{font-size:.88rem;color:var(--mid);line-height:1.85;margin-bottom:.75rem}
+.ticker-track {
+  display: flex;
+  gap: 28px;
+  min-width: max-content;
+  animation: ticker 40s linear infinite;
+}
 
-    /* ── QUIZ OVERLAY ── */
-    .quiz-overlay{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(43,30,22,.6);backdrop-filter:blur(4px);
-      align-items:center;justify-content:center;padding:1.5rem;
-    }
-    .quiz-overlay.open{display:flex}
-    .quiz-modal{
-      background:var(--cream);width:100%;max-width:560px;max-height:90vh;
-      overflow-y:auto;position:relative;
-    }
-    .quiz-header{
-      background:var(--charcoal);padding:1.75rem 2rem;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .quiz-logo{font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--white)}
-    .quiz-logo sup{font-size:.5em;color:var(--orange)}
-    .quiz-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.4rem;cursor:pointer;line-height:1;padding:0}
-    .quiz-close:hover{color:var(--white)}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-    .quiz-progress-bar{height:3px;background:rgba(43,30,22,.1)}
-    .quiz-progress-fill{height:3px;background:var(--orange);transition:width .4s ease}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: rgba(6, 6, 6, 0.92);
+  border-bottom: 1px solid var(--line);
+}
 
-    .quiz-body{padding:2.5rem 2rem}
-    .quiz-step{display:none}
-    .quiz-step.active{display:block}
-    .quiz-step-label{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem}
-    .quiz-question{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:.6rem}
-    .quiz-hint{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: 220px minmax(260px, 1fr) 280px;
+  gap: 18px;
+  align-items: center;
+  min-height: 68px;
+}
 
-    .quiz-options{display:grid;gap:.75rem}
-    .quiz-options.two-col{grid-template-columns:1fr 1fr}
-    .quiz-opt{
-      display:flex;align-items:center;gap:1rem;
-      padding:1rem 1.25rem;border:1px solid rgba(43,30,22,.15);
-      background:var(--white);cursor:pointer;transition:all .2s;
-      font-family:'Jost',sans-serif;font-size:.88rem;color:var(--charcoal);
-      text-align:left;width:100%;
-    }
-    .quiz-opt:hover{border-color:var(--orange);background:var(--cream-dk)}
-    .quiz-opt.selected{border-color:var(--orange);background:rgba(201,111,60,.08)}
-    .quiz-opt-icon{font-size:1.3rem;flex-shrink:0}
-    .quiz-opt-text{}
-    .quiz-opt-label{font-weight:500;display:block;margin-bottom:.1rem}
-    .quiz-opt-sub{font-size:.75rem;color:var(--muted)}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    .quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(43,30,22,.08)}
-    .quiz-back{background:none;border:none;font-family:'Jost',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:0}
-    .quiz-back:hover{color:var(--charcoal)}
-    .quiz-next{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--charcoal);border:none;padding:.9rem 2rem;cursor:pointer;transition:background .2s}
-    .quiz-next:hover{background:var(--orange)}
-    .quiz-next:disabled{opacity:.35;cursor:not-allowed}
-    .quiz-next:disabled:hover{background:var(--charcoal)}
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.24), rgba(245, 166, 35, 0.08));
+  border: 1px solid rgba(245, 166, 35, 0.32);
+  color: var(--gold);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
 
-    /* RESULT */
-    .quiz-result{display:none}
-    .quiz-result.active{display:block}
-    .result-tier-badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);border:1px solid var(--orange);padding:.3rem .9rem;margin-bottom:1.25rem}
-    .result-headline{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--charcoal);margin-bottom:.5rem;line-height:1.15}
-    .result-sub{font-size:.88rem;color:var(--mid);margin-bottom:1.75rem;line-height:1.7}
-    .result-box{background:var(--charcoal);padding:1.75rem;margin-bottom:1.75rem}
-    .result-box-label{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block}
-    .result-items{list-style:none}
-    .result-items li{font-size:.85rem;color:rgba(245,241,234,.85);padding:.35rem 0;display:flex;gap:.75rem}
-    .result-items li::before{content:'—';color:var(--orange);font-size:.7rem;flex-shrink:0;margin-top:2px}
-    .result-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)}
-    .result-cta{display:block;width:100%;text-align:center;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--orange);padding:1.1rem;text-decoration:none;transition:background .2s;border:none;cursor:pointer}
-    .result-cta:hover{background:var(--orange-lt)}
-    .result-restart{display:block;text-align:center;font-size:.72rem;color:var(--muted);margin-top:1rem;cursor:pointer;background:none;border:none;font-family:'Jost',sans-serif;width:100%;letter-spacing:.1em;text-transform:uppercase}
-    .result-restart:hover{color:var(--charcoal)}
+.brand-copy {
+  min-width: 0;
+}
 
-    /* ANIMATIONS */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    @keyframes floatImg{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.brand-title {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  letter-spacing: 3px;
+  line-height: 0.92;
+}
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      nav{padding:1.2rem 1.5rem}
-      .nav-links{display:none}
-      .hero{grid-template-columns:1fr;min-height:auto}
-      .hero-left{padding:4rem 1.5rem 3rem}
-      .hero-right{min-height:65vw}
-      .hero-box-img{width:60%}
-      .essentials-grid{grid-template-columns:1fr 1fr}
-      .plans-grid{grid-template-columns:1fr;max-width:420px;margin:2rem auto 0}
-      .process-grid{grid-template-columns:1fr;gap:2.5rem}
-      .essentials,.process{padding:5rem 1.5rem}
-      .plans{padding:5rem 1.5rem}
-      .footer-inner{justify-content:center;text-align:center}
-      .quiz-options.two-col{grid-template-columns:1fr}
-    }
-  </style>
+.brand-sub {
+  color: var(--text-3);
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.search-wrap {
+  position: relative;
+}
+
+.search-wrap input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  padding: 11px 16px 11px 42px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-wrap input:focus {
+  border-color: rgba(245, 166, 35, 0.5);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.08);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+.header-meta {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 10px 14px;
+  min-width: 112px;
+}
+
+.meta-chip-label {
+  font-size: 9px;
+  color: var(--text-3);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.meta-chip-value {
+  margin-top: 3px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  color: var(--gold);
+}
+
+.sport-nav {
+  position: sticky;
+  top: 68px;
+  z-index: 35;
+  background: rgba(8, 8, 8, 0.94);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.sport-nav-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.sport-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.sport-tab {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-3);
+  padding: 14px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+
+.sport-tab.active {
+  color: var(--text);
+}
+
+.sport-tab[data-sport="mlb"].active { border-bottom-color: var(--mlb); }
+.sport-tab[data-sport="nba"].active { border-bottom-color: var(--nba); }
+.sport-tab[data-sport="wnba"].active { border-bottom-color: var(--wnba); }
+.sport-tab[data-sport="soccer"].active { border-bottom-color: var(--soccer); }
+.sport-tab[data-sport="highlights"].active { border-bottom-color: var(--purple); }
+
+.sport-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sport-tab[data-sport="mlb"] .sport-dot { background: var(--mlb); }
+.sport-tab[data-sport="nba"] .sport-dot { background: var(--nba); }
+.sport-tab[data-sport="wnba"] .sport-dot { background: var(--wnba); }
+.sport-tab[data-sport="soccer"] .sport-dot { background: var(--soccer); }
+.sport-tab[data-sport="highlights"] .sport-dot { background: var(--purple); }
+
+.sport-count {
+  background: var(--panel-3);
+  color: var(--text-3);
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 9px;
+}
+
+.sport-tab.active .sport-count {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.shell {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 28px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.content {
+  min-width: 0;
+}
+
+.rail {
+  position: sticky;
+  top: 124px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 166, 35, 0.28);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top right, rgba(245, 166, 35, 0.12), transparent 40%),
+    linear-gradient(145deg, #0f0b02 0%, #121212 55%, #0b0b0b 100%);
+  padding: 26px 26px 22px;
+  box-shadow: var(--shadow);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 14px 0 8px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 54px;
+  line-height: 0.95;
+  letter-spacing: 2px;
+}
+
+.hero-subtitle {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 880px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.hero-stat {
+  border: 1px solid rgba(245, 166, 35, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+}
+
+.hero-stat-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+.hero-stat-label {
+  margin-top: 5px;
+  color: var(--text-3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+
+.toolbar {
+  margin: 18px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text-3);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.chip.active {
+  border-color: rgba(245, 166, 35, 0.4);
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.toolbar-note {
+  align-self: center;
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 0 14px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "";
+  width: 4px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.section-meta {
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+.game-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+
+.game-card-header {
+  padding: 14px 16px 12px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.game-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.game-subtitle {
+  margin-top: 5px;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.game-status {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.game-status-label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(36, 211, 138, 0.6);
+}
+
+.game-status-time {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.game-card-body {
+  padding: 12px 16px 16px;
+}
+
+.game-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.summary-box {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.summary-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.summary-label {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.pick-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pick-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pick-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.pick-left {
+  display: flex;
+  gap: 9px;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.market-pill {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 4px 7px;
+  margin-top: 2px;
+}
+
+.market-hr { background: rgba(224, 49, 49, 0.16); color: #ff6b6b; }
+.market-tb { background: var(--blue-soft); color: var(--blue); }
+.market-hit { background: var(--green-soft); color: var(--green); }
+.market-k { background: var(--gold-soft); color: var(--gold); }
+.market-pts { background: rgba(247, 103, 7, 0.16); color: #ffa94d; }
+.market-ast { background: var(--purple-soft); color: var(--purple); }
+.market-reb { background: rgba(0, 208, 132, 0.12); color: #4ce0a4; }
+.market-3pm { background: rgba(25, 113, 194, 0.16); color: #74c0fc; }
+
+.pick-name {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pick-why {
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pick-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tier-pill {
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tier-core { background: var(--green-soft); color: var(--green); }
+.tier-strong { background: var(--gold-soft); color: var(--gold); }
+.tier-value { background: var(--blue-soft); color: var(--blue); }
+.tier-longshot { background: var(--red-soft); color: var(--red); }
+
+.confidence-wrap {
+  width: 62px;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 999px;
+  width: 0;
+  transition: width 0.45s ease;
+}
+
+.confidence-high { background: var(--green); }
+.confidence-mid { background: var(--gold); }
+.confidence-low { background: var(--red); }
+
+.confidence-text {
+  margin-top: 5px;
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-3);
+}
+
+.game-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.footer-note {
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.link-btn {
+  border: 1px solid rgba(245, 166, 35, 0.38);
+  background: rgba(245, 166, 35, 0.06);
+  color: var(--gold);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.empty {
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+  padding: 58px 20px;
+  text-align: center;
+  color: var(--text-3);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.rail-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.rail-title {
+  margin: 0 0 12px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.signal-list,
+.note-list,
+.launch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.signal-item,
+.launch-item {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.signal-item {
+  cursor: pointer;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.signal-item:hover {
+  border-color: rgba(245, 166, 35, 0.34);
+  transform: translateY(-1px);
+}
+
+.signal-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.signal-game {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.signal-score {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 21px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.signal-copy,
+.launch-copy {
+  margin-top: 5px;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.stat-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat-box {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.stat-box-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.stat-box-label {
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.note-item {
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.note-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.launch-item strong {
+  display: block;
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.surface-toggle {
+  display: inline-flex;
+  gap: 4px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.surface-btn {
+  border: 0;
+  background: transparent;
+  color: var(--text-3);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.surface-btn.active {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.explorer-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.explorer-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.explorer-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.explorer-select {
+  min-width: 170px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text-2);
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.explorer-meta {
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.explorer-wrap {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.explorer-scroll {
+  overflow: auto;
+}
+
+.explorer-head,
+.explorer-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.6fr) 130px 76px 88px 92px 86px 80px 72px 72px 72px 94px minmax(220px, 1.8fr);
+  gap: 12px;
+  align-items: center;
+  min-width: 1440px;
+}
+
+.explorer-head {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #111111;
+  color: var(--text-3);
+  padding: 12px 18px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.explorer-sort {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: inherit;
+  font-weight: 800;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.explorer-sort.active {
+  color: var(--gold);
+}
+
+.sort-arrow {
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.explorer-sort.active .sort-arrow {
+  color: var(--gold);
+}
+
+.explorer-row {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.explorer-row:hover {
+  background: rgba(245, 166, 35, 0.04);
+}
+
+.explorer-row:last-child {
+  border-bottom: 0;
+}
+
+.explorer-player strong {
+  display: block;
+  font-size: 13px;
+}
+
+.explorer-player span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.explorer-game {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+.explorer-why {
+  color: var(--text-3);
+  line-height: 1.45;
+}
+
+.line-mono {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.highlight-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.highlight-frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: var(--panel-2);
+}
+
+.highlight-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.highlight-copy {
+  padding: 12px 14px 14px;
+}
+
+.highlight-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 4px 7px;
+  margin-bottom: 7px;
+}
+
+.highlight-tag.mlb { background: rgba(224, 49, 49, 0.16); color: #ff6b6b; }
+.highlight-tag.nba { background: var(--blue-soft); color: var(--blue); }
+.highlight-tag.wnba { background: rgba(247, 103, 7, 0.18); color: #ff922b; }
+
+.highlight-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.highlight-source {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: none;
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.76);
+}
+
+.modal-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1280px, calc(100vw - 28px));
+  max-height: calc(100vh - 34px);
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, #121212 0%, #090909 100%);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.54);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.modal-head {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.modal-title {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 34px;
+  letter-spacing: 1.8px;
+  line-height: 0.95;
+}
+
+.modal-subtitle {
+  margin-top: 7px;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status-chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 11px;
+  background: var(--panel-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text-2);
+  font-size: 18px;
+}
+
+.modal-toolbar {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.modal-market-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mini-chip {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text-3);
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.mini-chip.active {
+  border-color: rgba(245, 166, 35, 0.4);
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.modal-body {
+  overflow: auto;
+  padding: 0 20px 20px;
+}
+
+.roster-head,
+.roster-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 1.4fr) 78px 92px 80px 86px 72px 72px 72px 88px minmax(180px, 1.6fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.roster-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #101010;
+  color: var(--text-3);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 0 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.roster-row {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.roster-player strong {
+  display: block;
+  font-size: 13px;
+}
+
+.roster-player span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.table-tier {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+}
+
+.metric-inline {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.score-good { color: var(--green); }
+.score-mid { color: var(--gold); }
+.score-low { color: var(--red); }
+
+.muted {
+  color: var(--text-3);
+}
+
+.coming {
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--text-3);
+}
+
+.coming h3 {
+  margin: 0 0 8px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 30px;
+  letter-spacing: 3px;
+  color: var(--text-2);
+}
+
+.coming p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@media (max-width: 1220px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .rail {
+    position: static;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .header-inner {
+    grid-template-columns: 1fr;
+    padding: 14px 18px;
+  }
+
+  .header-meta {
+    justify-content: flex-start;
+  }
+
+  .sport-nav {
+    top: 112px;
+  }
+
+  .shell {
+    padding: 18px;
+  }
+
+  .modal-panel {
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-stats,
+  .game-summary,
+  .stat-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head,
+  .toolbar,
+  .modal-toolbar,
+  .modal-head {
+    align-items: flex-start;
+  }
+
+  .roster-head {
+    display: none;
+  }
+
+  .roster-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 14px 0 16px;
+  }
+
+  .roster-row > div::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px;
+    color: var(--text-3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+}
+
+/* ── Landing Hero ── */
+.landing-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(5,5,5,0.92) 0%,
+    rgba(5,5,5,0.75) 35%,
+    rgba(5,5,5,0.2) 65%,
+    rgba(5,5,5,0.05) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 28px;
+  flex-wrap: wrap;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 20px;
+}
+
+.hero-brand-mark {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(245,166,35,.28), rgba(245,166,35,.10));
+  border: 1px solid rgba(245,166,35,.35);
+  color: var(--gold);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.hero-brand-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 30px;
+  letter-spacing: 3px;
+  color: var(--text);
+}
+
+.hero-nav-btn {
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  background: rgba(5,5,5,.45);
+  backdrop-filter: blur(8px);
+  color: var(--text-2);
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: "Inter", sans-serif;
+}
+
+.hero-nav-btn:hover {
+  border-color: rgba(245,166,35,.5);
+  color: var(--gold);
+  background: rgba(245,166,35,.08);
+}
+
+.hero-body {
+  padding: 0 28px 60px;
+  max-width: 560px;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.hero-headline {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(48px, 6vw, 76px);
+  letter-spacing: 2px;
+  line-height: .95;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.hero-sub-gold {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 20px;
+  border-radius: 1px;
+}
+
+.hero-description {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.hero-quote {
+  border-left: 2px solid rgba(245,166,35,.4);
+  padding-left: 16px;
+  margin-bottom: 36px;
+}
+
+.hero-quote-mark {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  color: var(--gold);
+  line-height: .8;
+  margin-bottom: 4px;
+}
+
+.hero-quote-text {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.hero-quote-attr {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+
+.hero-enter-btn:hover { opacity: .88; }
+
+.hero-enter-btn svg {
+  transition: transform .2s;
+}
+
+.hero-enter-btn:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .landing-hero { min-height: 100dvh; }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(5,5,5,0.7) 0%,
+      rgba(5,5,5,0.55) 40%,
+      rgba(5,5,5,0.85) 100%
+    );
+  }
+  .hero-body { max-width: 100%; padding: 0 18px 48px; }
+  .hero-nav { padding: 16px 18px; gap: 8px; }
+  .hero-nav-btn { padding: 7px 13px; font-size: 11px; }
+  .hero-brand-title { font-size: 26px; }
+  .hero-description { font-size: 14px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">STITCH<sup>em</sup></a>
-    <ul class="nav-links">
-      <li><a href="#essentials">Essentials</a></li>
-      <li><a href="#plans">Plans</a></li>
-      <li><a href="#process">Process</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Men's Essentials &nbsp;·&nbsp; Monthly Subscription</p>
-      <h1 class="hero-headline">The only basics<br/>you'll <em>ever need.</em></h1>
-      <p class="hero-sub">Premium tees, socks, and boxers delivered monthly. Built to keep you stocked without another store run.</p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="openQuiz()">Build Your Box</button>
-        <a href="#process" class="btn-text">How It Works</a>
+<!-- ══ LANDING HERO ══ -->
+<section id="landing-hero" class="landing-hero">
+  <img src="/images/the-board-hero.png" alt="The Board" class="hero-bg">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <nav class="hero-nav">
+      <div class="hero-brand">
+        <div class="hero-brand-mark">TB</div>
+        <div class="hero-brand-title">THE BOARD</div>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="starting-badge">
-        <span class="badge-label">Starting at</span>
-        <span class="badge-price">$40</span>
-      </div>
-      <img src="box.png" alt="STITCHem Box" class="hero-box-img" loading="lazy" />
-    </div>
-  </section>
+      <button class="hero-nav-btn" onclick="enterBoard('live')">Live Board</button>
+      <button class="hero-nav-btn" onclick="enterBoard('signal')">Signal Board</button>
+      <button class="hero-nav-btn" onclick="enterBoard('trend')" style="border-color:rgba(245,166,35,.45);color:var(--gold);">Trend Board</button>
+      <button class="hero-nav-btn" onclick="enterBoard('bankroll')">Bankroll</button>
+    </nav>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <div class="marquee-item">Premium Briefs</div>
-      <div class="marquee-item">Fitted Tees</div>
-      <div class="marquee-item">Cotton Boxers</div>
-      <div class="marquee-item">Loose Boxers</div>
-      <div class="marquee-item">Performance Socks</div>
-      <div class="marquee-item">Seasonal Item</div>
-      <div class="marquee-item">Your Essentials</div>
-      <div class="marquee-item">Handled</div>
-      <div class="marquee-item">Premium Briefs</div>
-      <div class="marquee-item">Fitted Tees</div>
-      <div class="marquee-item">Cotton Boxers</div>
-      <div class="marquee-item">Loose Boxers</div>
-      <div class="marquee-item">Performance Socks</div>
-      <div class="marquee-item">Seasonal Item</div>
-      <div class="marquee-item">Your Essentials</div>
-      <div class="marquee-item">Handled</div>
+    <div class="hero-body">
+      <div class="hero-eyebrow">Sports Prop Intelligence</div>
+      <h1 class="hero-headline">OUTLOOK AND<br>CONFIRMED<br>BOARDS</h1>
+      <div class="hero-sub-gold">With Trend as a cross-reference layer.</div>
+      <div class="hero-divider"></div>
+      <p class="hero-description">Sharp data. Real edges. Smarter bets.<br>No noise. Just numbers that matter.</p>
+      <div class="hero-quote">
+        <div class="hero-quote-mark">"</div>
+        <div class="hero-quote-text">I don't care what you think.<br>I care what the numbers say.</div>
+        <div class="hero-quote-attr">— Ron Artest</div>
+      </div>
+      <button class="hero-enter-btn" onclick="enterBoard('signal')">
+        Enter The Board
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
   </div>
+</section>
 
-  <!-- ESSENTIALS -->
-  <section class="essentials" id="essentials">
-    <p class="section-eyebrow">What's Inside</p>
-    <h2 class="section-title">Every man needs these.<br/><em>Nobody wants to shop for them.</em></h2>
-    <p class="section-sub">We handle the restocking so you never think about it again. Quality that survives the wash. Fit that actually fits.</p>
-    <div class="essentials-grid">
-      <div class="essential-item">
-        <div class="essential-num">01</div>
-        <div class="essential-name">Briefs</div>
-        <div class="essential-desc">Spandex blend. 4-way stretch. Flat seams. The kind you actually want to wear.</div>
-      </div>
-      <div class="essential-item">
-        <div class="essential-num">02</div>
-        <div class="essential-name">Boxers</div>
-        <div class="essential-desc">Fitted cotton and loose styles. Both covered depending on the day.</div>
-      </div>
-      <div class="essential-item">
-        <div class="essential-num">03</div>
-        <div class="essential-name">Tees</div>
-        <div class="essential-desc">Premium weight cotton. Clean fit. No collar warp after six washes.</div>
-      </div>
-      <div class="essential-item">
-        <div class="essential-num">04</div>
-        <div class="essential-name">Socks</div>
-        <div class="essential-desc">Fitted with stretch. Performance blend. They stay up. That's it.</div>
+<div class="ticker">
+  <div class="ticker-track" id="ticker-track"></div>
+  <div class="ticker-track" id="ticker-track-dup"></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">TB</div>
+      <div class="brand-copy">
+        <div class="brand-title">The Board</div>
+        <div class="brand-sub">Signal board for props, ladders, and slate research</div>
       </div>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PLANS -->
-  <section class="plans" id="plans">
-    <div class="plans-inner">
-      <p class="section-eyebrow" style="color:var(--orange)">Choose Your Drop</p>
-      <h2 class="section-title" style="color:var(--white)">Three tiers.<br/><em style="color:var(--orange)">One rule.</em></h2>
-      <p class="section-sub" style="color:rgba(245,241,234,.5)">Nobody knows what's in the box until it arrives. Any tier. Any drop. Every time.</p>
-      <div class="plans-grid">
-        <div class="plan-card">
-          <div class="plan-name">Starter</div>
-          <div class="plan-cadence">One-Time Drop</div>
-          <div class="plan-price">$40</div>
-          <div class="plan-price-sub">try your first box · no commitment</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li>Spandex briefs</li>
-            <li>Fitted tee</li>
-            <li>Performance socks</li>
-            <li class="dim">Seasonal item not included</li>
-          </ul>
-          <button class="plan-cta plan-cta-outline" onclick="openQuiz('starter')">Build Your Box</button>
-        </div>
-        <div class="plan-card featured">
-          <div class="plan-tag">Most Popular</div>
-          <div class="plan-name">Standard</div>
-          <div class="plan-cadence">Monthly Drop</div>
-          <div class="plan-price">$49</div>
-          <div class="plan-price-sub">per month · cancel anytime</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li>Spandex briefs</li>
-            <li>Cotton fitted boxers</li>
-            <li>Loose boxers</li>
-            <li>Fitted tee</li>
-            <li>Performance socks</li>
-            <li>Seasonal item</li>
-          </ul>
-          <button class="plan-cta plan-cta-solid" onclick="openQuiz('standard')">Build Your Box</button>
-        </div>
-        <div class="plan-card">
-          <div class="plan-name">Full Rotation</div>
-          <div class="plan-cadence">Monthly Drop</div>
-          <div class="plan-price">$89</div>
-          <div class="plan-price-sub">per month · cancel anytime</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li>Full monthly supply</li>
-            <li>All brief &amp; boxer styles</li>
-            <li>Multiple tees</li>
-            <li>Full sock rotation</li>
-            <li>Seasonal item</li>
-          </ul>
-          <button class="plan-cta plan-cta-outline" onclick="openQuiz('full')">Build Your Box</button>
-        </div>
+    <label class="search-wrap" aria-label="Search players or games">
+      <span class="search-icon">Search</span>
+      <input id="search-input" type="search" placeholder="Search players, props, teams, or games">
+    </label>
+    <div class="header-meta">
+      <div class="meta-chip">
+        <div class="meta-chip-label">Slate Date</div>
+        <div class="meta-chip-value" id="header-date">-</div>
+      </div>
+      <div class="meta-chip">
+        <div class="meta-chip-label">Data Mode</div>
+        <div class="meta-chip-value" id="header-mode">Bootstrap</div>
       </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- PROCESS -->
-  <section class="process" id="process">
-    <p class="section-eyebrow">How It Works</p>
-    <h2 class="section-title">Three steps.<br/><em>Zero store runs.</em></h2>
-    <div class="process-grid">
+<nav class="sport-nav">
+  <div class="sport-nav-inner" id="sport-tabs"></div>
+</nav>
+
+<main class="shell">
+  <section class="content">
+    <div id="views"></div>
+  </section>
+  <aside class="rail">
+    <section class="rail-card">
+      <h2 class="rail-title">Slate Summary</h2>
+      <div class="stat-stack" id="summary-stats"></div>
+    </section>
+    <section class="rail-card">
+      <h2 class="rail-title">Top Signal Games</h2>
+      <div class="signal-list" id="signal-list"></div>
+    </section>
+    <section class="rail-card">
+      <h2 class="rail-title">Launch Notes</h2>
+      <div class="launch-list" id="launch-list"></div>
+    </section>
+    <section class="rail-card">
+      <h2 class="rail-title">Board Notes</h2>
+      <div class="note-list" id="note-list"></div>
+    </section>
+  </aside>
+</main>
+
+<section class="modal" id="game-modal" aria-hidden="true">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
       <div>
-        <div class="process-num">01</div>
-        <div class="process-title">Build Your Box</div>
-        <div class="process-desc">Answer five quick questions. We use your answers to recommend the right tier and curate your box preferences.</div>
+        <h2 class="modal-title" id="modal-title">Game Slate</h2>
+        <div class="modal-subtitle" id="modal-subtitle"></div>
       </div>
-      <div>
-        <div class="process-num">02</div>
-        <div class="process-title">We Pack It</div>
-        <div class="process-desc">Your essentials are selected based on your preferences, packed, and shipped on your cadence. No thinking required.</div>
-      </div>
-      <div>
-        <div class="process-num">03</div>
-        <div class="process-title">Open It</div>
-        <div class="process-desc">Your basics are restocked. Your drawers are full. Whatever else showed up — that's between you and the box.</div>
+      <div class="modal-actions">
+        <div class="status-chip" id="modal-status">Lineups Pending</div>
+        <button class="close-btn" id="modal-close" aria-label="Close slate">x</button>
       </div>
     </div>
-  </section>
-
-  <!-- FOUNDING BANNER -->
-  <div class="founding-banner">
-    <p>Founding 500 — Limited Access</p>
-    <h2>500 spots. Then the price goes up.</h2>
-    <button class="btn-light" onclick="openQuiz()">Claim Your Founding Spot</button>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <a href="#" class="footer-logo">STITCH<sup>em</sup></a>
-      <div class="footer-links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
-        <a href="#refund">Refund Policy</a>
-        <a href="mailto:hello@stitchem.com">Contact</a>
-      </div>
+    <div class="modal-toolbar">
+      <div class="modal-market-row" id="modal-market-row"></div>
+      <div class="toolbar-note" id="modal-toolbar-note">Showing full game roster and hit-rate detail.</div>
     </div>
-    <p class="footer-copy">© 2026 STITCHem — Your essentials. Handled. · Founding member pricing locked for life · Cancel anytime</p>
-  </footer>
-
-  <!-- LEGAL PAGES -->
-  <div class="legal-page" id="privacy">
-    <h1>Privacy Policy</h1>
-    <h2>Information We Collect</h2>
-    <p>We collect information you provide when subscribing — name, email, shipping address, and payment info. Payment data is processed securely through Stripe and never stored on our servers.</p>
-    <h2>How We Use Your Information</h2>
-    <p>Your information is used solely to fulfill your subscription and communicate about your orders. We do not sell or share your data with third parties for marketing purposes.</p>
-    <h2>Cookies</h2>
-    <p>We use essential cookies to operate our site. We do not use tracking cookies for advertising.</p>
-    <h2>Contact</h2>
-    <p>Questions? Email hello@stitchem.com.</p>
-  </div>
-  <div class="legal-page" id="terms">
-    <h1>Terms of Service</h1>
-    <h2>Subscription</h2>
-    <p>By subscribing you agree to recurring billing at your selected tier cadence. You may cancel anytime before your next billing date.</p>
-    <h2>Products</h2>
-    <p>All box contents are curated based on your preferences. The extra item included varies and is not guaranteed to be any specific product.</p>
-    <h2>Founding Member Pricing</h2>
-    <p>Founding member rates are locked for the life of your active subscription. If you cancel and resubscribe, standard pricing applies.</p>
-    <h2>Limitation of Liability</h2>
-    <p>STITCHem liability is limited to the cost of your current subscription period.</p>
-  </div>
-  <div class="legal-page" id="refund">
-    <h1>Subscription &amp; Refund Policy</h1>
-    <h2>Cancellation</h2>
-    <p>Cancel anytime through your account dashboard. Cancellation takes effect at the end of your current billing period. No partial refunds for unused days.</p>
-    <h2>Damaged or Missing Items</h2>
-    <p>If your box arrives damaged or items are missing, contact us within 7 days at hello@stitchem.com. We'll make it right.</p>
-    <h2>Lost Shipments</h2>
-    <p>If a package is lost in transit, contact us and we'll file a claim and reship.</p>
-  </div>
-
-  <!-- ── QUIZ OVERLAY ── -->
-  <div class="quiz-overlay" id="quizOverlay">
-    <div class="quiz-modal">
-      <div class="quiz-header">
-        <span class="quiz-logo">STITCH<sup>em</sup></span>
-        <button class="quiz-close" onclick="closeQuiz()">✕</button>
+    <div class="modal-body">
+      <div class="roster-head">
+        <div>Player</div>
+        <div>Team</div>
+        <div>Market</div>
+        <div>Line</div>
+        <div>Score</div>
+        <div>L10</div>
+        <div>L5</div>
+        <div>L3</div>
+        <div>Status</div>
+        <div>Why</div>
       </div>
-      <div class="quiz-progress-bar">
-        <div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div>
-      </div>
-      <div class="quiz-body">
-
-        <!-- STEP 1: Frequency -->
-        <div class="quiz-step active" data-step="1">
-          <div class="quiz-step-label">Step 1 of 5</div>
-          <div class="quiz-question">How often do you find yourself digging through the drawer thinking... I need to make a store run?</div>
-          <div class="quiz-hint">Be honest. This determines your tier.</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-value="full" onclick="selectOpt(this,'freq')">
-              <span class="quiz-opt-icon">🔁</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Every week</span>
-                <span class="quiz-opt-sub">I'm always running low</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="standard" onclick="selectOpt(this,'freq')">
-              <span class="quiz-opt-icon">📅</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Every month or so</span>
-                <span class="quiz-opt-sub">Could use a regular refresh</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="starter" onclick="selectOpt(this,'freq')">
-              <span class="quiz-opt-icon">🤷</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Every few months</span>
-                <span class="quiz-opt-sub">Just want to try it out</span>
-              </span>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <span></span>
-            <button class="quiz-next" id="next1" onclick="goTo(2)" disabled>Next</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: Tee Size -->
-        <div class="quiz-step" data-step="2">
-          <div class="quiz-step-label">Step 2 of 5</div>
-          <div class="quiz-question">What's your tee size?</div>
-          <div class="quiz-hint">This is for your shirts.</div>
-          <div class="quiz-options two-col">
-            <button class="quiz-opt" data-value="S" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">S</span></button>
-            <button class="quiz-opt" data-value="M" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">M</span></button>
-            <button class="quiz-opt" data-value="L" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">L</span></button>
-            <button class="quiz-opt" data-value="XL" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">XL</span></button>
-            <button class="quiz-opt" data-value="XXL" onclick="selectOpt(this,'teeSize')"><span class="quiz-opt-label">XXL</span></button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="goTo(1)">← Back</button>
-            <button class="quiz-next" id="next2" onclick="goTo(3)" disabled>Next</button>
-          </div>
-        </div>
-
-        <!-- STEP 3: Boxer/Brief Size -->
-        <div class="quiz-step" data-step="3">
-          <div class="quiz-step-label">Step 3 of 5</div>
-          <div class="quiz-question">What's your boxer and brief size?</div>
-          <div class="quiz-hint">This is for your underwear.</div>
-          <div class="quiz-options two-col">
-            <button class="quiz-opt" data-value="S" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">S</span></button>
-            <button class="quiz-opt" data-value="M" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">M</span></button>
-            <button class="quiz-opt" data-value="L" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">L</span></button>
-            <button class="quiz-opt" data-value="XL" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">XL</span></button>
-            <button class="quiz-opt" data-value="XXL" onclick="selectOpt(this,'boxerSize')"><span class="quiz-opt-label">XXL</span></button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="goTo(2)">← Back</button>
-            <button class="quiz-next" id="next3" onclick="goTo(4)" disabled>Next</button>
-          </div>
-        </div>
-
-        <!-- STEP 4: Brief Style -->
-        <div class="quiz-step" data-step="4">
-          <div class="quiz-step-label">Step 4 of 5</div>
-          <div class="quiz-question">What's your underwear preference?</div>
-          <div class="quiz-hint">Pick what you actually wear.</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-value="briefs" onclick="selectOpt(this,'style')">
-              <span class="quiz-opt-icon">🩲</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Spandex Briefs</span>
-                <span class="quiz-opt-sub">Fitted, stretch, performance feel</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="fitted" onclick="selectOpt(this,'style')">
-              <span class="quiz-opt-icon">📐</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Cotton Fitted Boxers</span>
-                <span class="quiz-opt-sub">Structured, clean fit</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="loose" onclick="selectOpt(this,'style')">
-              <span class="quiz-opt-icon">😌</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Loose Boxers</span>
-                <span class="quiz-opt-sub">Relaxed, comfortable fit</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="all" onclick="selectOpt(this,'style')">
-              <span class="quiz-opt-icon">🎯</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Mix It Up</span>
-                <span class="quiz-opt-sub">Give me a variety</span>
-              </span>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="goTo(3)">← Back</button>
-            <button class="quiz-next" id="next4" onclick="goTo(5)" disabled>Next</button>
-          </div>
-        </div>
-
-        <!-- STEP 5: Sock Style -->
-        <div class="quiz-step" data-step="5">
-          <div class="quiz-step-label">Step 5 of 5</div>
-          <div class="quiz-question">Sock style?</div>
-          <div class="quiz-hint">Shoe size helps us get the right fit. Pick your sock style.</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-value="crew" onclick="selectOpt(this,'socks')">
-              <span class="quiz-opt-icon">🧦</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Crew</span>
-                <span class="quiz-opt-sub">Mid-calf height</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="ankle" onclick="selectOpt(this,'socks')">
-              <span class="quiz-opt-icon">👟</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Ankle</span>
-                <span class="quiz-opt-sub">Low cut, just above the shoe</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="high" onclick="selectOpt(this,'socks')">
-              <span class="quiz-opt-icon">🏀</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">High</span>
-                <span class="quiz-opt-sub">Knee-high or calf length</span>
-              </span>
-            </button>
-            <button class="quiz-opt" data-value="mix" onclick="selectOpt(this,'socks')">
-              <span class="quiz-opt-icon">🎲</span>
-              <span class="quiz-opt-text">
-                <span class="quiz-opt-label">Mix It Up</span>
-                <span class="quiz-opt-sub">Variety across all styles</span>
-              </span>
-            </button>
-          </div>
-          <div class="quiz-nav">
-            <button class="quiz-back" onclick="goTo(4)">← Back</button>
-            <button class="quiz-next" id="next5" onclick="showResult()" disabled>See My Box</button>
-          </div>
-        </div>
-
-        <!-- RESULT -->
-        <div class="quiz-result" id="quizResult">
-          <div class="result-tier-badge" id="resultBadge">Your Recommendation</div>
-          <div class="result-headline" id="resultHeadline">Your box is ready.</div>
-          <div class="result-sub" id="resultSub">Based on your answers, here's what we're sending you.</div>
-          <div class="result-box">
-            <span class="result-box-label">Your Box</span>
-            <ul class="result-items" id="resultItems"></ul>
-            <div class="result-price" id="resultPrice"></div>
-          </div>
-          <a href="https://rpd6xi-g0.myshopify.com/products/stitch-essential-box" class="result-cta" id="resultCta">Start My Box</a>
-          <button class="result-restart" onclick="restartQuiz()">Start Over</button>
-        </div>
-
-      </div>
+      <div id="modal-roster"></div>
     </div>
   </div>
+</section>
 
-  <script>
-    const SHOPIFY = 'https://rpd6xi-g0.myshopify.com/products/stitch-essential-box';
-    let answers = { freq: null, teeSize: null, boxerSize: null, style: null, socks: null, forcedTier: null };
-    let currentStep = 1;
-    const totalSteps = 5;
-
-    function openQuiz(tier) {
-      if (tier) answers.forcedTier = tier;
-      document.getElementById('quizOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-      goTo(1);
-    }
-
-    function closeQuiz() {
-      document.getElementById('quizOverlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('quizOverlay').addEventListener('click', function(e) {
-      if (e.target === this) closeQuiz();
-    });
-
-    function updateProgress(step) {
-      const pct = ((step - 1) / totalSteps) * 100;
-      document.getElementById('quizProgress').style.width = pct + '%';
-    }
-
-    function goTo(step) {
-      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.quiz-result').forEach(s => s.classList.remove('active'));
-      const target = document.querySelector('[data-step="' + step + '"]');
-      if (target) { target.classList.add('active'); currentStep = step; updateProgress(step); }
-    }
-
-    function selectOpt(btn, field) {
-      btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      answers[field] = btn.dataset.value;
-      const nextBtn = document.getElementById('next' + currentStep);
-      if (nextBtn) nextBtn.disabled = false;
-    }
-
-    function showResult() {
-      updateProgress(6);
-      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-      document.getElementById('quizResult').classList.add('active');
-
-      const tier = answers.forcedTier || answers.freq || 'standard';
-      const styleMap = { briefs: 'Spandex briefs', fitted: 'Cotton fitted boxers', loose: 'Loose boxers', all: 'Briefs + Fitted + Loose boxers' };
-      const sockMap = { crew: 'Crew socks', ankle: 'Ankle socks', high: 'High socks', mix: 'Crew + Ankle + High socks' };
-
-      const tiers = {
-        starter: {
-          name: 'Starter Box', price: '$40 — one-time, no commitment',
-          badge: '✓ Your Pick: Starter',
-          headline: "You're in. First box, no strings.",
-          sub: "Try it once. If you love it, we'll be here.",
-          items: ['Fitted tee — ' + (answers.teeSize||'size TBD'), styleMap[answers.style]||'Spandex briefs' + ' — ' + (answers.boxerSize||'size TBD'), sockMap[answers.socks]||'Crew socks']
+<script>
+const SAMPLE_DATA = {
+  updatedAt: "April 25, 2026",
+  sourceMode: "Bootstrap + backend-ready hooks",
+  sports: {
+    mlb: {
+      label: "MLB",
+      note: "Click any game to open the full roster board with L10, L5, and L3 hit rates.",
+      launches: [
+        { title: "Backend hook", copy: "Reads from window.BOARD_DATA first, then board-data.json, then /api/site-board." },
+        { title: "Game click flow", copy: "Each game opens a roster slate with every tracked player, market, line, score, tier, and hit-rate row." },
+        { title: "Search behavior", copy: "Search filters games and players together, so /orioles-style browsing can become a real web flow." }
+      ],
+      notes: [
+        "Lineups, status, and L10/L5/L3 are designed to be backend-fed fields. This UI will render them as soon as the API ships.",
+        "Games stay compressed on the main board and expand into a full roster slate only when clicked.",
+        "The roster modal is built for scanning: score, line, last-10, last-5, last-3, status, and why all on one row."
+      ],
+      pickOfDay: {
+        player: "Kyle Schwarber",
+        team: "PHI",
+        market: "HR",
+        line: "HR 1+",
+        odds: "+210",
+        confidence: 78,
+        rate: "L10 4/10 | L5 3/5 | L3 2/3",
+        environment: "Wind out to right | Citizens Bank Park | Assad 5.2 MLB IP",
+        context: "CHC @ PHI | 6:41 PM ET | premium lefty lift spot"
+      },
+      filters: ["all", "hr", "tb", "hit", "k"],
+      games: [
+        {
+          id: "chc-phi",
+          title: "CHC @ PHI",
+          start: "6:41 PM ET",
+          status: "Lineups Confirmed",
+          meta: "Assad vs Sanchez | Citizens Bank Park | Wind out 11 mph",
+          attackNote: "Best HR environment on the slate. Lefty lift and short porch fit the board's power cluster.",
+          lineupStatus: "Confirmed",
+          summary: { plays: 6, core: 2, avgScore: "40.8", signal: "A+" },
+          topPicks: [
+            { name: "Kyle Schwarber", market: "HR", why: "Wind out and pure barrel lane", tier: "Core", confidence: 78, line: "HR 1+" },
+            { name: "Bryce Harper", market: "HR", why: "Same game stack with safer contact base", tier: "Strong", confidence: 69, line: "HR 1+" },
+            { name: "Cristopher Sanchez", market: "K", why: "Swing-miss lane vs top-heavy order", tier: "Value", confidence: 64, line: "6+ K" }
+          ],
+          roster: [
+            { player: "Kyle Schwarber", team: "PHI", market: "HR", line: "HR 1+", score: 44.1, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Wind out, pull lift, park edge" },
+            { player: "Bryce Harper", team: "PHI", market: "HR", line: "HR 1+", score: 40.2, tier: "Strong", confidence: 69, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Assad fly-ball profile, same game stack" },
+            { player: "Trea Turner", team: "PHI", market: "HIT", line: "1+ Hit", score: 36.4, tier: "Value", confidence: 66, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Top-of-order floor, multi-PA edge" },
+            { player: "Nick Castellanos", team: "PHI", market: "TB", line: "1.5 TB", score: 34.8, tier: "Value", confidence: 62, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Hard-hit pocket with RBI traffic" },
+            { player: "Cristopher Sanchez", team: "PHI", market: "K", line: "6+ K", score: 33.5, tier: "Value", confidence: 64, last10: "7/10", last5: "4/5", last3: "2/3", status: "Starting", why: "Whiff lane against lower third" },
+            { player: "Nico Hoerner", team: "CHC", market: "HIT", line: "1+ Hit", score: 31.6, tier: "Longshot", confidence: 57, last10: "7/10", last5: "3/5", last3: "2/3", status: "In", why: "Contact floor, low strikeout risk" },
+            { player: "Ian Happ", team: "CHC", market: "TB", line: "1.5 TB", score: 29.4, tier: "Longshot", confidence: 54, last10: "4/10", last5: "2/5", last3: "1/3", status: "In", why: "Needs pull-side damage, not volume" }
+          ]
         },
-        standard: {
-          name: 'Standard Box', price: '$49/month — cancel anytime',
-          badge: '✓ Your Pick: Standard',
-          headline: "Your monthly reset. Handled.",
-          sub: "Every month, your essentials show up. You never think about it again.",
-          items: ['Fitted tee — ' + (answers.teeSize||'size TBD'), styleMap[answers.style]||'Spandex briefs' + ' — ' + (answers.boxerSize||'size TBD'), sockMap[answers.socks]||'Crew socks', 'Seasonal item']
+        {
+          id: "ari-bal",
+          title: "ARI @ BAL",
+          start: "6:36 PM ET",
+          status: "Lineups Confirmed",
+          meta: "Nelson vs Kremer | Camden Yards | Wind out 8 mph",
+          attackNote: "Baltimore side carries the best balanced mix of HR, TB, and hit-rate floor.",
+          lineupStatus: "Confirmed",
+          summary: { plays: 5, core: 2, avgScore: "39.2", signal: "A" },
+          topPicks: [
+            { name: "Gunnar Henderson", market: "HR", why: "Best damage bat in this run environment", tier: "Core", confidence: 76, line: "HR 1+" },
+            { name: "Gunnar Henderson", market: "TB", why: "Great 2+ base floor if HR misses", tier: "Core", confidence: 74, line: "1.5 TB" },
+            { name: "Adley Rutschman", market: "HIT", why: "High-contact lane with RBI volume", tier: "Value", confidence: 63, line: "1+ Hit" }
+          ],
+          roster: [
+            { player: "Gunnar Henderson", team: "BAL", market: "HR", line: "HR 1+", score: 42.8, tier: "Core", confidence: 76, last10: "4/10", last5: "3/5", last3: "2/3", status: "In", why: "Lift, barrel, and weather all aligned" },
+            { player: "Gunnar Henderson", team: "BAL", market: "TB", line: "1.5 TB", score: 41.2, tier: "Core", confidence: 74, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "XBH pressure even when HR misses" },
+            { player: "Adley Rutschman", team: "BAL", market: "HIT", line: "1+ Hit", score: 35.7, tier: "Value", confidence: 63, last10: "8/10", last5: "4/5", last3: "3/3", status: "In", why: "Line drive floor with plus slot" },
+            { player: "Jordan Westburg", team: "BAL", market: "TB", line: "1.5 TB", score: 33.8, tier: "Value", confidence: 60, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "Pull gap damage profile" },
+            { player: "Zac Gallen", team: "ARI", market: "K", line: "6+ K", score: 30.1, tier: "Longshot", confidence: 56, last10: "6/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Skill is there, matchup is not clean" }
+          ]
         },
-        full: {
-          name: 'Full Rotation', price: '$89/month — cancel anytime',
-          badge: '✓ Your Pick: Full Rotation',
-          headline: "Full coverage. Every month.",
-          sub: "You're always stocked. Period.",
-          items: ['Multiple tees — ' + (answers.teeSize||'size TBD'), 'Briefs + Fitted + Loose boxers — ' + (answers.boxerSize||'size TBD'), 'Full sock rotation — ' + sockMap[answers.socks]||'All styles', 'Seasonal item']
+        {
+          id: "tex-ath",
+          title: "TEX @ ATH",
+          start: "9:41 PM ET",
+          status: "Lineups Confirmed",
+          meta: "Eovaldi vs Severino | Sutter Health Park | warm carry",
+          attackNote: "This is a real clustering spot. The board can support multiple smart HR reads without over-inflating the game.",
+          lineupStatus: "Confirmed",
+          summary: { plays: 6, core: 3, avgScore: "41.6", signal: "A+" },
+          topPicks: [
+            { name: "Corey Seager", market: "HR", why: "Lefty damage against unstable command", tier: "Core", confidence: 75, line: "HR 1+" },
+            { name: "Shea Langeliers", market: "HR", why: "Pure power anchor on the other side", tier: "Core", confidence: 73, line: "HR 1+" },
+            { name: "Brent Rooker", market: "TB", why: "Strong hybrid if you want less pure HR exposure", tier: "Strong", confidence: 68, line: "1.5 TB" }
+          ],
+          roster: [
+            { player: "Corey Seager", team: "TEX", market: "HR", line: "HR 1+", score: 43.5, tier: "Core", confidence: 75, last10: "4/10", last5: "2/5", last3: "2/3", status: "In", why: "Severino command wobble plus pull-side air" },
+            { player: "Shea Langeliers", team: "ATH", market: "HR", line: "HR 1+", score: 42.7, tier: "Core", confidence: 73, last10: "3/10", last5: "2/5", last3: "1/3", status: "In", why: "Highest barrel lane in game" },
+            { player: "Brent Rooker", team: "ATH", market: "TB", line: "1.5 TB", score: 38.8, tier: "Strong", confidence: 68, last10: "6/10", last5: "4/5", last3: "2/3", status: "In", why: "Hybrid profile if HR is too thin" },
+            { player: "Marcus Semien", team: "TEX", market: "HIT", line: "1+ Hit", score: 33.6, tier: "Value", confidence: 59, last10: "8/10", last5: "4/5", last3: "2/3", status: "In", why: "Lead-off floor with run volume" },
+            { player: "Nathan Eovaldi", team: "TEX", market: "K", line: "6+ K", score: 31.5, tier: "Longshot", confidence: 57, last10: "6/10", last5: "3/5", last3: "1/3", status: "Starting", why: "Can get there if pitch count cooperates" },
+            { player: "JJ Bleday", team: "ATH", market: "HIT", line: "1+ Hit", score: 29.1, tier: "Longshot", confidence: 53, last10: "6/10", last5: "3/5", last3: "1/3", status: "In", why: "Pure volume play, not damage-first" }
+          ]
+        },
+        {
+          id: "stl-hou",
+          title: "STL @ HOU",
+          start: "2:11 PM ET",
+          status: "Final lineup sweep",
+          meta: "Liberatore vs Burrows | Dome game | stable run environment",
+          attackNote: "Good board for HR plus hits together. Yordan gives ceiling, Walker gives heater form.",
+          lineupStatus: "Confirmed",
+          summary: { plays: 5, core: 1, avgScore: "37.1", signal: "B+" },
+          topPicks: [
+            { name: "Yordan Alvarez", market: "HR", why: "Best ceiling bat in a controlled dome spot", tier: "Core", confidence: 78, line: "HR 1+" },
+            { name: "Jordan Walker", market: "HIT", why: "Hit streak and plus recent floor", tier: "Strong", confidence: 67, line: "1+ Hit" },
+            { name: "Jose Altuve", market: "TB", why: "Cleaner hybrid exposure than forcing HR", tier: "Value", confidence: 61, line: "1.5 TB" }
+          ],
+          roster: [
+            { player: "Yordan Alvarez", team: "HOU", market: "HR", line: "HR 1+", score: 44.0, tier: "Core", confidence: 78, last10: "4/10", last5: "3/5", last3: "1/3", status: "In", why: "Weak lefty lane in closed roof" },
+            { player: "Jordan Walker", team: "STL", market: "HIT", line: "1+ Hit", score: 37.5, tier: "Strong", confidence: 67, last10: "9/10", last5: "5/5", last3: "3/3", status: "In", why: "Hot stretch and volume floor" },
+            { player: "Jose Altuve", team: "HOU", market: "TB", line: "1.5 TB", score: 34.2, tier: "Value", confidence: 61, last10: "5/10", last5: "3/5", last3: "2/3", status: "In", why: "More stable than pure HR chase" },
+            { player: "Spencer Arrighetti", team: "HOU", market: "K", line: "6+ K", score: 31.8, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Starting", why: "Strikeout upside, not lock volume" }
+          ]
         }
-      };
+      ]
+    },
+    nba: {
+      label: "NBA",
+      note: "Game cards stay compact. Click into any matchup for the full player ladder board and recent hit rates at the displayed mark.",
+      launches: [
+        { title: "Visible board first", copy: "Main page stays clean with top props only. Full roster and hit-rate tables live behind the game click." },
+        { title: "Recent-rate logic", copy: "Each row is built to display last-10, last-5, and last-3 hit rate against the shown line." },
+        { title: "Backend-safe", copy: "If recent data is missing, the site still renders the board and leaves the rate row blank." }
+      ],
+      notes: [
+        "Use season body of work plus playoff context for the score. Use L10, L5, and L3 as execution context, not the whole model.",
+        "Every game card is a clickable entry point into the full roster board. That is where the research layer should live.",
+        "This structure also gives you a place for lineup status, minutes risk, and late scratches without cluttering the main slate."
+      ],
+      pickOfDay: {
+        player: "Nikola Jokic",
+        team: "DEN",
+        market: "REB",
+        line: "12+ REB",
+        odds: "-118",
+        confidence: 80,
+        rate: "L10 8/10 | L5 4/5 | L3 3/3",
+        environment: "Game 4 | home floor | pressure spot",
+        context: "MIN @ DEN | 8:30 PM ET | rebound ladder anchor"
+      },
+      filters: ["all", "pts", "ast", "reb", "3pm"],
+      games: [
+        {
+          id: "min-den",
+          title: "MIN @ DEN - Game 4",
+          start: "8:30 PM ET",
+          status: "Probables Clean",
+          meta: "Nuggets trail 1-2 | high-leverage home response spot",
+          attackNote: "Best ladder game on the card. You can stack Jokic rebounds and assists without forcing thin secondary plays.",
+          lineupStatus: "Projected Active",
+          summary: { plays: 5, core: 2, avgScore: "74.3", signal: "A" },
+          topPicks: [
+            { name: "Nikola Jokic", market: "REB", why: "12+ ladder has clean recent support", tier: "Core", confidence: 80, line: "12+ REB" },
+            { name: "Nikola Jokic", market: "AST", why: "Best secondary ladder in the same game", tier: "Strong", confidence: 69, line: "8+ AST" },
+            { name: "Anthony Edwards", market: "PTS", why: "Volume is always live if game scripts tight", tier: "Value", confidence: 63, line: "28+ PTS" }
+          ],
+          roster: [
+            { player: "Nikola Jokic", team: "DEN", market: "REB", line: "12+ REB", score: 80.4, tier: "Core", confidence: 80, last10: "8/10", last5: "4/5", last3: "3/3", status: "Active", why: "Glass edge, pace stays playable" },
+            { player: "Nikola Jokic", team: "DEN", market: "AST", line: "8+ AST", score: 69.8, tier: "Strong", confidence: 69, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Touch volume, playoff usage, home response" },
+            { player: "Anthony Edwards", team: "MIN", market: "PTS", line: "28+ PTS", score: 63.1, tier: "Value", confidence: 63, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Usage always there, efficiency swings" },
+            { player: "Karl-Anthony Towns", team: "MIN", market: "REB", line: "10+ REB", score: 58.6, tier: "Value", confidence: 58, last10: "5/10", last5: "3/5", last3: "2/3", status: "Active", why: "Volatile but live if Denver misses pile up" }
+          ]
+        },
+        {
+          id: "nyk-atl",
+          title: "NYK @ ATL - Game 4",
+          start: "6:00 PM ET",
+          status: "Probables Clean",
+          meta: "Hawks lead 2-1 | live ball-handler and rebound ladders",
+          attackNote: "Balanced game. Brunson points and Jalen Johnson rebounds are the clearest entries.",
+          lineupStatus: "Projected Active",
+          summary: { plays: 4, core: 1, avgScore: "68.0", signal: "B+" },
+          topPicks: [
+            { name: "Jalen Brunson", market: "PTS", why: "Pure engine role with playoff usage", tier: "Core", confidence: 74, line: "25+ PTS" },
+            { name: "Jalen Johnson", market: "REB", why: "Consistent board work with strong role", tier: "Strong", confidence: 72, line: "10+ REB" },
+            { name: "Trae Young", market: "AST", why: "Assist volume tracks if Atlanta controls pace", tier: "Value", confidence: 65, line: "10+ AST" }
+          ],
+          roster: [
+            { player: "Jalen Brunson", team: "NYK", market: "PTS", line: "25+ PTS", score: 74.2, tier: "Core", confidence: 74, last10: "7/10", last5: "4/5", last3: "2/3", status: "Active", why: "Ball dominance and shot load" },
+            { player: "Jalen Johnson", team: "ATL", market: "REB", line: "10+ REB", score: 72.1, tier: "Strong", confidence: 72, last10: "8/10", last5: "4/5", last3: "2/3", status: "Active", why: "Role strength plus home game" },
+            { player: "Trae Young", team: "ATL", market: "AST", line: "10+ AST", score: 65.0, tier: "Value", confidence: 65, last10: "6/10", last5: "3/5", last3: "1/3", status: "Active", why: "Assist ceiling if shooters hit" },
+            { player: "Josh Hart", team: "NYK", market: "REB", line: "8+ REB", score: 59.8, tier: "Value", confidence: 59, last10: "6/10", last5: "4/5", last3: "2/3", status: "Active", why: "Minutes monster floor" }
+          ]
+        },
+        {
+          id: "det-orl",
+          title: "DET @ ORL - Game 3",
+          start: "1:00 PM ET",
+          status: "Monitoring lineups",
+          meta: "Series tied 1-1 | playmaker and rebound lanes",
+          attackNote: "Cade assists and Duren rebounds fit the board better than chasing thin scoring variance.",
+          lineupStatus: "Awaiting confirmations",
+          summary: { plays: 4, core: 0, avgScore: "63.8", signal: "B" },
+          topPicks: [
+            { name: "Cade Cunningham", market: "AST", why: "Primary table-setter with clean line access", tier: "Value", confidence: 68, line: "8+ AST" },
+            { name: "Jalen Duren", market: "REB", why: "Strong recent board rate against this line", tier: "Value", confidence: 67, line: "10+ REB" },
+            { name: "Paolo Banchero", market: "PTS", why: "Usage stays there even when efficiency dips", tier: "Longshot", confidence: 58, line: "26+ PTS" }
+          ],
+          roster: [
+            { player: "Cade Cunningham", team: "DET", market: "AST", line: "8+ AST", score: 68.5, tier: "Value", confidence: 68, last10: "7/10", last5: "3/5", last3: "2/3", status: "Questionable", why: "Engine role, recent assist form" },
+            { player: "Jalen Duren", team: "DET", market: "REB", line: "10+ REB", score: 67.2, tier: "Value", confidence: 67, last10: "7/10", last5: "4/5", last3: "3/3", status: "Active", why: "Strong glass rate in this matchup" },
+            { player: "Paolo Banchero", team: "ORL", market: "PTS", line: "26+ PTS", score: 58.9, tier: "Longshot", confidence: 58, last10: "5/10", last5: "2/5", last3: "1/3", status: "Active", why: "Volume yes, efficiency less stable" }
+          ]
+        }
+      ]
+    },
+    wnba: {
+      label: "WNBA",
+      note: "WNBA board will fill in here when the backend is ready.",
+      launches: [],
+      notes: [],
+      pickOfDay: null,
+      filters: ["all"],
+      games: []
+    },
+    soccer: {
+      label: "Soccer",
+      note: "Soccer props panel is reserved for EPL, MLS, and Champions League once feeds are wired.",
+      launches: [],
+      notes: [],
+      pickOfDay: null,
+      filters: ["all"],
+      games: []
+    },
+    highlights: {
+      label: "Highlights",
+      note: "Highlights stay separated from the board so the research surface stays clean.",
+      launches: [],
+      notes: [],
+      pickOfDay: null,
+      filters: ["all"],
+      games: [],
+      highlights: [
+        { sport: "nba", title: "NBA Playoff Highlights - Tonight's best sequences", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=NBA+playoff+highlights+2026" },
+        { sport: "mlb", title: "MLB Daily Home Run Reel", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=MLB+home+run+highlights+2026" },
+        { sport: "mlb", title: "Gunnar Henderson recent swings", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Gunnar+Henderson+home+run+2026" },
+        { sport: "nba", title: "Nikola Jokic postseason clips", source: "YouTube search feed", url: "https://www.youtube.com/embed?listType=search&q=Nikola+Jokic+playoffs+2026" }
+      ]
+    }
+  }
+};
 
-      const t = tiers[tier] || tiers.standard;
-      document.getElementById('resultBadge').textContent = t.badge;
-      document.getElementById('resultHeadline').textContent = t.headline;
-      document.getElementById('resultSub').textContent = t.sub;
-      document.getElementById('resultPrice').textContent = t.price;
+const API_CANDIDATES = [
+  "./board-data.json",
+  "/board-data.json",
+  "/api/site-board"
+];
 
-      const list = document.getElementById('resultItems');
-      list.innerHTML = '';
-      t.items.forEach(item => { const li = document.createElement('li'); li.textContent = item; list.appendChild(li); });
+const state = {
+  sport: "mlb",
+  surface: "dashboard",
+  market: "all",
+  gameFilter: "all",
+  sortKey: "score",
+  sortDir: "desc",
+  search: "",
+  data: SAMPLE_DATA,
+  modalGameId: null,
+  modalMarket: "all"
+};
 
-      // Append note about preferences
-      const note = document.createElement('li');
-      note.style.cssText = 'color:rgba(245,241,234,.4);font-size:.75rem;margin-top:.5rem';
-      note.textContent = 'Preferences saved with your order';
-      list.appendChild(note);
+function formatDateLabel(value) {
+  if (!value) {
+    return new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  }
+  return value;
+}
+
+function scoreClass(score) {
+  if (score >= 70) return "score-good";
+  if (score >= 58) return "score-mid";
+  return "score-low";
+}
+
+function confidenceClass(confidence) {
+  if (confidence >= 70) return "confidence-high";
+  if (confidence >= 60) return "confidence-mid";
+  return "confidence-low";
+}
+
+function marketClass(market) {
+  return "market-" + String(market || "").toLowerCase();
+}
+
+function tierClass(tier) {
+  const token = String(tier || "").toLowerCase();
+  if (token === "core") return "tier-core";
+  if (token === "strong") return "tier-strong";
+  if (token === "value") return "tier-value";
+  return "tier-longshot";
+}
+
+function normalize(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function parseRecord(value) {
+  const raw = String(value || "").trim();
+  const parts = raw.split("/");
+  if (parts.length !== 2) return -1;
+  const hits = Number(parts[0]);
+  const games = Number(parts[1]);
+  if (!Number.isFinite(hits) || !Number.isFinite(games) || games <= 0) return -1;
+  return hits / games;
+}
+
+function tierRank(value) {
+  const token = normalize(value);
+  if (token === "core") return 4;
+  if (token === "strong") return 3;
+  if (token === "value") return 2;
+  return 1;
+}
+
+function getCurrentSport() {
+  return state.data.sports[state.sport];
+}
+
+function buildTickerItems(data) {
+  const items = [];
+  Object.entries(data.sports).forEach(([key, sport]) => {
+    if (!sport.games || !sport.games.length) return;
+    sport.games.forEach((game) => {
+      game.topPicks.slice(0, 2).forEach((pick) => {
+        items.push(
+          sport.label + " | " + game.title + " | " + pick.name + " | " + pick.line + " | " + pick.confidence + "%"
+        );
+      });
+    });
+  });
+  return items;
+}
+
+function renderTicker(data) {
+  const items = buildTickerItems(data);
+  const markup = items.length
+    ? items.map((item) => "<span>" + item + "</span>").join("<span> | </span>")
+    : "<span>The Board is waiting on slate data.</span>";
+  document.getElementById("ticker-track").innerHTML = markup;
+  document.getElementById("ticker-track-dup").innerHTML = markup;
+}
+
+function renderTabs() {
+  const tabs = document.getElementById("sport-tabs");
+  tabs.innerHTML = Object.entries(state.data.sports).map(([key, sport]) => {
+    const count = sport.games ? sport.games.length : (sport.highlights ? sport.highlights.length : 0);
+    return `
+      <button class="sport-tab ${state.sport === key ? "active" : ""}" data-sport="${key}">
+        <span class="sport-dot"></span>
+        <span>${sport.label}</span>
+        <span class="sport-count">${count}</span>
+      </button>
+    `;
+  }).join("");
+  tabs.querySelectorAll(".sport-tab").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.sport = button.dataset.sport;
+      state.surface = "dashboard";
+      state.market = "all";
+      state.gameFilter = "all";
+      state.sortKey = "score";
+      state.sortDir = "desc";
+      state.modalGameId = null;
+      render();
+    });
+  });
+}
+
+function playerMatchesSearch(row, term) {
+  const hay = [row.player, row.team, row.market, row.line, row.why, row.status].map(normalize).join(" ");
+  return hay.includes(term);
+}
+
+function gameMatches(game, term, market) {
+  const headline = [game.title, game.meta, game.attackNote, game.status].map(normalize).join(" ");
+  const rosterMatches = (game.roster || []).some((row) => {
+    const marketHit = market === "all" || normalize(row.market) === market;
+    return marketHit && playerMatchesSearch(row, term);
+  });
+  return headline.includes(term) || rosterMatches;
+}
+
+function filteredGames(sport) {
+  const market = normalize(state.market);
+  const term = normalize(state.search);
+  return (sport.games || []).filter((game) => {
+    if (!term && market === "all") return true;
+    if (term) return gameMatches(game, term, market);
+    return (game.roster || []).some((row) => normalize(row.market) === market);
+  });
+}
+
+function filteredRoster(game) {
+  const market = normalize(state.modalMarket);
+  const term = normalize(state.search);
+  return (game.roster || []).filter((row) => {
+    const marketHit = market === "all" || normalize(row.market) === market;
+    const searchHit = !term || playerMatchesSearch(row, term) || normalize(game.title).includes(term);
+    return marketHit && searchHit;
+  }).sort((a, b) => b.score - a.score);
+}
+
+function explorerRows(sport) {
+  const term = normalize(state.search);
+  const market = normalize(state.market);
+  const gameFilter = normalize(state.gameFilter);
+
+  const rows = filteredGames(sport).flatMap((game) => (game.roster || []).map((row) => ({
+    ...row,
+    gameId: game.id,
+    gameTitle: game.title,
+    gameStart: game.start,
+    gameMeta: game.meta
+  })));
+
+  const filtered = rows.filter((row) => {
+    const marketHit = market === "all" || normalize(row.market) === market;
+    const gameHit = gameFilter === "all" || normalize(row.gameId) === gameFilter;
+    const searchHay = [
+      row.player,
+      row.team,
+      row.market,
+      row.line,
+      row.why,
+      row.status,
+      row.gameTitle,
+      row.gameMeta
+    ].map(normalize).join(" ");
+    const searchHit = !term || searchHay.includes(term);
+    return marketHit && gameHit && searchHit;
+  });
+
+  const sorted = filtered.slice().sort((a, b) => {
+    const dir = state.sortDir === "asc" ? 1 : -1;
+    const key = state.sortKey;
+    let left = a[key];
+    let right = b[key];
+
+    if (key === "score" || key === "confidence") {
+      left = Number(left || 0);
+      right = Number(right || 0);
+    } else if (key === "tier") {
+      left = tierRank(left);
+      right = tierRank(right);
+    } else if (key === "last10" || key === "last5" || key === "last3") {
+      left = parseRecord(left);
+      right = parseRecord(right);
+    } else {
+      left = normalize(left);
+      right = normalize(right);
     }
 
-    function restartQuiz() {
-      answers = { freq: null, teeSize: null, boxerSize: null, style: null, socks: null, forcedTier: null };
-      document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
-      document.querySelectorAll('.quiz-next').forEach(b => b.disabled = true);
-      document.getElementById('quizResult').classList.remove('active');
-      goTo(1);
-    }
+    if (left < right) return -1 * dir;
+    if (left > right) return 1 * dir;
+    return (Number(b.score || 0) - Number(a.score || 0));
+  });
 
-    // Legal page routing
-    function checkHash() {
-      const hash = window.location.hash.replace('#','');
-      const legal = ['privacy','terms','refund'];
-      const main = document.querySelectorAll('nav,.hero,.marquee-wrap,.essentials,.divider,.plans,.process,.founding-banner,footer');
-      document.querySelectorAll('.legal-page').forEach(el => el.style.display = 'none');
-      if (legal.includes(hash)) {
-        main.forEach(el => el.style.display = 'none');
-        const page = document.getElementById(hash);
-        if (page) page.style.display = 'block';
-      } else {
-        main.forEach(el => el.style.display = '');
+  return sorted;
+}
+
+function topSignals(sport) {
+  return filteredGames(sport).map((game) => ({
+    id: game.id,
+    title: game.title,
+    score: game.summary ? game.summary.avgScore : "0.0",
+    copy: game.attackNote
+  })).sort((a, b) => parseFloat(b.score) - parseFloat(a.score)).slice(0, 5);
+}
+
+function summaryStats(sport) {
+  const games = filteredGames(sport);
+  const allRows = games.flatMap((game) => game.roster || []);
+  const coreCount = allRows.filter((row) => normalize(row.tier) === "core").length;
+  const avgScore = allRows.length
+    ? (allRows.reduce((sum, row) => sum + Number(row.score || 0), 0) / allRows.length).toFixed(1)
+    : "0.0";
+  const confirmed = allRows.filter((row) => normalize(row.status) === "in" || normalize(row.status) === "active" || normalize(row.status) === "starting").length;
+  return [
+    { label: "Games", value: String(games.length) },
+    { label: "Tracked Plays", value: String(allRows.length) },
+    { label: "Core Reads", value: String(coreCount) },
+    { label: "Avg Score", value: avgScore }
+  ];
+}
+
+function renderSidebar() {
+  const sport = getCurrentSport();
+  document.getElementById("summary-stats").innerHTML = summaryStats(sport).map((item) => `
+    <div class="stat-box">
+      <div class="stat-box-value">${item.value}</div>
+      <div class="stat-box-label">${item.label}</div>
+    </div>
+  `).join("");
+
+  document.getElementById("signal-list").innerHTML = topSignals(sport).map((item) => `
+    <button class="signal-item" data-open-game="${item.id}">
+      <div class="signal-top">
+        <div class="signal-game">${item.title}</div>
+        <div class="signal-score">${item.score}</div>
+      </div>
+      <div class="signal-copy">${item.copy}</div>
+    </button>
+  `).join("") || `<div class="signal-item"><div class="signal-copy">No signal games available for this view yet.</div></div>`;
+
+  document.getElementById("launch-list").innerHTML = (sport.launches || []).map((item) => `
+    <div class="launch-item">
+      <strong>${item.title}</strong>
+      <div class="launch-copy">${item.copy}</div>
+    </div>
+  `).join("") || `<div class="launch-item"><div class="launch-copy">Launch notes will appear once the sport is wired.</div></div>`;
+
+  document.getElementById("note-list").innerHTML = (sport.notes || []).map((item) => `
+    <div class="note-item">${item}</div>
+  `).join("") || `<div class="note-item">No extra notes for this view yet.</div>`;
+
+  document.querySelectorAll("[data-open-game]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.modalMarket = "all";
+      openGame(button.dataset.openGame);
+    });
+  });
+}
+
+function renderHero(sport) {
+  if (!sport.pickOfDay) {
+    return `
+      <div class="coming">
+        <h3>${sport.label} Coming Online</h3>
+        <p>${sport.note || "This board will light up when the sport is wired."}</p>
+      </div>
+    `;
+  }
+
+  const pick = sport.pickOfDay;
+  return `
+    <section class="hero">
+      <div class="hero-tag">Pick of the Day</div>
+      <h1 class="hero-title">${pick.player}</h1>
+      <div class="hero-subtitle">${pick.team} | ${pick.market} | ${pick.line}<br>${pick.context}<br>${pick.environment}</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value">${pick.odds}</div>
+          <div class="hero-stat-label">Odds</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">${pick.confidence}%</div>
+          <div class="hero-stat-label">Confidence</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">${pick.rate}</div>
+          <div class="hero-stat-label">Hit Rate</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">${sport.games.length}</div>
+          <div class="hero-stat-label">Games Live</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderToolbar(sport) {
+  return `
+    <div class="toolbar">
+      <div class="surface-toggle">
+        <button class="surface-btn ${state.surface === "dashboard" ? "active" : ""}" data-surface="dashboard">Dashboard</button>
+        <button class="surface-btn ${state.surface === "explorer" ? "active" : ""}" data-surface="explorer">Explorer</button>
+      </div>
+      <div class="chip-row">
+        ${(sport.filters || ["all"]).map((filter) => `
+          <button class="chip ${state.market === filter ? "active" : ""}" data-market="${filter}">
+            ${filter}
+          </button>
+        `).join("")}
+      </div>
+      <div class="toolbar-note">${sport.note || ""}</div>
+    </div>
+  `;
+}
+
+function renderGameCard(game) {
+  return `
+    <article class="game-card">
+      <div class="game-card-header">
+        <div>
+          <h3 class="game-title">${game.title}</h3>
+          <div class="game-subtitle">${game.meta}</div>
+        </div>
+        <div class="game-status">
+          <div class="game-status-label"><span class="status-dot"></span>${game.status}</div>
+          <div class="game-status-time">${game.start}</div>
+        </div>
+      </div>
+      <div class="game-card-body">
+        <div class="game-summary">
+          <div class="summary-box">
+            <div class="summary-value">${game.summary.plays}</div>
+            <div class="summary-label">Tracked Plays</div>
+          </div>
+          <div class="summary-box">
+            <div class="summary-value">${game.summary.core}</div>
+            <div class="summary-label">Core Reads</div>
+          </div>
+          <div class="summary-box">
+            <div class="summary-value">${game.summary.avgScore}</div>
+            <div class="summary-label">Avg Score</div>
+          </div>
+        </div>
+        <div class="pick-list">
+          ${game.topPicks.map((pick) => `
+            <div class="pick-row">
+              <div class="pick-left">
+                <span class="market-pill ${marketClass(pick.market)}">${pick.market}</span>
+                <div>
+                  <div class="pick-name">${pick.name}</div>
+                  <div class="pick-why">${pick.line} | ${pick.why}</div>
+                </div>
+              </div>
+              <div class="pick-right">
+                <span class="tier-pill ${tierClass(pick.tier)}">${pick.tier}</span>
+                <div class="confidence-wrap">
+                  <div class="confidence-bar">
+                    <div class="confidence-fill ${confidenceClass(pick.confidence)}" data-width="${pick.confidence}"></div>
+                  </div>
+                  <div class="confidence-text">${pick.confidence}%</div>
+                </div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+        <div class="game-footer">
+          <div class="footer-note">${game.attackNote}</div>
+          <button class="link-btn" data-open-game="${game.id}">Open Slate</button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderBoardView(sport) {
+  const games = filteredGames(sport);
+  return `
+    ${renderHero(sport)}
+    ${renderToolbar(sport)}
+    <div class="section-head">
+      <h2 class="section-title">Today's Games</h2>
+      <div class="section-meta">${games.length} games visible</div>
+    </div>
+    ${games.length ? `<div class="game-grid">${games.map(renderGameCard).join("")}</div>` : `<div class="empty">No games matched this search or market filter.</div>`}
+  `;
+}
+
+function renderExplorerView(sport) {
+  const rows = explorerRows(sport);
+  const gameOptions = [{ id: "all", title: "All Games" }, ...(sport.games || []).map((game) => ({ id: game.id, title: game.title }))];
+  const columns = [
+    ["player", "Player"],
+    ["gameTitle", "Game"],
+    ["team", "Team"],
+    ["market", "Market"],
+    ["line", "Line"],
+    ["score", "Score"],
+    ["tier", "Tier"],
+    ["last10", "L10"],
+    ["last5", "L5"],
+    ["last3", "L3"],
+    ["status", "Status"],
+    ["why", "Why"]
+  ];
+
+  return `
+    ${renderHero(sport)}
+    ${renderToolbar(sport)}
+    <div class="section-head">
+      <h2 class="section-title">Explorer Sheet</h2>
+      <div class="section-meta">${rows.length} rows visible</div>
+    </div>
+    <div class="explorer-shell">
+      <div class="explorer-toolbar">
+        <div class="explorer-controls">
+          <select class="explorer-select" id="explorer-game-filter">
+            ${gameOptions.map((game) => `<option value="${game.id}" ${state.gameFilter === game.id ? "selected" : ""}>${game.title}</option>`).join("")}
+          </select>
+          <select class="explorer-select" id="explorer-sort-key">
+            <option value="score" ${state.sortKey === "score" ? "selected" : ""}>Sort by Score</option>
+            <option value="confidence" ${state.sortKey === "confidence" ? "selected" : ""}>Sort by Confidence</option>
+            <option value="last10" ${state.sortKey === "last10" ? "selected" : ""}>Sort by L10</option>
+            <option value="last5" ${state.sortKey === "last5" ? "selected" : ""}>Sort by L5</option>
+            <option value="last3" ${state.sortKey === "last3" ? "selected" : ""}>Sort by L3</option>
+            <option value="player" ${state.sortKey === "player" ? "selected" : ""}>Sort by Player</option>
+          </select>
+          <select class="explorer-select" id="explorer-sort-dir">
+            <option value="desc" ${state.sortDir === "desc" ? "selected" : ""}>High to Low</option>
+            <option value="asc" ${state.sortDir === "asc" ? "selected" : ""}>Low to High</option>
+          </select>
+        </div>
+        <div class="explorer-meta">Dense table view for scanning parlays, game clusters, and hit-rate context.</div>
+      </div>
+      <div class="explorer-wrap">
+        <div class="explorer-scroll">
+          <div class="explorer-head">
+            ${columns.map(([key, label]) => `
+              <button class="explorer-sort ${state.sortKey === key ? "active" : ""}" data-sort-key="${key}">
+                <span>${label}</span>
+                <span class="sort-arrow">${state.sortKey === key ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"}</span>
+              </button>
+            `).join("")}
+          </div>
+          ${rows.length ? rows.map((row) => `
+            <div class="explorer-row" data-open-row="${row.gameId}" data-open-market="${normalize(row.market)}">
+              <div class="explorer-player">
+                <strong>${row.player}</strong>
+                <span>${row.line} | ${row.confidence}% confidence</span>
+              </div>
+              <div class="explorer-game">${row.gameTitle}</div>
+              <div>${row.team}</div>
+              <div><span class="market-pill ${marketClass(row.market)}">${row.market}</span></div>
+              <div class="line-mono">${row.line}</div>
+              <div><span class="metric-inline ${scoreClass(row.score)}">${Number(row.score).toFixed(1)}</span></div>
+              <div><span class="tier-pill ${tierClass(row.tier)}">${row.tier}</span></div>
+              <div>${row.last10}</div>
+              <div>${row.last5}</div>
+              <div>${row.last3}</div>
+              <div class="muted">${row.status}</div>
+              <div class="explorer-why">${row.why}</div>
+            </div>
+          `).join("") : `<div class="empty" style="margin: 18px;">No rows matched the current explorer filters.</div>`}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHighlightsView(sport) {
+  return `
+    <div class="section-head">
+      <h2 class="section-title">Highlights</h2>
+      <div class="section-meta">Separated from the board for cleaner research</div>
+    </div>
+    <div class="highlight-grid">
+      ${(sport.highlights || []).map((item) => `
+        <article class="highlight-card">
+          <div class="highlight-frame">
+            <iframe src="${item.url}" allowfullscreen title="${item.title}"></iframe>
+          </div>
+          <div class="highlight-copy">
+            <span class="highlight-tag ${item.sport}">${item.sport}</span>
+            <div class="highlight-title">${item.title}</div>
+            <div class="highlight-source">${item.source}</div>
+          </div>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderPlaceholderView(sport) {
+  return `
+    <div class="coming">
+      <h3>${sport.label} Coming Soon</h3>
+      <p>${sport.note || "This surface is reserved for the next feed."}</p>
+    </div>
+  `;
+}
+
+function renderViews() {
+  const views = document.getElementById("views");
+  views.innerHTML = Object.entries(state.data.sports).map(([key, sport]) => {
+    let content = "";
+    if (key === "highlights") {
+      content = renderHighlightsView(sport);
+    } else if (sport.games && sport.games.length) {
+      content = state.surface === "explorer" ? renderExplorerView(sport) : renderBoardView(sport);
+    } else {
+      content = renderPlaceholderView(sport);
+    }
+    return `<section class="view ${state.sport === key ? "active" : ""}" id="view-${key}">${content}</section>`;
+  }).join("");
+
+  document.querySelectorAll("[data-surface]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.surface = button.dataset.surface;
+      if (state.surface === "dashboard") {
+        state.gameFilter = "all";
       }
-    }
-    window.addEventListener('hashchange', checkHash);
-    checkHash();
-  </script>
+      render();
+    });
+  });
 
+  document.querySelectorAll("[data-market]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.market = button.dataset.market;
+      if (state.surface === "dashboard") {
+        state.gameFilter = "all";
+      }
+      render();
+    });
+  });
+
+  const gameFilter = document.getElementById("explorer-game-filter");
+  if (gameFilter) {
+    gameFilter.addEventListener("change", (event) => {
+      state.gameFilter = event.target.value;
+      render();
+    });
+  }
+
+  const sortKey = document.getElementById("explorer-sort-key");
+  if (sortKey) {
+    sortKey.addEventListener("change", (event) => {
+      state.sortKey = event.target.value;
+      render();
+    });
+  }
+
+  const sortDir = document.getElementById("explorer-sort-dir");
+  if (sortDir) {
+    sortDir.addEventListener("change", (event) => {
+      state.sortDir = event.target.value;
+      render();
+    });
+  }
+
+  document.querySelectorAll("[data-sort-key]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.sortKey;
+      if (state.sortKey === key) {
+        state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+      } else {
+        state.sortKey = key;
+        state.sortDir = key === "player" || key === "gameTitle" || key === "market" ? "asc" : "desc";
+      }
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-open-game]").forEach((button) => {
+    button.addEventListener("click", () => openGame(button.dataset.openGame));
+  });
+
+  document.querySelectorAll("[data-open-row]").forEach((row) => {
+    row.addEventListener("click", () => {
+      state.modalMarket = row.dataset.openMarket || "all";
+      openGame(row.dataset.openRow);
+    });
+  });
+
+  animateConfidence();
+}
+
+function animateConfidence() {
+  document.querySelectorAll(".confidence-fill").forEach((fill) => {
+    requestAnimationFrame(() => {
+      fill.style.width = fill.dataset.width + "%";
+    });
+  });
+}
+
+function openGame(gameId) {
+  const sport = getCurrentSport();
+  const game = (sport.games || []).find((entry) => entry.id === gameId);
+  if (!game) return;
+  state.modalGameId = gameId;
+  if (!state.modalMarket) state.modalMarket = "all";
+  renderModal(game);
+}
+
+function closeModal() {
+  state.modalGameId = null;
+  document.getElementById("game-modal").classList.remove("open");
+  document.getElementById("game-modal").setAttribute("aria-hidden", "true");
+}
+
+function renderModal(game) {
+  const modal = document.getElementById("game-modal");
+  document.getElementById("modal-title").textContent = game.title;
+  document.getElementById("modal-subtitle").textContent = game.meta + " | " + game.attackNote;
+  document.getElementById("modal-status").textContent = game.lineupStatus;
+  document.getElementById("modal-toolbar-note").textContent = "Showing " + filteredRoster(game).length + " tracked rows for " + game.title + ".";
+
+  const markets = ["all", ...new Set((game.roster || []).map((row) => normalize(row.market)))];
+  document.getElementById("modal-market-row").innerHTML = markets.map((market) => `
+    <button class="mini-chip ${state.modalMarket === market ? "active" : ""}" data-modal-market="${market}">
+      ${market}
+    </button>
+  `).join("");
+
+  document.querySelectorAll("[data-modal-market]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.modalMarket = button.dataset.modalMarket;
+      renderModal(game);
+    });
+  });
+
+  document.getElementById("modal-roster").innerHTML = filteredRoster(game).map((row) => `
+    <div class="roster-row">
+      <div class="roster-player" data-label="Player">
+        <strong>${row.player}</strong>
+        <span>${row.line}</span>
+      </div>
+      <div data-label="Team">${row.team}</div>
+      <div data-label="Market"><span class="market-pill ${marketClass(row.market)}">${row.market}</span></div>
+      <div data-label="Line">${row.line}</div>
+      <div data-label="Score"><span class="metric-inline ${scoreClass(row.score)}">${row.score.toFixed(1)}</span></div>
+      <div data-label="L10">${row.last10}</div>
+      <div data-label="L5">${row.last5}</div>
+      <div data-label="L3">${row.last3}</div>
+      <div data-label="Status"><span class="tier-pill ${tierClass(row.tier)} table-tier">${row.status}</span></div>
+      <div data-label="Why">${row.why}</div>
+    </div>
+  `).join("") || `<div class="empty" style="margin-top: 18px;">No rows matched the current market or search.</div>`;
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+}
+
+function renderHeader() {
+  document.getElementById("header-date").textContent = formatDateLabel(state.data.updatedAt);
+  document.getElementById("header-mode").textContent = state.data.sourceMode || "Bootstrap";
+}
+
+function render() {
+  renderHeader();
+  renderTicker(state.data);
+  renderTabs();
+  renderViews();
+  renderSidebar();
+}
+
+async function loadBoardData() {
+  if (window.BOARD_DATA) {
+    return window.BOARD_DATA;
+  }
+
+  for (const endpoint of API_CANDIDATES) {
+    try {
+      const response = await fetch(endpoint, { headers: { "Accept": "application/json" } });
+      if (!response.ok) continue;
+      const json = await response.json();
+      if (json && json.sports) {
+        return json;
+      }
+    } catch (error) {
+      continue;
+    }
+  }
+
+  return SAMPLE_DATA;
+}
+
+document.getElementById("search-input").addEventListener("input", (event) => {
+  state.search = event.target.value || "";
+  render();
+  if (state.modalGameId) {
+    const sport = getCurrentSport();
+    const game = (sport.games || []).find((entry) => entry.id === state.modalGameId);
+    if (game) renderModal(game);
+  }
+});
+
+document.getElementById("modal-close").addEventListener("click", closeModal);
+document.getElementById("modal-backdrop").addEventListener("click", closeModal);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
+
+loadBoardData().then((data) => {
+  state.data = data;
+  render();
+});
+
+// ── Hero landing ──
+function enterBoard(page) {
+  const hero = document.getElementById("landing-hero");
+  if (hero) {
+    hero.style.transition = "opacity .4s ease";
+    hero.style.opacity = "0";
+    setTimeout(() => {
+      hero.style.display = "none";
+      document.body.style.overflow = "";
+    }, 400);
+  }
+  state.page = page || "signal";
+  renderPageNav();
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+// Lock scroll on hero
+(function() {
+  const hero = document.getElementById("landing-hero");
+  if (hero) {
+    document.body.style.overflow = "hidden";
+  }
+})();
+
+</script>
 </body>
 </html>
