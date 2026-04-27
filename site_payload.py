@@ -152,17 +152,21 @@ def _mlb_row_from_pick(pick: Dict[str, Any], category: str) -> Optional[Dict[str
 
 def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
     rows_by_game: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+
     for pick in results.get("hr_picks", []) or []:
         row = _mlb_row_from_pick(pick, "HR")
         if row:
             rows_by_game[str(pick.get("game") or "")].append(row)
+
     for pick in results.get("tb_picks", []) or []:
         row = _mlb_row_from_pick(pick, "TB")
         if row:
             rows_by_game[str(pick.get("game") or "")].append(row)
+
         hit_row = _mlb_row_from_pick(pick, "HIT")
         if hit_row:
             rows_by_game[str(pick.get("game") or "")].append(hit_row)
+
     for pick in results.get("k_picks", []) or []:
         row = _mlb_row_from_pick(pick, "K")
         if row:
@@ -172,10 +176,15 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
     game_lookup = _mlb_game_lookup(results)
     games: List[Dict[str, Any]] = []
 
-    for title, rows in rows_by_game.items():
+    # IMPORTANT:
+    # Build from the full MLB slate, not just rows_by_game.
+    # rows_by_game only contains games with model plays.
+    # game_lookup contains every bettable MLB game returned by run_daily.py.
+    for title, lookup in game_lookup.items():
+        rows = rows_by_game.get(title, [])
         rows_sorted = sorted(rows, key=lambda row: row["sort_score"], reverse=True)
         top_board = board.get(title, [])
-        lookup = game_lookup.get(title, {})
+
         top_picks = [
             {
                 "name": play.player_name,
@@ -198,19 +207,32 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
             for row in rows_sorted[:4]
         ]
 
-        avg_score = round(sum(row["sort_score"] for row in rows_sorted) / len(rows_sorted), 1) if rows_sorted else 0.0
+        avg_score = (
+            round(sum(row["sort_score"] for row in rows_sorted) / len(rows_sorted), 1)
+            if rows_sorted
+            else 0.0
+        )
         core_count = sum(1 for row in rows_sorted if str(row["tier"]).upper() == "CORE")
-        top_markets = ", ".join(dict.fromkeys(row["market"] for row in rows_sorted[:3])) or "mixed board"
+        top_markets = ", ".join(dict.fromkeys(row["market"] for row in rows_sorted[:3]))
+
+        if rows_sorted:
+            status = "Confirmed lineups"
+            lineup_status = "Confirmed lineup data loaded"
+            attack_note = f"Best signal lane: {top_markets}. Click through for the full tracked board."
+        else:
+            status = "Awaiting confirmed lineups"
+            lineup_status = "No confirmed model rows yet"
+            attack_note = "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal."
 
         games.append(
             {
                 "id": str(lookup.get("gamePk") or title),
                 "title": title,
                 "start": _format_game_time_utc(lookup.get("gameTimeUTC")),
-                "status": "Confirmed lineups" if rows_sorted else "Awaiting confirmed lineups",
+                "status": status,
                 "meta": f"{lookup.get('awayPitcherName', 'TBD')} vs {lookup.get('homePitcherName', 'TBD')}",
-                "attackNote": f"Best signal lane: {top_markets}. Click through for the full tracked board.",
-                "lineupStatus": "Confirmed lineup data loaded" if rows_sorted else "No confirmed lineups yet",
+                "attackNote": attack_note,
+                "lineupStatus": lineup_status,
                 "summary": {
                     "plays": len(rows_sorted),
                     "core": core_count,
@@ -229,7 +251,12 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
             }
         )
 
-    games.sort(key=lambda game: max((pick["confidence"] for pick in game["topPicks"]), default=0), reverse=True)
+    games.sort(
+        key=lambda game: (
+            len(game.get("roster", [])) == 0,
+            game.get("start", "TBD"),
+        )
+    )
     return games
 
 

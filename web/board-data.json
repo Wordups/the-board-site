@@ -190,6 +190,125 @@
               "why": "vs Steven Matz | Slight edge"
             }
           ]
+        },
+        {
+          "id": "823395",
+          "title": "STL @ PIT",
+          "start": "2026-04-27T22:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Dustin May vs Mason Montgomery",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822825",
+          "title": "BOS @ TOR",
+          "start": "2026-04-27T23:07:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Ranger Suarez vs Dylan Cease",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823719",
+          "title": "SEA @ MIN",
+          "start": "2026-04-27T23:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Luis Castillo vs Connor Prielipp",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824609",
+          "title": "LAA @ CWS",
+          "start": "2026-04-27T23:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Jack Kochanowicz vs Anthony Kay",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822906",
+          "title": "NYY @ TEX",
+          "start": "2026-04-28T00:05:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Max Fried vs Jack Leiter",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823311",
+          "title": "CHC @ SD",
+          "start": "2026-04-28T01:40:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Matthew Boyd vs Randy V\u00e1squez",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823961",
+          "title": "MIA @ LAD",
+          "start": "2026-04-28T02:10:00Z",
+          "status": "Awaiting confirmed lineups",
+          "meta": "Chris Paddack vs Yoshinobu Yamamoto",
+          "attackNote": "Game is on the MLB slate, but the model is waiting for confirmed lineups or playable signal.",
+          "lineupStatus": "No confirmed model rows yet",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
         }
       ]
     },
