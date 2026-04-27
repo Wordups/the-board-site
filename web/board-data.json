@@ -1,0 +1,180 @@
+{
+  "sport": "NBA",
+  "board_type": "trend",
+  "generated_at": "2026-04-27T08:45:00-04:00",
+  "lastUpdated": "2026-04-27T08:45:00-04:00",
+  "title": "NBA Trend Board",
+  "subtitle": "Recent-form verification layer for points, rebounds, threes, and assists lanes.",
+  "trend_rows": [
+    {
+      "player": "Nikola Jokic",
+      "market": "REB",
+      "line": "12.5",
+      "season": "13.2",
+      "l10": "13.8",
+      "l5": "14.2",
+      "l3": "14.3",
+      "l1": "15"
+    },
+    {
+      "player": "Nikola Jokic",
+      "market": "AST",
+      "line": "9.5",
+      "season": "9.8",
+      "l10": "10.4",
+      "l5": "10.0",
+      "l3": "7.3",
+      "l1": "3"
+    },
+    {
+      "player": "Nikola Jokic",
+      "market": "PTS",
+      "line": "25.5",
+      "season": "26.1",
+      "l10": "25.3",
+      "l5": "25.4",
+      "l3": "25.3",
+      "l1": "27"
+    },
+    {
+      "player": "Jalen Brunson",
+      "market": "PTS",
+      "line": "25.5",
+      "season": "27.1",
+      "l10": "28.0",
+      "l5": "26.8",
+      "l3": "24.7",
+      "l1": "22"
+    },
+    {
+      "player": "Jalen Brunson",
+      "market": "AST",
+      "line": "6.5",
+      "season": "7.2",
+      "l10": "7.8",
+      "l5": "7.4",
+      "l3": "6.7",
+      "l1": "8"
+    },
+    {
+      "player": "Cade Cunningham",
+      "market": "PTS",
+      "line": "24.5",
+      "season": "26.4",
+      "l10": "27.1",
+      "l5": "25.8",
+      "l3": "28.7",
+      "l1": "27"
+    },
+    {
+      "player": "Cade Cunningham",
+      "market": "AST",
+      "line": "8.5",
+      "season": "9.4",
+      "l10": "9.7",
+      "l5": "10.2",
+      "l3": "8.7",
+      "l1": "11"
+    },
+    {
+      "player": "Jalen Johnson",
+      "market": "REB",
+      "line": "9.5",
+      "season": "10.3",
+      "l10": "10.1",
+      "l5": "9.8",
+      "l3": "8.3",
+      "l1": "10"
+    },
+    {
+      "player": "Jalen Johnson",
+      "market": "PTS",
+      "line": "19.5",
+      "season": "21.2",
+      "l10": "21.4",
+      "l5": "20.8",
+      "l3": "21.3",
+      "l1": "24"
+    },
+    {
+      "player": "Jamal Murray",
+      "market": "PTS",
+      "line": "22.5",
+      "season": "23.4",
+      "l10": "24.8",
+      "l5": "25.2",
+      "l3": "27.0",
+      "l1": "30"
+    },
+    {
+      "player": "Jamal Murray",
+      "market": "AST",
+      "line": "5.5",
+      "season": "6.1",
+      "l10": "6.8",
+      "l5": "7.2",
+      "l3": "7.3",
+      "l1": "7"
+    },
+    {
+      "player": "Jalen Duren",
+      "market": "REB",
+      "line": "10.5",
+      "season": "11.2",
+      "l10": "10.8",
+      "l5": "10.4",
+      "l3": "9.7",
+      "l1": "12"
+    },
+    {
+      "player": "Karl-Anthony Towns",
+      "market": "REB",
+      "line": "8.5",
+      "season": "9.1",
+      "l10": "9.4",
+      "l5": "9.0",
+      "l3": "8.7",
+      "l1": "11"
+    },
+    {
+      "player": "Karl-Anthony Towns",
+      "market": "PTS",
+      "line": "22.5",
+      "season": "24.1",
+      "l10": "23.8",
+      "l5": "22.4",
+      "l3": "21.0",
+      "l1": "19"
+    },
+    {
+      "player": "Anthony Edwards",
+      "market": "PTS",
+      "line": "26.5",
+      "season": "27.8",
+      "l10": "28.4",
+      "l5": "27.6",
+      "l3": "24.3",
+      "l1": "20"
+    },
+    {
+      "player": "Aaron Gordon",
+      "market": "REB",
+      "line": "7.5",
+      "season": "8.2",
+      "l10": "8.6",
+      "l5": "8.8",
+      "l3": "9.3",
+      "l1": "8"
+    }
+  ],
+  "notes": [
+    "Trend Board is a cross-reference system, not the primary decision layer.",
+    "Use season plus L10/L5/L3/L1 to pressure-test whether a signal is real or noisy.",
+    "Jokic REB trending up \u2014 12+ in 3 straight games. Floor play confirmed.",
+    "Murray PTS trending hot \u2014 30 in Game 1, averaging 27+ L3.",
+    "Edwards L3 trending down \u2014 monitor minutes and injury status before betting.",
+    "Jalen Johnson REB floor solid at 8+ despite L3 dip."
+  ],
+  "updatedAt": "2026-04-27T08:45:00-04:00",
+  "sourceMode": "NBA Trend Board JSON"
+}
