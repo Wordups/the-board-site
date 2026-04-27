@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import asyncio
 import base64
@@ -46,6 +46,20 @@ async def healthz(_: web.Request) -> web.Response:
             "image_dir": IMAGE_DIR.exists(),
         }
     )
+
+
+async def serve_board_data(_: web.Request) -> web.Response:
+    import json
+
+    file_path = ROOT / "board-data.json"
+
+    if not file_path.exists():
+        return web.json_response({"error": "board-data.json not found"}, status=404)
+
+    with open(file_path, encoding="utf-8") as f:
+        data = json.load(f)
+
+    return web.json_response(data)
 
 
 async def api_live_board(request: web.Request) -> web.Response:
@@ -149,22 +163,22 @@ def create_app() -> web.Application:
     app.router.add_get("/", index)
     app.router.add_get("/index.html", index)
     app.router.add_get("/healthz", healthz)
+
+    # ✅ THIS IS THE ONLY IMPORTANT ADD
+    app.router.add_get("/board-data.json", serve_board_data)
+
     app.router.add_get("/api/live-board", api_live_board)
     app.router.add_get("/api/signal-board/{sport}", api_signal_board)
     app.router.add_get("/api/trend-board/{sport}", api_signal_board)
     app.router.add_post("/api/publish-board", api_publish_board)
+
     app.router.add_static("/data/", DATA_DIR)
     app.router.add_static("/images/", IMAGE_DIR)
     app.router.add_static("/web/", WEB_DIR)
+
     return app
 
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8000"))
     web.run_app(create_app(), host="0.0.0.0", port=port)
-
-@app.get("/board-data.json")
-def serve_board_data():
-    import json
-    with open("board-data.json") as f:
-        return json.load(f)
