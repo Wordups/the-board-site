@@ -1966,7 +1966,7 @@ const state = {
   sortKey: "score",
   sortDir: "desc",
   search: "",
-  data: SAMPLE_DATA,
+  data: null,
   modalGameId: null,
   modalMarket: "all"
 };
@@ -2657,7 +2657,7 @@ async function loadBoardData() {
     }
   }
 
-  return SAMPLE_DATA;
+  throw new Error("No live data loaded");
 }
 
 document.getElementById("search-input").addEventListener("input", (event) => {

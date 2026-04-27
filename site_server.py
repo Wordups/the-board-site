@@ -162,3 +162,9 @@ def create_app() -> web.Application:
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8000"))
     web.run_app(create_app(), host="0.0.0.0", port=port)
+
+@app.get("/board-data.json")
+def serve_board_data():
+    import json
+    with open("board-data.json") as f:
+        return json.load(f)
