@@ -196,12 +196,7 @@ header {
   font-size: 14px;
 }
 
-.header-meta {
-  display: none !important;
-  justify-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+.header-meta { display: none !important; }
 
 .meta-chip {
   border: 1px solid var(--line);
@@ -1292,9 +1287,7 @@ header {
     padding: 14px 18px;
   }
 
-  .header-meta {
-    justify-content: flex-start;
-  }
+  .header-meta { display: none !important; }
 
   .sport-nav {
     top: 112px;
@@ -1570,9 +1563,24 @@ header {
   .hero-brand-title { font-size: 26px; }
   .hero-description { font-size: 14px; }
 }
+
+.top-alert-banner {
+  background: #fff;
+  color: #b00020;
+  border-bottom: 3px solid #b00020;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  font-size: 18px;
+  padding: 10px 14px;
+  text-transform: uppercase;
+}
+.top-alert-banner span { color: #000; }
+
 </style>
 </head>
 <body>
+<div class="top-alert-banner">THE BOARD <span>EARLY FORM BOARD</span> - PICK OF THE DAY LOCKS AFTER PITCHER + LINEUP CONFIRMATION</div>
 
 <!-- ══ LANDING HERO ══ -->
 <section id="landing-hero" class="landing-hero">
@@ -2086,7 +2094,7 @@ function renderGameCard(game) {
         </div>
         <div class="game-status">
           <div class="game-status-label"><span class="status-dot"></span>${game.status}</div>
-          <div class="game-status-time">${formatGameTime(formatGameTime(game.start))}</div>
+          <div class="game-status-time">${formatGameTime(game.start)}</div>
         </div>
       </div>
       <div class="game-card-body">
