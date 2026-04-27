@@ -9,32 +9,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #060606;
-  --bg-soft: #0d0d0d;
-  --panel: #121212;
-  --panel-2: #191919;
-  --panel-3: #222222;
-  --line: #262626;
-  --line-strong: #363636;
-  --text: #f4f4f4;
-  --text-2: #b0b0b0;
-  --text-3: #6e6e6e;
+  --bg: #f5f5f5;
+  --bg-soft: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #f8f8f8;
+  --panel-3: #eeeeee;
+  --line: #dddddd;
+  --line-strong: #c9c9c9;
+  --text: #111111;
+  --text-2: #444444;
+  --text-3: #777777;
   --gold: #f5a623;
-  --gold-soft: rgba(245, 166, 35, 0.14);
-  --green: #24d38a;
-  --green-soft: rgba(36, 211, 138, 0.14);
-  --red: #ff5f57;
-  --red-soft: rgba(255, 95, 87, 0.14);
-  --blue: #55a8ff;
-  --blue-soft: rgba(85, 168, 255, 0.16);
-  --purple: #c96cff;
-  --purple-soft: rgba(201, 108, 255, 0.16);
+  --gold-soft: rgba(245, 166, 35, 0.16);
+  --green: #0f9f6e;
+  --green-soft: rgba(15, 159, 110, 0.12);
+  --red: #c1121f;
+  --red-soft: rgba(193, 18, 31, 0.12);
+  --blue: #1971c2;
+  --blue-soft: rgba(25, 113, 194, 0.12);
+  --purple: #8a2be2;
+  --purple-soft: rgba(138, 43, 226, 0.12);
   --mlb: #e03131;
   --nba: #1971c2;
   --wnba: #f76707;
   --soccer: #2f9e44;
   --radius: 12px;
-  --shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
 }
 
 * {
@@ -48,10 +48,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgba(245, 166, 35, 0.08), transparent 24%),
-    radial-gradient(circle at left bottom, rgba(85, 168, 255, 0.06), transparent 28%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -88,7 +85,7 @@ a {
   overflow: hidden;
   padding: 8px 0;
   background: var(--gold);
-  color: #050505;
+  color: #111111;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1.8px;
   font-size: 13px;
@@ -112,7 +109,7 @@ header {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(18px);
-  background: rgba(6, 6, 6, 0.92);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--line);
 }
 
@@ -225,7 +222,7 @@ header {
   position: sticky;
   top: 68px;
   z-index: 35;
-  background: rgba(8, 8, 8, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
 }
@@ -323,9 +320,7 @@ header {
   overflow: hidden;
   border: 1px solid rgba(245, 166, 35, 0.28);
   border-radius: 16px;
-  background:
-    radial-gradient(circle at top right, rgba(245, 166, 35, 0.12), transparent 40%),
-    linear-gradient(145deg, #0f0b02 0%, #121212 55%, #0b0b0b 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #fff8ec 100%);
   padding: 26px 26px 22px;
   box-shadow: var(--shadow);
 }
@@ -464,7 +459,7 @@ header {
 
 .game-card {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
   border-radius: 14px;
   overflow: hidden;
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
@@ -714,7 +709,7 @@ header {
 
 .rail-card {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
   border-radius: 14px;
   padding: 16px;
 }
@@ -901,7 +896,7 @@ header {
 .explorer-wrap {
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: linear-gradient(180deg, var(--panel) 0%, #0d0d0d 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
@@ -923,7 +918,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 3;
-  background: #111111;
+  background: #f2f2f2;
   color: var(--text-3);
   padding: 12px 18px 10px;
   border-bottom: 1px solid var(--line);
@@ -1088,7 +1083,7 @@ header {
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid var(--line-strong);
-  background: linear-gradient(180deg, #121212 0%, #090909 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.54);
   display: grid;
   grid-template-rows: auto auto 1fr;
@@ -1198,7 +1193,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: #101010;
+  background: #f2f2f2;
   color: var(--text-3);
   font-size: 10px;
   letter-spacing: 1px;
@@ -1348,7 +1343,7 @@ header {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: #050505;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -1526,7 +1521,7 @@ header {
   align-items: center;
   gap: 10px;
   background: var(--gold);
-  color: #000;
+  color: #111111;
   border: none;
   border-radius: 999px;
   padding: 14px 28px;
@@ -1564,24 +1559,9 @@ header {
   .hero-description { font-size: 14px; }
 }
 
-.top-alert-banner {
-  background: #fff;
-  color: #b00020;
-  border-bottom: 3px solid #b00020;
-  text-align: center;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 2px;
-  font-size: 18px;
-  padding: 10px 14px;
-  text-transform: uppercase;
-}
-.top-alert-banner span { color: #000; }
-
 </style>
 </head>
 <body>
-<div class="top-alert-banner">THE BOARD <span>EARLY FORM BOARD</span> - PICK OF THE DAY LOCKS AFTER PITCHER + LINEUP CONFIRMATION</div>
-
 <!-- ══ LANDING HERO ══ -->
 <section id="landing-hero" class="landing-hero">
   <img src="/images/the-board-hero.png" alt="The Board" class="hero-bg" onerror="this.onerror=null;this.src='public/images/the-board-hero.png';">
