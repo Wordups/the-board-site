@@ -170,11 +170,9 @@
   "notes": [
     "Trend Board is a cross-reference system, not the primary decision layer.",
     "Use season plus L10/L5/L3/L1 to pressure-test whether a signal is real or noisy.",
-    "Jokic REB trending up \u2014 12+ in 3 straight games. Floor play confirmed.",
-    "Murray PTS trending hot \u2014 30 in Game 1, averaging 27+ L3.",
-    "Edwards L3 trending down \u2014 monitor minutes and injury status before betting.",
+    "Jokic REB trending up — 12+ in 3 straight games. Floor play confirmed.",
+    "Murray PTS trending hot — 30 in Game 1, averaging 27+ L3.",
+    "Edwards L3 trending down — monitor minutes and injury status before betting.",
     "Jalen Johnson REB floor solid at 8+ despite L3 dip."
-  ],
-  "updatedAt": "2026-04-27T08:45:00-04:00",
-  "sourceMode": "NBA Trend Board JSON"
+  ]
 }
