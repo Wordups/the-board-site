@@ -1624,7 +1624,7 @@ header {
       </div>
     </div>
     <label class="search-wrap" aria-label="Search players or games">
-      <span class="search-icon">Search</span>
+      <span class="search-icon">⌕</span>
       <input id="search-input" type="search" placeholder="Search players, props, teams, or games">
     </label>
     <div class="header-meta">
@@ -1632,10 +1632,7 @@ header {
         <div class="meta-chip-label">Slate Date</div>
         <div class="meta-chip-value" id="header-date">-</div>
       </div>
-      <div class="meta-chip">
-        <div class="meta-chip-label">Data Mode</div>
-        <div class="meta-chip-value" id="header-mode">Bootstrap</div>
-      </div>
+
     </div>
   </div>
 </header>
@@ -1953,8 +1950,8 @@ const SAMPLE_DATA = {
 };
 
 const API_CANDIDATES = [
-  "./board-data.json",
   "/board-data.json",
+  "./board-data.json",
   "/api/site-board"
 ];
 
@@ -2627,11 +2624,17 @@ function renderModal(game) {
 }
 
 function renderHeader() {
-  document.getElementById("header-date").textContent = formatDateLabel(state.data.updatedAt);
-  document.getElementById("header-mode").textContent = state.data.sourceMode || "Bootstrap";
+  const dateEl = document.getElementById("header-date");
+  if (dateEl) {
+    dateEl.textContent = state.data && state.data.updatedAt ? formatDateLabel(state.data.updatedAt) : "-";
+  }
 }
 
 function render() {
+  if (!state.data || !state.data.sports) {
+    renderHeader();
+    return;
+  }
   renderHeader();
   renderTicker(state.data);
   renderTabs();
@@ -2657,7 +2660,7 @@ async function loadBoardData() {
     }
   }
 
-  throw new Error("No live data loaded");
+  throw new Error("Live board data failed to load. Check /board-data.json and /api/site-board.");
 }
 
 document.getElementById("search-input").addEventListener("input", (event) => {
@@ -2676,13 +2679,41 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
 });
 
-loadBoardData().then((data) => {
-  state.data = data;
-  render();
-});
+loadBoardData()
+  .then((data) => {
+    state.data = data;
+    render();
+  })
+  .catch((error) => {
+    console.error(error);
+    document.body.style.overflow = "";
+    const views = document.getElementById("views");
+    if (views) {
+      views.innerHTML = `
+        <div class="empty">
+          <strong>Board data failed to load.</strong><br>
+          Check /board-data.json and /api/site-board.
+        </div>
+      `;
+    }
+  });
 
 // ── Hero landing ──
 function enterBoard(page) {
+  const routeMap = {
+    live: { sport: "mlb", surface: "dashboard" },
+    signal: { sport: "nba", surface: "dashboard" },
+    trend: { sport: "nba", surface: "explorer" },
+    bankroll: { sport: "mlb", surface: "dashboard" }
+  };
+  const route = routeMap[page] || routeMap.signal;
+  state.sport = route.sport;
+  state.surface = route.surface;
+  state.market = "all";
+  state.gameFilter = "all";
+  state.modalGameId = null;
+  state.modalMarket = "all";
+
   const hero = document.getElementById("landing-hero");
   if (hero) {
     hero.style.transition = "opacity .4s ease";
@@ -2690,11 +2721,14 @@ function enterBoard(page) {
     setTimeout(() => {
       hero.style.display = "none";
       document.body.style.overflow = "";
+      render();
+      window.scrollTo({ top: 0, behavior: "instant" });
     }, 400);
+  } else {
+    document.body.style.overflow = "";
+    render();
+    window.scrollTo({ top: 0, behavior: "instant" });
   }
-  state.page = page || "signal";
-  renderPageNav();
-  window.scrollTo({ top: 0, behavior: "instant" });
 }
 
 // Lock scroll on hero
