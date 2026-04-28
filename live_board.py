@@ -52,10 +52,10 @@ def _mlb_score(game: Dict[str, Any]) -> str:
     return f"{away} - {home}"
 
 
-def _build_mlb_games() -> List[Dict[str, Any]]:
+def _build_mlb_games(target_date: str = None) -> List[Dict[str, Any]]:
     params = {
         "sportId": 1,
-        "date": _today_date(),
+        "date": target_date or _today_date(),
         "hydrate": "linescore,team,venue",
     }
     response = requests.get(MLB_SCHEDULE_URL, params=params, timeout=15)
@@ -107,7 +107,7 @@ def _build_nba_games() -> List[Dict[str, Any]]:
     return games
 
 
-def build_live_board_payload() -> Dict[str, Any]:
+def build_live_board_payload(target_date: str = None) -> Dict[str, Any]:
     payload: Dict[str, Any] = {
         "updatedAt": _now_label(),
         "sports": {
@@ -119,7 +119,7 @@ def build_live_board_payload() -> Dict[str, Any]:
     }
 
     try:
-        payload["sports"]["mlb"]["games"] = _build_mlb_games()
+        payload["sports"]["mlb"]["games"] = _build_mlb_games(target_date)
     except Exception as exc:
         payload["sports"]["mlb"]["note"] = f"Unable to load MLB games: {exc}"
 
