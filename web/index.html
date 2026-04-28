@@ -1620,6 +1620,69 @@ header {
   color:var(--red);
 }
 
+
+.pod-wrap {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.pod-face {
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  border: 2px solid rgba(245, 166, 35, .35);
+  display: grid;
+  place-items: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 34px;
+  color: var(--gold);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.pod-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pod-main {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.parlay-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 18px;
+}
+.parlay-title {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.parlay-leg {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.parlay-leg:last-child { border-bottom: 0; }
+.parlay-leg strong { display:block; }
+.parlay-leg span { color: var(--text-3); }
+.parlay-payout {
+  margin-top: 12px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  color: var(--gold);
+}
+@media (max-width: 900px) {
+  .pod-wrap { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -2096,41 +2159,74 @@ function renderSidebar() {
   });
 }
 
+
+function initials(name) {
+  return String(name || "?")
+    .split(" ")
+    .map(x => x[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+function buildParlayOfDay(sport) {
+  const legs = (sport.games || [])
+    .flatMap(game => (game.roster || []).map(row => ({ ...row, gameTitle: game.title })))
+    .filter(row => Number(row.confidence || row.score || 0) > 0)
+    .sort((a, b) => Number(b.confidence || b.score || 0) - Number(a.confidence || a.score || 0))
+    .slice(0, 3);
+
+  if (!legs.length) return "";
+
+  const avg = legs.reduce((n, r) => n + Number(r.confidence || r.score || 0), 0) / legs.length;
+  const target = avg >= 72 ? "+350 to +500" : avg >= 64 ? "+250 to +400" : "+180 to +300";
+
+  return `
+    <aside class="parlay-card">
+      <div class="parlay-title">Parlay of the Day</div>
+      ${legs.map((leg) => `
+        <div class="parlay-leg">
+          <strong>${leg.player} - ${leg.line}</strong>
+          <span>${leg.market} | ${leg.gameTitle} | ${Number(leg.confidence || leg.score || 0).toFixed(0)}%</span>
+        </div>
+      `).join("")}
+      <div class="parlay-payout">${target}</div>
+      <div class="hero-clean-note">Target range, not guaranteed odds. Confirm lines before entry.</div>
+    </aside>
+  `;
+}
+
+
 function renderHero(sport) {
   if (!sport.pickOfDay) {
     return `
       <div class="coming">
-        <h3>${sport.label} Coming Online</h3>
-        <p>${sport.note || "This board will light up when the sport is wired."}</p>
+        <h3>${sport.label} Board</h3>
+        <p>${sport.note || "This board will light up when data is wired."}</p>
       </div>
     `;
   }
 
   const pick = sport.pickOfDay;
+  const face = pick.image || pick.photo || pick.headshot || "";
+
   return `
-    <section class="hero">
-      <div class="hero-tag">Pick of the Day</div>
-      <h1 class="hero-title">${pick.player}</h1>
-      <div class="hero-subtitle">${pick.team} | ${pick.market} | ${pick.line}<br>${pick.context}<br>${pick.environment}</div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.odds}</div>
-          <div class="hero-stat-label">Odds</div>
+    <div class="pod-wrap">
+      <section class="hero compact-hero">
+        <div class="pod-main">
+          <div class="pod-face">
+            ${face ? `<img src="${face}" alt="${pick.player}">` : initials(pick.player)}
+          </div>
+          <div>
+            <div class="hero-tag">Pick of the Day</div>
+            <h1 class="hero-title">${pick.player}</h1>
+            <div class="hero-subtitle">${pick.team} | ${pick.market} | ${pick.line}</div>
+            <div class="hero-clean-note">${pick.context || ""}</div>
+          </div>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.confidence}%</div>
-          <div class="hero-stat-label">Confidence</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${pick.rate}</div>
-          <div class="hero-stat-label">Hit Rate</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">${sport.games.length}</div>
-          <div class="hero-stat-label">Games Live</div>
-        </div>
-      </div>
-    </section>
+      </section>
+      ${buildParlayOfDay(sport)}
+    </div>
   `;
 }
 
