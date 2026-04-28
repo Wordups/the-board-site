@@ -1583,6 +1583,43 @@ header {
   box-shadow: 0 0 10px rgba(193, 18, 31, 0.8);
 }
 
+
+.hr-leaderboard {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 18px 0;
+}
+.hr-board-row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 70px 80px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.hr-board-row:last-child { border-bottom: 0; }
+.hr-rank {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  color: var(--red);
+}
+.hr-player strong { display:block; font-size:13px; }
+.hr-player span { color: var(--text-3); font-size:11px; }
+.hr-score {
+  font-family:"Bebas Neue", sans-serif;
+  font-size:22px;
+  color:var(--gold);
+  text-align:right;
+}
+.hr-market {
+  text-align:right;
+  font-weight:800;
+  color:var(--red);
+}
+
 </style>
 </head>
 <body>
@@ -1717,7 +1754,21 @@ const SAMPLE_DATA = {
   sports: {
     mlb: { label: "MLB", note: "Waiting on today's bot data.", launches: [], notes: [], pickOfDay: null, filters: ["all","hr","tb","hit","k"], games: [] },
     nba: { label: "NBA", note: "Waiting on today's bot data.", launches: [], notes: [], pickOfDay: null, filters: ["all","pts","ast","reb","3pm"], games: [] },
-    wnba: { label: "WNBA", note: "Coming soon.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [] },
+    wnba: { 
+      label: "WNBA", 
+      note: "WNBA preseason and season board is wired as a live shell. Data feed connects next.", 
+      launches: [
+        { title: "Preseason Mode", copy: "Use preseason for minutes, rotations, rookies, and role discovery." },
+        { title: "Season Mode", copy: "Regular season board will support PTS, REB, AST, PRA, 3PM, and matchup props." }
+      ], 
+      notes: [
+        "Preseason should not be treated like full-confidence regular season data.",
+        "Track role, minutes, usage, and rotation before promoting picks."
+      ], 
+      pickOfDay: null, 
+      filters: ["all","pts","reb","ast","pra","3pm"], 
+      games: [] 
+    },
     soccer: { label: "Soccer", note: "Coming soon.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [] },
     highlights: { label: "Highlights", note: "Highlights board.", launches: [], notes: [], pickOfDay: null, filters: ["all"], games: [], highlights: [] }
   }
@@ -2212,10 +2263,43 @@ function renderGameCard(game) {
   `;
 }
 
+
+function topHrLeaders(sport) {
+  const rows = (sport.games || [])
+    .flatMap(game => (game.roster || []).map(row => ({ ...row, gameTitle: game.title })))
+    .filter(row => normalize(row.market) === "hr")
+    .sort((a,b) => Number(b.score || b.confidence || 0) - Number(a.score || a.confidence || 0))
+    .slice(0, 10);
+
+  if (!rows.length) return "";
+
+  return `
+    <section class="hr-leaderboard">
+      <div class="section-head" style="margin-top:0;">
+        <h2 class="section-title">Top 10 HR Board</h2>
+        <div class="section-meta">Power lane only</div>
+      </div>
+      ${rows.map((row, i) => `
+        <div class="hr-board-row">
+          <div class="hr-rank">#${i + 1}</div>
+          <div class="hr-player">
+            <strong>${row.player}</strong>
+            <span>${row.team} · ${row.gameTitle} · ${row.why || ""}</span>
+          </div>
+          <div class="hr-market">${row.line || "HR"}</div>
+          <div class="hr-score">${Number(row.score || row.confidence || 0).toFixed(1)}</div>
+        </div>
+      `).join("")}
+    </section>
+  `;
+}
+
+
 function renderBoardView(sport) {
   const games = filteredGames(sport);
   return `
     ${renderHero(sport)}
+    ${state.sport === "mlb" ? topHrLeaders(sport) : ""}
     ${renderToolbar(sport)}
     <div class="section-head">
       <h2 class="section-title">Today's Games</h2>
@@ -2245,6 +2329,7 @@ function renderExplorerView(sport) {
 
   return `
     ${renderHero(sport)}
+    ${state.sport === "mlb" ? topHrLeaders(sport) : ""}
     ${renderToolbar(sport)}
     <div class="section-head">
       <h2 class="section-title">Explorer Sheet</h2>
