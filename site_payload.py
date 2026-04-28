@@ -594,3 +594,10 @@ def build_site_payload(game_date: Optional[str] = None) -> Dict[str, Any]:
             },
         },
     }
+import json
+
+if __name__ == "__main__":
+    payload = build_site_payload()
+    with open("board-data.json", "w") as f:
+        json.dump(payload, f, indent=2)
+    print(f"[OK] board-data.json updated with {len(payload['sports']['mlb']['games'])} MLB games")

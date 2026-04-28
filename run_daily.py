@@ -125,16 +125,20 @@ def enrich_recent_form_lines(recent, game_date=None):
         print(f"[WARN] Recent L1/L5/L10 form failed: {e}")
         return recent
 
-
 def run(game_date=None, screenshot_path=None, verbose=True):
     if game_date is None:
         game_date = date.today().strftime("%Y-%m-%d")
+
     year = int(game_date[:4])
 
     def note(m):
-        if verbose: print(m)
+        if verbose:
+            print(m)
 
-    note(f"\n{'='*62}\n  MLB MODEL RUN — {game_date}\n{'='*62}")
+    print("[MLB] Requesting schedule for:", game_date)
+    print("\n==============================================================")
+    print("  MLB MODEL RUN -", game_date)
+    print("==============================================================")
 
     note("\n[1] Pulling slate + confirming probable starters...")
     games, drops = fetch_bettable_games(game_date)
