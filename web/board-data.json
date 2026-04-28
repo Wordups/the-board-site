@@ -28,8 +28,8 @@
         "team": "CHC @ SD",
         "market": "HR",
         "line": "HR 1+",
-        "score": "31.1/50",
-        "confidence": "62%",
+        "score": "31.3/50",
+        "confidence": "63%",
         "rate": "L10 2/10 | L5 2/5 | L3 --",
         "environment": "Matthew Boyd vs Randy V\u00e1squez",
         "summary": "Best signal lane: HR, TB. Click through for the full tracked board."
@@ -53,7 +53,7 @@
           "summary": {
             "plays": 3,
             "core": 0,
-            "avgScore": "29.4",
+            "avgScore": "29.5",
             "signal": "D"
           },
           "topPicks": [
@@ -62,7 +62,7 @@
               "market": "HR",
               "why": "vs Matthew Boyd | Slight edge",
               "tier": "Value",
-              "confidence": 62,
+              "confidence": 63,
               "line": "HR 1+"
             },
             {
@@ -88,9 +88,9 @@
               "team": "SD",
               "market": "HR",
               "line": "HR 1+",
-              "score": 31.1,
+              "score": 31.3,
               "tier": "VALUE",
-              "confidence": 62,
+              "confidence": 63,
               "last10": "2/10",
               "last5": "2/5",
               "last3": "--",
@@ -102,7 +102,7 @@
               "team": "CHC",
               "market": "TB",
               "line": "Over 1.5 TB",
-              "score": 28.8,
+              "score": 28.9,
               "tier": "LONGSHOT",
               "confidence": 58,
               "last10": "21 TB",
@@ -116,7 +116,7 @@
               "team": "SD",
               "market": "HR",
               "line": "HR 1+",
-              "score": 28.3,
+              "score": 28.4,
               "tier": "LONGSHOT",
               "confidence": 57,
               "last10": "0/10",
@@ -362,7 +362,7 @@
         "score": "100.0/100",
         "confidence": "78%",
         "rate": "L10 31.0 avg | L5 31.0 avg | L3 31.0 avg",
-        "environment": "Q1 9:37",
+        "environment": "Q2 7:49",
         "summary": "Grouped by matchup so you can scan ladders and stable lanes from one screen."
       },
       "filters": [
@@ -376,9 +376,9 @@
         {
           "id": "0042500104",
           "title": "DET @ ORL",
-          "start": "Q1 9:37",
+          "start": "Q2 7:49",
           "status": "Live board",
-          "meta": "Q1 9:37",
+          "meta": "Q2 7:49",
           "attackNote": "Grouped by matchup so you can scan ladders and stable lanes from one screen.",
           "lineupStatus": "Availability filter applied",
           "summary": {

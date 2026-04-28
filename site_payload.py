@@ -1,6 +1,26 @@
 from __future__ import annotations
 
 from collections import defaultdict
+
+
+def compute_hr_edge(row):
+    # Safe pulls (your current payload fields vary)
+    power = float(row.get("power_score") or row.get("hr_rate") or 0)
+    barrel = float(row.get("barrel_score") or row.get("barrel") or 0)
+    matchup = float(row.get("matchup_score") or row.get("pitcher_score") or 0)
+    form = float(row.get("form_score") or row.get("recent") or 0)
+    edge = float(row.get("edge") or 0)
+
+    return round(
+        power * 0.35 +
+        barrel * 0.25 +
+        matchup * 0.20 +
+        form * 0.10 +
+        edge * 0.10,
+        1
+    )
+
+
 from datetime import datetime
 from typing import Any, Dict, Iterable, List, Optional
 from zoneinfo import ZoneInfo
