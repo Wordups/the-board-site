@@ -2078,6 +2078,17 @@ function renderToolbar(sport) {
   `;
 }
 
+
+function isGameStarted(game) {
+  if (!game.start || game.start === "TBD") return false;
+  try {
+    const dt = new Date(game.start);
+    return Date.now() >= dt.getTime();
+  } catch {
+    return false;
+  }
+}
+
 function renderGameCard(game) {
   return `
     <article class="game-card">
@@ -2087,7 +2098,7 @@ function renderGameCard(game) {
           <div class="game-subtitle">${game.meta}</div>
         </div>
         <div class="game-status">
-          <div class="game-status-label"><span class="status-dot"></span>${game.status}</div>
+          <div class="game-status-label"><span class="status-dot"></span>${isGameStarted(game) ? "Live" : game.status}</div>
           <div class="game-status-time">${formatGameTime(game.start)}</div>
         </div>
       </div>
