@@ -2150,7 +2150,7 @@ function initials(name) {
     .toUpperCase();
 }
 
-function buildParlayOfDay(sport) {
+function buildPairingOfDay(sport) {
   const legs = (sport.games || [])
     .flatMap(game => (game.roster || []).map(row => ({ ...row, gameTitle: game.title })))
     .filter(row => Number(row.confidence || row.score || 0) > 0)
@@ -2164,15 +2164,15 @@ function buildParlayOfDay(sport) {
 
   return `
     <aside class="parlay-card">
-      <div class="parlay-title">Parlay of the Day</div>
+      <div class="parlay-title">Suggested Pairing</div>
       ${legs.map((leg) => `
         <div class="parlay-leg">
           <strong>${leg.player} - ${leg.line}</strong>
           <span>${leg.market} | ${leg.gameTitle} | ${Number(leg.confidence || leg.score || 0).toFixed(0)}%</span>
         </div>
       `).join("")}
-      <div class="parlay-payout">${target}</div>
-      <div class="hero-clean-note">Target range, not guaranteed odds. Confirm lines before entry.</div>
+      
+      <div class="hero-clean-note">Built from highest confidence HR signals on the board.</div>
     </aside>
   `;
 }
@@ -2206,7 +2206,7 @@ function renderHero(sport) {
           </div>
         </div>
       </section>
-      ${buildParlayOfDay(sport)}
+      ${buildPairingOfDay(sport)}
     </div>
   `;
 }
