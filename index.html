@@ -2894,31 +2894,5 @@ function enterBoard(page) {
 })();
 
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const goBoard = () => {
-    window.location.href = "./web/";
-  };
-
-  document.querySelectorAll("button, a").forEach((el) => {
-    const text = (el.textContent || "").toLowerCase();
-
-    if (
-      text.includes("enter the board") ||
-      text.includes("live board") ||
-      text.includes("signal board") ||
-      text.includes("trend board") ||
-      text.includes("bankroll")
-    ) {
-      el.addEventListener("click", function (e) {
-        e.preventDefault();
-        goBoard();
-      });
-      el.style.cursor = "pointer";
-    }
-  });
-});
-</script>
 </body>
 </html>
-
