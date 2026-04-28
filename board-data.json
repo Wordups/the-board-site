@@ -856,5 +856,90 @@
       ]
     }
   },
-  "daily_hr_top_10": []
+  "daily_hr_top_10": [
+    {
+      "rank": 1,
+      "player": "Max Muncy",
+      "team": "LAD",
+      "opponent": "MIA @ LAD",
+      "line": "HR 1+",
+      "hr_edge_score": 37.5,
+      "confidence": 75,
+      "tier": "STRONG",
+      "status": "Confirmed lineup",
+      "why": "vs Chris Paddack | Strong lean",
+      "last10": "5/10",
+      "last5": "1/5"
+    },
+    {
+      "rank": 2,
+      "player": "Shohei Ohtani",
+      "team": "LAD",
+      "opponent": "MIA @ LAD",
+      "line": "HR 1+",
+      "hr_edge_score": 35.8,
+      "confidence": 72,
+      "tier": "VALUE",
+      "status": "Confirmed lineup",
+      "why": "vs Chris Paddack | Good value",
+      "last10": "1/10",
+      "last5": "1/5"
+    },
+    {
+      "rank": 3,
+      "player": "Freddie Freeman",
+      "team": "LAD",
+      "opponent": "MIA @ LAD",
+      "line": "HR 1+",
+      "hr_edge_score": 34.7,
+      "confidence": 69,
+      "tier": "VALUE",
+      "status": "Confirmed lineup",
+      "why": "vs Chris Paddack | Good value",
+      "last10": "0/10",
+      "last5": "0/5"
+    },
+    {
+      "rank": 4,
+      "player": "Ty France",
+      "team": "SD",
+      "opponent": "CHC @ SD",
+      "line": "HR 1+",
+      "hr_edge_score": 31.3,
+      "confidence": 63,
+      "tier": "VALUE",
+      "status": "Confirmed lineup",
+      "why": "vs Matthew Boyd | Slight edge",
+      "last10": "2/10",
+      "last5": "2/5"
+    },
+    {
+      "rank": 5,
+      "player": "Owen Caissie",
+      "team": "MIA",
+      "opponent": "MIA @ LAD",
+      "line": "HR 1+",
+      "hr_edge_score": 31.2,
+      "confidence": 62,
+      "tier": "VALUE",
+      "status": "Confirmed lineup",
+      "why": "vs Yoshinobu Yamamoto | Slight edge",
+      "last10": "0/10",
+      "last5": "0/5"
+    },
+    {
+      "rank": 6,
+      "player": "Ram\u00f3n Laureano",
+      "team": "SD",
+      "opponent": "CHC @ SD",
+      "line": "HR 1+",
+      "hr_edge_score": 28.4,
+      "confidence": 57,
+      "tier": "LONGSHOT",
+      "status": "Confirmed lineup",
+      "why": "vs Matthew Boyd | Slight edge",
+      "last10": "0/10",
+      "last5": "0/5"
+    }
+  ]
 }

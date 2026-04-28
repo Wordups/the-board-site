@@ -1,26 +1,44 @@
 import json
 
 INPUT_FILE = "board-data.json"
-OUTPUT_FILE = "board-data.json"  # overwrite existing payload
+OUTPUT_FILE = "board-data.json"
 
 MAX_PLAYERS_PER_GAME = 4
 MAX_PLAYERS_PER_TEAM = 3
 TOP_N = 10
 
-def calc_hr_edge(p):
-    return (
-        p.get("power_score", 0) * 0.30 +
-        p.get("barrel_score", 0) * 0.25 +
-        p.get("pitcher_damage_score", 0) * 0.20 +
-        p.get("park_weather_score", 0) * 0.15 +
-        p.get("lineup_spot_score", 0) * 0.10
-    )
+def collect_hr_candidates(data):
+    candidates = []
+    mlb = data.get("sports", {}).get("mlb", {})
+    games = mlb.get("games", [])
 
-def build_daily_hr_top_10(hitters):
-    for p in hitters:
-        p["hr_edge_score"] = round(calc_hr_edge(p), 2)
+    for game in games:
+        game_title = game.get("title", "")
+        game_id = game.get("id", game_title)
 
-    ranked = sorted(hitters, key=lambda x: x["hr_edge_score"], reverse=True)
+        for p in game.get("roster", []):
+            if str(p.get("market", "")).upper() != "HR":
+                continue
+
+            candidates.append({
+                "player": p.get("player"),
+                "team": p.get("team"),
+                "opponent": game_title,
+                "game_key": game_id,
+                "line": p.get("line", "HR 1+"),
+                "score": float(p.get("score", 0) or 0),
+                "confidence": p.get("confidence"),
+                "tier": p.get("tier"),
+                "status": p.get("status"),
+                "why": p.get("why"),
+                "last10": p.get("last10"),
+                "last5": p.get("last5")
+            })
+
+    return candidates
+
+def build_daily_hr_top_10(candidates):
+    ranked = sorted(candidates, key=lambda x: x["score"], reverse=True)
 
     board = []
     game_counts = {}
@@ -37,10 +55,18 @@ def build_daily_hr_top_10(hitters):
             continue
 
         board.append({
-            "player": p.get("name"),
+            "rank": len(board) + 1,
+            "player": p.get("player"),
             "team": team,
             "opponent": p.get("opponent"),
-            "hr_edge_score": p["hr_edge_score"]
+            "line": p.get("line"),
+            "hr_edge_score": round(p.get("score", 0), 1),
+            "confidence": p.get("confidence"),
+            "tier": p.get("tier"),
+            "status": p.get("status"),
+            "why": p.get("why"),
+            "last10": p.get("last10"),
+            "last5": p.get("last5")
         })
 
         game_counts[game] = game_counts.get(game, 0) + 1
@@ -55,14 +81,13 @@ def main():
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    hitters = data.get("hitters", [])
-
-    data["daily_hr_top_10"] = build_daily_hr_top_10(hitters)
+    candidates = collect_hr_candidates(data)
+    data["daily_hr_top_10"] = build_daily_hr_top_10(candidates)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-    print("HR Top 10 injected into board-data.json")
+    print(f"Daily HR Top 10 injected into board-data.json ({len(data['daily_hr_top_10'])} plays)")
 
 if __name__ == "__main__":
     main()
