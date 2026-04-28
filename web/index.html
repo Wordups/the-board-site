@@ -1764,14 +1764,6 @@ header {
       <h2 class="rail-title">Top Signal Games</h2>
       <div class="signal-list" id="signal-list"></div>
     </section>
-    <section class="rail-card">
-      <h2 class="rail-title">Launch Notes</h2>
-      <div class="launch-list" id="launch-list"></div>
-    </section>
-    <section class="rail-card">
-      <h2 class="rail-title">Board Notes</h2>
-      <div class="note-list" id="note-list"></div>
-    </section>
   </aside>
 </main>
 
@@ -2139,17 +2131,6 @@ function renderSidebar() {
       <div class="signal-copy">${item.copy}</div>
     </button>
   `).join("") || `<div class="signal-item"><div class="signal-copy">No signal games available for this view yet.</div></div>`;
-
-  document.getElementById("launch-list").innerHTML = (sport.launches || []).map((item) => `
-    <div class="launch-item">
-      <strong>${item.title}</strong>
-      <div class="launch-copy">${item.copy}</div>
-    </div>
-  `).join("") || `<div class="launch-item"><div class="launch-copy">Launch notes will appear once the sport is wired.</div></div>`;
-
-  document.getElementById("note-list").innerHTML = (sport.notes || []).map((item) => `
-    <div class="note-item">${item}</div>
-  `).join("") || `<div class="note-item">No extra notes for this view yet.</div>`;
 
   document.querySelectorAll("[data-open-game]").forEach((button) => {
     button.addEventListener("click", () => {
