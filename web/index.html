@@ -1756,10 +1756,7 @@ header {
     <div id="views"></div>
   </section>
   <aside class="rail">
-    <section class="rail-card">
-      <h2 class="rail-title">Slate Summary</h2>
-      <div class="stat-stack" id="summary-stats"></div>
-    </section>
+    <section class="rail-card"><h2 class="rail-title">Top 10 HR Edge</h2><div class="signal-list" id="hr-edge-rail"></div></section>
     <section class="rail-card">
       <h2 class="rail-title">Top Signal Games</h2>
       <div class="signal-list" id="signal-list"></div>
@@ -2113,9 +2110,38 @@ function summaryStats(sport) {
   ];
 }
 
+
+function renderHrEdgeRail() {
+  const sport = state.data?.sports?.mlb || {};
+  const rows = sport.hrEdgeBoard || topHrLeadersRaw(sport);
+
+  const el = document.getElementById("hr-edge-rail");
+  if (!el) return;
+
+  el.innerHTML = rows.slice(0, 10).map((row, i) => `
+    <div class="signal-item">
+      <div class="signal-top">
+        <div class="signal-game">#${i + 1} ${row.player}</div>
+        <div class="signal-score">${Number(row.hr_edge_score || row.score || row.confidence || 0).toFixed(1)}</div>
+      </div>
+      <div class="signal-copy">${row.team || ""} ${row.game ? "· " + row.game : ""} ${row.line ? "· " + row.line : ""}</div>
+    </div>
+  `).join("") || `<div class="signal-item"><div class="signal-copy">HR Edge Board waiting on data.</div></div>`;
+}
+
+function topHrLeadersRaw(sport) {
+  return (sport.games || [])
+    .flatMap(game => (game.roster || []).map(row => ({ ...row, game: game.title })))
+    .filter(row => normalize(row.market) === "hr")
+    .sort((a,b) => Number(b.score || b.confidence || 0) - Number(a.score || a.confidence || 0));
+}
+
+
 function renderSidebar() {
   const sport = getCurrentSport();
-  document.getElementById("summary-stats").innerHTML = summaryStats(sport).map((item) => `
+  renderHrEdgeRail();
+  const summaryEl = document.getElementById("summary-stats");
+  if (summaryEl) summaryEl.innerHTML = summaryStats(sport).map((item) => `
     <div class="stat-box">
       <div class="stat-box-value">${item.value}</div>
       <div class="stat-box-label">${item.label}</div>
