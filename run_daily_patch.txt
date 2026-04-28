@@ -1,0 +1,16 @@
+﻿def run(game_date=None, screenshot_path=None, verbose=True):
+    from datetime import date
+
+    if game_date is None:
+        game_date = date.today().strftime("%Y-%m-%d")
+
+    year = int(game_date[:4])
+
+    def note(m):
+        if verbose:
+            print(m)
+
+    print("[MLB] Requesting schedule for:", game_date)
+    print("\n==============================================================")
+    print("  MLB MODEL RUN —", game_date)
+    print("==============================================================")

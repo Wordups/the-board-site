@@ -2112,7 +2112,7 @@ function summaryStats(sport) {
 
 
 function renderHrEdgeRail() {
-  const sport = state.data?.sports?.mlb || {};
+    const rows = sport.daily_hr_top_10 || topHrLeadersRaw(sport);
   const rows = sport.hrEdgeBoard || topHrLeadersRaw(sport);
 
   const el = document.getElementById("hr-edge-rail");
