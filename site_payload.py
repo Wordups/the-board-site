@@ -289,6 +289,7 @@ def _build_mlb_games(results: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 
+
 def _build_fallback_hr_top10(results: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     Fallback HR pool when no model picks exist.
@@ -350,6 +351,8 @@ def _build_fallback_hr_top10(results: Dict[str, Any]) -> List[Dict[str, Any]]:
     top_10 = hitters[:10]
     print(f"[FALLBACK] Built HR pool with {len(top_10)} hitters from {len(teams_seen)} teams")
     return top_10
+
+
 
 
 def _build_mlb_sport(game_date: Optional[str]) -> Dict[str, Any]:
@@ -416,7 +419,6 @@ def _build_mlb_sport(game_date: Optional[str]) -> Dict[str, Any]:
         "pickOfDay": pick_of_day,
         "filters": ["all", "hr", "tb", "hit", "k"],
         "games": games,
-        "daily_hr_top_10": _build_fallback_hr_top10(results),
     }
 
 
