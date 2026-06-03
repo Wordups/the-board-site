@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 02, 2026",
+  "updatedAt": "June 03, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -23,7 +23,17 @@
         "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
-      "pickOfDay": null,
+      "pickOfDay": {
+        "player": "Juan Soto",
+        "team": "NYM @ SEA",
+        "market": "HR",
+        "line": "HR 1+",
+        "score": "41.8/50",
+        "confidence": "84%",
+        "rate": "L10 4/10 | L5 1/5 | L3 --",
+        "environment": "Freddy Peralta vs George Kirby",
+        "summary": "Best signal lane: HR. Click through for the full tracked board."
+      },
       "filters": [
         "all",
         "hr",
@@ -33,28 +43,668 @@
       ],
       "games": [
         {
-          "id": "822971",
-          "title": "DET @ TB",
-          "start": "6:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Jack Flaherty vs Steven Matz",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
+          "id": "823130",
+          "title": "NYM @ SEA",
+          "start": "3:40 PM ET",
+          "status": "Confirmed lineups",
+          "meta": "Freddy Peralta vs George Kirby",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
           "summary": {
-            "plays": 0,
+            "plays": 22,
             "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
+            "avgScore": "34.8",
+            "signal": "C"
           },
-          "topPicks": [],
-          "roster": []
+          "topPicks": [
+            {
+              "name": "Juan Soto",
+              "market": "HR",
+              "why": "vs George Kirby | Strong lean",
+              "tier": "Strong",
+              "confidence": 84,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Luke Raley",
+              "market": "HR",
+              "why": "vs Freddy Peralta | Strong lean",
+              "tier": "Strong",
+              "confidence": 82,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Dominic Canzone",
+              "market": "HR",
+              "why": "vs Freddy Peralta | Strong lean",
+              "tier": "Strong",
+              "confidence": 82,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jared Young",
+              "market": "HR",
+              "why": "vs George Kirby | Strong lean",
+              "tier": "Strong",
+              "confidence": 81,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Juan Soto",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 41.8,
+              "tier": "STRONG",
+              "confidence": 84,
+              "last10": "4/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Strong lean"
+            },
+            {
+              "player": "Luke Raley",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 41.1,
+              "tier": "STRONG",
+              "confidence": 82,
+              "last10": "3/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Strong lean"
+            },
+            {
+              "player": "Dominic Canzone",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 41.0,
+              "tier": "STRONG",
+              "confidence": 82,
+              "last10": "3/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Strong lean"
+            },
+            {
+              "player": "Jared Young",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 40.3,
+              "tier": "STRONG",
+              "confidence": 81,
+              "last10": "2/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Strong lean"
+            },
+            {
+              "player": "MJ Melendez",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 39.2,
+              "tier": "STRONG",
+              "confidence": 78,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "Julio Rodr\u00edguez",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 39.1,
+              "tier": "STRONG",
+              "confidence": 78,
+              "last10": "5/10",
+              "last5": "3/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Carson Benge",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 38.4,
+              "tier": "STRONG",
+              "confidence": 77,
+              "last10": "3/10",
+              "last5": "3/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "J.P. Crawford",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 36.5,
+              "tier": "STRONG",
+              "confidence": 73,
+              "last10": "3/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Randy Arozarena",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 35.4,
+              "tier": "VALUE",
+              "confidence": 71,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Marcus Semien",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 35.1,
+              "tier": "VALUE",
+              "confidence": 70,
+              "last10": "3/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "Colt Emerson",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 34.8,
+              "tier": "VALUE",
+              "confidence": 70,
+              "last10": "2/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Brett Baty",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 33.6,
+              "tier": "VALUE",
+              "confidence": 67,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "Jhonny Pereda",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 33.2,
+              "tier": "VALUE",
+              "confidence": 66,
+              "last10": "2/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Juan Soto",
+              "team": "NYM",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 32.5,
+              "tier": "VALUE",
+              "confidence": 65,
+              "last10": "22 TB",
+              "last5": "8 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "Cole Young",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 31.7,
+              "tier": "VALUE",
+              "confidence": 63,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Slight edge"
+            },
+            {
+              "player": "Bo Bichette",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 31.5,
+              "tier": "VALUE",
+              "confidence": 63,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Slight edge"
+            },
+            {
+              "player": "Josh Naylor",
+              "team": "SEA",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 31.4,
+              "tier": "VALUE",
+              "confidence": 63,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Slight edge"
+            },
+            {
+              "player": "A.J. Ewing",
+              "team": "NYM",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 30.8,
+              "tier": "VALUE",
+              "confidence": 62,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Slight edge"
+            },
+            {
+              "player": "Luke Raley",
+              "team": "SEA",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 30.8,
+              "tier": "VALUE",
+              "confidence": 62,
+              "last10": "20 TB",
+              "last5": "11 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Good value"
+            },
+            {
+              "player": "Jared Young",
+              "team": "NYM",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 30.2,
+              "tier": "VALUE",
+              "confidence": 60,
+              "last10": "10 TB",
+              "last5": "9 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs George Kirby | Good value"
+            },
+            {
+              "player": "Julio Rodr\u00edguez",
+              "team": "SEA",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 29.1,
+              "tier": "LONGSHOT",
+              "confidence": 58,
+              "last10": "28 TB",
+              "last5": "17 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Slight edge"
+            },
+            {
+              "player": "Dominic Canzone",
+              "team": "SEA",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.2,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "22 TB",
+              "last5": "14 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Freddy Peralta | Slight edge"
+            }
+          ]
         },
         {
-          "id": "823460",
+          "id": "824755",
+          "title": "BAL @ BOS",
+          "start": "6:45 PM ET",
+          "status": "Confirmed lineups",
+          "meta": "Chris Bassitt vs Payton Tolle",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
+          "summary": {
+            "plays": 6,
+            "core": 0,
+            "avgScore": "32.3",
+            "signal": "C"
+          },
+          "topPicks": [
+            {
+              "name": "Willson Contreras",
+              "market": "HR",
+              "why": "vs Chris Bassitt | Good value",
+              "tier": "Value",
+              "confidence": 68,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Wilyer Abreu",
+              "market": "HR",
+              "why": "vs Chris Bassitt | Good value",
+              "tier": "Value",
+              "confidence": 67,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jarren Duran",
+              "market": "HR",
+              "why": "vs Chris Bassitt | Good value",
+              "tier": "Value",
+              "confidence": 67,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Ceddanne Rafaela",
+              "market": "HR",
+              "why": "vs Chris Bassitt | Good value",
+              "tier": "Value",
+              "confidence": 65,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Willson Contreras",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 34.2,
+              "tier": "VALUE",
+              "confidence": 68,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Good value"
+            },
+            {
+              "player": "Wilyer Abreu",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 33.5,
+              "tier": "VALUE",
+              "confidence": 67,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Good value"
+            },
+            {
+              "player": "Jarren Duran",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 33.4,
+              "tier": "VALUE",
+              "confidence": 67,
+              "last10": "4/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Good value"
+            },
+            {
+              "player": "Ceddanne Rafaela",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 32.6,
+              "tier": "VALUE",
+              "confidence": 65,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Good value"
+            },
+            {
+              "player": "Mickey Gasper",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 31.9,
+              "tier": "VALUE",
+              "confidence": 64,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Slight edge"
+            },
+            {
+              "player": "Marcelo Mayer",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.2,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chris Bassitt | Slight edge"
+            }
+          ]
+        },
+        {
+          "id": "824509",
+          "title": "KC @ CIN",
+          "start": "7:10 PM ET",
+          "status": "Confirmed lineups",
+          "meta": "Stephen Kolek vs Chase Burns",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
+          "summary": {
+            "plays": 8,
+            "core": 0,
+            "avgScore": "31.5",
+            "signal": "C"
+          },
+          "topPicks": [
+            {
+              "name": "Jac Caglianone",
+              "market": "HR",
+              "why": "vs Chase Burns | Good value",
+              "tier": "Strong",
+              "confidence": 73,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Bobby Witt Jr.",
+              "market": "HR",
+              "why": "vs Chase Burns | Good value",
+              "tier": "Value",
+              "confidence": 72,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Michael Massey",
+              "market": "HR",
+              "why": "vs Chase Burns | Good value",
+              "tier": "Value",
+              "confidence": 65,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Carter Jensen",
+              "market": "HR",
+              "why": "vs Chase Burns | Slight edge",
+              "tier": "Value",
+              "confidence": 61,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Jac Caglianone",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 36.6,
+              "tier": "STRONG",
+              "confidence": 73,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Good value"
+            },
+            {
+              "player": "Bobby Witt Jr.",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 35.8,
+              "tier": "VALUE",
+              "confidence": 72,
+              "last10": "2/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Good value"
+            },
+            {
+              "player": "Michael Massey",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 32.6,
+              "tier": "VALUE",
+              "confidence": 65,
+              "last10": "2/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Good value"
+            },
+            {
+              "player": "Carter Jensen",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 30.3,
+              "tier": "VALUE",
+              "confidence": 61,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Slight edge"
+            },
+            {
+              "player": "Salvador Perez",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 30.3,
+              "tier": "VALUE",
+              "confidence": 61,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Slight edge"
+            },
+            {
+              "player": "Bobby Witt Jr.",
+              "team": "KC",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 29.5,
+              "tier": "LONGSHOT",
+              "confidence": 59,
+              "last10": "18 TB",
+              "last5": "6 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Slight edge"
+            },
+            {
+              "player": "Vinnie Pasquantino",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.4,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Slight edge"
+            },
+            {
+              "player": "Isaac Collins",
+              "team": "KC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.1,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "0/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Chase Burns | Slight edge"
+            }
+          ]
+        },
+        {
+          "id": "823456",
           "title": "SD @ PHI",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Randy V\u00e1squez vs Aaron Nola",
+          "meta": "Walker Buehler vs Cristopher S\u00e1nchez",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -67,45 +717,11 @@
           "roster": []
         },
         {
-          "id": "824754",
-          "title": "BAL @ BOS",
-          "start": "6:45 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Shane Baz vs Connelly Early",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "822728",
-          "title": "MIA @ WSH",
-          "start": "6:45 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Lake Bachar vs Miles Mikolas",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823541",
+          "id": "823540",
           "title": "CLE @ NYY",
           "start": "7:05 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Joey Cantillo vs Cam Schlittler",
+          "meta": "Gavin Williams vs Gerrit Cole",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -118,28 +734,11 @@
           "roster": []
         },
         {
-          "id": "824511",
-          "title": "KC @ CIN",
-          "start": "7:10 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Noah Cameron vs Andrew Abbott",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824918",
+          "id": "824917",
           "title": "TOR @ ATL",
           "start": "7:15 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Kevin Gausman vs Bryce Elder",
+          "meta": "Patrick Corbin vs Grant Holmes",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -152,45 +751,11 @@
           "roster": []
         },
         {
-          "id": "823700",
-          "title": "CWS @ MIN",
-          "start": "7:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Davis Martin vs Connor Prielipp",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823782",
-          "title": "SF @ MIL",
-          "start": "7:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Trevor McDonald vs Kyle Harrison",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823052",
+          "id": "823051",
           "title": "TEX @ STL",
           "start": "7:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Nathan Eovaldi vs Dustin May",
+          "meta": "MacKenzie Gore vs Andre Pallante",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -203,11 +768,11 @@
           "roster": []
         },
         {
-          "id": "824675",
+          "id": "824671",
           "title": "ATH @ CHC",
           "start": "8:05 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Gage Jump vs Jameson Taillon",
+          "meta": "Jeffrey Springs vs Colin Rea",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -220,11 +785,11 @@
           "roster": []
         },
         {
-          "id": "824189",
+          "id": "824188",
           "title": "PIT @ HOU",
           "start": "8:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Bubba Chandler vs Mike Burrows",
+          "meta": "Paul Skenes vs Spencer Arrighetti",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -237,11 +802,11 @@
           "roster": []
         },
         {
-          "id": "824026",
+          "id": "824024",
           "title": "COL @ LAA",
           "start": "9:38 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Tomoyuki Sugano vs Grayson Rodriguez",
+          "meta": "Michael Lorenzen vs Walbert Ure\u00f1a",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -254,11 +819,11 @@
           "roster": []
         },
         {
-          "id": "825079",
+          "id": "825077",
           "title": "LAD @ AZ",
           "start": "9:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Eric Lauer vs Michael Soroka",
+          "meta": "Shohei Ohtani vs Zac Gallen",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -274,7 +839,7 @@
     },
     "nba": {
       "label": "NBA",
-      "note": "All NBA schedule sources returned empty",
+      "note": "NBA schedule found, but player data returned empty and BALLDONTLIE_API_KEY is not configured",
       "launches": [],
       "notes": [
         "NBA feed falls back safely when upstream data is thin."
