@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 10, 2026",
+  "updatedAt": "June 11, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -24,15 +24,15 @@
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
       "pickOfDay": {
-        "player": "Casey Schmitt",
-        "team": "WSH @ SF",
+        "player": "Hunter Goodman",
+        "team": "CHC @ COL",
         "market": "HR",
         "line": "HR 1+",
-        "score": "29.2/50",
-        "confidence": "58%",
-        "rate": "L10 3/10 | L5 2/5 | L3 --",
-        "environment": "Foster Griffin vs Robbie Ray",
-        "summary": "Best signal lane: HR, TB. Click through for the full tracked board."
+        "score": "32.4/50",
+        "confidence": "65%",
+        "rate": "L10 5/10 | L5 3/5 | L3 --",
+        "environment": "Edward Cabrera vs Ryan Feltner",
+        "summary": "Best signal lane: HR. Click through for the full tracked board."
       },
       "filters": [
         "all",
@@ -43,24 +43,48 @@
       ],
       "games": [
         {
-          "id": "823215",
-          "title": "WSH @ SF",
-          "start": "3:45 PM ET",
+          "id": "824346",
+          "title": "CHC @ COL",
+          "start": "3:10 PM ET",
           "status": "Confirmed lineups",
-          "meta": "Foster Griffin vs Robbie Ray",
-          "attackNote": "Best signal lane: HR, TB. Click through for the full tracked board.",
+          "meta": "Edward Cabrera vs Ryan Feltner",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
           "lineupStatus": "Confirmed lineup data loaded",
           "summary": {
-            "plays": 2,
+            "plays": 7,
             "core": 0,
-            "avgScore": "28.9",
+            "avgScore": "29.7",
             "signal": "D"
           },
           "topPicks": [
             {
-              "name": "Casey Schmitt",
+              "name": "Hunter Goodman",
               "market": "HR",
-              "why": "vs Foster Griffin | Slight edge",
+              "why": "vs Edward Cabrera | Slight edge",
+              "tier": "Value",
+              "confidence": 65,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Ian Happ",
+              "market": "HR",
+              "why": "vs Ryan Feltner | Slight edge",
+              "tier": "Value",
+              "confidence": 65,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Pete Crow-Armstrong",
+              "market": "HR",
+              "why": "vs Ryan Feltner | Slight edge",
+              "tier": "Longshot",
+              "confidence": 60,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Michael Busch",
+              "market": "HR",
+              "why": "vs Ryan Feltner | Slight edge",
               "tier": "Longshot",
               "confidence": 58,
               "line": "HR 1+"
@@ -68,398 +92,111 @@
           ],
           "roster": [
             {
-              "player": "Casey Schmitt",
-              "team": "SF",
+              "player": "Hunter Goodman",
+              "team": "COL",
               "market": "HR",
               "line": "HR 1+",
-              "score": 29.2,
+              "score": 32.4,
+              "tier": "VALUE",
+              "confidence": 65,
+              "last10": "5/10",
+              "last5": "3/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Edward Cabrera | Slight edge"
+            },
+            {
+              "player": "Ian Happ",
+              "team": "CHC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 32.3,
+              "tier": "VALUE",
+              "confidence": 65,
+              "last10": "2/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Ryan Feltner | Slight edge"
+            },
+            {
+              "player": "Pete Crow-Armstrong",
+              "team": "CHC",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.9,
               "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "3/10",
+              "confidence": 60,
+              "last10": "5/10",
               "last5": "2/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Foster Griffin | Slight edge"
+              "why": "vs Ryan Feltner | Slight edge"
             },
             {
-              "player": "Casey Schmitt",
-              "team": "SF",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.5,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "21 TB",
-              "last5": "12 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Foster Griffin | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "823287",
-          "title": "CIN @ SD",
-          "start": "4:10 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Brady Singer vs Michael King",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 12,
-            "core": 0,
-            "avgScore": "30.9",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Sal Stewart",
-              "market": "HR",
-              "why": "vs Michael King | Good value",
-              "tier": "Value",
-              "confidence": 69,
-              "line": "HR 1+"
-            },
-            {
-              "name": "JJ Bleday",
-              "market": "HR",
-              "why": "vs Michael King | Good value",
-              "tier": "Value",
-              "confidence": 69,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Nathaniel Lowe",
-              "market": "HR",
-              "why": "vs Michael King | Good value",
-              "tier": "Value",
-              "confidence": 68,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Spencer Steer",
-              "market": "HR",
-              "why": "vs Michael King | Good value",
-              "tier": "Value",
-              "confidence": 66,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Sal Stewart",
-              "team": "CIN",
+              "player": "Michael Busch",
+              "team": "CHC",
               "market": "HR",
               "line": "HR 1+",
-              "score": 34.7,
-              "tier": "VALUE",
-              "confidence": 69,
+              "score": 28.9,
+              "tier": "LONGSHOT",
+              "confidence": 58,
               "last10": "1/10",
               "last5": "1/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Michael King | Good value"
+              "why": "vs Ryan Feltner | Slight edge"
             },
             {
-              "player": "JJ Bleday",
-              "team": "CIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 34.3,
-              "tier": "VALUE",
-              "confidence": 69,
-              "last10": "2/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Good value"
-            },
-            {
-              "player": "Nathaniel Lowe",
-              "team": "CIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 34.0,
-              "tier": "VALUE",
-              "confidence": 68,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Good value"
-            },
-            {
-              "player": "Spencer Steer",
-              "team": "CIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 33.0,
-              "tier": "VALUE",
-              "confidence": 66,
-              "last10": "2/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Good value"
-            },
-            {
-              "player": "JJ Bleday",
-              "team": "CIN",
+              "player": "Hunter Goodman",
+              "team": "COL",
               "market": "TB",
               "line": "Over 1.5 TB",
-              "score": 31.2,
-              "tier": "VALUE",
-              "confidence": 62,
-              "last10": "19 TB",
-              "last5": "5 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Good value"
-            },
-            {
-              "player": "Dane Myers",
-              "team": "CIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 30.2,
-              "tier": "VALUE",
-              "confidence": 60,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Slight edge"
-            },
-            {
-              "player": "Gavin Sheets",
-              "team": "SD",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.6,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Brady Singer | Slight edge"
-            },
-            {
-              "player": "Matt McLain",
-              "team": "CIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.4,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "3/10",
-              "last5": "3/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Slight edge"
-            },
-            {
-              "player": "Nathaniel Lowe",
-              "team": "CIN",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.8,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "7 TB",
-              "last5": "3 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Slight edge"
-            },
-            {
-              "player": "Sal Stewart",
-              "team": "CIN",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.6,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "12 TB",
-              "last5": "8 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Michael King | Slight edge"
-            },
-            {
-              "player": "Fernando Tatis Jr.",
-              "team": "SD",
-              "market": "HR",
-              "line": "HR 1+",
               "score": 28.3,
               "tier": "LONGSHOT",
               "confidence": 57,
-              "last10": "1/10",
-              "last5": "0/5",
+              "last10": "27 TB",
+              "last5": "14 TB",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Brady Singer | Slight edge"
+              "why": "vs Edward Cabrera | Slight edge"
             },
             {
-              "player": "Jackson Merrill",
-              "team": "SD",
+              "player": "Mois\u00e9s Ballesteros",
+              "team": "CHC",
               "market": "HR",
               "line": "HR 1+",
               "score": 28.1,
               "tier": "LONGSHOT",
               "confidence": 56,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Brady Singer | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "823856",
-          "title": "AZ @ MIA",
-          "start": "6:40 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Ryne Nelson vs Ryan Gusto",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 5,
-            "core": 0,
-            "avgScore": "30.8",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Corbin Carroll",
-              "market": "HR",
-              "why": "vs Ryan Gusto | Good value",
-              "tier": "Value",
-              "confidence": 68,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Gabriel Moreno",
-              "market": "HR",
-              "why": "vs Ryan Gusto | Slight edge",
-              "tier": "Value",
-              "confidence": 62,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Ketel Marte",
-              "market": "HR",
-              "why": "vs Ryan Gusto | Slight edge",
-              "tier": "Value",
-              "confidence": 62,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Ryan Waldschmidt",
-              "market": "HR",
-              "why": "vs Ryan Gusto | Slight edge",
-              "tier": "Longshot",
-              "confidence": 57,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Corbin Carroll",
-              "team": "AZ",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 34.1,
-              "tier": "VALUE",
-              "confidence": 68,
-              "last10": "4/10",
-              "last5": "3/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Gusto | Good value"
-            },
-            {
-              "player": "Gabriel Moreno",
-              "team": "AZ",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.1,
-              "tier": "VALUE",
-              "confidence": 62,
-              "last10": "2/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Gusto | Slight edge"
-            },
-            {
-              "player": "Ketel Marte",
-              "team": "AZ",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.0,
-              "tier": "VALUE",
-              "confidence": 62,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Gusto | Slight edge"
-            },
-            {
-              "player": "Corbin Carroll",
-              "team": "AZ",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 29.3,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "24 TB",
-              "last5": "15 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Gusto | Slight edge"
-            },
-            {
-              "player": "Ryan Waldschmidt",
-              "team": "AZ",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 28.3,
-              "tier": "LONGSHOT",
-              "confidence": 57,
               "last10": "0/10",
               "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Ryan Gusto | Slight edge"
+              "why": "vs Ryan Feltner | Slight edge"
+            },
+            {
+              "player": "Pete Crow-Armstrong",
+              "team": "CHC",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.1,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "35 TB",
+              "last5": "15 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Ryan Feltner | Slight edge"
             }
           ]
         },
         {
-          "id": "824831",
-          "title": "SEA @ BAL",
-          "start": "6:35 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "George Kirby vs Brandon Young",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823372",
+          "id": "823371",
           "title": "LAD @ PIT",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Shohei Ohtani vs Jared Jones",
+          "meta": "Justin Wrobleski vs Mitch Keller",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -472,96 +209,11 @@
           "roster": []
         },
         {
-          "id": "822804",
-          "title": "PHI @ TOR",
-          "start": "7:07 PM ET",
+          "id": "824827",
+          "title": "SEA @ BAL",
+          "start": "7:05 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Jes\u00fas Luzardo vs Max Scherzer",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823618",
-          "title": "STL @ NYM",
-          "start": "7:10 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Andre Pallante vs Austin Warren",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824103",
-          "title": "TEX @ KC",
-          "start": "7:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "MacKenzie Gore vs Seth Lugo",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824348",
-          "title": "CHC @ COL",
-          "start": "8:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Shota Imanaga vs Michael Lorenzen",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824996",
-          "title": "MIL @ ATH",
-          "start": "9:05 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Brandon Sproat vs Jack Perkins",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824022",
-          "title": "HOU @ LAA",
-          "start": "9:38 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Peter Lambert vs Reid Detmers",
+          "meta": "Bryan Woo vs Kyle Bradish",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -577,7 +229,7 @@
     },
     "nba": {
       "label": "NBA",
-      "note": "NBA schedule found, but player data returned empty and BALLDONTLIE_API_KEY is not configured",
+      "note": "All NBA schedule sources returned empty",
       "launches": [],
       "notes": [
         "NBA feed falls back safely when upstream data is thin."
