@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 11, 2026",
+  "updatedAt": "June 12, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -23,17 +23,7 @@
         "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
-      "pickOfDay": {
-        "player": "Hunter Goodman",
-        "team": "CHC @ COL",
-        "market": "HR",
-        "line": "HR 1+",
-        "score": "32.4/50",
-        "confidence": "65%",
-        "rate": "L10 5/10 | L5 3/5 | L3 --",
-        "environment": "Edward Cabrera vs Ryan Feltner",
-        "summary": "Best signal lane: HR. Click through for the full tracked board."
-      },
+      "pickOfDay": null,
       "filters": [
         "all",
         "hr",
@@ -43,160 +33,11 @@
       ],
       "games": [
         {
-          "id": "824346",
-          "title": "CHC @ COL",
-          "start": "3:10 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Edward Cabrera vs Ryan Feltner",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 7,
-            "core": 0,
-            "avgScore": "29.7",
-            "signal": "D"
-          },
-          "topPicks": [
-            {
-              "name": "Hunter Goodman",
-              "market": "HR",
-              "why": "vs Edward Cabrera | Slight edge",
-              "tier": "Value",
-              "confidence": 65,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Ian Happ",
-              "market": "HR",
-              "why": "vs Ryan Feltner | Slight edge",
-              "tier": "Value",
-              "confidence": 65,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Pete Crow-Armstrong",
-              "market": "HR",
-              "why": "vs Ryan Feltner | Slight edge",
-              "tier": "Longshot",
-              "confidence": 60,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Michael Busch",
-              "market": "HR",
-              "why": "vs Ryan Feltner | Slight edge",
-              "tier": "Longshot",
-              "confidence": 58,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Hunter Goodman",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.4,
-              "tier": "VALUE",
-              "confidence": 65,
-              "last10": "5/10",
-              "last5": "3/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Edward Cabrera | Slight edge"
-            },
-            {
-              "player": "Ian Happ",
-              "team": "CHC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.3,
-              "tier": "VALUE",
-              "confidence": 65,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Feltner | Slight edge"
-            },
-            {
-              "player": "Pete Crow-Armstrong",
-              "team": "CHC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.9,
-              "tier": "LONGSHOT",
-              "confidence": 60,
-              "last10": "5/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Feltner | Slight edge"
-            },
-            {
-              "player": "Michael Busch",
-              "team": "CHC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 28.9,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Feltner | Slight edge"
-            },
-            {
-              "player": "Hunter Goodman",
-              "team": "COL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.3,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "27 TB",
-              "last5": "14 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Edward Cabrera | Slight edge"
-            },
-            {
-              "player": "Mois\u00e9s Ballesteros",
-              "team": "CHC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 28.1,
-              "tier": "LONGSHOT",
-              "confidence": 56,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Feltner | Slight edge"
-            },
-            {
-              "player": "Pete Crow-Armstrong",
-              "team": "CHC",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.1,
-              "tier": "LONGSHOT",
-              "confidence": 56,
-              "last10": "35 TB",
-              "last5": "15 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ryan Feltner | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "823371",
-          "title": "LAD @ PIT",
-          "start": "6:40 PM ET",
+          "id": "823211",
+          "title": "CHC @ SF",
+          "start": "10:15 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Justin Wrobleski vs Mitch Keller",
+          "meta": "Javier Assad vs Landen Roupp",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -209,11 +50,198 @@
           "roster": []
         },
         {
-          "id": "824827",
-          "title": "SEA @ BAL",
+          "id": "823370",
+          "title": "MIA @ PIT",
+          "start": "6:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Sandy Alcantara vs Braxton Ashcraft",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822726",
+          "title": "SEA @ WSH",
+          "start": "6:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Bryce Miller vs Zack Littell",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824826",
+          "title": "SD @ BAL",
           "start": "7:05 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Bryan Woo vs Kyle Bradish",
+          "meta": "Griffin Canning vs Shane Baz",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824425",
+          "title": "DET @ CLE",
+          "start": "7:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Jack Flaherty vs Tanner Bibee",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824752",
+          "title": "TEX @ BOS",
+          "start": "7:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Jack Leiter vs Sonny Gray",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824507",
+          "title": "AZ @ CIN",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Eduardo Rodriguez vs Nick Lodolo",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823617",
+          "title": "ATL @ NYM",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Spencer Strider vs Nolan McLean",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824588",
+          "title": "LAD @ CWS",
+          "start": "7:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Roki Sasaki vs Anthony Kay",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823778",
+          "title": "PHI @ MIL",
+          "start": "7:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Andrew Painter vs Jacob Misiorowski",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824102",
+          "title": "HOU @ KC",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Tatsuya Imai vs Luinder Avila",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823695",
+          "title": "STL @ MIN",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Kyle Leahy vs Joe Ryan",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824020",
+          "title": "TB @ LAA",
+          "start": "9:38 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Shane McClanahan vs Sam Aldegheri",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
