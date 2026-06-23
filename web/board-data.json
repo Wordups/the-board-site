@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 22, 2026",
+  "updatedAt": "June 23, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -24,14 +24,14 @@
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
       "pickOfDay": {
-        "player": "Dillon Dingler",
-        "team": "NYY @ DET",
+        "player": "Kazuma Okamoto",
+        "team": "HOU @ TOR",
         "market": "HR",
         "line": "HR 1+",
-        "score": "37.6/50",
-        "confidence": "75%",
-        "rate": "L10 2/10 | L5 2/5 | L3 --",
-        "environment": "Gerrit Cole vs Framber Valdez",
+        "score": "35.7/50",
+        "confidence": "71%",
+        "rate": "L10 4/10 | L5 2/5 | L3 --",
+        "environment": "Peter Lambert vs Shane Bieber",
         "summary": "Best signal lane: HR. Click through for the full tracked board."
       },
       "filters": [
@@ -43,402 +43,146 @@
       ],
       "games": [
         {
-          "id": "824261",
-          "title": "NYY @ DET",
-          "start": "6:10 PM ET",
+          "id": "822799",
+          "title": "HOU @ TOR",
+          "start": "4:07 PM ET",
           "status": "Confirmed lineups",
-          "meta": "Gerrit Cole vs Framber Valdez",
+          "meta": "Peter Lambert vs Shane Bieber",
           "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
           "lineupStatus": "Confirmed lineup data loaded",
           "summary": {
-            "plays": 8,
+            "plays": 6,
             "core": 0,
-            "avgScore": "34.5",
+            "avgScore": "31.4",
             "signal": "C"
           },
           "topPicks": [
             {
-              "name": "Dillon Dingler",
+              "name": "Kazuma Okamoto",
               "market": "HR",
-              "why": "vs Gerrit Cole | Good value",
-              "tier": "Strong",
-              "confidence": 75,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Kerry Carpenter",
-              "market": "HR",
-              "why": "vs Gerrit Cole | Good value",
-              "tier": "Strong",
-              "confidence": 73,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Riley Greene",
-              "market": "HR",
-              "why": "vs Gerrit Cole | Good value",
-              "tier": "Strong",
-              "confidence": 72,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Spencer Torkelson",
-              "market": "HR",
-              "why": "vs Gerrit Cole | Good value",
+              "why": "vs Peter Lambert | Good value",
               "tier": "Value",
-              "confidence": 72,
+              "confidence": 71,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jes\u00fas S\u00e1nchez",
+              "market": "HR",
+              "why": "vs Peter Lambert | Good value",
+              "tier": "Value",
+              "confidence": 67,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Brandon Valenzuela",
+              "market": "HR",
+              "why": "vs Peter Lambert | Slight edge",
+              "tier": "Value",
+              "confidence": 63,
+              "line": "HR 1+"
+            },
+            {
+              "name": "George Springer",
+              "market": "HR",
+              "why": "vs Peter Lambert | Slight edge",
+              "tier": "Value",
+              "confidence": 60,
               "line": "HR 1+"
             }
           ],
           "roster": [
             {
-              "player": "Dillon Dingler",
-              "team": "DET",
+              "player": "Kazuma Okamoto",
+              "team": "TOR",
               "market": "HR",
               "line": "HR 1+",
-              "score": 37.6,
-              "tier": "STRONG",
-              "confidence": 75,
-              "last10": "2/10",
+              "score": 35.7,
+              "tier": "VALUE",
+              "confidence": 71,
+              "last10": "4/10",
               "last5": "2/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
+              "why": "vs Peter Lambert | Good value"
             },
             {
-              "player": "Kerry Carpenter",
-              "team": "DET",
+              "player": "Jes\u00fas S\u00e1nchez",
+              "team": "TOR",
               "market": "HR",
               "line": "HR 1+",
-              "score": 36.6,
-              "tier": "STRONG",
-              "confidence": 73,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
-            },
-            {
-              "player": "Riley Greene",
-              "team": "DET",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.2,
-              "tier": "STRONG",
-              "confidence": 72,
+              "score": 33.7,
+              "tier": "VALUE",
+              "confidence": 67,
               "last10": "1/10",
               "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
+              "why": "vs Peter Lambert | Good value"
             },
             {
-              "player": "Spencer Torkelson",
-              "team": "DET",
+              "player": "Brandon Valenzuela",
+              "team": "TOR",
               "market": "HR",
               "line": "HR 1+",
-              "score": 35.8,
+              "score": 31.4,
               "tier": "VALUE",
-              "confidence": 72,
-              "last10": "3/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
-            },
-            {
-              "player": "Hao-Yu  Lee",
-              "team": "DET",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 33.9,
-              "tier": "VALUE",
-              "confidence": 68,
+              "confidence": 63,
               "last10": "0/10",
               "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
+              "why": "vs Peter Lambert | Slight edge"
             },
             {
-              "player": "Kevin McGonigle",
-              "team": "DET",
+              "player": "George Springer",
+              "team": "TOR",
               "market": "HR",
               "line": "HR 1+",
-              "score": 33.1,
-              "tier": "VALUE",
-              "confidence": 66,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
-            },
-            {
-              "player": "Colt Keith",
-              "team": "DET",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.8,
-              "tier": "VALUE",
-              "confidence": 66,
-              "last10": "4/10",
-              "last5": "3/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
-            },
-            {
-              "player": "Dillon Dingler",
-              "team": "DET",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 30.2,
+              "score": 30.1,
               "tier": "VALUE",
               "confidence": 60,
-              "last10": "27 TB",
-              "last5": "14 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Gerrit Cole | Good value"
-            }
-          ]
-        },
-        {
-          "id": "822964",
-          "title": "KC @ TB",
-          "start": "6:40 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Michael Wacha vs Drew Rasmussen",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 4,
-            "core": 0,
-            "avgScore": "31.3",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Jac Caglianone",
-              "market": "HR",
-              "why": "vs Drew Rasmussen | Good value",
-              "tier": "Value",
-              "confidence": 71,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Carter Jensen",
-              "market": "HR",
-              "why": "vs Drew Rasmussen | Slight edge",
-              "tier": "Value",
-              "confidence": 60,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Michael Massey",
-              "market": "HR",
-              "why": "vs Drew Rasmussen | Slight edge",
-              "tier": "Longshot",
-              "confidence": 60,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Salvador Perez",
-              "market": "HR",
-              "why": "vs Drew Rasmussen | Slight edge",
-              "tier": "Longshot",
-              "confidence": 59,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Jac Caglianone",
-              "team": "KC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 35.4,
-              "tier": "VALUE",
-              "confidence": 71,
-              "last10": "4/10",
-              "last5": "4/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Drew Rasmussen | Good value"
-            },
-            {
-              "player": "Carter Jensen",
-              "team": "KC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 30.2,
-              "tier": "VALUE",
-              "confidence": 60,
-              "last10": "2/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Drew Rasmussen | Slight edge"
-            },
-            {
-              "player": "Michael Massey",
-              "team": "KC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.8,
-              "tier": "LONGSHOT",
-              "confidence": 60,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Drew Rasmussen | Slight edge"
-            },
-            {
-              "player": "Salvador Perez",
-              "team": "KC",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.7,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Drew Rasmussen | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "823692",
-          "title": "LAD @ MIN",
-          "start": "7:40 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Eric Lauer vs Zebby Matthews",
-          "attackNote": "Best signal lane: HR, TB. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 5,
-            "core": 0,
-            "avgScore": "30.5",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Byron Buxton",
-              "market": "HR",
-              "why": "vs Eric Lauer | Good value",
-              "tier": "Value",
-              "confidence": 70,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Kody Clemens",
-              "market": "HR",
-              "why": "vs Eric Lauer | Slight edge",
-              "tier": "Longshot",
-              "confidence": 60,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Royce Lewis",
-              "market": "HR",
-              "why": "vs Eric Lauer | Slight edge",
-              "tier": "Longshot",
-              "confidence": 58,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Ryan Kreidler",
-              "market": "HR",
-              "why": "vs Eric Lauer | Slight edge",
-              "tier": "Longshot",
-              "confidence": 57,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Byron Buxton",
-              "team": "MIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 35.0,
-              "tier": "VALUE",
-              "confidence": 70,
-              "last10": "4/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Eric Lauer | Good value"
-            },
-            {
-              "player": "Byron Buxton",
-              "team": "MIN",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 29.9,
-              "tier": "LONGSHOT",
-              "confidence": 60,
-              "last10": "30 TB",
-              "last5": "9 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Eric Lauer | Good value"
-            },
-            {
-              "player": "Kody Clemens",
-              "team": "MIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.9,
-              "tier": "LONGSHOT",
-              "confidence": 60,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Eric Lauer | Slight edge"
-            },
-            {
-              "player": "Royce Lewis",
-              "team": "MIN",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 28.8,
-              "tier": "LONGSHOT",
-              "confidence": 58,
               "last10": "3/10",
               "last5": "1/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Eric Lauer | Slight edge"
+              "why": "vs Peter Lambert | Slight edge"
             },
             {
-              "player": "Ryan Kreidler",
-              "team": "MIN",
+              "player": "Daulton Varsho",
+              "team": "TOR",
               "market": "HR",
               "line": "HR 1+",
-              "score": 28.7,
+              "score": 29.1,
               "tier": "LONGSHOT",
-              "confidence": 57,
+              "confidence": 58,
               "last10": "1/10",
               "last5": "1/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Eric Lauer | Slight edge"
+              "why": "vs Peter Lambert | Slight edge"
+            },
+            {
+              "player": "Vladimir Guerrero Jr.",
+              "team": "TOR",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.2,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Peter Lambert | Slight edge"
             }
           ]
         },
         {
-          "id": "823288",
-          "title": "ATL @ SD",
-          "start": "10:10 PM ET",
+          "id": "823365",
+          "title": "SEA @ PIT",
+          "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Grant Holmes vs Michael King",
+          "meta": "George Kirby vs Mitch Keller",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -451,11 +195,28 @@
           "roster": []
         },
         {
-          "id": "823851",
+          "id": "822963",
+          "title": "KC @ TB",
+          "start": "6:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Luinder Avila vs Shane McClanahan",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823849",
           "title": "TEX @ MIA",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Tyler Alexander vs Tyler Phillips",
+          "meta": "Cal Quantrill vs Sandy Alcantara",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -468,11 +229,11 @@
           "roster": []
         },
         {
-          "id": "822800",
-          "title": "HOU @ TOR",
-          "start": "7:07 PM ET",
+          "id": "824262",
+          "title": "NYY @ DET",
+          "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Hunter Brown vs Dylan Cease",
+          "meta": "Carlos Rod\u00f3n vs Casey Mize",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -485,11 +246,28 @@
           "roster": []
         },
         {
-          "id": "823613",
+          "id": "822718",
+          "title": "PHI @ WSH",
+          "start": "6:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Jes\u00fas Luzardo vs Zack Littell",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823614",
           "title": "CHC @ NYM",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Shota Imanaga vs Kodai Senga",
+          "meta": "Edward Cabrera vs Kodai Senga",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -502,11 +280,45 @@
           "roster": []
         },
         {
-          "id": "824585",
+          "id": "824501",
+          "title": "MIL @ CIN",
+          "start": "7:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Brandon Sproat vs Nick Lodolo",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823690",
+          "title": "LAD @ MIN",
+          "start": "7:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Justin Wrobleski vs Kendry Rojas",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824584",
           "title": "CLE @ CWS",
           "start": "7:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Gavin Williams vs Anthony Kay",
+          "meta": "Parker Messick vs Sean Burke",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -519,11 +331,11 @@
           "roster": []
         },
         {
-          "id": "823040",
+          "id": "823043",
           "title": "AZ @ STL",
           "start": "7:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Merrill Kelly vs Andre Pallante",
+          "meta": "Eduardo Rodriguez vs Kyle Leahy",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -536,11 +348,11 @@
           "roster": []
         },
         {
-          "id": "824344",
+          "id": "824340",
           "title": "BOS @ COL",
           "start": "8:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Jake Bennett vs Ryan Feltner",
+          "meta": "Sonny Gray vs Sean Sullivan",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -553,11 +365,28 @@
           "roster": []
         },
         {
-          "id": "824016",
+          "id": "824017",
           "title": "BAL @ LAA",
           "start": "9:38 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Kyle Bradish vs Sam Aldegheri",
+          "meta": "Shane Baz vs Ryan Johnson",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823210",
+          "title": "ATH @ SF",
+          "start": "9:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Aaron Civale vs Robbie Ray",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
