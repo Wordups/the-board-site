@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 24, 2026",
+  "updatedAt": "June 25, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -24,14 +24,14 @@
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
       "pickOfDay": {
-        "player": "Miguel Vargas",
-        "team": "CLE @ CWS",
+        "player": "Casey Schmitt",
+        "team": "ATH @ SF",
         "market": "HR",
         "line": "HR 1+",
-        "score": "32.2/50",
-        "confidence": "64%",
+        "score": "35.3/50",
+        "confidence": "71%",
         "rate": "L10 1/10 | L5 1/5 | L3 --",
-        "environment": "Tanner Bibee vs Erick Fedde",
+        "environment": "Jeffrey Springs vs Landen Roupp",
         "summary": "Best signal lane: HR. Click through for the full tracked board."
       },
       "filters": [
@@ -43,438 +43,160 @@
       ],
       "games": [
         {
-          "id": "824583",
-          "title": "CLE @ CWS",
-          "start": "2:10 PM ET",
+          "id": "823209",
+          "title": "ATH @ SF",
+          "start": "3:45 PM ET",
           "status": "Confirmed lineups",
-          "meta": "Tanner Bibee vs Erick Fedde",
+          "meta": "Jeffrey Springs vs Landen Roupp",
           "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
           "lineupStatus": "Confirmed lineup data loaded",
           "summary": {
-            "plays": 6,
+            "plays": 7,
             "core": 0,
-            "avgScore": "30.3",
+            "avgScore": "31.6",
             "signal": "C"
           },
           "topPicks": [
             {
-              "name": "Miguel Vargas",
+              "name": "Casey Schmitt",
               "market": "HR",
-              "why": "vs Tanner Bibee | Slight edge",
-              "tier": "Value",
-              "confidence": 64,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Colson Montgomery",
-              "market": "HR",
-              "why": "vs Tanner Bibee | Slight edge",
-              "tier": "Value",
-              "confidence": 64,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Kyle Manzardo",
-              "market": "HR",
-              "why": "vs Erick Fedde | Slight edge",
-              "tier": "Value",
-              "confidence": 63,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Rhys Hoskins",
-              "market": "HR",
-              "why": "vs Erick Fedde | Slight edge",
-              "tier": "Longshot",
-              "confidence": 58,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Miguel Vargas",
-              "team": "CWS",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.2,
-              "tier": "VALUE",
-              "confidence": 64,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Tanner Bibee | Slight edge"
-            },
-            {
-              "player": "Colson Montgomery",
-              "team": "CWS",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.8,
-              "tier": "VALUE",
-              "confidence": 64,
-              "last10": "4/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Tanner Bibee | Slight edge"
-            },
-            {
-              "player": "Kyle Manzardo",
-              "team": "CLE",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.4,
-              "tier": "VALUE",
-              "confidence": 63,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Erick Fedde | Slight edge"
-            },
-            {
-              "player": "Rhys Hoskins",
-              "team": "CLE",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.2,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Erick Fedde | Slight edge"
-            },
-            {
-              "player": "Andrew Benintendi",
-              "team": "CWS",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.0,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "3/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Tanner Bibee | Slight edge"
-            },
-            {
-              "player": "Miguel Vargas",
-              "team": "CWS",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.2,
-              "tier": "LONGSHOT",
-              "confidence": 56,
-              "last10": "9 TB",
-              "last5": "6 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Tanner Bibee | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "824341",
-          "title": "BOS @ COL",
-          "start": "3:10 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Ranger Suarez vs Kyle Freeland",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 16,
-            "core": 0,
-            "avgScore": "32.1",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Hunter Goodman",
-              "market": "HR",
-              "why": "vs Ranger Suarez | Strong lean",
-              "tier": "Strong",
-              "confidence": 79,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Cole Carrigg",
-              "market": "HR",
-              "why": "vs Ranger Suarez | Good value",
-              "tier": "Strong",
-              "confidence": 73,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Willson Contreras",
-              "market": "HR",
-              "why": "vs Kyle Freeland | Good value",
+              "why": "vs Jeffrey Springs | Good value",
               "tier": "Value",
               "confidence": 71,
               "line": "HR 1+"
             },
             {
-              "name": "Braxton Fulford",
+              "name": "Bryce Eldridge",
               "market": "HR",
-              "why": "vs Ranger Suarez | Good value",
+              "why": "vs Jeffrey Springs | Good value",
               "tier": "Value",
-              "confidence": 70,
+              "confidence": 69,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Rafael Devers",
+              "market": "HR",
+              "why": "vs Jeffrey Springs | Slight edge",
+              "tier": "Value",
+              "confidence": 64,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Willy Adames",
+              "market": "HR",
+              "why": "vs Jeffrey Springs | Slight edge",
+              "tier": "Value",
+              "confidence": 61,
               "line": "HR 1+"
             }
           ],
           "roster": [
             {
-              "player": "Hunter Goodman",
-              "team": "COL",
+              "player": "Casey Schmitt",
+              "team": "SF",
               "market": "HR",
               "line": "HR 1+",
-              "score": 39.6,
-              "tier": "STRONG",
-              "confidence": 79,
-              "last10": "3/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Strong lean"
-            },
-            {
-              "player": "Cole Carrigg",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.5,
-              "tier": "STRONG",
-              "confidence": 73,
-              "last10": "2/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Good value"
-            },
-            {
-              "player": "Willson Contreras",
-              "team": "BOS",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 35.5,
+              "score": 35.3,
               "tier": "VALUE",
               "confidence": 71,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jeffrey Springs | Good value"
+            },
+            {
+              "player": "Bryce Eldridge",
+              "team": "SF",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 34.4,
+              "tier": "VALUE",
+              "confidence": 69,
               "last10": "2/10",
               "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Kyle Freeland | Good value"
+              "why": "vs Jeffrey Springs | Good value"
             },
             {
-              "player": "Braxton Fulford",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 35.2,
-              "tier": "VALUE",
-              "confidence": 70,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Good value"
-            },
-            {
-              "player": "Wilyer Abreu",
-              "team": "BOS",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 33.8,
-              "tier": "VALUE",
-              "confidence": 68,
-              "last10": "3/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Kyle Freeland | Good value"
-            },
-            {
-              "player": "Kyle Karros",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 33.3,
-              "tier": "VALUE",
-              "confidence": 67,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Good value"
-            },
-            {
-              "player": "TJ Rumfield",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.6,
-              "tier": "VALUE",
-              "confidence": 65,
-              "last10": "4/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Good value"
-            },
-            {
-              "player": "Ezequiel Tovar",
-              "team": "COL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 32.5,
-              "tier": "VALUE",
-              "confidence": 65,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Good value"
-            },
-            {
-              "player": "Willi Castro",
-              "team": "COL",
+              "player": "Rafael Devers",
+              "team": "SF",
               "market": "HR",
               "line": "HR 1+",
               "score": 31.8,
               "tier": "VALUE",
               "confidence": 64,
               "last10": "3/10",
-              "last5": "1/5",
+              "last5": "2/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Slight edge"
+              "why": "vs Jeffrey Springs | Slight edge"
             },
             {
-              "player": "Jake McCarthy",
-              "team": "COL",
+              "player": "Willy Adames",
+              "team": "SF",
               "market": "HR",
               "line": "HR 1+",
               "score": 30.7,
               "tier": "VALUE",
               "confidence": 61,
-              "last10": "1/10",
-              "last5": "1/5",
+              "last10": "2/10",
+              "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Slight edge"
+              "why": "vs Jeffrey Springs | Slight edge"
             },
             {
-              "player": "Willson Contreras",
-              "team": "BOS",
+              "player": "Casey Schmitt",
+              "team": "SF",
               "market": "TB",
               "line": "Over 1.5 TB",
-              "score": 29.7,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "17 TB",
-              "last5": "4 TB",
+              "score": 30.2,
+              "tier": "VALUE",
+              "confidence": 60,
+              "last10": "22 TB",
+              "last5": "14 TB",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Kyle Freeland | Slight edge"
+              "why": "vs Jeffrey Springs | Good value"
             },
             {
-              "player": "Ceddanne Rafaela",
-              "team": "BOS",
+              "player": "Bryce Eldridge",
+              "team": "SF",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 30.1,
+              "tier": "VALUE",
+              "confidence": 60,
+              "last10": "15 TB",
+              "last5": "1 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jeffrey Springs | Good value"
+            },
+            {
+              "player": "Matt Chapman",
+              "team": "SF",
               "market": "HR",
               "line": "HR 1+",
-              "score": 29.1,
+              "score": 28.5,
               "tier": "LONGSHOT",
-              "confidence": 58,
+              "confidence": 57,
               "last10": "1/10",
               "last5": "0/5",
               "last3": "--",
               "status": "Confirmed lineup",
-              "why": "vs Kyle Freeland | Slight edge"
-            },
-            {
-              "player": "Cole Carrigg",
-              "team": "COL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.9,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "15 TB",
-              "last5": "5 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Slight edge"
-            },
-            {
-              "player": "Hunter Goodman",
-              "team": "COL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.6,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "20 TB",
-              "last5": "2 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Slight edge"
-            },
-            {
-              "player": "TJ Rumfield",
-              "team": "COL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.4,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "29 TB",
-              "last5": "13 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Ranger Suarez | Slight edge"
-            },
-            {
-              "player": "Wilyer Abreu",
-              "team": "BOS",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.2,
-              "tier": "LONGSHOT",
-              "confidence": 56,
-              "last10": "26 TB",
-              "last5": "13 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Kyle Freeland | Slight edge"
+              "why": "vs Jeffrey Springs | Slight edge"
             }
           ]
         },
         {
-          "id": "824018",
-          "title": "BAL @ LAA",
-          "start": "4:07 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Trey Gibson vs Jos\u00e9 Soriano",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823367",
-          "title": "SEA @ PIT",
+          "id": "824258",
+          "title": "HOU @ DET",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Bryan Woo vs Braxton Ashcraft",
+          "meta": "Tatsuya Imai vs Troy Melton",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -487,45 +209,11 @@
           "roster": []
         },
         {
-          "id": "822965",
-          "title": "KC @ TB",
-          "start": "6:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Noah Cameron vs Griffin Jax",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824259",
-          "title": "NYY @ DET",
-          "start": "6:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Ryan Weathers vs Tarik Skubal",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "822719",
+          "id": "822717",
           "title": "PHI @ WSH",
           "start": "6:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Aaron Nola vs Miles Mikolas",
+          "meta": "Cristopher S\u00e1nchez vs Cade Cavalli",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -538,11 +226,11 @@
           "roster": []
         },
         {
-          "id": "822798",
-          "title": "HOU @ TOR",
+          "id": "822797",
+          "title": "TEX @ TOR",
           "start": "7:07 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Mike Burrows vs Trey Yesavage",
+          "meta": "MacKenzie Gore vs Kevin Gausman",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -555,11 +243,11 @@
           "roster": []
         },
         {
-          "id": "823611",
+          "id": "823612",
           "title": "CHC @ NYM",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Shota Imanaga vs Sean Manaea",
+          "meta": "Matthew Boyd vs Freddy Peralta",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -572,11 +260,11 @@
           "roster": []
         },
         {
-          "id": "824500",
-          "title": "MIL @ CIN",
+          "id": "824747",
+          "title": "NYY @ BOS",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Shane Drohan vs Rhett Lowder",
+          "meta": "Cam Schlittler vs Connelly Early",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -589,62 +277,11 @@
           "roster": []
         },
         {
-          "id": "823691",
-          "title": "LAD @ MIN",
-          "start": "7:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Shohei Ohtani vs Joe Ryan",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823041",
+          "id": "823042",
           "title": "AZ @ STL",
           "start": "7:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Mitch Bratt vs Matthew Liberatore",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823284",
-          "title": "ATL @ SD",
-          "start": "8:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Mart\u00edn P\u00e9rez vs JP Sears",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823208",
-          "title": "ATH @ SF",
-          "start": "9:45 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Gage Jump vs Tyler Mahle",
+          "meta": "Zac Gallen vs Michael McGreevy",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
