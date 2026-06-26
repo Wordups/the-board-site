@@ -1,5 +1,5 @@
 {
-  "updatedAt": "June 25, 2026",
+  "updatedAt": "June 26, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -23,17 +23,7 @@
         "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
-      "pickOfDay": {
-        "player": "Casey Schmitt",
-        "team": "ATH @ SF",
-        "market": "HR",
-        "line": "HR 1+",
-        "score": "35.3/50",
-        "confidence": "71%",
-        "rate": "L10 1/10 | L5 1/5 | L3 --",
-        "environment": "Jeffrey Springs vs Landen Roupp",
-        "summary": "Best signal lane: HR. Click through for the full tracked board."
-      },
+      "pickOfDay": null,
       "filters": [
         "all",
         "hr",
@@ -43,160 +33,11 @@
       ],
       "games": [
         {
-          "id": "823209",
-          "title": "ATH @ SF",
-          "start": "3:45 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Jeffrey Springs vs Landen Roupp",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 7,
-            "core": 0,
-            "avgScore": "31.6",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Casey Schmitt",
-              "market": "HR",
-              "why": "vs Jeffrey Springs | Good value",
-              "tier": "Value",
-              "confidence": 71,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Bryce Eldridge",
-              "market": "HR",
-              "why": "vs Jeffrey Springs | Good value",
-              "tier": "Value",
-              "confidence": 69,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Rafael Devers",
-              "market": "HR",
-              "why": "vs Jeffrey Springs | Slight edge",
-              "tier": "Value",
-              "confidence": 64,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Willy Adames",
-              "market": "HR",
-              "why": "vs Jeffrey Springs | Slight edge",
-              "tier": "Value",
-              "confidence": 61,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Casey Schmitt",
-              "team": "SF",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 35.3,
-              "tier": "VALUE",
-              "confidence": 71,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Good value"
-            },
-            {
-              "player": "Bryce Eldridge",
-              "team": "SF",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 34.4,
-              "tier": "VALUE",
-              "confidence": 69,
-              "last10": "2/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Good value"
-            },
-            {
-              "player": "Rafael Devers",
-              "team": "SF",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.8,
-              "tier": "VALUE",
-              "confidence": 64,
-              "last10": "3/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Slight edge"
-            },
-            {
-              "player": "Willy Adames",
-              "team": "SF",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 30.7,
-              "tier": "VALUE",
-              "confidence": 61,
-              "last10": "2/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Slight edge"
-            },
-            {
-              "player": "Casey Schmitt",
-              "team": "SF",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 30.2,
-              "tier": "VALUE",
-              "confidence": 60,
-              "last10": "22 TB",
-              "last5": "14 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Good value"
-            },
-            {
-              "player": "Bryce Eldridge",
-              "team": "SF",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 30.1,
-              "tier": "VALUE",
-              "confidence": 60,
-              "last10": "15 TB",
-              "last5": "1 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Good value"
-            },
-            {
-              "player": "Matt Chapman",
-              "team": "SF",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 28.5,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jeffrey Springs | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "824258",
+          "id": "824255",
           "title": "HOU @ DET",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Tatsuya Imai vs Troy Melton",
+          "meta": "Spencer Arrighetti vs Keider Montero",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -209,11 +50,11 @@
           "roster": []
         },
         {
-          "id": "822717",
-          "title": "PHI @ WSH",
-          "start": "6:45 PM ET",
+          "id": "823363",
+          "title": "CIN @ PIT",
+          "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Cristopher S\u00e1nchez vs Cade Cavalli",
+          "meta": "Andrew Abbott vs Paul Skenes",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -226,11 +67,28 @@
           "roster": []
         },
         {
-          "id": "822797",
+          "id": "824824",
+          "title": "WSH @ BAL",
+          "start": "7:05 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Andrew Alvarez vs Trevor Rogers",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822796",
           "title": "TEX @ TOR",
           "start": "7:07 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "MacKenzie Gore vs Kevin Gausman",
+          "meta": "Nathan Eovaldi vs Patrick Corbin",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -243,11 +101,11 @@
           "roster": []
         },
         {
-          "id": "823612",
-          "title": "CHC @ NYM",
+          "id": "824423",
+          "title": "SEA @ CLE",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Matthew Boyd vs Freddy Peralta",
+          "meta": "Luis Castillo vs Joey Cantillo",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -260,11 +118,28 @@
           "roster": []
         },
         {
-          "id": "824747",
+          "id": "822962",
+          "title": "AZ @ TB",
+          "start": "7:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Zac Gallen vs Nick Martinez",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824743",
           "title": "NYY @ BOS",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Cam Schlittler vs Connelly Early",
+          "meta": "Will Warren vs Payton Tolle",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -277,11 +152,79 @@
           "roster": []
         },
         {
-          "id": "823042",
-          "title": "AZ @ STL",
+          "id": "823773",
+          "title": "CHC @ MIL",
           "start": "7:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Zac Gallen vs Michael McGreevy",
+          "meta": "Colin Rea vs Jacob Misiorowski",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823688",
+          "title": "COL @ MIN",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Tomoyuki Sugano vs Taj Bradley",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823039",
+          "title": "MIA @ STL",
+          "start": "8:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Max Meyer vs Michael McGreevy",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824014",
+          "title": "ATH @ LAA",
+          "start": "9:38 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "J.T. Ginn vs Walbert Ure\u00f1a",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823285",
+          "title": "LAD @ SD",
+          "start": "9:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Roki Sasaki vs Walker Buehler",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
