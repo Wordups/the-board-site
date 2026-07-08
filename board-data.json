@@ -1,5 +1,5 @@
 {
-  "updatedAt": "July 07, 2026",
+  "updatedAt": "July 08, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -23,17 +23,7 @@
         "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
-      "pickOfDay": {
-        "player": "Jordan Walker",
-        "team": "MIL @ STL",
-        "market": "HR",
-        "line": "HR 1+",
-        "score": "37.8/50",
-        "confidence": "76%",
-        "rate": "L10 2/10 | L5 2/5 | L3 --",
-        "environment": "Robert Gasser vs Hunter Dobbins",
-        "summary": "Best signal lane: HR. Click through for the full tracked board."
-      },
+      "pickOfDay": null,
       "filters": [
         "all",
         "hr",
@@ -43,300 +33,11 @@
       ],
       "games": [
         {
-          "id": "823035",
-          "title": "MIL @ STL",
-          "start": "7:45 PM ET",
-          "status": "Confirmed lineups",
-          "meta": "Robert Gasser vs Hunter Dobbins",
-          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
-          "lineupStatus": "Confirmed lineup data loaded",
-          "summary": {
-            "plays": 17,
-            "core": 0,
-            "avgScore": "34.1",
-            "signal": "C"
-          },
-          "topPicks": [
-            {
-              "name": "Jordan Walker",
-              "market": "HR",
-              "why": "vs Jacob Misiorowski | Good value",
-              "tier": "Strong",
-              "confidence": 76,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Jackson Chourio",
-              "market": "HR",
-              "why": "vs Matt Svanson | Good value",
-              "tier": "Strong",
-              "confidence": 76,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Bryan Torres",
-              "market": "HR",
-              "why": "vs Jacob Misiorowski | Good value",
-              "tier": "Strong",
-              "confidence": 76,
-              "line": "HR 1+"
-            },
-            {
-              "name": "Alec Burleson",
-              "market": "HR",
-              "why": "vs Jacob Misiorowski | Good value",
-              "tier": "Strong",
-              "confidence": 75,
-              "line": "HR 1+"
-            }
-          ],
-          "roster": [
-            {
-              "player": "Jordan Walker",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.8,
-              "tier": "STRONG",
-              "confidence": 76,
-              "last10": "2/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Jackson Chourio",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.8,
-              "tier": "STRONG",
-              "confidence": 76,
-              "last10": "3/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Good value"
-            },
-            {
-              "player": "Bryan Torres",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.8,
-              "tier": "STRONG",
-              "confidence": 76,
-              "last10": "2/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Alec Burleson",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.6,
-              "tier": "STRONG",
-              "confidence": 75,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Jake Bauers",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.3,
-              "tier": "STRONG",
-              "confidence": 75,
-              "last10": "2/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Good value"
-            },
-            {
-              "player": "Garrett Mitchell",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 37.3,
-              "tier": "STRONG",
-              "confidence": 75,
-              "last10": "3/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Good value"
-            },
-            {
-              "player": "Lars Nootbaar",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.8,
-              "tier": "STRONG",
-              "confidence": 74,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "JJ Wetherholt",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.7,
-              "tier": "STRONG",
-              "confidence": 73,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Nathan Church",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.6,
-              "tier": "STRONG",
-              "confidence": 73,
-              "last10": "3/10",
-              "last5": "2/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Iv\u00e1n Herrera",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 36.4,
-              "tier": "STRONG",
-              "confidence": 73,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Good value"
-            },
-            {
-              "player": "Jimmy Crooks",
-              "team": "STL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 31.2,
-              "tier": "VALUE",
-              "confidence": 62,
-              "last10": "0/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Slight edge"
-            },
-            {
-              "player": "Brice Turang",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 30.8,
-              "tier": "VALUE",
-              "confidence": 62,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Slight edge"
-            },
-            {
-              "player": "William Contreras",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.6,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "1/10",
-              "last5": "0/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Slight edge"
-            },
-            {
-              "player": "Christian Yelich",
-              "team": "MIL",
-              "market": "HR",
-              "line": "HR 1+",
-              "score": 29.5,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "1/10",
-              "last5": "1/5",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Slight edge"
-            },
-            {
-              "player": "Jackson Chourio",
-              "team": "MIL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 29.4,
-              "tier": "LONGSHOT",
-              "confidence": 59,
-              "last10": "20 TB",
-              "last5": "9 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Matt Svanson | Slight edge"
-            },
-            {
-              "player": "Jordan Walker",
-              "team": "STL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 29.2,
-              "tier": "LONGSHOT",
-              "confidence": 58,
-              "last10": "17 TB",
-              "last5": "13 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Slight edge"
-            },
-            {
-              "player": "Alec Burleson",
-              "team": "STL",
-              "market": "TB",
-              "line": "Over 1.5 TB",
-              "score": 28.7,
-              "tier": "LONGSHOT",
-              "confidence": 57,
-              "last10": "10 TB",
-              "last5": "10 TB",
-              "last3": "--",
-              "status": "Confirmed lineup",
-              "why": "vs Jacob Misiorowski | Slight edge"
-            }
-          ]
-        },
-        {
-          "id": "823929",
+          "id": "823928",
           "title": "COL @ LAD",
           "start": "10:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Michael Lorenzen vs Justin Wrobleski",
+          "meta": "Gabriel Hughes vs Roki Sasaki",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -349,11 +50,45 @@
           "roster": []
         },
         {
-          "id": "824820",
+          "id": "823279",
+          "title": "AZ @ SD",
+          "start": "10:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Jose Cabrera vs Michael King",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823202",
+          "title": "TOR @ SF",
+          "start": "3:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Dylan Cease vs Logan Webb",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824815",
           "title": "CHC @ BAL",
           "start": "6:35 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Matthew Boyd vs Shane Baz",
+          "meta": "Colin Rea vs Dean Kremer",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -366,11 +101,11 @@
           "roster": []
         },
         {
-          "id": "824254",
+          "id": "824253",
           "title": "ATH @ DET",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "J.T. Ginn vs Tarik Skubal",
+          "meta": "Jeffrey Springs vs Troy Melton",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -383,11 +118,11 @@
           "roster": []
         },
         {
-          "id": "823361",
+          "id": "823360",
           "title": "ATL @ PIT",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Hurston Waldrep vs Paul Skenes",
+          "meta": "Grant Holmes vs Jared Jones",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -400,11 +135,28 @@
           "roster": []
         },
         {
-          "id": "822956",
+          "id": "823848",
+          "title": "SEA @ MIA",
+          "start": "6:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "George Kirby vs Tyler Phillips",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822957",
           "title": "NYY @ TB",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Will Warren vs Ian Seymour",
+          "meta": "Gerrit Cole vs Shane McClanahan",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -417,11 +169,11 @@
           "roster": []
         },
         {
-          "id": "822713",
+          "id": "822710",
           "title": "HOU @ WSH",
           "start": "6:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Tatsuya Imai vs Andrew Alvarez",
+          "meta": "Spencer Arrighetti vs Foster Griffin",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -434,11 +186,11 @@
           "roster": []
         },
         {
-          "id": "824495",
-          "title": "PHI @ CIN",
+          "id": "823605",
+          "title": "KC @ NYM",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Zack Wheeler vs Andrew Abbott",
+          "meta": "Steven Cruz vs Christian Scott",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -451,11 +203,11 @@
           "roster": []
         },
         {
-          "id": "823687",
+          "id": "823684",
           "title": "CLE @ MIN",
           "start": "7:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Joey Cantillo vs Taj Bradley",
+          "meta": "Slade Cecconi vs Connor Prielipp",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -468,11 +220,11 @@
           "roster": []
         },
         {
-          "id": "824579",
+          "id": "824578",
           "title": "BOS @ CWS",
           "start": "7:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Payton Tolle vs Noah Schultz",
+          "meta": "Jake Bennett vs Davis Martin",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -485,45 +237,28 @@
           "roster": []
         },
         {
-          "id": "822881",
+          "id": "823032",
+          "title": "MIL @ STL",
+          "start": "7:45 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Kyle Harrison vs Michael McGreevy",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822880",
           "title": "LAA @ TEX",
           "start": "8:05 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Jos\u00e9 Soriano vs Jacob deGrom",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823280",
-          "title": "AZ @ SD",
-          "start": "9:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Zac Gallen vs Germ\u00e1n M\u00e1rquez",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823203",
-          "title": "TOR @ SF",
-          "start": "9:45 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Spencer Miles vs Trevor McDonald",
+          "meta": "Walbert Ure\u00f1a vs MacKenzie Gore",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
