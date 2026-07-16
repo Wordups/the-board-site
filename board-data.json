@@ -1,13 +1,27 @@
 {
-  "updatedAt": "July 15, 2026",
+  "updatedAt": "July 16, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
       "label": "MLB",
-      "note": "No playable MLB slate yet. Check again after lineups start confirming.",
-      "launches": [],
+      "note": "Live MLB board from the validated model pipeline. Click a game for the full tracked slate.",
+      "launches": [
+        {
+          "title": "Live API",
+          "copy": "This board is now fed by the live MLB pipeline instead of sample bootstrap data."
+        },
+        {
+          "title": "Game clustering",
+          "copy": "Each matchup keeps a compressed top layer plus a deeper slate behind the click."
+        },
+        {
+          "title": "Recent form",
+          "copy": "Hit-rate columns use live MLB recent-form fields, including L3 when available."
+        }
+      ],
       "notes": [
-        "The MLB website feed stays empty until the validated slate has something real to show."
+        "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
+        "Scores stay on the 0-50 scale from the tuned board logic."
       ],
       "pickOfDay": null,
       "filters": [
@@ -17,7 +31,25 @@
         "hit",
         "k"
       ],
-      "games": []
+      "games": [
+        {
+          "id": "823440",
+          "title": "NYM @ PHI",
+          "start": "7:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Christian Scott vs Aaron Nola",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        }
+      ]
     },
     "nba": {
       "label": "NBA",
