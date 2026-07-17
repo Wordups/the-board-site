@@ -1,5 +1,5 @@
 {
-  "updatedAt": "July 16, 2026",
+  "updatedAt": "July 17, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -23,7 +23,17 @@
         "If no lineups are confirmed yet, the board will stay sparse instead of inventing plays.",
         "Scores stay on the 0-50 scale from the tuned board logic."
       ],
-      "pickOfDay": null,
+      "pickOfDay": {
+        "player": "Junior Caminero",
+        "team": "TB @ BOS",
+        "market": "HR",
+        "line": "HR 1+",
+        "score": "42.2/50",
+        "confidence": "84%",
+        "rate": "L10 4/10 | L5 2/5 | L3 --",
+        "environment": "Griffin Jax vs Jake Bennett",
+        "summary": "Best signal lane: HR. Click through for the full tracked board."
+      },
       "filters": [
         "all",
         "hr",
@@ -33,11 +43,476 @@
       ],
       "games": [
         {
-          "id": "823440",
-          "title": "NYM @ PHI",
+          "id": "824766",
+          "title": "TB @ BOS",
+          "start": "1:35 PM ET",
+          "status": "Confirmed lineups",
+          "meta": "Griffin Jax vs Jake Bennett",
+          "attackNote": "Best signal lane: HR. Click through for the full tracked board.",
+          "lineupStatus": "Confirmed lineup data loaded",
+          "summary": {
+            "plays": 15,
+            "core": 1,
+            "avgScore": "31.8",
+            "signal": "C"
+          },
+          "topPicks": [
+            {
+              "name": "Junior Caminero",
+              "market": "HR",
+              "why": "vs Jake Bennett | Good value",
+              "tier": "Core",
+              "confidence": 84,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Jonathan Aranda",
+              "market": "HR",
+              "why": "vs Jake Bennett | Good value",
+              "tier": "Strong",
+              "confidence": 76,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Yandy D\u00edaz",
+              "market": "HR",
+              "why": "vs Jake Bennett | Good value",
+              "tier": "Value",
+              "confidence": 69,
+              "line": "HR 1+"
+            },
+            {
+              "name": "Wilyer Abreu",
+              "market": "HR",
+              "why": "vs Griffin Jax | Good value",
+              "tier": "Value",
+              "confidence": 68,
+              "line": "HR 1+"
+            }
+          ],
+          "roster": [
+            {
+              "player": "Junior Caminero",
+              "team": "TB",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 42.2,
+              "tier": "CORE",
+              "confidence": 84,
+              "last10": "4/10",
+              "last5": "2/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Jonathan Aranda",
+              "team": "TB",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 38.1,
+              "tier": "STRONG",
+              "confidence": 76,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Yandy D\u00edaz",
+              "team": "TB",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 34.4,
+              "tier": "VALUE",
+              "confidence": 69,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Wilyer Abreu",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 34.0,
+              "tier": "VALUE",
+              "confidence": 68,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Good value"
+            },
+            {
+              "player": "Ryan Vilade",
+              "team": "TB",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 33.1,
+              "tier": "VALUE",
+              "confidence": 66,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Jarren Duran",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 31.9,
+              "tier": "VALUE",
+              "confidence": 64,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Slight edge"
+            },
+            {
+              "player": "Junior Caminero",
+              "team": "TB",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 31.5,
+              "tier": "VALUE",
+              "confidence": 63,
+              "last10": "21 TB",
+              "last5": "12 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Yandy D\u00edaz",
+              "team": "TB",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 30.8,
+              "tier": "VALUE",
+              "confidence": 62,
+              "last10": "16 TB",
+              "last5": "10 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Jonathan Aranda",
+              "team": "TB",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 30.1,
+              "tier": "VALUE",
+              "confidence": 60,
+              "last10": "20 TB",
+              "last5": "18 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Good value"
+            },
+            {
+              "player": "Jonny DeLuca",
+              "team": "TB",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 29.1,
+              "tier": "LONGSHOT",
+              "confidence": 58,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Slight edge"
+            },
+            {
+              "player": "Anthony Seigler",
+              "team": "BOS",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.5,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "9 TB",
+              "last5": "5 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Slight edge"
+            },
+            {
+              "player": "Anthony Seigler",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.3,
+              "tier": "LONGSHOT",
+              "confidence": 57,
+              "last10": "1/10",
+              "last5": "1/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Slight edge"
+            },
+            {
+              "player": "Ceddanne Rafaela",
+              "team": "BOS",
+              "market": "HR",
+              "line": "HR 1+",
+              "score": 28.2,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "1/10",
+              "last5": "0/5",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Slight edge"
+            },
+            {
+              "player": "Wilyer Abreu",
+              "team": "BOS",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.1,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "14 TB",
+              "last5": "10 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Griffin Jax | Slight edge"
+            },
+            {
+              "player": "Ryan Vilade",
+              "team": "TB",
+              "market": "TB",
+              "line": "Over 1.5 TB",
+              "score": 28.1,
+              "tier": "LONGSHOT",
+              "confidence": 56,
+              "last10": "4 TB",
+              "last5": "4 TB",
+              "last3": "--",
+              "status": "Confirmed lineup",
+              "why": "vs Jake Bennett | Slight edge"
+            }
+          ]
+        },
+        {
+          "id": "823115",
+          "title": "SF @ SEA",
+          "start": "10:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Landen Roupp vs Bryce Miller",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823524",
+          "title": "LAD @ NYY",
+          "start": "7:05 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Roki Sasaki vs Gerrit Cole",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824414",
+          "title": "PIT @ CLE",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Christian Scott vs Aaron Nola",
+          "meta": "Jared Jones vs Gavin Williams",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824901",
+          "title": "TEX @ ATL",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Cal Quantrill vs Chris Sale",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822789",
+          "title": "CWS @ TOR",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Anthony Kay vs Spencer Miles",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823766",
+          "title": "MIA @ MIL",
+          "start": "7:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Sandy Alcantara vs Logan Henderson",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824655",
+          "title": "MIN @ CHC",
+          "start": "8:05 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Bailey Ober vs Colin Rea",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824170",
+          "title": "BAL @ HOU",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Dean Kremer vs Peter Lambert",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824090",
+          "title": "SD @ KC",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Michael King vs Seth Lugo",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824332",
+          "title": "CIN @ COL",
+          "start": "8:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Brady Singer vs Gabriel Hughes",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824009",
+          "title": "DET @ LAA",
+          "start": "9:38 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Troy Melton vs Reid Detmers",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824981",
+          "title": "WSH @ ATH",
+          "start": "9:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Cade Cavalli vs Gage Jump",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "825060",
+          "title": "STL @ AZ",
+          "start": "9:40 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Michael McGreevy vs Merrill Kelly",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
