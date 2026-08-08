@@ -1,5 +1,5 @@
 {
-  "updatedAt": "August 07, 2026",
+  "updatedAt": "August 08, 2026",
   "sourceMode": "Live website API",
   "sports": {
     "mlb": {
@@ -33,11 +33,79 @@
       ],
       "games": [
         {
-          "id": "823349",
+          "id": "823514",
+          "title": "ATL @ NYY",
+          "start": "3:05 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Chris Sale vs Gerrit Cole",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824726",
+          "title": "ATH @ BOS",
+          "start": "4:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Gage Jump vs Jake Bennett",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823834",
+          "title": "LAA @ MIA",
+          "start": "4:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Walbert Ure\u00f1a vs Sandy Alcantara",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823426",
+          "title": "TOR @ PHI",
+          "start": "6:05 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Max Scherzer vs Aaron Nola",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823348",
           "title": "NYM @ PIT",
           "start": "6:40 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Zac Thornton vs Carmen Mlodzinski",
+          "meta": "Robert Stock vs Bubba Chandler",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -50,28 +118,11 @@
           "roster": []
         },
         {
-          "id": "823428",
-          "title": "TOR @ PHI",
-          "start": "6:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Jos\u00e9 Soriano vs Zack Wheeler",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "822699",
+          "id": "822701",
           "title": "CIN @ WSH",
           "start": "6:45 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Chase Petty vs Cade Cavalli",
+          "meta": "Chase Burns vs Andrew Alvarez",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -84,28 +135,11 @@
           "roster": []
         },
         {
-          "id": "823515",
-          "title": "ATL @ NYY",
-          "start": "7:05 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Tyler Mahle vs Max Fried",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824727",
-          "title": "ATH @ BOS",
+          "id": "824079",
+          "title": "CHC @ KC",
           "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Jack Perkins vs Payton Tolle",
+          "meta": "Clay Holmes vs Seth Lugo",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -118,45 +152,11 @@
           "roster": []
         },
         {
-          "id": "823836",
-          "title": "LAA @ MIA",
-          "start": "7:10 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "George Klassen vs Tyler Phillips",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "824566",
-          "title": "CLE @ CWS",
-          "start": "7:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Parker Messick vs Noah Schultz",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823750",
+          "id": "823752",
           "title": "MIN @ MIL",
-          "start": "7:40 PM ET",
+          "start": "7:10 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Zebby Matthews vs Shane Drohan",
+          "meta": "Taj Bradley vs Robert Gasser",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -169,62 +169,11 @@
           "roster": []
         },
         {
-          "id": "823024",
-          "title": "COL @ STL",
-          "start": "8:15 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Ryan Feltner vs Kyle Leahy",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "822863",
-          "title": "BAL @ TEX",
-          "start": "8:15 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Shane Baz vs Nathan Eovaldi",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "825051",
-          "title": "LAD @ AZ",
-          "start": "9:40 PM ET",
-          "status": "Pitchers confirmed",
-          "meta": "Roki Sasaki vs Merrill Kelly",
-          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
-          "lineupStatus": "Pitchers locked, lineup pending",
-          "summary": {
-            "plays": 0,
-            "core": 0,
-            "avgScore": "0.0",
-            "signal": "D"
-          },
-          "topPicks": [],
-          "roster": []
-        },
-        {
-          "id": "823266",
+          "id": "823267",
           "title": "HOU @ SD",
-          "start": "9:40 PM ET",
+          "start": "7:15 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Ronel Blanco vs Robbie Ray",
+          "meta": "Peter Lambert vs Michael King",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
@@ -237,11 +186,96 @@
           "roster": []
         },
         {
-          "id": "823103",
-          "title": "TB @ SEA",
-          "start": "9:45 PM ET",
+          "id": "823188",
+          "title": "DET @ SF",
+          "start": "7:15 PM ET",
           "status": "Pitchers confirmed",
-          "meta": "Drew Rasmussen vs Logan Gilbert",
+          "meta": "Jackson Jobe vs Landen Roupp",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823021",
+          "title": "COL @ STL",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Kyle Freeland vs Matthew Liberatore",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "822864",
+          "title": "BAL @ TEX",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Kyle Bradish vs Jacob deGrom",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "824565",
+          "title": "CLE @ CWS",
+          "start": "7:15 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Gavin Williams vs Anthony Kay",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "825049",
+          "title": "LAD @ AZ",
+          "start": "8:10 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Yoshinobu Yamamoto vs Brandon Pfaadt",
+          "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
+          "lineupStatus": "Pitchers locked, lineup pending",
+          "summary": {
+            "plays": 0,
+            "core": 0,
+            "avgScore": "0.0",
+            "signal": "D"
+          },
+          "topPicks": [],
+          "roster": []
+        },
+        {
+          "id": "823102",
+          "title": "TB @ SEA",
+          "start": "9:50 PM ET",
+          "status": "Pitchers confirmed",
+          "meta": "Griffin Jax vs George Kirby",
           "attackNote": "Early form board active. Signals upgrade when batting orders confirm.",
           "lineupStatus": "Pitchers locked, lineup pending",
           "summary": {
